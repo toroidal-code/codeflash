@@ -1,14 +1,12 @@
 <table class="table table-striped table-bordered table-hover">
   <tr>
     <th>Problem name</th>
-    <th>Description</th>
     <th>Point value</th>
   </tr>
 
 <% @problems.each do |problem| %>
   <tr>
     <td><%= link_to problem.problem_name, problem %></td>
-    <td><%= problem.description %></td>
     <td><%= problem.point_value %></td>
   </tr>
 <% end %>
