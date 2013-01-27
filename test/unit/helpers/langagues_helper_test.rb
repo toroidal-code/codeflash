@@ -1,4 +1,4 @@
 require 'test_helper'
 
-class LangaguesHelperTest < ActionView::TestCase
+class LanguagesHelperTest < ActionView::TestCase
 end

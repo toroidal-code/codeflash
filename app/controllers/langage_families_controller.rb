@@ -1,82 +1,82 @@
-class LangageFamiliesController < ApplicationController
-  # GET /langage_families
-  # GET /langage_families.json
+class LanguageFamiliesController < ApplicationController
+  # GET /language_families
+  # GET /language_families.json
   def index
-    @langage_families = LangageFamily.all
+    @language_families = LanguageFamily.all
 
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @langage_families }
+      format.json { render json: @language_families }
     end
   end
 
-  # GET /langage_families/1
-  # GET /langage_families/1.json
+  # GET /language_families/1
+  # GET /language_families/1.json
   def show
-    @langage_family = LangageFamily.find(params[:id])
+    @language_family = LanguageFamily.find(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @langage_family }
+      format.json { render json: @language_family }
     end
   end
 
-  # GET /langage_families/new
-  # GET /langage_families/new.json
+  # GET /language_families/new
+  # GET /language_families/new.json
   def new
-    @langage_family = LangageFamily.new
+    @language_family = LanguageFamily.new
 
     respond_to do |format|
       format.html # new.html.erb
-      format.json { render json: @langage_family }
+      format.json { render json: @language_family }
     end
   end
 
-  # GET /langage_families/1/edit
+  # GET /language_families/1/edit
   def edit
-    @langage_family = LangageFamily.find(params[:id])
+    @language_family = LanguageFamily.find(params[:id])
   end
 
-  # POST /langage_families
-  # POST /langage_families.json
+  # POST /language_families
+  # POST /language_families.json
   def create
-    @langage_family = LangageFamily.new(params[:langage_family])
+    @language_family = LanguageFamily.new(params[:language_family])
 
     respond_to do |format|
-      if @langage_family.save
-        format.html { redirect_to @langage_family, notice: 'Langage family was successfully created.' }
-        format.json { render json: @langage_family, status: :created, location: @langage_family }
+      if @language_family.save
+        format.html { redirect_to @language_family, notice: 'Language family was successfully created.' }
+        format.json { render json: @language_family, status: :created, location: @language_family }
       else
         format.html { render action: "new" }
-        format.json { render json: @langage_family.errors, status: :unprocessable_entity }
+        format.json { render json: @language_family.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # PUT /langage_families/1
-  # PUT /langage_families/1.json
+  # PUT /language_families/1
+  # PUT /language_families/1.json
   def update
-    @langage_family = LangageFamily.find(params[:id])
+    @language_family = LanguageFamily.find(params[:id])
 
     respond_to do |format|
-      if @langage_family.update_attributes(params[:langage_family])
-        format.html { redirect_to @langage_family, notice: 'Langage family was successfully updated.' }
+      if @language_family.update_attributes(params[:language_family])
+        format.html { redirect_to @language_family, notice: 'Language family was successfully updated.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
-        format.json { render json: @langage_family.errors, status: :unprocessable_entity }
+        format.json { render json: @language_family.errors, status: :unprocessable_entity }
       end
     end
   end
 
-  # DELETE /langage_families/1
-  # DELETE /langage_families/1.json
+  # DELETE /language_families/1
+  # DELETE /language_families/1.json
   def destroy
-    @langage_family = LangageFamily.find(params[:id])
-    @langage_family.destroy
+    @language_family = LanguageFamily.find(params[:id])
+    @language_family.destroy
 
     respond_to do |format|
-      format.html { redirect_to langage_families_url }
+      format.html { redirect_to language_families_url }
       format.json { head :no_content }
     end
   end

@@ -1,14 +1,14 @@
 require 'test_helper'
 
-class LangageFamiliesControllerTest < ActionController::TestCase
+class LanguageFamiliesControllerTest < ActionController::TestCase
   setup do
-    @langage_family = langage_families(:one)
+    @language_family = language_families(:one)
   end
 
   test "should get index" do
     get :index
     assert_response :success
-    assert_not_nil assigns(:langage_families)
+    assert_not_nil assigns(:language_families)
   end
 
   test "should get new" do
@@ -16,34 +16,34 @@ class LangageFamiliesControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should create langage_family" do
-    assert_difference('LangageFamily.count') do
-      post :create, langage_family: { description: @langage_family.description, name: @langage_family.name }
+  test "should create language_family" do
+    assert_difference('LanguageFamily.count') do
+      post :create, language_family: { description: @language_family.description, name: @language_family.name }
     end
 
-    assert_redirected_to langage_family_path(assigns(:langage_family))
+    assert_redirected_to language_family_path(assigns(:language_family))
   end
 
-  test "should show langage_family" do
-    get :show, id: @langage_family
+  test "should show language_family" do
+    get :show, id: @language_family
     assert_response :success
   end
 
   test "should get edit" do
-    get :edit, id: @langage_family
+    get :edit, id: @language_family
     assert_response :success
   end
 
-  test "should update langage_family" do
-    put :update, id: @langage_family, langage_family: { description: @langage_family.description, name: @langage_family.name }
-    assert_redirected_to langage_family_path(assigns(:langage_family))
+  test "should update language_family" do
+    put :update, id: @language_family, language_family: { description: @language_family.description, name: @language_family.name }
+    assert_redirected_to language_family_path(assigns(:language_family))
   end
 
-  test "should destroy langage_family" do
-    assert_difference('LangageFamily.count', -1) do
-      delete :destroy, id: @langage_family
+  test "should destroy language_family" do
+    assert_difference('LanguageFamily.count', -1) do
+      delete :destroy, id: @language_family
     end
 
-    assert_redirected_to langage_families_path
+    assert_redirected_to language_families_path
   end
 end

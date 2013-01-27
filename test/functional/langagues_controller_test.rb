@@ -1,14 +1,14 @@
 require 'test_helper'
 
-class LangaguesControllerTest < ActionController::TestCase
+class LanguagesControllerTest < ActionController::TestCase
   setup do
-    @langague = langagues(:one)
+    @language = languages(:one)
   end
 
   test "should get index" do
     get :index
     assert_response :success
-    assert_not_nil assigns(:langagues)
+    assert_not_nil assigns(:languages)
   end
 
   test "should get new" do
@@ -16,34 +16,34 @@ class LangaguesControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should create langague" do
-    assert_difference('Langague.count') do
-      post :create, langague: { name: @langague.name }
+  test "should create language" do
+    assert_difference('Language.count') do
+      post :create, language: { name: @language.name }
     end
 
-    assert_redirected_to langague_path(assigns(:langague))
+    assert_redirected_to language_path(assigns(:language))
   end
 
-  test "should show langague" do
-    get :show, id: @langague
+  test "should show language" do
+    get :show, id: @language
     assert_response :success
   end
 
   test "should get edit" do
-    get :edit, id: @langague
+    get :edit, id: @language
     assert_response :success
   end
 
-  test "should update langague" do
-    put :update, id: @langague, langague: { name: @langague.name }
-    assert_redirected_to langague_path(assigns(:langague))
+  test "should update language" do
+    put :update, id: @language, language: { name: @language.name }
+    assert_redirected_to language_path(assigns(:language))
   end
 
-  test "should destroy langague" do
-    assert_difference('Langague.count', -1) do
-      delete :destroy, id: @langague
+  test "should destroy language" do
+    assert_difference('Language.count', -1) do
+      delete :destroy, id: @language
     end
 
-    assert_redirected_to langagues_path
+    assert_redirected_to languages_path
   end
 end

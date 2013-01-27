@@ -1,4 +1,4 @@
 require 'test_helper'
 
-class LangageFamiliesHelperTest < ActionView::TestCase
+class LanguageFamiliesHelperTest < ActionView::TestCase
 end

@@ -6,9 +6,9 @@ Codeflash::Application.routes.draw do
   resources :achievements
 
 
-  resources :langagues
+  resources :languages
   
-  resources :langage_families 
+  resources :language_families 
 
   resources :solutions
 

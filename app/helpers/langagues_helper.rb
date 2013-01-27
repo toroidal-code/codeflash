@@ -1,2 +1,2 @@
-module LangaguesHelper
+module LanguagesHelper
 end

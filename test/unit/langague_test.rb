@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class LangagueTest < ActiveSupport::TestCase
+class LanguageTest < ActiveSupport::TestCase
   # test "the truth" do
   #   assert true
   # end

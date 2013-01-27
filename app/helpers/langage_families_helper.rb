@@ -1,2 +1,2 @@
-module LangageFamiliesHelper
+module LanguageFamiliesHelper
 end
