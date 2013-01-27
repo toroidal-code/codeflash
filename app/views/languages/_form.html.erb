@@ -1,10 +1,10 @@
-<%= form_for(@langague) do |f| %>
-  <% if @langague.errors.any? %>
+<%= form_for(@language) do |f| %>
+  <% if @language.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@langague.errors.count, "error") %> prohibited this langague from being saved:</h2>
+      <h2><%= pluralize(@language.errors.count, "error") %> prohibited this language from being saved:</h2>
 
       <ul>
-      <% @langague.errors.full_messages.each do |msg| %>
+      <% @language.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
       </ul>
