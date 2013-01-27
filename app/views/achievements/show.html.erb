@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Solution:</b>
+  <%= @achievement.solution %>
+</p>
+
+<p>
+  <b>Name:</b>
+  <%= @achievement.name %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @achievement.description %>
+</p>
+
+<p>
+  <b>Point value:</b>
+  <%= @achievement.point_value %>
+</p>
+
+
+<%= link_to 'Edit', edit_achievement_path(@achievement) %> |
+<%= link_to 'Back', achievements_path %>

@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  problem_number: 1
+  problem_name: MyString
+  description: MyText
+  point_value: 1
+
+two:
+  problem_number: 1
+  problem_name: MyString
+  description: MyText
+  point_value: 1

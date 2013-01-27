@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  code: MyText
+  user_submitted: 
+  up_votes: 1
+  down_votes: 
+  problem: 
+
+two:
+  code: MyText
+  user_submitted: 
+  up_votes: 1
+  down_votes: 
+  problem: 
