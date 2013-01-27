@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130127102938) do
+ActiveRecord::Schema.define(:version => 20130127193118) do
 
   create_table "achievements", :force => true do |t|
     t.integer  "solution_id"
@@ -38,7 +38,7 @@ ActiveRecord::Schema.define(:version => 20130127102938) do
     t.datetime "updated_at",         :null => false
   end
 
-  add_index "languages", ["language_family_id"], :name => "index_langagues_on_language_family_id"
+  add_index "languages", ["language_family_id"], :name => "index_languages_on_language_family_id"
 
   create_table "problems", :force => true do |t|
     t.string   "problem_name"
