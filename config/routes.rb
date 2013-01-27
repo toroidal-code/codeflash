@@ -1,5 +1,8 @@
 Codeflash::Application.routes.draw do
   
+  resources :users
+
+
   resources :achievements
 
 
