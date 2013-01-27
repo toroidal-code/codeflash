@@ -1,4 +1,7 @@
 Codeflash::Application.routes.draw do
+  resources :solutions
+
+
   resources :problems
 
 

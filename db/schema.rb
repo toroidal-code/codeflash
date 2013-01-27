@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130127014049) do
+ActiveRecord::Schema.define(:version => 20130127021007) do
 
   create_table "problems", :force => true do |t|
     t.integer  "problem_number"
@@ -21,5 +21,18 @@ ActiveRecord::Schema.define(:version => 20130127014049) do
     t.datetime "created_at",     :null => false
     t.datetime "updated_at",     :null => false
   end
+
+  create_table "solutions", :force => true do |t|
+    t.text     "code"
+    t.integer  "user_submitted_id"
+    t.integer  "up_votes"
+    t.integer  "down_votes"
+    t.integer  "problem_id"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+  end
+
+  add_index "solutions", ["problem_id"], :name => "index_solutions_on_problem_id"
+  add_index "solutions", ["user_submitted_id"], :name => "index_solutions_on_user_submitted_id"
 
 end
