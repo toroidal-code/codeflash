@@ -1,14 +1,29 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Codeflash</title>
+  <title>Code Flash</title>
   <%= stylesheet_link_tag    "application", :media => "all" %>
   <%= javascript_include_tag "application" %>
   <%= csrf_meta_tags %>
 </head>
 <body>
 
-<%= yield %>
+  <div class="container-fluid" id="main">
+
+    <div class="navbar">
+      <div class="navbar-inner">
+        <a class="brand" href="#">Code Flash</a>
+        <ul class="nav">
+          <li class="active"><a href="#">Problems</a></li>
+          <li><a href="#">Profile</a></li>
+          <li><a href="#">Log in</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <%= yield %>
+
+  </div>
 
 </body>
 </html>
