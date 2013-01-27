@@ -1,12 +1,10 @@
 Codeflash::Application.routes.draw do
   
-  resources :langage_families do 
-    resources :langagues
-  end
-
+  resources :langagues
+  
+  resources :langage_families 
 
   resources :solutions
-
 
   resources :problems
 
