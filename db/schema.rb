@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130127024313) do
+ActiveRecord::Schema.define(:version => 20130127053459) do
 
   create_table "achievements", :force => true do |t|
     t.integer  "solution_id"
@@ -41,12 +41,11 @@ ActiveRecord::Schema.define(:version => 20130127024313) do
   add_index "langagues", ["language_family_id"], :name => "index_langagues_on_language_family_id"
 
   create_table "problems", :force => true do |t|
-    t.integer  "problem_number"
     t.string   "problem_name"
     t.text     "description"
     t.integer  "point_value"
-    t.datetime "created_at",     :null => false
-    t.datetime "updated_at",     :null => false
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
   end
 
   create_table "solutions", :force => true do |t|
