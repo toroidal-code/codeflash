@@ -13,3 +13,18 @@
  */
 
 @import "bootstrap";
+
+/* all pages */
+
+#main {
+  max-width: 800px;
+  margin: 25px auto;
+  margin-bottom: 0px;
+}
+
+@media (max-width: 480px) {
+  body, #main {
+    margin: 0px !important;
+    padding: 0px;
+  }
+}
