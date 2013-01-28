@@ -1,19 +1,13 @@
 Codeflash::Application.routes.draw do
   
+  get "static/index"
+
   resources :users
-
-
   resources :achievements
-
-
   resources :languages
-  
-  resources :language_families 
-
+  resources :language_families
   resources :solutions
-
   resources :problems
-
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -64,7 +58,7 @@ Codeflash::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root to: 'problems#index'
+  root to: 'static#index'
 
   # See how all your routes lay out with "rake routes"
 
