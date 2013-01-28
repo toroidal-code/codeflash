@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Codeflash::Application.load_tasks
+CodeFlash::Application.load_tasks
