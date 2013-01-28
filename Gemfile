@@ -25,6 +25,11 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
 end
 
+group :development do
+  gem 'binding_of_caller', '~> 0.6'
+  gem 'better_errors', '~> 0.3'
+end
+
 gem 'jquery-rails'
 gem 'high_voltage', '~> 1.2'
 
