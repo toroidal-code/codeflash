@@ -1,4 +1,4 @@
-Codeflash::Application.routes.draw do
+CodeFlash::Application.routes.draw do
   
   get "static/index"
 
