@@ -1,6 +1,4 @@
 CodeFlash::Application.routes.draw do
-  
-  get "static/index"
 
   resources :users
   resources :achievements
@@ -58,7 +56,7 @@ CodeFlash::Application.routes.draw do
 
   # You can have the root of your site routed with "root"
   # just remember to delete public/index.html.
-  root to: 'static#index'
+  root to: 'high_voltage/pages#show', id: 'home'
 
   # See how all your routes lay out with "rake routes"
 
