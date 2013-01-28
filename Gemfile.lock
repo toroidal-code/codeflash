@@ -44,6 +44,7 @@ GEM
     eventmachine (1.0.0)
     execjs (1.4.0)
       multi_json (~> 1.0)
+    high_voltage (1.2.1)
     hike (1.2.1)
     i18n (0.6.1)
     journey (1.0.4)
@@ -115,6 +116,7 @@ PLATFORMS
 DEPENDENCIES
   bootstrap-sass (~> 2.2.2.0)
   coffee-rails (~> 3.2.1)
+  high_voltage (~> 1.2)
   jquery-rails
   pg (~> 0.14)
   rails (= 3.2.11)
