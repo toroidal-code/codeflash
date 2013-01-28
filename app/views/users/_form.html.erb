@@ -11,27 +11,37 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :username %><br />
-    <%= f.text_field :username %>
+  <div class="control-group">
+    <%= f.label :username, :class => "control-label" %>
+    <div class="controls">
+      <%= f.text_field :username, :class => 'input-xlarge' %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :password %><br />
-    <%= f.text_field :password %>
+  <div class="control-group">
+    <%= f.label :password, :class => "control-label" %>
+    <div class="controls">
+      <%= f.text_field :password, :class => 'input-xlarge' %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :salt %><br />
-    <%= f.text_field :salt %>
+  <div class="control-group">
+    <%= f.label :salt, :class => "control-label" %>
+    <div class="controls">
+      <%= f.text_field :salt, :class => 'input-xlarge' %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.text_field :email %>
+  <div class="control-group">
+    <%= f.label :email, :class => "control-label" %>
+    <div class="controls">
+      <%= f.text_field :email, :class => 'input-xlarge' %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :points %><br />
-    <%= f.number_field :points %>
+  <div class="control-group">
+    <%= f.label :points, :class => "control-label" %>
+    <div class="controls">
+      <%= f.number_field :points, :class => 'input-xlarge' %>
+    </div>
   </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="control-groups">
+    <%= f.submit 'Submit' ,  :class => 'btn btn-primary' %>
   </div>
 <% end %>

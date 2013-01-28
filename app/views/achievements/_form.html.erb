@@ -11,23 +11,31 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :solution %><br />
-    <%= f.text_field :solution %>
+  <div class="control-group">
+    <%= f.label :solution, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :solution, :class => "input-xlarge" %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
+  <div class="control-group">
+    <%= f.label :name, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :name, :class => "input-xlarge" %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :description %><br />
-    <%= f.text_area :description %>
+  <div class="control-group">
+    <%= f.label :description, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_area :description, :class => "input-block-level" %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :point_value %><br />
-    <%= f.number_field :point_value %>
+  <div class="control-group">
+    <%= f.label :point_value, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.number_field :point_value, :class => "input-xlarge" %>
+    </div>
   </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="control-group">
+    <%= f.submit 'Submit', :class => "btn btn-primary" %>
   </div>
 <% end %>

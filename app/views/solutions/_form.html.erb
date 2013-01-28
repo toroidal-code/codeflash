@@ -11,27 +11,37 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :code %><br />
-    <%= f.text_area :code %>
+  <div class="control-group">
+    <%= f.label :user_submitted, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :user_submitted, :class => 'input-xlarge' %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :user_submitted %><br />
-    <%= f.text_field :user_submitted %>
+  <div class="control-group">
+    <%= f.label :up_votes, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.number_field :up_votes, :class => 'input-xlarge' %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :up_votes %><br />
-    <%= f.number_field :up_votes %>
+  <div class="control-group">
+    <%= f.label :down_votes, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :down_votes, :class => 'input-xlarge' %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :down_votes %><br />
-    <%= f.text_field :down_votes %>
+  <div class="control-group">
+    <%= f.label :problem, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :problem, :class => 'input-xlarge' %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :problem %><br />
-    <%= f.text_field :problem %>
+  <div class="control-group">
+    <%= f.label :code, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_area :code, :class => 'input-block-level' %>
+    </div>
   </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="control-group">
+    <%= f.submit 'Submit', :class => 'btn btn-primary' %>
   </div>
 <% end %>
