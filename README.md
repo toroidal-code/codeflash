@@ -10,3 +10,8 @@ and a strong community.
 Please remember to use the following when merging branches:
 
 	git merge --no-ff
+
+## Deploying
+If you are an admin and are already set up with our Heroku app, you can deploy to production with `rake deploy`.
+
+For more detailed information, see the [Deploying](https://github.com/codeflash/codeflash/wiki/Deploying) article on our wiki.
