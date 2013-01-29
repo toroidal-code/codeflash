@@ -14,7 +14,6 @@
 ActiveRecord::Schema.define(:version => 20130129005225) do
 
   create_table "achievements", :force => true do |t|
-    t.integer  "solution_id"
     t.string   "name"
     t.text     "description"
     t.integer  "point_value"
