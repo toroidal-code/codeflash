@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 # Important stuff
 gem 'rails', '3.2.11'
-gem 'thin'
+gem 'puma'
 
 # Database
 group :production do
