@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130130023936) do
+ActiveRecord::Schema.define(:version => 20130131052026) do
 
   create_table "achievements", :force => true do |t|
     t.string   "name"
@@ -19,7 +19,10 @@ ActiveRecord::Schema.define(:version => 20130130023936) do
     t.integer  "point_value"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
+    t.integer  "solution_id"
   end
+
+  add_index "achievements", ["solution_id"], :name => "index_achievements_on_solution_id"
 
   create_table "language_families", :force => true do |t|
     t.string   "name"
@@ -33,9 +36,11 @@ ActiveRecord::Schema.define(:version => 20130130023936) do
     t.integer  "language_family_id"
     t.datetime "created_at",         :null => false
     t.datetime "updated_at",         :null => false
+    t.integer  "solution_id"
   end
 
   add_index "languages", ["language_family_id"], :name => "index_languages_on_language_family_id"
+  add_index "languages", ["solution_id"], :name => "index_languages_on_solution_id"
 
   create_table "problems", :force => true do |t|
     t.string   "problem_name"
@@ -43,7 +48,10 @@ ActiveRecord::Schema.define(:version => 20130130023936) do
     t.integer  "point_value"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
+    t.integer  "user_id"
   end
+
+  add_index "problems", ["user_id"], :name => "index_problems_on_user_id"
 
   create_table "solutions", :force => true do |t|
     t.text     "code"
