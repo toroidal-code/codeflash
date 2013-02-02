@@ -4,7 +4,8 @@ class UsersControllerTest < ActionController::TestCase
   setup do
     @user = users(:one)
     @user.username = "MyString9"
-    @user.email = "MyString10"
+    @user.email = "MyString10@gmail.com"
+    @user.password = "LolAb12"
   end
 
   test "should get index" do
