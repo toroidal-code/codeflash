@@ -1,6 +1,8 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
+  name: MyString
+  about_me: MyString
   username: MyString
   password: MyString
   salt: MyString
@@ -8,8 +10,10 @@ one:
   points: 1
 
 two:
-  username: MyString
-  password: MyString
-  salt: MyString
-  email: MyString
+  name: MyString2
+  about_me: MyString2
+  username: MyString2
+  password: MyString2
+  salt: MyString2
+  email: MyString2
   points: 1
