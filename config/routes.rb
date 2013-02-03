@@ -8,6 +8,12 @@ Codeflash::Application.routes.draw do
   resources :solutions
   resources :problems
 
+  devise_scope :user do
+    get "login" , :to => "devise/sessions#new"
+    get "signup", :to => "devise/registrations#new"
+    delete "logout", :to => "devise/sessions#destroy"
+  end
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
