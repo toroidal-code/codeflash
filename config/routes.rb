@@ -1,6 +1,6 @@
 Codeflash::Application.routes.draw do
 
-  devise_for :users
+  devise_for :users 
 
   resources :achievements
   resources :languages
