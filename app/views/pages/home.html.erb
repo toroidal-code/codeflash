@@ -1,9 +1,20 @@
-<div class="hero-unit">
-  <h1>Welcome to Codeflash</h1>
-  <p>
-    Codeflash aims at being a community driven site for solving problems, both
-    simple and complex. Codeflash will allow the community to decide what is the
-    best solution to a problem in the hopes of supporting good programming
-    practices and a strong community.
-  </p>
+<div class="row-fluid">
+
+  <div class="span8">
+    <div class="hero-unit">
+      <h1>Welcome to Codeflash</h1>
+      <p>
+        Codeflash aims at being a community driven site for solving problems, both
+        simple and complex. Codeflash will allow the community to decide what is the
+        best solution to a problem in the hopes of supporting good programming
+        practices and a strong community.
+      </p>
+    </div>
+  </div>
+
+  <div class="span4">
+    <%= render 'users/sessions/compact' %>
+    <%= render 'users/registrations/compact' %>
+  </div>
+
 </div>
