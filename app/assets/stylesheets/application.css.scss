@@ -30,3 +30,9 @@
     padding: 0px;
   }
 }
+
+.compact-form {
+  input[type=text], input[type=email], input[type=password] {
+    width: 100%;
+  }
+}
