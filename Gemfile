@@ -27,7 +27,7 @@ end
 
 group :development do
   gem 'binding_of_caller', '~> 0.6'
-  gem 'better_errors', '~> 0.3'
+  gem 'better_errors', '~> 0.5'
 end
 
 gem 'jquery-rails'
