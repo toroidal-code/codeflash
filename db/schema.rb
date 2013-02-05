@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130205175539) do
+ActiveRecord::Schema.define(:version => 20130205214214) do
 
   create_table "achievements", :force => true do |t|
     t.string   "name"
@@ -43,6 +43,18 @@ ActiveRecord::Schema.define(:version => 20130205175539) do
   end
 
   add_index "problems", ["user_id"], :name => "index_problems_on_user_id"
+
+  create_table "profiles", :force => true do |t|
+    t.string   "name"
+    t.text     "about_me"
+    t.string   "favorite_language"
+    t.string   "github"
+    t.integer  "user_id"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+  end
+
+  add_index "profiles", ["user_id"], :name => "index_profiles_on_user_id"
 
   create_table "solutions", :force => true do |t|
     t.text     "code"

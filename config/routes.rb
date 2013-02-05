@@ -1,5 +1,8 @@
 Codeflash::Application.routes.draw do
 
+  resources :profiles
+
+
   devise_for :users 
 
   resources :achievements
