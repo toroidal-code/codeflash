@@ -3,6 +3,7 @@ require 'test_helper'
 class LanguagesControllerTest < ActionController::TestCase
   setup do
     @language = languages(:one)
+    @language.name = 'unique name'
   end
 
   test "should get index" do
