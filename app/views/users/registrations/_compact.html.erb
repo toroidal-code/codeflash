@@ -1,0 +1,26 @@
+<div class= "well well-small compact-form">
+<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+  <%= devise_error_messages! %>
+
+ <legend>Sign Up</legend>
+  <div class="control-group">
+    <div class="controls">
+      <%= f.email_field :email, :autofocus => true, :class => 'input-xlarge', :placeholder => 'Email' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <div class="controls">
+      <%= f.password_field :password, :class => 'input-xlarge', :placeholder => 'Password' %>
+    </div>
+  </div>
+
+  <div class="control-group">
+    <div class="controls">
+      <%= f.password_field :password_confirmation, :class => 'input-xlarge', :placeholder => 'Password confirmation' %>
+    </div>
+  </div>
+
+  <div><%= f.submit "Sign up", :class=> "btn btn-primary" %></div>
+<% end %>
+
+</div>

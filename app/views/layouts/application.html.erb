@@ -18,9 +18,12 @@
           <%= navbar_link 'Problems', '/problems', 'question-sign' %>
           <%= navbar_link 'Achievements', '/achievements', 'star' %>
           <%= navbar_link 'Languages', '/languages', 'list' %>
-          <%= navbar_link 'Users', '/users', 'user' %>
           <%= navbar_link 'Profile', '/profiles', 'briefcase' %>
-          <%= navbar_link 'Log in', '/login', 'chevron-right' %>
+          <% if user_signed_in? %>
+            <%= navbar_link "Log out", '/logout', 'chevron-right', 'delete' %>
+          <% else %> 
+            <%= navbar_link 'Log in', '/login', 'chevron-right' %>
+          <% end %>
         </ul>
       </div>
     </div>
