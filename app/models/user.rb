@@ -1,6 +1,14 @@
 class User < ActiveRecord::Base
-	has_many :solutions_submitted
+  # Include default devise modules. Others available are:
+  # :token_authenticatable, :confirmable,
+  # :lockable, :timeoutable and :omniauthable
+  devise :database_authenticatable, :registerable,
+         :recoverable, :rememberable, :trackable, :validatable
+         
+  has_many :solutions_submitted
 	has_many :achievements, :through => :solutions_submitted
 	has_many :problems_solved
-  attr_accessible :email, :password, :points, :salt, :username, :name, :about_me
+  # Setup accessible (or protected) attributes for your model
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :about_me
+  # attr_accessible :title, :body
 end
