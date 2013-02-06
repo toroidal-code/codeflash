@@ -1,4 +1,4 @@
 class Profile < ActiveRecord::Base
   belongs_to :user
-  attr_accessible :about_me, :favorite_language, :github, :name
+  attr_accessible :about_me, :favorite_language, :github, :name, :user_id
 end

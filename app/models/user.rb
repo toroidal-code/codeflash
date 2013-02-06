@@ -18,12 +18,17 @@ class User < ActiveRecord::Base
   validates :email, :uniqueness => true
   validates :password, :confirmation => true
 
-   def self.find_first_by_auth_conditions(warden_conditions)
-      conditions = warden_conditions.dup
-      if login = conditions.delete(:login)
-        where(conditions).where(["lower(username) = :value OR lower(email) = :value", { :value => login.downcase }]).first
-      else
-        where(conditions).first
-      end
+  def self.find_first_by_auth_conditions(warden_conditions)
+    conditions = warden_conditions.dup
+    if login = conditions.delete(:login)
+      where(conditions).where(["lower(username) = :value OR lower(email) = :value", { :value => login.downcase }]).first
+    else
+      where(conditions).first
     end
+  end
+
+  def create_profile
+    profile = Profile.create(:user_id => id)
+    profile.save!
+  end
 end
