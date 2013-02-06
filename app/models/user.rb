@@ -17,6 +17,7 @@ class User < ActiveRecord::Base
   validates :about_me, :length => {:maximum => 500}
   validates :email, :uniqueness => true
   validates :password, :confirmation => true
+  after_create :create_child
 
   def self.find_first_by_auth_conditions(warden_conditions)
     conditions = warden_conditions.dup
