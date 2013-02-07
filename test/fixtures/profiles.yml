@@ -5,11 +5,11 @@ one:
   about_me: MyText
   favorite_language: MyString
   github: MyString
-  user: 
+  user_id: 1
 
 two:
   name: MyString
   about_me: MyText
   favorite_language: MyString
   github: MyString
-  user: 
+  user_id: 2 

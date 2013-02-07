@@ -18,14 +18,17 @@ class ProfilesControllerTest < ActionController::TestCase
 
   test "should create profile" do
     assert_difference('Profile.count') do
-      post :create, profile: { about_me: @profile.about_me, favorite_language: @profile.favorite_language, github: @profile.github, name: @profile.name }
+      post :create, profile: { about_me: @profile.about_me, favorite_language: @profile.favorite_language, github: @profile.github, name: @profile.name}
     end
 
     assert_redirected_to profile_path(assigns(:profile))
   end
 
   test "should show profile" do
-    get :show, id: @profile
+    p = Profile.find(@profile.id)
+    p.user_id = @profile.id;
+    p.save
+    get :show, id: User.find_by_id(@profile.id).username
     assert_response :success
   end
 

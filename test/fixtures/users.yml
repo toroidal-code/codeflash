@@ -7,9 +7,9 @@
 one: 
   email: MyString
   encrypted_password: MyString
-# column: value
+  username: MyString
 #
 two: 
   email: MyString2
   encrypted_password: MyString2
-#  column: value
+  username: MyString2
