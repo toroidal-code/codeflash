@@ -13,8 +13,8 @@ class ProfilesController < ApplicationController
   # GET /profiles/1
   # GET /profiles/1.json
   def show
-
-    @profile = Profile.find(params[:id])
+    @user = User.find_by_username(params[:id])
+    @profile = @user.profile
 
     respond_to do |format|
       format.html # show.html.erb
