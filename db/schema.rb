@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130205214214) do
+ActiveRecord::Schema.define(:version => 20130207033518) do
 
   create_table "achievements", :force => true do |t|
     t.string   "name"
@@ -58,17 +58,17 @@ ActiveRecord::Schema.define(:version => 20130205214214) do
 
   create_table "solutions", :force => true do |t|
     t.text     "code"
-    t.integer  "user_submitted_id"
+    t.integer  "user_id"
     t.integer  "up_votes"
     t.integer  "down_votes"
     t.integer  "problem_id"
-    t.datetime "created_at",        :null => false
-    t.datetime "updated_at",        :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
     t.integer  "language_id"
   end
 
   add_index "solutions", ["problem_id"], :name => "index_solutions_on_problem_id"
-  add_index "solutions", ["user_submitted_id"], :name => "index_solutions_on_user_submitted_id"
+  add_index "solutions", ["user_id"], :name => "index_solutions_on_user_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "",    :null => false

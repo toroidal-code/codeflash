@@ -5,9 +5,10 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
          
-  has_many :solutions_submitted
-	has_many :achievements, :through => :solutions_submitted
-	has_many :problems_solved
+  has_many :solutions
+	has_many :achievements, :through => :solutions
+	has_many :problems
+  has_one :profile
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :name,
                   :about_me, :username, :login
@@ -29,7 +30,6 @@ class User < ActiveRecord::Base
   end
 
   def create_profile
-    profile = Profile.create(:user_id => id)
-    profile.save!
+    Profile.create(:user_id => id).save
   end
 end
