@@ -1,5 +1,5 @@
 class Language < ActiveRecord::Base
-  belongs_to :solution
+  has_many :solutions
   attr_accessible :name
 
   validates :name, :uniqueness => true, :presence => true
