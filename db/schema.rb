@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130207200730) do
+ActiveRecord::Schema.define(:version => 20130207203724) do
 
   create_table "achievements", :force => true do |t|
     t.string   "name"
@@ -19,10 +19,7 @@ ActiveRecord::Schema.define(:version => 20130207200730) do
     t.integer  "point_value"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
-    t.integer  "solution_id"
   end
-
-  add_index "achievements", ["solution_id"], :name => "index_achievements_on_solution_id"
 
   create_table "achievements_solutions", :id => false, :force => true do |t|
     t.integer "achievement_id", :null => false
