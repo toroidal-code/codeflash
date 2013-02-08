@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 # Important stuff
 gem 'rails', '3.2.11'
-gem 'thin'
+gem 'puma'
 
 # Database
 group :production do
@@ -27,11 +27,14 @@ end
 
 group :development do
   gem 'binding_of_caller', '~> 0.6'
-  gem 'better_errors', '~> 0.3'
+  gem 'better_errors', '~> 0.5'
 end
 
 gem 'jquery-rails'
 gem 'high_voltage', '~> 1.2'
+gem 'omniauth', '~> 1.1.1'
+gem 'devise', '~> 2.2.3'
+gem 'simplecov', require: false, group: :test
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

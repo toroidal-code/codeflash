@@ -2,8 +2,6 @@
 
 one:
   name: MyString
-  language_family: 
 
 two:
-  name: MyString
-  language_family: 
+  name: MyStrings
