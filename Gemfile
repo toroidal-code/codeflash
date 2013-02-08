@@ -34,6 +34,7 @@ gem 'jquery-rails'
 gem 'high_voltage', '~> 1.2'
 gem 'omniauth', '~> 1.1.1'
 gem 'devise', '~> 2.2.3'
+gem 'cancan', '~> 1.6.9'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
