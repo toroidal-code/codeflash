@@ -1,1 +1,1 @@
-web: bundle exec rackup config.ru -p 80
+web: bundle exec rails server Puma -p $PORT
