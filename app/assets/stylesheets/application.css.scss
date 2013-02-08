@@ -14,11 +14,12 @@
 
 @import "bootstrap";
 @import "bootstrap-responsive";
+@import "scaffolds";
 
 /* all pages */
 
 #main {
-  max-width: 800px;
+  max-width: 960px;
   margin: 25px auto;
   margin-bottom: 0px;
 }
@@ -27,5 +28,11 @@
   body, #main {
     margin: 0px !important;
     padding: 0px;
+  }
+}
+
+.compact-form {
+  input[type=text], input[type=email], input[type=password] {
+    width: 95%;
   }
 }

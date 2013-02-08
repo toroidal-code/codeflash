@@ -1,6 +1,5 @@
 <table class="table table-striped table-bordered table-hover">
   <tr>
-    <th>Solution</th>
     <th>Name</th>
     <th>Point value</th>
     <th></th>
@@ -10,7 +9,6 @@
 
 <% @achievements.each do |achievement| %>
   <tr>
-    <td><%= achievement.solution %></td>
     <td><%= achievement.name %></td>
     <td><%= achievement.point_value %></td>
     <td><%= link_to 'Show', achievement %></td>

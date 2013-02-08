@@ -2,14 +2,10 @@
 
 one:
   code: MyText
-  user_submitted: 
   up_votes: 1
-  down_votes: 
-  problem: 
+  down_votes: 0
 
 two:
   code: MyText
-  user_submitted: 
   up_votes: 1
-  down_votes: 
-  problem: 
+  down_votes: 0

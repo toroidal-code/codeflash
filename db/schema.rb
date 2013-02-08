@@ -11,10 +11,9 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130127193118) do
+ActiveRecord::Schema.define(:version => 20130207203724) do
 
   create_table "achievements", :force => true do |t|
-    t.integer  "solution_id"
     t.string   "name"
     t.text     "description"
     t.integer  "point_value"
@@ -22,23 +21,18 @@ ActiveRecord::Schema.define(:version => 20130127193118) do
     t.datetime "updated_at",  :null => false
   end
 
-  add_index "achievements", ["solution_id"], :name => "index_achievements_on_solution_id"
-
-  create_table "language_families", :force => true do |t|
-    t.string   "name"
-    t.text     "description"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+  create_table "achievements_solutions", :id => false, :force => true do |t|
+    t.integer "achievement_id", :null => false
+    t.integer "solution_id",    :null => false
   end
+
+  add_index "achievements_solutions", ["achievement_id", "solution_id"], :name => "index_achievements_solutions_on_achievement_id_and_solution_id", :unique => true
 
   create_table "languages", :force => true do |t|
     t.string   "name"
-    t.integer  "language_family_id"
-    t.datetime "created_at",         :null => false
-    t.datetime "updated_at",         :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
-
-  add_index "languages", ["language_family_id"], :name => "index_languages_on_language_family_id"
 
   create_table "problems", :force => true do |t|
     t.string   "problem_name"
@@ -46,7 +40,10 @@ ActiveRecord::Schema.define(:version => 20130127193118) do
     t.integer  "point_value"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
+    t.integer  "user_id"
   end
+
+  add_index "problems", ["user_id"], :name => "index_problems_on_user_id"
 
   create_table "solutions", :force => true do |t|
     t.text     "code"
@@ -59,17 +56,29 @@ ActiveRecord::Schema.define(:version => 20130127193118) do
     t.integer  "language_id"
   end
 
+  add_index "solutions", ["language_id"], :name => "index_solutions_on_language_id"
   add_index "solutions", ["problem_id"], :name => "index_solutions_on_problem_id"
   add_index "solutions", ["user_submitted_id"], :name => "index_solutions_on_user_submitted_id"
 
   create_table "users", :force => true do |t|
-    t.string   "username"
-    t.string   "password"
-    t.string   "salt"
-    t.string   "email"
-    t.integer  "points"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.string   "email",                  :default => "",    :null => false
+    t.string   "encrypted_password",     :default => "",    :null => false
+    t.string   "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",          :default => 0
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.datetime "created_at",                                :null => false
+    t.datetime "updated_at",                                :null => false
+    t.boolean  "admin",                  :default => false
+    t.string   "name"
+    t.text     "about_me"
   end
+
+  add_index "users", ["email"], :name => "index_users_on_email", :unique => true
+  add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
 
 end
