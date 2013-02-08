@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130203190925) do
+ActiveRecord::Schema.define(:version => 20130207203724) do
 
   create_table "achievements", :force => true do |t|
     t.string   "name"
@@ -19,19 +19,20 @@ ActiveRecord::Schema.define(:version => 20130203190925) do
     t.integer  "point_value"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
-    t.integer  "solution_id"
   end
 
-  add_index "achievements", ["solution_id"], :name => "index_achievements_on_solution_id"
+  create_table "achievements_solutions", :id => false, :force => true do |t|
+    t.integer "achievement_id", :null => false
+    t.integer "solution_id",    :null => false
+  end
+
+  add_index "achievements_solutions", ["achievement_id", "solution_id"], :name => "index_achievements_solutions_on_achievement_id_and_solution_id", :unique => true
 
   create_table "languages", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
-    t.integer  "solution_id"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
-
-  add_index "languages", ["solution_id"], :name => "index_languages_on_solution_id"
 
   create_table "problems", :force => true do |t|
     t.string   "problem_name"
@@ -55,6 +56,7 @@ ActiveRecord::Schema.define(:version => 20130203190925) do
     t.integer  "language_id"
   end
 
+  add_index "solutions", ["language_id"], :name => "index_solutions_on_language_id"
   add_index "solutions", ["problem_id"], :name => "index_solutions_on_problem_id"
   add_index "solutions", ["user_submitted_id"], :name => "index_solutions_on_user_submitted_id"
 
