@@ -1,4 +1,9 @@
 Codeflash::Application.routes.draw do
+  
+  get "/profiles/:username" => "profiles#show", :constraints => {:username => /[A-Za-z][A-Za-z0-9]*/}
+  
+  resources :profiles
+
 
   devise_for :users 
 
@@ -13,6 +18,8 @@ Codeflash::Application.routes.draw do
     get "signup", :to => "devise/registrations#new"
     delete "logout", :to => "devise/sessions#destroy"
   end
+
+
 
   # The priority is based upon order of creation:
   # first created -> highest priority.

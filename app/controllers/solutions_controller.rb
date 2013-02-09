@@ -1,4 +1,5 @@
 class SolutionsController < ApplicationController
+  load_and_authorize_resource
   # GET /solutions
   # GET /solutions.json
   def index

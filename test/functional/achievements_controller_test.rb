@@ -2,6 +2,8 @@ require 'test_helper'
 
 class AchievementsControllerTest < ActionController::TestCase
   setup do
+    user = User.create!(email: "lol@lol.lol", password: "lollollol", admin: true)
+    sign_in(user)
     @achievement = achievements(:one)
   end
 

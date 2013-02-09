@@ -1,9 +1,9 @@
 class AchievementsController < ApplicationController
   # GET /achievements
   # GET /achievements.json
+  load_and_authorize_resource
   def index
     @achievements = Achievement.all
-
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @achievements }

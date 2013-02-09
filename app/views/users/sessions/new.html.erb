@@ -3,9 +3,9 @@
 <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
 <legend>Sign in</legend>
   <div class="control-group">
-	  <%= f.label :email , :class => 'control-label' %>
+	  <%= f.label :login , :class => 'control-label' %>
 	  <div class="controls">
-	  	<%= f.email_field :email, :autofocus => true, :class => 'input-xlarge'%>
+	  	<%= f.email_field :login, :autofocus => true, :class => 'input-xlarge'%>
 	  </div>
 	</div>
 	<div class="control-group">
