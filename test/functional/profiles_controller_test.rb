@@ -2,6 +2,8 @@ require 'test_helper'
 
 class ProfilesControllerTest < ActionController::TestCase
   setup do
+    user = User.create!(email: "lol@lol.lol", password: "lollollol", admin: true)
+    sign_in(user)
     @profile = profiles(:one)
   end
 
