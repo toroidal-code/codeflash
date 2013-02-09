@@ -7,7 +7,7 @@ class User < ActiveRecord::Base
          
   has_many :solutions_submitted
 	has_many :achievements, :through => :solutions_submitted
-	has_many :problems_solved, :through => :solution_submitted
+	has_many :problems_solved, :through => :solutions_submitted
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :about_me
   # attr_accessible :title, :body
