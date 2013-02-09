@@ -22,9 +22,9 @@
 
 <p>
   <b>User:</b>
-  <%= @profile.user %>
+  <%= @user.username %>
 </p>
 
 
-<%= link_to 'Edit', edit_profile_path(@profile) %> |
+<% if can? :edit, @profile %><%= link_to 'Edit', edit_profile_path(@profile) %> |<% end %>
 <%= link_to 'Back', profiles_path %>
