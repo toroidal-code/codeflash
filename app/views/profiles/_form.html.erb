@@ -11,23 +11,31 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %><br />
-    <%= f.text_field :name %>
+  <div class="control-group">
+    <%= f.label :name, :class => 'control-label' %>
+    <div class ="controls">
+      <%= f.text_field :name, :class => 'input-xlarge' %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :about_me %><br />
-    <%= f.text_area :about_me %>
+  <div class="control-group">
+    <%= f.label :about_me, :class => 'control-label' %>
+    <div class ="controls">
+      <%= f.text_area :about_me, :class => 'input-block-level' %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :favorite_language %><br />
-    <%= f.text_field :favorite_language %>
+  <div class="control-group">
+    <%= f.label :favorite_language, :class => 'control-label' %>
+    <div class ="controls">
+      <%= f.text_field :favorite_language, :class => 'input-xlarge' %>
+    </div>
   </div>
-  <div class="field">
-    <%= f.label :github %><br />
-    <%= f.text_field :github %>
+  <div class="control-group">
+    <%= f.label :github, :class => 'control-label' %>
+    <div class ="controls">
+      <%= f.text_field :github, :class => 'input-xlarge' %>
+    </div>
   </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="control-group">
+     <%= f.submit 'Submit', :class => 'btn btn-primary' %>
   </div>
 <% end %>
