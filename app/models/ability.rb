@@ -7,7 +7,7 @@ class Ability
     if user.admin?
       can :manage, :all
     else
-      can :show, :all
+      can :read, :all
       can [:update, :create], Profile, user_id: user.id
       can [:create, :destroy], Solution
     end

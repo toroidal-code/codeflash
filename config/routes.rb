@@ -1,5 +1,7 @@
 Codeflash::Application.routes.draw do
+  
   get "/profiles/:username" => "profiles#show", :constraints => {:username => /[A-Za-z][A-Za-z0-9]*/}
+  
   resources :profiles
 
 
