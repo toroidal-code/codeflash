@@ -1,0 +1,41 @@
+<%= form_for @profile do |f| %>
+  <% if @profile.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@profile.errors.count, "error") %> prohibited this profile from being saved:</h2>
+
+      <ul>
+      <% @profile.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="control-group">
+    <%= f.label :name, :class => 'control-label' %>
+    <div class ="controls">
+      <%= f.text_field :name, :class => 'input-xlarge' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :about_me, :class => 'control-label' %>
+    <div class ="controls">
+      <%= f.text_area :about_me, :class => 'input-block-level' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :favorite_language, :class => 'control-label' %>
+    <div class ="controls">
+      <%= f.text_field :favorite_language, :class => 'input-xlarge' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :github, :class => 'control-label' %>
+    <div class ="controls">
+      <%= f.text_field :github, :class => 'input-xlarge' %>
+    </div>
+  </div>
+  <div class="control-group">
+     <%= f.submit 'Submit', :class => 'btn btn-primary' %>
+  </div>
+<% end %>

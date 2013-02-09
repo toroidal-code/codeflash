@@ -1,4 +1,5 @@
 class ProblemsController < ApplicationController
+  load_and_authorize_resource
   # GET /problems
   # GET /problems.json
   def index

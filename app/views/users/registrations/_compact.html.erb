@@ -5,7 +5,13 @@
  <legend>Sign Up</legend>
   <div class="control-group">
     <div class="controls">
-      <%= f.email_field :email, :autofocus => true, :class => 'input-xlarge', :placeholder => 'Email' %>
+      <%= f.email_field :email, :class => 'input-xlarge', :placeholder => 'Email' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <div class="controls">
+      <%= f.text_field :username, :class => 'input-xlarge', :placeholder => 
+      'Username' %>
     </div>
   </div>
   <div class="control-group">

@@ -10,7 +10,6 @@
 <body>
 
   <div class="container-fluid" id="main">
-
     <div class="navbar">
       <div class="navbar-inner">
         <a class="brand" href="/">Codeflash</a>
@@ -18,8 +17,8 @@
           <%= navbar_link 'Problems', '/problems', 'question-sign' %>
           <%= navbar_link 'Achievements', '/achievements', 'star' %>
           <%= navbar_link 'Languages', '/languages', 'list' %>
-          <%= navbar_link 'Profile', '/profiles', 'briefcase' %>
           <% if user_signed_in? %>
+            <%= navbar_link 'Profile', "/profiles/#{current_user.username}", 'briefcase' %>
             <%= navbar_link "Log out", '/logout', 'chevron-right', 'delete' %>
           <% else %> 
             <%= navbar_link 'Log in', '/login', 'chevron-right' %>
@@ -27,7 +26,14 @@
         </ul>
       </div>
     </div>
-
+    <% flash.each do |name, msg| %>
+  <% if msg.is_a?(String) %>
+    <div class="alert alert-<%= name == :notice ? "success" : "error" %>">
+      <a class="close" data-dismiss="alert">&#215;</a>
+      <%= content_tag :div, msg, :id => "flash_#{name}" %>
+    </div>
+  <% end %>
+<% end %>
     <%= yield %>
 
   </div>

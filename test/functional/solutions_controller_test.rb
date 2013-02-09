@@ -2,6 +2,8 @@ require 'test_helper'
 
 class SolutionsControllerTest < ActionController::TestCase
   setup do
+    user = User.create!(email: "lol@lol.lol", password: "lollollol", admin: true)
+    sign_in(user)
     @solution = solutions(:one)
   end
 

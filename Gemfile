@@ -28,13 +28,16 @@ end
 group :development do
   gem 'binding_of_caller', '~> 0.6'
   gem 'better_errors', '~> 0.5'
+  gem 'foreman'
 end
 
 gem 'jquery-rails'
 gem 'high_voltage', '~> 1.2'
 gem 'omniauth', '~> 1.1.1'
 gem 'devise', '~> 2.2.3'
+gem 'cancan', '~> 1.6.9'
 gem 'simplecov', require: false, group: :test
+
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

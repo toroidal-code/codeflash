@@ -40,25 +40,37 @@ ActiveRecord::Schema.define(:version => 20130207203724) do
     t.integer  "point_value"
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
-    t.integer  "user_id"
+    t.integer  "profile_id"
   end
 
-  add_index "problems", ["user_id"], :name => "index_problems_on_user_id"
+  add_index "problems", ["profile_id"], :name => "index_problems_on_profile_id"
+
+  create_table "profiles", :force => true do |t|
+    t.string   "name"
+    t.text     "about_me"
+    t.string   "favorite_language"
+    t.string   "github"
+    t.integer  "user_id"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+  end
+
+  add_index "profiles", ["user_id"], :name => "index_profiles_on_user_id"
 
   create_table "solutions", :force => true do |t|
     t.text     "code"
-    t.integer  "user_submitted_id"
+    t.integer  "profile_id"
     t.integer  "up_votes"
     t.integer  "down_votes"
     t.integer  "problem_id"
-    t.datetime "created_at",        :null => false
-    t.datetime "updated_at",        :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
     t.integer  "language_id"
   end
 
   add_index "solutions", ["language_id"], :name => "index_solutions_on_language_id"
   add_index "solutions", ["problem_id"], :name => "index_solutions_on_problem_id"
-  add_index "solutions", ["user_submitted_id"], :name => "index_solutions_on_user_submitted_id"
+  add_index "solutions", ["profile_id"], :name => "index_solutions_on_profile_id"
 
   create_table "users", :force => true do |t|
     t.string   "email",                  :default => "",    :null => false
@@ -74,8 +86,7 @@ ActiveRecord::Schema.define(:version => 20130207203724) do
     t.datetime "created_at",                                :null => false
     t.datetime "updated_at",                                :null => false
     t.boolean  "admin",                  :default => false
-    t.string   "name"
-    t.text     "about_me"
+    t.string   "username"
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
