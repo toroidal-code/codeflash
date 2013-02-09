@@ -1,9 +1,10 @@
 class ProfilesController < ApplicationController
+  skip_load_resource :only => :show
+  load_and_authorize_resource
   # GET /profiles
   # GET /profiles.json
   def index
     @profiles = Profile.all
-
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @profiles }
@@ -15,7 +16,6 @@ class ProfilesController < ApplicationController
   def show
     @user = User.find_by_username(params[:id])
     @profile = @user.profile
-
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @profile }
@@ -26,7 +26,6 @@ class ProfilesController < ApplicationController
   # GET /profiles/new.json
   def new
     @profile = Profile.new
-
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @profile }
@@ -42,7 +41,6 @@ class ProfilesController < ApplicationController
   # POST /profiles.json
   def create
     @profile = Profile.new(params[:profile])
-
     respond_to do |format|
       if @profile.save
         format.html { redirect_to @profile, notice: 'Profile was successfully created.' }
@@ -58,7 +56,6 @@ class ProfilesController < ApplicationController
   # PUT /profiles/1.json
   def update
     @profile = Profile.find(params[:id])
-
     respond_to do |format|
       if @profile.update_attributes(params[:profile])
         format.html { redirect_to @profile, notice: 'Profile was successfully updated.' }
