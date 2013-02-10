@@ -5,12 +5,7 @@ gem 'rails', '3.2.11'
 gem 'puma'
 
 # Database
-group :production do
-	gem 'pg', '~> 0.14'
-end
-group :development, :test do
-	gem 'sqlite3', '~> 1.3'
-end
+gem 'pg', '~> 0.14'
 
 # Gems used only for assets and not required
 # in production environments by default.
