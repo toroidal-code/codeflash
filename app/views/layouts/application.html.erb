@@ -15,12 +15,14 @@
         <a class="brand" href="/">Codeflash</a>
         <ul class="nav">
           <%= navbar_link 'Problems', '/problems', 'question-sign' %>
+          <%= navbar_link 'Solutions', '/solutions', 'list' %>
+        </ul>
+        <ul class="nav pull-right">
           <%= navbar_link 'Achievements', '/achievements', 'star' %>
-          <%= navbar_link 'Languages', '/languages', 'list' %>
           <% if user_signed_in? %>
             <%= navbar_link 'Profile', "/profiles/#{current_user.username}", 'briefcase' %>
             <%= navbar_link "Log out", '/logout', 'chevron-right', 'delete' %>
-          <% else %> 
+          <% else %>
             <%= navbar_link 'Log in', '/login', 'chevron-right' %>
           <% end %>
         </ul>
