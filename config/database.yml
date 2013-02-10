@@ -19,7 +19,7 @@ test:
   encoding: unicode
   database: codeflash_test
   pool: 5
-  username: codeflash
+  username: postgres
   timeout: 5000
 
 production:
