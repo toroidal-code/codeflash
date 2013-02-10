@@ -13,6 +13,14 @@ module ApplicationHelper
     }
   end
 
+  def navbar_avatar username, email, profile_url
+    render partial: 'shared/navbar_avatar', locals: {
+      username: username,
+      email: email,
+      profile_url: profile_url
+    }
+  end
+
   def resource_name
     :user
   end

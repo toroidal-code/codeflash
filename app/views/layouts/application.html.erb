@@ -20,7 +20,7 @@
         <ul class="nav pull-right">
           <%= navbar_link 'Achievements', '/achievements', 'star' %>
           <% if user_signed_in? %>
-            <%= navbar_link 'Profile', "/profiles/#{current_user.username}", 'briefcase' %>
+            <%= navbar_avatar current_user.username, current_user.email, "/profiles/#{current_user.username}" %>
             <%= navbar_link "Log out", '/logout', 'chevron-right', 'delete' %>
           <% else %>
             <%= navbar_link 'Log in', '/login', 'chevron-right' %>
