@@ -33,7 +33,7 @@ end
 
 gem 'jquery-rails'
 gem 'high_voltage', '~> 1.2'
-gem 'omniauth', '~> 1.1.1'
+gem 'omniauth-github', '~> 1.0.3'
 gem 'devise', '~> 2.2.3'
 gem 'cancan', '~> 1.6.9'
 gem 'simplecov', require: false, group: :test
