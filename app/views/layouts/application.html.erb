@@ -20,7 +20,7 @@
           <% if user_signed_in? %>
             <%= navbar_link 'Profile', "/profiles/#{current_user.username}", 'briefcase' %>
             <%= navbar_link "Log out", '/logout', 'chevron-right', 'delete' %>
-          <% else %> 
+          <% else %>
             <%= navbar_link 'Log in', '/login', 'chevron-right' %>
           <% end %>
         </ul>
