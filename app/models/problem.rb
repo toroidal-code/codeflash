@@ -1,5 +1,5 @@
 class Problem < ActiveRecord::Base
-	has_many :solutions
+  has_many :solutions
   attr_accessible :description, :point_value, :problem_name
 
   validates :description, :point_value, :problem_name, :presence => true
