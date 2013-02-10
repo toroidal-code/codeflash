@@ -1,4 +1,4 @@
- class AchievementsSolutions < ActiveRecord::Migration
+class AchievementsSolutions < ActiveRecord::Migration
   def change 
     create_table :achievements_solutions, :id => false do |t|
       t.references :achievement, :null => false
