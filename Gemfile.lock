@@ -61,7 +61,7 @@ GEM
     hike (1.2.1)
     i18n (0.6.1)
     journey (1.0.4)
-    jquery-rails (2.2.0)
+    jquery-rails (2.2.1)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
     json (1.7.6)
@@ -71,7 +71,7 @@ GEM
       treetop (~> 1.4.8)
     mime-types (1.20.1)
     multi_json (1.5.0)
-    omniauth (1.1.1)
+    omniauth (1.1.2)
       hashie (~> 1.2)
       rack
     orm_adapter (0.4.0)
@@ -142,8 +142,8 @@ DEPENDENCIES
   devise (~> 2.2.3)
   foreman
   high_voltage (~> 1.2)
-  jquery-rails
-  omniauth (~> 1.1.1)
+  jquery-rails (~> 2.2.1)
+  omniauth (~> 1.1.2)
   pg (~> 0.14)
   puma
   rails (= 3.2.11)

@@ -26,9 +26,9 @@ group :development do
   gem 'foreman'
 end
 
-gem 'jquery-rails'
+gem 'jquery-rails', '~> 2.2.1'
 gem 'high_voltage', '~> 1.2'
-gem 'omniauth', '~> 1.1.1'
+gem 'omniauth', '~> 1.1.2'
 gem 'devise', '~> 2.2.3'
 gem 'cancan', '~> 1.6.9'
 gem 'simplecov', require: false, group: :test
