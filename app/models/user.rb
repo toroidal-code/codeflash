@@ -11,13 +11,13 @@ class User < ActiveRecord::Base
                   :username, :login, :admin, :provider, :uid
   attr_accessor :login
   # attr_accessible :title, :body
-  validates :email, :password, :presence => true
+  validates :username, :presence => true
   validates :password, :format => {:with => /(?=.*[a-z])(?=.*[A-Z])(?=\d*)./, 
             :message => 'must contain at least 1 lowercase character, 
                         1 upercase character, and 1 number'}
   validates :username, :format => {:with => /[a-zA-Z][A-Za-z0-9]*/, 
             :message => 'must start with a leter.'} , :length => {:minimum => 8}
-  validates :email, :uniqueness => true
+  validates :email, :username, :uniqueness => true
   validates :password, :confirmation => true
   after_create :create_profile
 
