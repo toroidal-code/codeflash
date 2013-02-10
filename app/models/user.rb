@@ -28,4 +28,10 @@ class User < ActiveRecord::Base
   def create_profile
     Profile.create(:user_id => id).save
   end
+
+  #Remove when we have a proper email address
+  protected
+  def confirmation_required?
+    false
+  end
 end
