@@ -7,6 +7,9 @@
 #Intelli IDEA
 .idea/
 
+#RBX
+.rbx/
+
 # Ignore bundler config
 /.bundle
 
