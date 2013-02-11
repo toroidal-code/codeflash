@@ -22,3 +22,6 @@
 
 # Ignore all coverage results.
 coverage
+
+# Ignore generated documentation
+doc/

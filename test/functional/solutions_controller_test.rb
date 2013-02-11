@@ -2,7 +2,9 @@ require 'test_helper'
 
 class SolutionsControllerTest < ActionController::TestCase
   setup do
-    user = User.create!(email: "lol@lol.lol", password: "lollollol", admin: true)
+    user = User.new(email: "lol@lol.lol", username: "LOLOLOLOLOL", password: "LOLlol101", admin: true)
+    user.skip_confirmation!
+    user.save
     sign_in(user)
     @solution = solutions(:one)
   end
