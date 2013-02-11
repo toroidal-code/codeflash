@@ -1,10 +1,10 @@
 source 'https://rubygems.org'
 
 # Important stuff
-gem 'rails', '3.2.11'
+gem 'rails', '3.2.12'
 gem 'puma'
 
-# Database
+# Database                                         b
 gem 'pg', '~> 0.14'
 
 # Gems used only for assets and not required
