@@ -18,6 +18,14 @@
 
 /* all pages */
 
+.navbar {
+  position: static;
+}
+
+#navbar-container {
+  max-width: 960px
+}
+
 #main {
   max-width: 960px;
   margin: 25px auto;
