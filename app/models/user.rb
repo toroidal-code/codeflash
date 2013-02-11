@@ -3,14 +3,21 @@ class User < ActiveRecord::Base
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable
+         :recoverable, :rememberable, :trackable, :validatable, :confirmable,
+         :omniauthable
   has_one :profile
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :username, :login, :admin
+  attr_accessible :email, :password, :password_confirmation, :remember_me, 
+                  :username, :login, :admin, :provider, :uid
   attr_accessor :login
   # attr_accessible :title, :body
-  validates :email, :password, :presence => true
-  validates :email, :uniqueness => true
+  validates :username, :presence => true
+  validates :password, :format => {:with => /(?=.*[a-z])(?=.*[A-Z])(?=\d*)./, 
+            :message => 'must contain at least 1 lowercase character, 
+                        1 upercase character, and 1 number'}
+  validates :username, :format => {:with => /[a-zA-Z][A-Za-z0-9]*/, 
+            :message => 'must start with a leter.'} , :length => {:minimum => 8}
+  validates :email, :username, :uniqueness => true
   validates :password, :confirmation => true
   after_create :create_profile
 
@@ -25,5 +32,11 @@ class User < ActiveRecord::Base
 
   def create_profile
     Profile.create(:user_id => id).save
+  end
+
+  #Remove when we have a proper email address
+  protected
+  def confirmation_required?
+    false
   end
 end

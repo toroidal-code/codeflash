@@ -5,12 +5,6 @@ simple and complex. Codeflash will allow the community to decide what is the
 best solution to a problem in the hopes of supporting good programming practices
 and a strong community.
 
-## Development
-
-Please remember to use the following when merging branches:
-
-	git merge --no-ff
-
 ## Deploying
 If you are an admin and are already set up with our Heroku app, you can deploy to production with `rake deploy`.
 
