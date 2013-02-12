@@ -8,35 +8,40 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
 <body>
-
-  <div class="container-fluid" id="main">
-    <div class="navbar">
-      <div class="navbar-inner">
-        <a class="brand" href="/">Codeflash</a>
-        <ul class="nav">
-          <%= navbar_link 'Problems', '/problems', 'question-sign' %>
-          <%= navbar_link 'Achievements', '/achievements', 'star' %>
-          <%= navbar_link 'Languages', '/languages', 'list' %>
-          <% if user_signed_in? %>
-            <%= navbar_link 'Profile', "/profiles/#{current_user.username}", 'briefcase' %>
+<div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container" id="navbar-container">
+      <a class="brand" href="/">Codeflash</a>
+      <ul class="nav">
+        <%= navbar_link 'Problems', '/problems', 'question-sign' %>
+        <%= navbar_link 'Solutions', '/solutions', 'list' %>
+      </ul>
+      <ul class="nav pull-right">
+        <% if user_signed_in? %>
+            <%= navbar_avatar current_user.username, current_user.email, "/profiles/#{current_user.username}" %>
+        <% end %>
+        <%= navbar_link 'Achievements', '/achievements', 'star' %>
+        <% if user_signed_in? %>
             <%= navbar_link "Log out", '/logout', 'chevron-right', 'delete' %>
-          <% else %>
+        <% else %>
             <%= navbar_link 'Log in', '/login', 'chevron-right' %>
-          <% end %>
-        </ul>
-      </div>
+        <% end %>
+      </ul>
     </div>
-    <% flash.each do |name, msg| %>
-  <% if msg.is_a?(String) %>
-    <div class="alert alert-<%= name == :notice ? "success" : "error" %>">
-      <a class="close" data-dismiss="alert">&#215;</a>
-      <%= content_tag :div, msg, :id => "flash_#{name}" %>
-    </div>
-  <% end %>
-<% end %>
-    <%= yield %>
-
   </div>
+</div>
+<div class="container" id="main">
+
+  <% flash.each do |name, msg| %>
+      <% if msg.is_a?(String) %>
+          <div class="alert alert-<%= name == :notice ? "success" : "error" %>">
+            <a class="close" data-dismiss="alert">&#215;</a>
+            <%= content_tag :div, msg, :id => "flash_#{name}" %>
+          </div>
+      <% end %>
+  <% end %>
+  <%= yield %>
+</div>
 
 </body>
 </html>
