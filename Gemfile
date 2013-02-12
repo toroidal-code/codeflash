@@ -32,6 +32,7 @@ gem 'omniauth-github', '~> 1.0.3'
 gem 'devise', '~> 2.2.3'
 gem 'cancan', '~> 1.6.9'
 gem 'simplecov', require: false, group: :test
+gem 'gravatar-ultimate'
 
 
 # To use ActiveModel has_secure_password
