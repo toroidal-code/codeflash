@@ -1,20 +1,19 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Problem name:</b>
+<h1>
   <%= @problem.problem_name %>
-</p>
+  <span class="muted">(<%= @problem.point_value %> points)</span>
+</h1>
 
-<p>
-  <b>Description:</b>
-  <%= @problem.description %>
-</p>
+<p><%= @problem.description %></p>
 
-<p>
-  <b>Point value:</b>
-  <%= @problem.point_value %>
-</p>
+<hr>
 
+<ul>
+<% @problem.solutions.each do |solution| %>
+  <li class="well well-small"><%= solution.name %></li>
+<% end %>
+</ul>
 
 <%= link_to 'Edit', edit_problem_path(@problem) %> |
 <%= link_to 'Destroy', @problem, method: :delete, data: { confirm: 'Are you sure?' } %> |
