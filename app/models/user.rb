@@ -43,6 +43,7 @@ class User < ActiveRecord::Base
                          password:Devise.friendly_token[0,20]
                          )
     user.profile.name = auth.extra.raw_info.name
+    user.profile.github = auth.extra.raw_info.login
     user.profile.save
   end
   user
