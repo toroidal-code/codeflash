@@ -4,13 +4,13 @@
 # or operating system, you probably want to add a global ignore instead:
 #   git config --global core.excludesfile ~/.gitignore_global
 
-#Intelli IDEA
+# Intelli IDEA
 .idea/
 
-#RBX
+# RBX
 .rbx/
 
-# Ignore bundler config
+# Ignore bundler config.
 /.bundle
 
 # Ignore the default SQLite database.
@@ -23,5 +23,5 @@
 # Ignore all coverage results.
 coverage
 
-# Ignore generated documentation
+# Ignore generated documentation.
 doc/
