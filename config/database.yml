@@ -10,6 +10,7 @@ development:
   pool: 5
   username: codeflash
   timeout: 5000
+  password: somepassword
 
 # Warning: The database defined as "test" will be erased and
 # re-generated from your development database when you run "rake".
@@ -19,8 +20,9 @@ test:
   encoding: unicode
   database: codeflash_test
   pool: 5
-  username: postgres
+  username: codeflash
   timeout: 5000
+  password: somepassword
 
 production:
   adapter: postgresql
@@ -29,3 +31,4 @@ production:
   pool: 5
   username: codeflash
   timeout: 5000
+  password: somepassword
