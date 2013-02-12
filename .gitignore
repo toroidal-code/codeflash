@@ -25,6 +25,3 @@ coverage
 
 # Ignore generated documentation.
 doc/
-
-# Ignore database config.
-database.yml
