@@ -4,7 +4,7 @@ source 'https://rubygems.org'
 gem 'rails', '3.2.12'
 gem 'puma'
 
-# Database                                         b
+# Database
 gem 'pg', '~> 0.14'
 
 # Gems used only for assets and not required
