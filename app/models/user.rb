@@ -11,12 +11,12 @@ class User < ActiveRecord::Base
                   :username, :login, :admin, :provider, :uid
   attr_accessor :login
   # attr_accessible :title, :body
-  validates :username, :presence => true
+  # validates :username, :presence => true
   validates :password, :format => {:with => /(?=.*[a-z])(?=.*[A-Z])(?=\d*)./, 
             :message => 'must contain at least 1 lowercase character, 
                         1 upercase character, and 1 number'}
   validates :username, :format => {:with => /[a-zA-Z][A-Za-z0-9]*/, 
-            :message => 'must start with a leter.'} , :length => {:minimum => 8}
+            :message => 'must start with a leter.'} , :length => {:minimum => 8}, :allow_blank => true
   validates :email, :username, :uniqueness => true
   validates :password, :confirmation => true
   after_create :create_profile
@@ -31,7 +31,30 @@ class User < ActiveRecord::Base
   end
 
   def create_profile
-    Profile.create(:user_id => id).save
+    Profile.create!(:user_id => id)
+  end
+
+  def self.find_for_github_oauth(auth, signed_in_resource=nil)
+  user = User.where(:provider => auth.provider, :uid => auth.uid).first
+  unless user
+    user = User.create!(provider:auth.provider,
+                         uid:auth.uid,
+                         email:auth.info.email,
+                         password:Devise.friendly_token[0,20]
+                         )
+    user.profile.name = auth.extra.raw_info.name
+    user.profile.github = auth.extra.raw_info.login
+    user.profile.save
+  end
+  user
+end
+
+def self.new_with_session(params, session)
+    super.tap do |user|
+      if data = session["devise.github_data"] && session["devise.github_data"]["extra"]["raw_info"]
+        user.email = data["email"] if user.email.blank?
+      end
+    end
   end
 
   #Remove when we have a proper email address
