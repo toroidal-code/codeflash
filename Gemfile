@@ -1,16 +1,11 @@
 source 'https://rubygems.org'
 
 # Important stuff
-gem 'rails', '3.2.11'
+gem 'rails', '3.2.12'
 gem 'puma'
 
 # Database
-group :production do
-	gem 'pg', '~> 0.14'
-end
-group :development, :test do
-	gem 'sqlite3', '~> 1.3'
-end
+gem 'pg', '~> 0.14'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -31,9 +26,9 @@ group :development do
   gem 'foreman'
 end
 
-gem 'jquery-rails'
+gem 'jquery-rails', '~> 2.2.1'
 gem 'high_voltage', '~> 1.2'
-gem 'omniauth', '~> 1.1.1'
+gem 'omniauth-github', '~> 1.0.3'
 gem 'devise', '~> 2.2.3'
 gem 'cancan', '~> 1.6.9'
 gem 'simplecov', require: false, group: :test
