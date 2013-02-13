@@ -33,6 +33,7 @@ gem 'devise', '~> 2.2.3'
 gem 'cancan', '~> 1.6.9'
 gem 'simplecov', require: false, group: :test
 gem 'gravatar-ultimate'
+gem 'ace-rails-ap'
 
 
 # To use ActiveModel has_secure_password
