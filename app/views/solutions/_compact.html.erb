@@ -7,7 +7,7 @@
 <% css_id = SecureRandom.uuid %>
 
 <div class="solution well well-small" onclick="$('#<%= css_id %>').slideToggle()">
-  <span class="pull-right">Submitted By: <%= User.find(solution.profile_id).username %></span>
+  <span class="pull-right">submitted by: <%= link_to User.find(solution.profile_id).username, solution.profile %></span>
   <%= solution.score %> <%= link_to solution.problem.problem_name, solution %>
 </div>
 
