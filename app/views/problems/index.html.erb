@@ -1,17 +1,13 @@
-<table class="table table-striped table-bordered table-hover">
-  <tr>
-    <th>Problem name</th>
-    <th>Point value</th>
-  </tr>
-
 <% @problems.each do |problem| %>
-  <tr>
-    <td><%= link_to problem.problem_name, problem %></td>
-    <td><%= problem.point_value %></td>
-  </tr>
+  <div class="row-fluid well well-small">
+    <div class="span3">
+      <%= link_to problem.problem_name, problem %>
+      <span class="muted">(<%= problem.point_value %> points)</span>
+    </div>
+    <div class="span9">
+      <%= problem.description %>
+    </div>
+  </div>
 <% end %>
-</table>
-
-<br />
 
 <%= link_to 'New Problem', new_problem_path %>
