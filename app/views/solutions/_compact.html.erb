@@ -1,11 +1,7 @@
 <div class="well well-small">
   <h3 class="pull-right">Submitted By: <%= User.find(solution.profile_id).username %></h3>
 
-  <h2><%= solution.score %> <%= solution.problem.problem_name %></h2>
+  <h2><%= solution.score %> <%= link_to solution.problem.problem_name, solution %></h2>
 
   <pre><%= solution.code %></pre>
-
-  <%= link_to 'Show', solution %>
-  <%= link_to 'Edit', edit_solution_path(solution) %>
-  <%= link_to 'Destroy', solution, method: :delete, data: { confirm: 'Are you sure?' } %>
 </div>
