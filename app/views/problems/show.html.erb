@@ -11,7 +11,7 @@
 
 <ul>
 <% @problem.solutions.each do |solution| %>
-  <li class="well well-small"><%= solution.name %></li>
+  <%= render 'solutions/compact', solution: solution %>
 <% end %>
 </ul>
 
