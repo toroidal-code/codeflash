@@ -12,6 +12,7 @@ class ProfilesController < ApplicationController
   end
 
   # GET /profiles/1
+  # GET /profiles/username
   # GET /profiles/1.json
   def show
     @user = User.find_by_username(params[:username]) if params[:username]
@@ -35,8 +36,11 @@ class ProfilesController < ApplicationController
   end
 
   # GET /profiles/1/edit
+  # GET /profiles/username/edit
   def edit
-    @profile = Profile.find(params[:id])
+    @user_id = User.find_by_username(params[:username])[:id] if params[:username]
+    @profile = Profile.find(@user_id) if @user_id
+    @profile = Profile.find(params[:id]) unless @profile
   end
 
   # POST /profiles
