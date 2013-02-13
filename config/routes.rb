@@ -1,8 +1,10 @@
 Codeflash::Application.routes.draw do
   
-  get "/profiles/:username" => "profiles#show", :constraints => {:username => /[A-Za-z][A-Za-z0-9]*/}
-  get "/profiles/:username/edit" => "profiles#edit", :constraints => {:username => /[A-Za-z][A-Za-z0-9]*/}
-  
+  get "/profiles/:username" => "profiles#show", :username => /[A-Za-z][A-Za-z0-9]*/
+  get "/profiles/:username/edit" => "profiles#edit", :username => /[A-Za-z][A-Za-z0-9]*/
+  get "/problems/:shortname" => "problems#show", :shortname => /[A-Za-z]+/
+  get "/problems/:shortname/edit" => "problems#edit", :shortname => /[A-Za-z]+/
+
   resources :profiles
 
 

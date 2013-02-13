@@ -4,8 +4,10 @@ one:
   problem_name: MyString
   description: MyText
   point_value: 1
+  shortname: mystring
 
 two:
   problem_name: MyString
   description: MyText
   point_value: 1
+  shortname: mystrings
