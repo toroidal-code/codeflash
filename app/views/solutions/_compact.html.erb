@@ -1,8 +1,13 @@
-<div class="well well-small">
+<div class="well well-small" onclick="$('#code').slideToggle()">
   <h3 class="pull-right">Submitted By: <%= User.find(solution.profile_id).username %></h3>
 
   <h2><%= solution.score %> <%= link_to solution.problem.problem_name, solution %></h2>
 
-  <pre class="highlighted"><code><%= solution.code %></code></pre>
-
+</div>
+<div class="well well-small pull-right span11" id="code">
+  <pre class="highlighted">
+    <code>
+      <%= solution.code %>
+    </code>
+  </pre>
 </div>
