@@ -1,13 +1,14 @@
-<div class="well well-small" onclick="$('#code').slideToggle()">
-  <h3 class="pull-right">Submitted By: <%= User.find(solution.profile_id).username %></h3>
+<style type="text/css">
+  .solution, .highlighted {
+    margin: 0px;
+  }
+</style>
 
-  <h2><%= solution.score %> <%= link_to solution.problem.problem_name, solution %></h2>
+<% css_id = SecureRandom.uuid %>
 
+<div class="solution well well-small" onclick="$('#<%= css_id %>').slideToggle()">
+  <span class="pull-right">Submitted By: <%= User.find(solution.profile_id).username %></span>
+  <%= solution.score %> <%= link_to solution.problem.problem_name, solution %>
 </div>
-<div class="well well-small pull-right span11" id="code">
-  <pre class="highlighted">
-    <code>
-      <%= solution.code %>
-    </code>
-  </pre>
-</div>
+
+<pre class="highlighted" id="<%= css_id %>"><code><%= solution.code %></code></pre>
