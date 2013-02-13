@@ -3,7 +3,11 @@
 
   <h2><%= solution.score %> <%= solution.problem.problem_name %></h2>
 
-  <pre><%= solution.code %></pre>
+  <pre>
+    <code>
+      <%= solution.code %>
+    </code>
+  </pre>
 
   <%= link_to 'Show', solution %>
   <%= link_to 'Edit', edit_solution_path(solution) %>
