@@ -1,7 +1,7 @@
 <div class="well well-small">
-  <h2><%= @solution.score %> <%= @solution.problem %>: <%= @solution.name %></h2>
+  <h2><%= @solution.score %> <%= @solution.problem.problem_name %>: <%= @solution.name %></h2>
 
-  <h3 class="pull-right">Submitted By: <%= @solution.user %></h3>
+  <h3 class="pull-right">Submitted By: <%= User.find(@solution.profile_id).username %></h3>
 
   <pre><%= @solution.code %></pre>
 

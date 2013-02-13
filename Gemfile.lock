@@ -30,6 +30,7 @@ GEM
       multi_json (~> 1.0)
     arel (3.0.2)
     bcrypt-ruby (3.0.1)
+    bcrypt-ruby (3.0.1-x86-mingw32)
     better_errors (0.5.0)
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
@@ -95,6 +96,7 @@ GEM
       omniauth (~> 1.0)
     orm_adapter (0.4.0)
     pg (0.14.1)
+    pg (0.14.1-x86-mingw32)
     polyglot (0.3.3)
     puma (1.6.3)
       rack (~> 1.2)
@@ -151,6 +153,7 @@ GEM
 
 PLATFORMS
   ruby
+  x86-mingw32
 
 DEPENDENCIES
   better_errors (~> 0.5)

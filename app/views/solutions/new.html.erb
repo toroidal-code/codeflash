@@ -1,6 +1,8 @@
 <div class = "well well-small">
-  <h1>New solution</h1>
+  <h1>New solution for
+  <%= Problem.find(params[:problem]).problem_name %>
+  </h1>
 
-  <%= render 'form' %>
+  <%= render 'create_form' %>
 </div>
 <%= link_to 'Back', solutions_path %>

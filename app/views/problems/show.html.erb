@@ -15,6 +15,7 @@
 <% end %>
 </ul>
 
+<%= link_to 'New Solution', new_solution_path(:problem => @problem) %> |
 <%= link_to 'Edit', edit_problem_path(@problem) %> |
 <%= link_to 'Destroy', @problem, method: :delete, data: { confirm: 'Are you sure?' } %> |
 <%= link_to 'Back', problems_path %>
