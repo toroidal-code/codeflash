@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<% render 'compact' %>
+<%= render 'compact', solution: @solution %>
 
 <%= link_to 'Edit', edit_solution_path(@solution) %> |
 <%= link_to 'Back', solutions_path %>

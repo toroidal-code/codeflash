@@ -1,11 +1,11 @@
 <div class="well well-small">
-  <h2><%= @solution.score %> <%= @solution.problem.problem_name %>: <%= @solution.name %></h2>
+  <h2><%= solution.score %> <%= solution.problem.problem_name %></h2>
 
-  <h3 class="pull-right">Submitted By: <%= User.find(@solution.profile_id).username %></h3>
+  <h3 class="pull-right">Submitted By: <%= User.find(solution.profile_id).username %></h3>
 
-  <pre><%= @solution.code %></pre>
+  <pre><%= solution.code %></pre>
 
-  <%= link_to 'Show', @solution %>
-  <%= link_to 'Edit', edit_solution_path(@solution) %>
-  <%= link_to 'Destroy', @solution, method: :delete, data: { confirm: 'Are you sure?' } %>
+  <%= link_to 'Show', solution %>
+  <%= link_to 'Edit', edit_solution_path(solution) %>
+  <%= link_to 'Destroy', solution, method: :delete, data: { confirm: 'Are you sure?' } %>
 </div>
