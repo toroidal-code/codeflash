@@ -18,6 +18,12 @@
     </div>
   </div>
   <div class="control-group">
+    <%= f.label :shortname, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :shortname, :class => "input-xlarge" %>
+    </div>
+  </div>
+  <div class="control-group">
     <%= f.label :description , :class => "control-label" %>
     <div class="controls">
       <%= f.text_area :description, :class => 'input-block-level'  %>

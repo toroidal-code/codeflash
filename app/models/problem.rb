@@ -1,7 +1,9 @@
 class Problem < ActiveRecord::Base
   has_many :solutions
-  attr_accessible :description, :point_value, :problem_name
+  has_and_belongs_to_many :categories
+  attr_accessible :description, :point_value, :problem_name, :shortname
 
-  validates :description, :point_value, :problem_name, :presence => true
+  validates :description, :point_value, :problem_name, :shortname, :presence => true
   validates :point_value, :numericality => { :only_integer => true, :greater_than => 0 }
+  validates :shortname, :format => {:with => /[a-z]+/}, :uniqueness => true
 end

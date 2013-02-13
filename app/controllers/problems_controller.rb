@@ -1,4 +1,5 @@
 class ProblemsController < ApplicationController
+  skip_load_resource only: [:show, :update]
   load_and_authorize_resource
   # GET /problems
   # GET /problems.json
@@ -14,7 +15,8 @@ class ProblemsController < ApplicationController
   # GET /problems/1
   # GET /problems/1.json
   def show
-    @problem = Problem.find(params[:id])
+    @problem = Problem.find_by_shortname(params[:shortname]) if params[:shortname]
+    @problem = Problem.find(params[:id]) unless @problem
 
     respond_to do |format|
       format.html # show.html.erb
@@ -35,7 +37,8 @@ class ProblemsController < ApplicationController
 
   # GET /problems/1/edit
   def edit
-    @problem = Problem.find(params[:id])
+    @problem = Problem.find_by_shortname(params[:shortname]) if params[:shortname]
+    @problem = Problem.find(params[:id]) unless @problem
   end
 
   # POST /problems
