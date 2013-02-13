@@ -11,13 +11,25 @@
     </div>
   <% end %>
 
-  <div class="control-group">
-    <%= f.label :code, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_area :code, :class => 'input-block-level' %>
+    <div class="control-group">
+      <%= f.label :code, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_area :code, :class => 'input-block-level', :name => 'code'%>
+        <div id="editor"/>
+      </div>
     </div>
-  </div>
-  <div class="control-group">
-    <%= f.submit 'Submit', :class => 'btn btn-primary' %>
-  </div>
+    <div class="control-group">
+      <%= f.submit 'Submit', :class => 'btn btn-primary' %>
+    </div>
+    <script src="http://d1n0x3qji82z53.cloudfront.net/src-min-noconflict/ace.js" type="text/javascript" charset="utf-8"></script>
+    <script>
+        var editor = ace.edit("editor");
+        var textarea = $('textarea[name="code"]').hide();
+        editor.getSession().setValue(textarea.val());
+        editor.getSession().on('change', function(){
+            textarea.val(editor.getSession().getValue());
+        });
+        editor.setTheme("ace/theme/monokai");
+        editor.getSession().setMode("ace/mode/javascript");
+    </script>
 <% end %>
