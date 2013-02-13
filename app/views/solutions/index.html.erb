@@ -1,6 +1,43 @@
-<% @solutions.each do |solution| %>
-  <%= render 'solutions/compact', solution: solution %>
-<% end %>
+<div>
+
+  <!-- toolbar -->
+  <span class="pull-right">
+    <ul class="nav nav-pills">
+      <li class="active"><a href="#">Recent</a></li>
+      <li><a href="#">Popular</a></li>
+      <li><a href="#">Trending</a></li>
+      <li><input type="text" class="input-medium search-query pull-right" placeholder="Search"></li>
+    </ul>
+  </span>
+
+  <!-- header -->
+  <h1>Solutions</h1>
+
+</div>
+
+<div class="row-fluid">
+
+  <!-- languages -->
+  <div class="span3">
+    <ul class="nav nav-list well well-small">
+      <li class="nav-header">Languages</li>
+      <li class="active"><a href="#">All</a></li>
+      <li><a href="#">Clojure (1)</a></li>
+      <li><a href="#">Common Lisp (1)</a></li>
+      <li><a href="#">Ruby (3)</a></li>
+      <li><a href="#">Scala (1)</a></li>
+    </ul>
+  </div>
+
+  <!-- problem list -->
+  <div class="span9">
+    <% @solutions.each do |solution| %>
+      <%= render 'solutions/compact', solution: solution %>
+    <% end %>
+  </div>
+
+</div>
+
 <link rel="stylesheet" href="/assets/highlight.js/styles/monokai.css">
 <script src="/assets/highlight.js/highlight.pack.js"></script>
 <script>hljs.initHighlightingOnLoad();</script>
