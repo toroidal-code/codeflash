@@ -1,7 +1,7 @@
 <div class="well well-small">
-  <h2><%= solution.score %> <%= solution.problem.problem_name %></h2>
-
   <h3 class="pull-right">Submitted By: <%= User.find(solution.profile_id).username %></h3>
+
+  <h2><%= solution.score %> <%= solution.problem.problem_name %></h2>
 
   <pre><%= solution.code %></pre>
 
