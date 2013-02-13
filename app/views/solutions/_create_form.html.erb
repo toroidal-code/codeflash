@@ -1,4 +1,4 @@
-<%= form_for @solution, :url => url_for(:action => 'create', :problem => @solution.problem) do |f| %>
+<%= form_for(@solution, url: problem_solutions_path) do |f| %>
   <% if @solution.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@solution.errors.count, "error") %> prohibited this solution from being saved:</h2>

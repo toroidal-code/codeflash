@@ -13,8 +13,9 @@ Codeflash::Application.routes.draw do
   resources :achievements
   resources :languages
   resources :language_families
-  resources :solutions
-  resources :problems
+  resources :problems do 
+    resources :solutions
+  end
 
   devise_scope :user do
     get "login" , :to => "devise/sessions#new"

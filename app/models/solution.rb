@@ -6,5 +6,5 @@ class Solution < ActiveRecord::Base
   attr_accessible :code, :down_votes, :up_votes
 
   validates :code, :presence => true
-  validates :down_votes, :up_votes, :numericality => {:only_integer => true, :greater_than_or_equal_to => 0}
+  validates :down_votes, :up_votes, :numericality => {:only_integer => true, :greater_than_or_equal_to => 0}, :allow_blank => true
 end

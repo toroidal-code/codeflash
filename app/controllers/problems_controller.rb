@@ -1,5 +1,5 @@
 class ProblemsController < ApplicationController
-  skip_load_resource only: [:show, :update]
+  skip_load_resource only: [:show]
   load_and_authorize_resource
   # GET /problems
   # GET /problems.json
