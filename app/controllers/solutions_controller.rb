@@ -26,7 +26,6 @@ class SolutionsController < ApplicationController
   # GET /solutions/new.json
   def new
     @solution = Solution.new
-    @solution.problem = Problem.find(params[:problem])
 
     respond_to do |format|
       format.html # new.html.erb
@@ -43,11 +42,6 @@ class SolutionsController < ApplicationController
   # POST /solutions.json
   def create
     @solution = Solution.new(params[:solution])
-    @solution.profile = User.find(current_user).profile
-    @solution.profile_id = User.find(current_user).profile.id
-    @solution.problem = Problem.find(params[:problem])
-    @solution.up_votes = 0
-    @solution.down_votes = 0
 
     respond_to do |format|
       if @solution.save

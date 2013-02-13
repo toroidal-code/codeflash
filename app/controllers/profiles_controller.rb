@@ -38,9 +38,10 @@ class ProfilesController < ApplicationController
   # GET /profiles/1/edit
   # GET /profiles/username/edit
   def edit
-    @user_id = User.find_by_username(params[:username])[:id] if params[:username]
-    @profile = Profile.find(@user_id) if @user_id
-    @profile = Profile.find(params[:id]) unless @profile
+    @user = User.find_by_username(params[:username]) if params[:username]
+    @user = User.find(params[:id]) unless @user
+    # @user = User.find_by_username(params[:id])
+    @profile = @user.profile
   end
 
   # POST /profiles

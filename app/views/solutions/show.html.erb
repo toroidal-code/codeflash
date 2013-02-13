@@ -5,10 +5,6 @@
   <%= @solution.code %>
 </p>
 
-<p>
-  <b>User submitted:</b>
-  <%= User.find(@solution.profile_id).username %>
-</p>
 
 <p>
   <b>Up votes:</b>
@@ -21,9 +17,6 @@
 </p>
 
 <p>
-  <b>Problem:</b>
-  <%= @solution.problem.problem_name %>
-</p>
 
 
 <%= link_to 'Edit', edit_solution_path(@solution) %> |
