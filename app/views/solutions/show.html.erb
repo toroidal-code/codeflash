@@ -7,7 +7,7 @@
 
 <p>
   <b>User submitted:</b>
-  <%= @solution.user %>
+  <%= User.find(@solution.profile_id).username %>
 </p>
 
 <p>
@@ -22,7 +22,7 @@
 
 <p>
   <b>Problem:</b>
-  <%= @solution.problem %>
+  <%= @solution.problem.problem_name %>
 </p>
 
 
