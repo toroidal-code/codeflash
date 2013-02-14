@@ -22,7 +22,7 @@ end
 
 group :development do
   gem 'binding_of_caller', '~> 0.6'
-  gem 'better_errors', '~> 0.5'
+  gem 'better_errors', '~> 0.6'
   gem 'foreman'
 end
 
