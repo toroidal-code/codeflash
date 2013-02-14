@@ -3,10 +3,14 @@ class SolutionsController < ApplicationController
   # GET /solutions
   # GET /solutions.json
   def index
-    @problem = Problem.find_by_shortname(params[:problem_id])
-    @solutions = @problem.solutions
+    if params[:problem_id]
+      @problem = Problem.find_by_shortname(params[:problem_id])
+      @solutions = @problem.solutions
+    else
+      @solutions = Solution.all
+    end
     respond_to do |format|
-      format.html # index.html.erb
+      format.html
       format.json { render json: @solutions }
     end
   end
@@ -15,7 +19,7 @@ class SolutionsController < ApplicationController
   # GET /solutions/1.json
   def show
     @solution = Solution.find(params[:id])
-
+    @problem = Problem.find_by_shortname(params[:problem_id])
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @solution }

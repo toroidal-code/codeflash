@@ -8,6 +8,7 @@ class SolutionsControllerTest < ActionController::TestCase
     sign_in(@user)
     @problem = Problem.create!(description: "lol", point_value: 9, problem_name: "lololol", shortname: "lolololsdjkfnasd")
     @solution = solutions(:one)
+    @solution.problem = @problem
   end
 
   test "should get index" do
@@ -23,7 +24,7 @@ class SolutionsControllerTest < ActionController::TestCase
 
   test "should create solution" do
     assert_difference('Solution.count') do
-      post :create, problem_id: @problem, solution: { code: @solution.code, down_votes: @solution.down_votes, up_votes: @solution.up_votes }
+      post :create, problem_id: @problem, solution: { code: @solution.code, down_votes: @solution.down_votes, up_votes: @solution.up_votes, problem_id: @problem}
     end
 
     assert_redirected_to problem_solution_path(@problem, assigns(:solution))
@@ -40,7 +41,7 @@ class SolutionsControllerTest < ActionController::TestCase
   end
 
   test "should update solution" do
-    put :update, {problem_id: @problem, id: @solution}, solution: { code: @solution.code, down_votes: @solution.down_votes, up_votes: @solution.up_votes }
+    put :update, {problem_id: @problem, id: @solution}, solution: { code: @solution.code, down_votes: @solution.down_votes, up_votes: @solution.up_votes}
     assert_redirected_to problem_solution_path(@solution)
   end
 
