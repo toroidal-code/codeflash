@@ -7,7 +7,6 @@ class ProblemsControllerTest < ActionController::TestCase
     user.save
     sign_in(user)
     @problem = problems(:one)
-    @problem.shortname = "mystringss"
   end
 
   test "should get index" do
@@ -23,7 +22,7 @@ class ProblemsControllerTest < ActionController::TestCase
 
   test "should create problem" do
     assert_difference('Problem.count') do
-      post :create, problem: { description: @problem.description, point_value: @problem.point_value, problem_name: @problem.problem_name, shortname: @problem.shortname }
+      post :create, problem: { description: @problem.description, point_value: @problem.point_value, problem_name: @problem.problem_name, shortname: "mystringss" }
     end
 
     assert_redirected_to problem_path(assigns(:problem))
@@ -40,7 +39,7 @@ class ProblemsControllerTest < ActionController::TestCase
   end
 
   test "should update problem" do
-    put :update, id: @problem, problem: { description: @problem.description, point_value: @problem.point_value, problem_name: @problem.problem_name }
+    put :update, id: @problem, problem: { description: @problem.description, point_value: @problem.point_value, problem_name: @problem.problem_name, shortname: @problem.shortname }
     assert_redirected_to problem_path(assigns(:problem))
   end
 

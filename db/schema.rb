@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130212194021) do
+ActiveRecord::Schema.define(:version => 20130214011424) do
 
   create_table "achievements", :force => true do |t|
     t.string   "name"
@@ -74,11 +74,11 @@ ActiveRecord::Schema.define(:version => 20130212194021) do
   create_table "solutions", :force => true do |t|
     t.text     "code"
     t.integer  "profile_id"
-    t.integer  "up_votes"
-    t.integer  "down_votes"
+    t.integer  "up_votes",    :default => 0
+    t.integer  "down_votes",  :default => 0
     t.integer  "problem_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
     t.integer  "language_id"
   end
 

@@ -8,7 +8,8 @@
 
 <div class="solution well well-small" onclick="$('#<%= css_id %>').slideToggle()">
   <span class="pull-right">submitted by: <%= link_to User.find(solution.profile_id).username, solution.profile %></span>
-  <%= solution.score %> <%= link_to solution.problem.problem_name, solution %>
+  <%= solution.score %>
+  <%= link_to solution.problem.problem_name, problem_solution_path(solution.problem, solution) %>
 </div>
 
 <pre class="highlighted hide" id="<%= css_id %>"><code><%= solution.code %></code></pre>
