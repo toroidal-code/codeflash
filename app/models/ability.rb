@@ -8,9 +8,9 @@ class Ability
       can :manage, :all
     else
       can :read, :all
-      can [:update, :create], Profile, user_id: user.id
+      can [:update, :edit, :create], Profile, id: user.username
       can :create, Solution
-      can :destroy, Solution, user_id: user.id
+      can [:destroy, :update, :edit],  Solution, profile_id: user.profile.id
     end
   end
 end
