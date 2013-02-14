@@ -13,7 +13,8 @@ Codeflash::Application.routes.draw do
   resources :achievements
   resources :languages
   resources :language_families
-  resources :problems do 
+  resources :solutions, :only => [:index]
+  resources :problems do
     resources :solutions
   end
 

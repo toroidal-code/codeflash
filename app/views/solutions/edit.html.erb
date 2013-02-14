@@ -3,5 +3,5 @@
 
   <%= render 'edit_form' %>
 </div>
-<%= link_to 'Show', problem_solution_path(@solution) %> |
-<%= link_to 'Back', problem_solution_path(@solution) %>
+<%= link_to 'Show', problem_solution_path(@solution.problem_id, @solution.id) %> |
+<%= link_to 'Back', problem_solution_path(@solution.problem_id, @solution.id) %>

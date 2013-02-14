@@ -3,8 +3,15 @@ class SolutionsController < ApplicationController
   # GET /solutions
   # GET /solutions.json
   def index
-    @problem = Problem.find(params[:problem_id])
-    @solutions = @problem.solutions
+    if params[:problem_id]
+      @problem = Problem.find(params[:problem_id])
+      @solutions = @problem.solutions
+    else
+      Problem.all() do |problem|
+        @solutions += problem.solutions
+      end
+    end
+
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @solutions }
