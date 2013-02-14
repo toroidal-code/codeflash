@@ -8,15 +8,8 @@ class ProfilesControllerTest < ActionController::TestCase
     sign_in(@user)
     @profile = profiles(:one)
     @profile.user_id = @user.id
-    @profile.save
   end
-
-  test "should get index" do
-    get :index
-    assert_response :success
-    assert_not_nil assigns(:profiles)
-  end
-
+  
   test "should get new" do
     get :new
     assert_response :success

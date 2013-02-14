@@ -40,11 +40,6 @@ class SolutionsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should update solution" do
-    put :update, {problem_id: @problem, id: @solution}, solution: { code: @solution.code, down_votes: @solution.down_votes, up_votes: @solution.up_votes}
-    assert_redirected_to problem_solution_path(@solution)
-  end
-
   test "should destroy solution" do
     assert_difference('Solution.count', -1) do
       delete :destroy, {problem_id: @problem, id: @solution}
