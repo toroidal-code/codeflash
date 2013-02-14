@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130210220457) do
+ActiveRecord::Schema.define(:version => 20130214011424) do
 
   create_table "achievements", :force => true do |t|
     t.string   "name"
@@ -28,6 +28,19 @@ ActiveRecord::Schema.define(:version => 20130210220457) do
 
   add_index "achievements_solutions", ["achievement_id", "solution_id"], :name => "index_achievements_solutions_on_achievement_id_and_solution_id", :unique => true
 
+  create_table "categories", :force => true do |t|
+    t.string   "name"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "categories_problems", :id => false, :force => true do |t|
+    t.integer "category_id", :null => false
+    t.integer "problem_id",  :null => false
+  end
+
+  add_index "categories_problems", ["category_id", "problem_id"], :name => "index_categories_problems_on_category_id_and_problem_id", :unique => true
+
   create_table "languages", :force => true do |t|
     t.string   "name"
     t.datetime "created_at", :null => false
@@ -41,6 +54,7 @@ ActiveRecord::Schema.define(:version => 20130210220457) do
     t.datetime "created_at",   :null => false
     t.datetime "updated_at",   :null => false
     t.integer  "profile_id"
+    t.string   "shortname"
   end
 
   add_index "problems", ["profile_id"], :name => "index_problems_on_profile_id"
@@ -60,11 +74,11 @@ ActiveRecord::Schema.define(:version => 20130210220457) do
   create_table "solutions", :force => true do |t|
     t.text     "code"
     t.integer  "profile_id"
-    t.integer  "up_votes"
-    t.integer  "down_votes"
+    t.integer  "up_votes",    :default => 0
+    t.integer  "down_votes",  :default => 0
     t.integer  "problem_id"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
     t.integer  "language_id"
   end
 

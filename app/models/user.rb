@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
             :message => 'must contain at least 1 lowercase character, 
                         1 upercase character, and 1 number'}
   validates :username, :format => {:with => /[a-zA-Z][A-Za-z0-9]*/, 
-            :message => 'must start with a leter.'} , :length => {:minimum => 8}, :allow_blank => true
+            :message => 'must start with a letter.'} , :length => {:minimum => 8}, :allow_blank => true
   validates :email, :username, :uniqueness => true
   validates :password, :confirmation => true
   after_create :create_profile
@@ -49,14 +49,14 @@ class User < ActiveRecord::Base
   user
 end
 
-def self.new_with_session(params, session)
+  def self.new_with_session(params, session)
     super.tap do |user|
       if data = session["devise.github_data"] && session["devise.github_data"]["extra"]["raw_info"]
         user.email = data["email"] if user.email.blank?
       end
     end
   end
-
+  
   #Remove when we have a proper email address
   protected
   def confirmation_required?

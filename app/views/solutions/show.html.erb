@@ -5,10 +5,6 @@
   <%= @solution.code %>
 </p>
 
-<p>
-  <b>User submitted:</b>
-  <%= @solution.user %>
-</p>
 
 <p>
   <b>Up votes:</b>
@@ -21,10 +17,7 @@
 </p>
 
 <p>
-  <b>Problem:</b>
-  <%= @solution.problem %>
-</p>
 
 
-<%= link_to 'Edit', edit_solution_path(@solution) %> |
-<%= link_to 'Back', solutions_path %>
+<%= link_to 'Edit', edit_problem_solution_path(@problem, @solution) %> |
+<%= link_to 'Back', solutions_path%>

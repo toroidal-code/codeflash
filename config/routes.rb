@@ -1,7 +1,10 @@
 Codeflash::Application.routes.draw do
   
-  get "/profiles/:username" => "profiles#show", :constraints => {:username => /[A-Za-z][A-Za-z0-9]*/}
-  
+  # # get "/profiles/:username" => "profiles#show", :username => /[A-Za-z][A-Za-z0-9]*/
+  # # get "/profiles/:username/edit" => "profiles#edit", :username => /[A-Za-z][A-Za-z0-9]*/
+  # get "/problems/:shortname" => "problems#show", :shortname => /[A-Za-z]+/
+  # get "/problems/:shortname/edit" => "problems#edit", :shortname => /[A-Za-z]+/
+
   resources :profiles
 
 
@@ -10,8 +13,10 @@ Codeflash::Application.routes.draw do
   resources :achievements
   resources :languages
   resources :language_families
-  resources :solutions
-  resources :problems
+  resources :solutions, :only => [:index]
+  resources :problems do
+    resources :solutions
+  end
 
   devise_scope :user do
     get "login" , :to => "devise/sessions#new"
