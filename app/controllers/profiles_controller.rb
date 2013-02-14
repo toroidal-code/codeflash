@@ -26,6 +26,7 @@ class ProfilesController < ApplicationController
   # GET /profiles/new
   # GET /profiles/new.json
   def new
+    @user = current_user
     @profile = Profile.new
     respond_to do |format|
       format.html # new.html.erb
@@ -61,7 +62,7 @@ class ProfilesController < ApplicationController
     @user = User.find_by_username(params[:id]) 
     @profile = @user.profile
     respond_to do |format|
-      if @profile.update_attributes(params[:profile])
+      if @user.update_attributes(params[:user]) && @profile.update_attributes(params[:profile]) 
         format.html { redirect_to @profile, notice: 'Profile was successfully updated.' }
         format.json { head :no_content }
       else

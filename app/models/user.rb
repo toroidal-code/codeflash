@@ -14,9 +14,9 @@ class User < ActiveRecord::Base
   # validates :username, :presence => true
   validates :password, :format => {:with => /(?=.*[a-z])(?=.*[A-Z])(?=\d*)./, 
             :message => 'must contain at least 1 lowercase character, 
-                        1 upercase character, and 1 number'}
+                        1 upercase character, and 1 number'}, :on => :create
   validates :username, :format => {:with => /[a-zA-Z][A-Za-z0-9]*/, 
-            :message => 'must start with a letter.'} , :length => {:minimum => 8}, :allow_blank => true
+            :message => 'must start with a letter.'} , :length => {:minimum => 8}, :on => :update
   validates :email, :username, :uniqueness => true
   validates :password, :confirmation => true
   after_create :create_profile
