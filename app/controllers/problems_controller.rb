@@ -1,5 +1,5 @@
 class ProblemsController < ApplicationController
-  load_and_authorize_resource
+  authorize_resource
   # GET /problems
   # GET /problems.json
   def index
@@ -14,7 +14,7 @@ class ProblemsController < ApplicationController
   # GET /problems/1
   # GET /problems/1.json
   def show
-    @problem = Problem.find(params[:id])
+    @problem = Problem.find_by_shortname(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -35,14 +35,13 @@ class ProblemsController < ApplicationController
 
   # GET /problems/1/edit
   def edit
-    @problem = Problem.find(params[:id])
+    @problem = Problem.find_by_shortname(params[:id])
   end
 
   # POST /problems
   # POST /problems.json
   def create
     @problem = Problem.new(params[:problem])
-
     respond_to do |format|
       if @problem.save
         format.html { redirect_to @problem, notice: 'Problem was successfully created.' }
@@ -57,7 +56,7 @@ class ProblemsController < ApplicationController
   # PUT /problems/1
   # PUT /problems/1.json
   def update
-    @problem = Problem.find(params[:id])
+    @problem = Problem.find_by_shortname(params[:id])
 
     respond_to do |format|
       if @problem.update_attributes(params[:problem])
@@ -73,7 +72,7 @@ class ProblemsController < ApplicationController
   # DELETE /problems/1
   # DELETE /problems/1.json
   def destroy
-    @problem = Problem.find(params[:id])
+    @problem = Problem.find_by_shortname(params[:id])
     @problem.destroy
 
     respond_to do |format|

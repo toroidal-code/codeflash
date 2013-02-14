@@ -1,0 +1,34 @@
+<%= form_for(@solution, url: problem_solutions_path) do |f| %>
+  <% if @solution.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@solution.errors.count, "error") %> prohibited this solution from being saved:</h2>
+
+      <ul>
+      <% @solution.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+    <div class="control-group">
+      <%= f.label :code, :class => 'control-label' %>
+      <div class="controls">
+        <%= f.text_area :code, :class => 'input-block-level'%>
+        <div id="editor"/>
+      </div>
+    </div>
+    <div class="control-group">
+      <%= f.submit 'Submit', :class => 'btn btn-primary' %>
+    </div>
+    <script>
+        var editor = ace.edit("editor");
+        var textarea = $('textarea[id="solution_code"]').hide()
+        editor.getSession().setValue(textarea.val());
+        editor.getSession().on('change', function(){
+            textarea.val(editor.getSession().getValue());
+        });
+        editor.setTheme("ace/theme/monokai");
+        editor.getSession().setMode("ace/mode/javascript");
+    </script>
+<% end %>
