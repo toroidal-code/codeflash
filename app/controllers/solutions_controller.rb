@@ -1,9 +1,9 @@
 class SolutionsController < ApplicationController
-  load_and_authorize_resource
+  authorize_resource
   # GET /solutions
   # GET /solutions.json
   def index
-    @problem = Problem.find(params[:problem_id])
+    @problem = Problem.find_by_shortname(params[:problem_id])
     @solutions = @problem.solutions
     respond_to do |format|
       format.html # index.html.erb
@@ -26,7 +26,7 @@ class SolutionsController < ApplicationController
   # GET /solutions/new.json
   def new
     @solution = Solution.new
-    @problem = Problem.find(params[:problem_id])
+    @problem = Problem.find_by_shortname(params[:problem_id])
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @solution }
@@ -42,8 +42,9 @@ class SolutionsController < ApplicationController
   # POST /solutions
   # POST /solutions.json
   def create
-    @problem = Problem.find(params[:problem_id])
+    @problem = Problem.find_by_shortname(params[:problem_id])
     @solution = @problem.solutions.create(params[:solution])
+    @solution.profile = current_user.profile
     respond_to do |format|
       if @solution.save
         format.html { redirect_to problem_solution_path(@problem, @solution), notice: 'Solution was successfully created.' }

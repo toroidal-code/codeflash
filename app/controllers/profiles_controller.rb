@@ -1,6 +1,5 @@
 class ProfilesController < ApplicationController
-  skip_load_resource only: [:show, :update]
-  load_and_authorize_resource
+  authorize_resource
   # GET /profiles
   # GET /profiles.json
   def index
@@ -15,8 +14,7 @@ class ProfilesController < ApplicationController
   # GET /profiles/username
   # GET /profiles/1.json
   def show
-    @user = User.find_by_username(params[:username]) if params[:username]
-    @user = User.find(params[:id]) unless @user
+    @user = User.find_by_username(params[:id])
     # @user = User.find_by_username(params[:id])
     @profile = @user.profile
     respond_to do |format|
@@ -38,9 +36,7 @@ class ProfilesController < ApplicationController
   # GET /profiles/1/edit
   # GET /profiles/username/edit
   def edit
-    @user = User.find_by_username(params[:username]) if params[:username]
-    @user = User.find(params[:id]) unless @user
-    # @user = User.find_by_username(params[:id])
+    @user = User.find_by_username(params[:id])
     @profile = @user.profile
   end
 
@@ -62,8 +58,7 @@ class ProfilesController < ApplicationController
   # PUT /profiles/1
   # PUT /profiles/1.json
   def update
-    # @user = User.find_by_username(params[:username]) if params[:username]
-    @user = User.find(params[:id]) #unless @user
+    @user = User.find_by_username(params[:id]) 
     @profile = @user.profile
     respond_to do |format|
       if @profile.update_attributes(params[:profile])
@@ -79,7 +74,8 @@ class ProfilesController < ApplicationController
   # DELETE /profiles/1
   # DELETE /profiles/1.json
   def destroy
-    @profile = Profile.find(params[:id])
+    @user = User.find_by_username(params[:id]) 
+    @profile = @user.profile
     @profile.destroy
 
     respond_to do |format|

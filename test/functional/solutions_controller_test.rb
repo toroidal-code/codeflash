@@ -2,10 +2,10 @@ require 'test_helper'
 
 class SolutionsControllerTest < ActionController::TestCase
   setup do
-    user = User.new(email: "lol@lol.lol", username: "LOLOLOLOLOL", password: "LOLlol101", admin: true)
-    user.skip_confirmation!
-    user.save
-    sign_in(user)
+    @user = User.new(email: "lol@lol.lol", username: "LOLOLOLOLOL", password: "LOLlol101", admin: true)
+    # user.skip_confirmation!
+    @user.save
+    sign_in(@user)
     @problem = Problem.create!(description: "lol", point_value: 9, problem_name: "lololol", shortname: "lolololsdjkfnasd")
     @solution = solutions(:one)
   end
@@ -40,9 +40,8 @@ class SolutionsControllerTest < ActionController::TestCase
   end
 
   test "should update solution" do
-    puts can?(current_user, :update)
     put :update, {problem_id: @problem, id: @solution}, solution: { code: @solution.code, down_votes: @solution.down_votes, up_votes: @solution.up_votes }
-    assert_redirected_to problem_solution_path(assigns(:solution))
+    assert_redirected_to problem_solution_path(@solution)
   end
 
   test "should destroy solution" do
