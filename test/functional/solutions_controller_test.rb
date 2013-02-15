@@ -2,13 +2,14 @@ require 'test_helper'
 
 class SolutionsControllerTest < ActionController::TestCase
   setup do
-    @user = User.new(email: "lol@lol.lol", username: "LOLOLOLOLOL", password: "LOLlol101", admin: true)
+    @user = User.create!(email: "lol@lol.lol", username: "LOLOLOLOLOL", password: "LOLlol101", admin: true)
     # user.skip_confirmation!
-    @user.save
     sign_in(@user)
     @problem = Problem.create!(description: "lol", point_value: 9, problem_name: "lololol", shortname: "lolololsdjkfnasd")
     @solution = solutions(:one)
     @solution.problem = @problem
+    @solution.profile = @user.profile
+    @solution.save
   end
 
   test "should get index" do
