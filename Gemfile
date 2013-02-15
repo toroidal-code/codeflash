@@ -11,7 +11,7 @@ gem 'pg', '~> 0.14'
 # in production environments by default.
 group :assets do
   gem 'sass-rails',   '~> 3.2.3'
-  gem 'bootstrap-sass', '~> 2.2.2.0'
+  gem 'bootstrap-sass', '~> 2.3'
   gem 'coffee-rails', '~> 3.2.1'
 
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
@@ -22,7 +22,7 @@ end
 
 group :development do
   gem 'binding_of_caller', '~> 0.6'
-  gem 'better_errors', '~> 0.5'
+  gem 'better_errors', '~> 0.6'
   gem 'foreman'
 end
 
@@ -50,3 +50,5 @@ gem 'ace-rails-ap'
 
 # To use debugger
 # gem 'debugger'
+gem 'capistrano'
+gem 'rvm-capistrano'
