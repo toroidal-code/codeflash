@@ -7,15 +7,15 @@ class User < ActiveRecord::Base
          :omniauthable
   has_one :profile
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, 
+  attr_accessible :email, :password, :password_confirmation, :remember_me,
                   :username, :login, :admin, :provider, :uid
   attr_accessor :login
   # attr_accessible :title, :body
   # validates :username, :presence => true
-  validates :password, :format => {:with => /(?=.*[a-z])(?=.*[A-Z])(?=\d*)./, 
-            :message => 'must contain at least 1 lowercase character, 
+  validates :password, :format => {:with => /(?=.*[a-z])(?=.*[A-Z])(?=\d*)./,
+            :message => 'must contain at least 1 lowercase character,
                         1 upercase character, and 1 number'}
-  validates :username, :format => {:with => /[a-zA-Z][A-Za-z0-9]*/, 
+  validates :username, :format => {:with => /[a-zA-Z][A-Za-z0-9]*/,
             :message => 'must start with a letter.'} , :length => {:minimum => 8}, :allow_blank => true
   validates :email, :username, :uniqueness => true
   validates :password, :confirmation => true
@@ -56,7 +56,7 @@ end
       end
     end
   end
-  
+
   #Remove when we have a proper email address
   protected
   def confirmation_required?

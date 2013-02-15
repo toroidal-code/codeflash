@@ -58,7 +58,7 @@ class ProfilesController < ApplicationController
   # PUT /profiles/1
   # PUT /profiles/1.json
   def update
-    @user = User.find_by_username(params[:id]) 
+    @user = User.find_by_username(params[:id])
     @profile = @user.profile
     respond_to do |format|
       if @profile.update_attributes(params[:profile])
@@ -74,7 +74,7 @@ class ProfilesController < ApplicationController
   # DELETE /profiles/1
   # DELETE /profiles/1.json
   def destroy
-    @user = User.find_by_username(params[:id]) 
+    @user = User.find_by_username(params[:id])
     @profile = @user.profile
     @profile.destroy
 
