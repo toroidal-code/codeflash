@@ -50,3 +50,5 @@ gem 'ace-rails-ap'
 
 # To use debugger
 # gem 'debugger'
+gem 'capistrano'
+gem 'rvm-capistrano'
