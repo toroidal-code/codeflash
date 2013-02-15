@@ -30,10 +30,6 @@ class User < ActiveRecord::Base
     end
   end
 
-  def create_profile
-    Profile.create!(:user_id => id)
-  end
-
   def self.find_for_github_oauth(auth, signed_in_resource=nil)
     user = User.where(:provider => auth.provider, :uid => auth.uid).first
     unless user
@@ -55,6 +51,10 @@ class User < ActiveRecord::Base
         user.email = data["email"] if user.email?
       end
     end
+  end
+
+  def create_profile
+    Profile.create!(:user_id => id)
   end
 
   #Remove when we have a proper email address
