@@ -3,8 +3,7 @@ class User < ActiveRecord::Base
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable, :confirmable,
-         :omniauthable
+         :recoverable, :rememberable, :trackable, :validatable, :confirmable
   has_one :profile
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me, 
@@ -16,7 +15,7 @@ class User < ActiveRecord::Base
             :message => 'must contain at least 1 lowercase character, 
                         1 upercase character, and 1 number'}, :on => :create
   validates :username, :format => {:with => /[a-zA-Z][A-Za-z0-9]*/, 
-            :message => 'must start with a letter.'} , :length => {:minimum => 8}
+            :message => 'must start with a letter.'} , :length => {:minimum => 4}
   validates :username, :uniqueness => true
   validates :password, :confirmation => true
   after_create :create_profile
@@ -59,7 +58,7 @@ class User < ActiveRecord::Base
   
   #Remove when we have a proper email address
   protected
-  # def confirmation_required?
-  #   false
-  # end
+  def confirmation_required?
+    false
+  end
 end
