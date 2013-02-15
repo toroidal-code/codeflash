@@ -59,7 +59,7 @@ class User < ActiveRecord::Base
   
   #Remove when we have a proper email address
   protected
-  def confirmation_required?
-    false
-  end
+  # def confirmation_required?
+  #   false
+  # end
 end

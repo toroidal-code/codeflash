@@ -39,6 +39,7 @@ class ProfilesController < ApplicationController
   def edit
     @user = User.find_by_username(params[:id])
     @profile = @user.profile
+    authorize! :edit, @profile
   end
 
   # POST /profiles
@@ -61,6 +62,7 @@ class ProfilesController < ApplicationController
   def update
     @user = User.find_by_username(params[:id]) 
     @profile = @user.profile
+    authorize! :update, @profile
     respond_to do |format|
       if @user.update_attributes(params[:user]) && @profile.update_attributes(params[:profile]) 
         format.html { redirect_to @profile, notice: 'Profile was successfully updated.' }
