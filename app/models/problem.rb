@@ -1,5 +1,6 @@
 class Problem < ActiveRecord::Base
   has_many :solutions
+  has_many :problem_comments, :as => :comments
   has_and_belongs_to_many :categories
   attr_accessible :description, :point_value, :problem_name, :shortname
 

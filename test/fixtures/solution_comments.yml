@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  solution: 
+  user: 
+  body: MyText
+  up_votes: 1
+  down_votes: 1
+
+two:
+  solution: 
+  user: 
+  body: MyText
+  up_votes: 1
+  down_votes: 1
