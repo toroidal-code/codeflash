@@ -11,12 +11,12 @@ set :rvm_install_ruby_params, '--1.9'      # for jruby/rbx default to 1.9 mode
 
 require "rvm/capistrano"
 
-set :domain, 'dev5610.student.rit.edu'
+set :domain, 'deb5610.student.rit.edu'
 set :applicationdir, "/home/deploy/codeflash"
 
 set :application, "codeflash"
-set :repository,  "git@github.com:codeflash/codeflash.git"
-set :branch, "dev"
+set :repository, "git@github.com:codeflash/codeflash.git"
+set :branch, "master"
 
 set :scm, :git # You can set :scm explicitly or Capistrano will make an intelligent guess based on known version control directory names
 set :scm_verbose, true
