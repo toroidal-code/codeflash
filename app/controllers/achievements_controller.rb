@@ -63,7 +63,7 @@ class AchievementsController < ApplicationController
   #
   # @return [String] the HTML/JSON for the saved achievement
   def create
-    @achievement = Achievement.new(params[:achievement])(params[:achievement])
+    @achievement = Achievement.new(params[:achievement])
 
     respond_to do |format|
       if @achievement.save
