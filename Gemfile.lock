@@ -145,6 +145,7 @@ GEM
     rake (10.0.3)
     rdoc (3.12.1)
       json (~> 1.4)
+    redcarpet (2.2.2)
     rvm-capistrano (1.2.7)
       capistrano (>= 2.0.0)
     sass (3.2.5)
@@ -201,6 +202,7 @@ DEPENDENCIES
   pg (~> 0.14)
   puma
   rails (= 3.2.12)
+  redcarpet
   rvm-capistrano
   sass-rails (~> 3.2.3)
   simplecov

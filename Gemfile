@@ -37,6 +37,7 @@ gem 'gravatar-ultimate'
 gem 'ace-rails-ap'
 gem 'yard'
 gem 'yard-activerecord'
+gem 'redcarpet'
 
 
 # To use ActiveModel has_secure_password
