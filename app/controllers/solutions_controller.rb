@@ -31,6 +31,7 @@ class SolutionsController < ApplicationController
   def new
     @solution = Solution.new
     @problem = Problem.find_by_shortname(params[:problem_id])
+    @languages = Language.all
     respond_to do |format|
       format.html # new.html.erb
       format.json { render json: @solution }
@@ -41,6 +42,7 @@ class SolutionsController < ApplicationController
   def edit
     @solution = Solution.find(params[:id])
     @problem = @solution.problem
+    @languages = Language.all
   end
 
   # POST /solutions

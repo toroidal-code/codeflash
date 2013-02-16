@@ -1,7 +1,5 @@
 <div class="well well-small">
   <h1>Editing solution</h1>
 
-  <%= render 'form' %>
+  <%= render 'form', :path => problem_solution_path(@problem, @solution) %>
 </div>
-<%= link_to 'Show', problem_solution_path(@solution) %> |
-<%= link_to 'Back', problem_solution_path(@solution) %>

@@ -2,6 +2,5 @@
   <h1>New solution for <%= @problem.problem_name %>
   </h1>
 
-  <%= render 'form' %>
+  <%= render 'form', :path => problem_solutions_path %>
 </div>
-<%= link_to 'Back', problem_solutions_path %>

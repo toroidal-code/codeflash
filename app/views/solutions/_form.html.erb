@@ -10,7 +10,17 @@
       </ul>
     </div>
   <% end %>
+    <div class="control-group">
 
+      <div class="controls">
+        <select data-placeholder="Choose a Language..." class="chzn-select" style="width:350px;" tabindex="2">
+          <option value=""></option> 
+          <% @languages.each do |language| %>
+            <option value=<%= language.name %> ><%= language.name %></option> 
+          <% end %>
+        </select>
+      </div>
+    </div>
     <div class="control-group">
       <%= f.label :code, :class => 'control-label' %>
       <div class="controls">
@@ -19,7 +29,7 @@
       </div>
     </div>
     <div class="control-group">
-      <%= f.submit 'Submit', :class => 'btn btn-primary' %>
+      <%= f.submit 'Submit', :class => 'btn btn-primary' %> <%= link_to 'Back', path, :class => 'btn btn-secondary' %>
     </div>
     <script>
         var editor = ace.edit("editor");

@@ -13,5 +13,10 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+//= require chosen-jquery
 //= require bootstrap
 //= require ace/ace
+    
+$(document).ready(function () {
+    $('.chzn-select').chosen().change();
+});
