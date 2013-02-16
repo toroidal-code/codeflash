@@ -1,3 +1,4 @@
+# Manages Profiles and their public interfaces.
 class ProfilesController < ApplicationController
   authorize_resource
   # GET /profiles

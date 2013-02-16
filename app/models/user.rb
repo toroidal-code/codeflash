@@ -1,3 +1,6 @@
+# A user account on Codeflash. Handles account creation, account management, and
+# login. Ever user object holds onto a profile object, which contains the user's
+# progress along with other information about the user.
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,

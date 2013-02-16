@@ -1,3 +1,7 @@
+# A solution to a problem written by a user in a known language. Solutions have
+# source code along with up votes and down votes, which are used to judge how
+# well the user did with his/her solution. Vote counts affect the scores of
+# users. Additionally, users can win achievements from having good solutions.
 class Solution < ActiveRecord::Base
   belongs_to :profile
   belongs_to :problem

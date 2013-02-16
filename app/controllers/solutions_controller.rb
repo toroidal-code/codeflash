@@ -1,3 +1,4 @@
+# Manages Solutions and their public interfaces.
 class SolutionsController < ApplicationController
   authorize_resource
   # GET /solutions

@@ -1,3 +1,5 @@
+# Determines permissions for normal users, admin users, and users who aren't
+# signed in. Used by CanCan.
 class Ability
   include CanCan::Ability
 

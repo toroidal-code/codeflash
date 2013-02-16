@@ -1,3 +1,4 @@
+# Manages Achievements and their public interfaces.
 class AchievementsController < ApplicationController
   # GET /achievements
   # GET /achievements.json

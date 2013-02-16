@@ -1,25 +1,22 @@
 require "bundler/capistrano"
+require "bundler/setup"
 
-
-set :rvm_ruby_string, ENV['GEM_HOME'].gsub(/.*\//,"")
+set :rvm_ruby_string, 'rbx-head'
 set :rvm_install_ruby_params, '--1.9'      # for jruby/rbx default to 1.9 mode
-set :rvm_install_pkgs, %w[libyaml openssl] # package list from https://rvm.io/packages
-set :rvm_install_ruby_params, '--with-opt-dir=/usr/local/rvm/usr' # package support
 
-before 'deploy:setup', 'rvm:install_rvm'   # install RVM
-before 'deploy:setup', 'rvm:install_pkgs'  # install RVM packages before Ruby
-before 'deploy:setup', 'rvm:install_ruby'  # install Ruby and create gemset, or:
-before 'deploy:setup', 'rvm:create_gemset' # only create gemset
-before 'deploy:setup', 'rvm:import_gemset' # import gemset from file
+#before 'deploy:setup', 'rvm:install_rvm'   # install RVM
+#before 'deploy:setup', 'rvm:install_ruby'  # install Ruby and create gemset, or:
+
+#before 'deploy:migrate', 'deploy:setup_db'  # do this on first run of deploy
 
 require "rvm/capistrano"
 
 set :domain, 'dev5610.student.rit.edu'
-set :applicationdir, "codeflash"
+set :applicationdir, "/home/deploy/codeflash"
 
 set :application, "codeflash"
 set :repository,  "git@github.com:codeflash/codeflash.git"
-set :branch, "master"
+set :branch, "dev"
 
 set :scm, :git # You can set :scm explicitly or Capistrano will make an intelligent guess based on known version control directory names
 set :scm_verbose, true
@@ -42,12 +39,8 @@ after "deploy:update_code", "deploy:migrate"
 
 # if you're still using the script/reaper helper you will need
 # these http://github.com/rails/irs_process_scripts
-
-# If you are using Passenger mod_rails uncomment this:
-# namespace :deploy do
-#   task :start do ; end
-#   task :stop do ; end
-#   task :restart, :roles => :app, :except => { :no_release => true } do
-#     run "#{try_sudo} touch #{File.join(current_path,'tmp','restart.txt')}"
-#   end
-# end
+namespace :deploy do 
+    task :setup_db, :roles => :app do
+        run "cd #{release_path}; bundle exec rake db:setup RAILS_ENV=#{rails_env}"
+    end
+end
