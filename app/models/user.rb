@@ -45,6 +45,8 @@ class User < ActiveRecord::Base
     user
   end
 
+  # GitHub integration. Not currently in use, but we'll leave it here in case we
+  # need it in the future.
   def self.new_with_session(params, session)
     super.tap do |user|
       if data = session["devise.github_data"] && session["devise.github_data"]["extra"]["raw_info"]
