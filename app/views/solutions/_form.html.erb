@@ -11,7 +11,6 @@
     </div>
   <% end %>
     <div class="control-group">
-
       <div class="controls">
         <select data-placeholder="Choose a Language..." class="chzn-select" style="width:350px;" tabindex="2">
           <option value=""></option> 
@@ -22,15 +21,17 @@
       </div>
     </div>
     <div class="control-group">
-      <%= f.label :code, :class => 'control-label' %>
       <div class="controls">
         <%= f.text_area :code, :class => 'input-block-level'%>
-        <div id="editor"/>
+        <div id="editor"></div>
       </div>
     </div>
     <div class="control-group">
-      <%= f.submit 'Submit', :class => 'btn btn-primary' %> <%= link_to 'Back', path, :class => 'btn btn-secondary' %>
+      <div class="controls">
+        <%= f.submit 'Submit', :class => 'btn btn-primary' %> <%= link_to 'Back', path, :class => 'btn right' %>
+      </div>
     </div>
+<% end %>
     <script>
         var editor = ace.edit("editor");
         var textarea = $('textarea[id="solution_code"]').hide()
@@ -39,6 +40,4 @@
             textarea.val(editor.getSession().getValue());
         });
         editor.setTheme("ace/theme/monokai");
-        editor.getSession().setMode("ace/mode/javascript");
     </script>
-<% end %>

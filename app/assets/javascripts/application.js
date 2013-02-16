@@ -16,7 +16,11 @@
 //= require chosen-jquery
 //= require bootstrap
 //= require ace/ace
-    
+
 $(document).ready(function () {
-    $('.chzn-select').chosen().change();
+    $('.chzn-select').chosen().change(
+    	function(){
+    		var str = "ace/mode/"+$('.chzn-single').text().toLowerCase();
+    		editor.getSession().setMode(str);
+    	});
 });
