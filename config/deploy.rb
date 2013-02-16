@@ -39,7 +39,7 @@ after "deploy:update_code", "deploy:migrate"
 
 # if you're still using the script/reaper helper you will need
 # these http://github.com/rails/irs_process_scripts
-namespace :deploy do 
+namespace :deploy do
     task :setup_db, :roles => :app do
         run "cd #{release_path}; bundle exec rake db:setup RAILS_ENV=#{rails_env}"
     end
