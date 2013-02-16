@@ -1,5 +1,4 @@
 class SolutionComment < ActiveRecord::Base
+  include Votable, Comment
   belongs_to :solution
-  belongs_to :user
-  attr_accessible :body, :down_votes, :up_votes
 end
