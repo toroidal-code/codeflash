@@ -1,3 +1,6 @@
+# A user account on Codeflash. Handles account creation, account management, and
+# login. Ever user object holds onto a profile object, which contains the user's
+# progress along with other information about the user.
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
@@ -6,15 +9,15 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
   has_one :profile
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, 
+  attr_accessible :email, :password, :password_confirmation, :remember_me,
                   :username, :login, :admin, :provider, :uid
   attr_accessor :login
   # attr_accessible :title, :body
   # validates :username, :presence => true
-  validates :password, :format => {:with => /(?=.*[a-z])(?=.*[A-Z])(?=\d*)./, 
-            :message => 'must contain at least 1 lowercase character, 
+  validates :password, :format => {:with => /(?=.*[a-z])(?=.*[A-Z])(?=\d*)./,
+            :message => 'must contain at least 1 lowercase character,
                         1 upercase character, and 1 number'}, :on => :create
-  validates :username, :format => {:with => /[a-zA-Z][A-Za-z0-9]*/, 
+  validates :username, :format => {:with => /[a-zA-Z][A-Za-z0-9]*/,
             :message => 'must start with a letter.'} , :length => {:minimum => 4}
   validates :username, :uniqueness => true
   validates :password, :confirmation => true
@@ -43,19 +46,25 @@ class User < ActiveRecord::Base
                            )
       user.profile.name = auth.extra.raw_info.name
       user.profile.github = auth.extra.raw_info.login
-      user.profile.save
+      user.profile.save!
     end
     user
   end
 
+  # GitHub integration. Not currently in use, but we'll leave it here in case we
+  # need it in the future.
   def self.new_with_session(params, session)
     super.tap do |user|
       if data = session["devise.github_data"] && session["devise.github_data"]["extra"]["raw_info"]
-        user.email = data["email"] if user.email.blank?
+        user.email = data["email"] if user.email?
       end
     end
   end
-  
+
+  def create_profile
+    Profile.create!(:user_id => id)
+  end
+
   #Remove when we have a proper email address
   protected
   def confirmation_required?

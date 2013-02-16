@@ -1,3 +1,5 @@
+# Contains a user's progress on Codeflash, along with other information about
+# him/her that should appear on his/her profile page.
 class Profile < ActiveRecord::Base
   belongs_to :user
   has_many :solutions
@@ -10,5 +12,5 @@ class Profile < ActiveRecord::Base
   def to_param
     user.username
   end
-  
+
 end

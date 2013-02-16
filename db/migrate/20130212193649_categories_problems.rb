@@ -1,5 +1,5 @@
 class CategoriesProblems < ActiveRecord::Migration
-  def change 
+  def change
     create_table :categories_problems, :id => false do |t|
       t.references :category, :null => false
       t.references :problem, :null => false

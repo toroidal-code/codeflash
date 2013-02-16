@@ -1,3 +1,4 @@
+# A programming problem which is meant to be solved by users.
 class Problem < ActiveRecord::Base
   has_many :solutions
   has_and_belongs_to_many :categories

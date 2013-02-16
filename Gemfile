@@ -18,6 +18,7 @@ group :assets do
   # gem 'therubyracer', :platforms => :ruby
 
   gem 'uglifier', '>= 1.0.3'
+  gem 'turbo-sprockets-rails3'
 end
 
 group :development do
@@ -34,6 +35,9 @@ gem 'cancan', '~> 1.6.9'
 gem 'simplecov', require: false, group: :test
 gem 'gravatar-ultimate'
 gem 'ace-rails-ap'
+gem 'yard'
+gem 'yard-activerecord'
+gem 'redcarpet'
 
 
 # To use ActiveModel has_secure_password
