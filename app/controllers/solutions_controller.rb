@@ -54,7 +54,7 @@ class SolutionsController < ApplicationController
         format.html { redirect_to problem_solution_path(@problem, @solution), notice: 'Solution was successfully created.' }
         format.json { render json: @problem, status: :created, location: @solution }
       else
-        format.html { render action: "new" }
+        format.html { render "new" }
         format.json { render json: @solution.errors, status: :unprocessable_entity }
       end
     end
@@ -70,7 +70,7 @@ class SolutionsController < ApplicationController
         format.html { redirect_to  problem_solution_path(@problem, @solution), notice: 'Solution was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html { render action: "edit" }
+        format.html { render "edit" }
         format.json { render json: @solution.errors, status: :unprocessable_entity }
       end
     end

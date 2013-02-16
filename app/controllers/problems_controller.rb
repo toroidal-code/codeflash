@@ -47,7 +47,7 @@ class ProblemsController < ApplicationController
         format.html { redirect_to @problem, notice: 'Problem was successfully created.' }
         format.json { render json: @problem, status: :created, location: @problem }
       else
-        format.html { render action: "new" }
+        format.html { render "new" }
         format.json { render json: @problem.errors, status: :unprocessable_entity }
       end
     end
@@ -63,7 +63,7 @@ class ProblemsController < ApplicationController
         format.html { redirect_to @problem, notice: 'Problem was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html { render action: "edit" }
+        format.html { render "edit" }
         format.json { render json: @problem.errors, status: :unprocessable_entity }
       end
     end
