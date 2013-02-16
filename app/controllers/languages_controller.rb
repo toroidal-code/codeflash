@@ -1,3 +1,4 @@
+# Manages Languages and their public interfaces.
 class LanguagesController < ApplicationController
   authorize_resource
   # GET /languages

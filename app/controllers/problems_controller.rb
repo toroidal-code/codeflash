@@ -1,3 +1,4 @@
+# Manages Problems and their public interfaces.
 class ProblemsController < ApplicationController
   authorize_resource
   # GET /problems
