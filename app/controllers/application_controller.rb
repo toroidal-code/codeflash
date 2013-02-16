@@ -16,7 +16,7 @@ class ApplicationController < ActionController::Base
   def after_sign_in_path_for(resource)
     if current_user.sign_in_count == 1 && resource.is_a?(User)
       edit_profile_path current_user.username
-    else 
+    else
       super
     end
   end

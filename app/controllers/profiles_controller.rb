@@ -51,7 +51,7 @@ class ProfilesController < ApplicationController
         format.html { redirect_to @profile, notice: 'Profile was successfully created.' }
         format.json { render json: @profile, status: :created, location: @profile }
       else
-        format.html { render action: "new" }
+        format.html { render "new" }
         format.json { render json: @profile.errors, status: :unprocessable_entity }
       end
     end
@@ -60,15 +60,15 @@ class ProfilesController < ApplicationController
   # PUT /profiles/1
   # PUT /profiles/1.json
   def update
-    @user = User.find_by_username(params[:id]) 
+    @user = User.find_by_username(params[:id])
     @profile = @user.profile
     authorize! :update, @profile
     respond_to do |format|
-      if @user.update_attributes(params[:user]) && @profile.update_attributes(params[:profile]) 
+      if @user.update_attributes(params[:user]) && @profile.update_attributes(params[:profile])
         format.html { redirect_to @profile, notice: 'Profile was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html { render action: "edit" }
+        format.html { render "edit" }
         format.json { render json: @profile.errors, status: :unprocessable_entity }
       end
     end
@@ -77,7 +77,7 @@ class ProfilesController < ApplicationController
   # DELETE /profiles/1
   # DELETE /profiles/1.json
   def destroy
-    @user = User.find_by_username(params[:id]) 
+    @user = User.find_by_username(params[:id])
     @profile = @user.profile
     @profile.destroy
 

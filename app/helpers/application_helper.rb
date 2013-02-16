@@ -8,7 +8,7 @@ module ApplicationHelper
     render partial: 'shared/navbar_link', locals: {
       path: path,
       name: name,
-      icon: icon, 
+      icon: icon,
       method: method
     }
   end

@@ -47,7 +47,7 @@ class AchievementsController < ApplicationController
         format.html { redirect_to @achievement, notice: 'Achievement was successfully created.' }
         format.json { render json: @achievement, status: :created, location: @achievement }
       else
-        format.html { render action: "new" }
+        format.html { render "new" }
         format.json { render json: @achievement.errors, status: :unprocessable_entity }
       end
     end
@@ -63,7 +63,7 @@ class AchievementsController < ApplicationController
         format.html { redirect_to @achievement, notice: 'Achievement was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html { render action: "edit" }
+        format.html { render "edit" }
         format.json { render json: @achievement.errors, status: :unprocessable_entity }
       end
     end
