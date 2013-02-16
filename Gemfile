@@ -25,6 +25,9 @@ group :development do
   gem 'binding_of_caller', '~> 0.6'
   gem 'better_errors', '~> 0.6'
   gem 'foreman'
+  gem 'yard'
+  gem 'yard-activerecord'
+  gem 'redcarpet'
 end
 
 gem 'jquery-rails', '~> 2.2.1'
@@ -35,9 +38,6 @@ gem 'cancan', '~> 1.6.9'
 gem 'simplecov', require: false, group: :test
 gem 'gravatar-ultimate'
 gem 'ace-rails-ap'
-gem 'yard'
-gem 'yard-activerecord'
-gem 'redcarpet'
 
 
 # To use ActiveModel has_secure_password
