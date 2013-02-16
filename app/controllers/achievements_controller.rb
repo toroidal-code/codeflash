@@ -1,8 +1,9 @@
 # Manages Achievements and their public interfaces.
 class AchievementsController < ApplicationController
+  authorize_resource
+
   # GET /achievements
   # GET /achievements.json
-  authorize_resource
   def index
     @achievements = Achievement.all
     respond_to do |format|
