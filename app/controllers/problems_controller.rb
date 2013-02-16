@@ -1,8 +1,12 @@
 # Manages Problems and their public interfaces.
 class ProblemsController < ApplicationController
   authorize_resource
+  # Lists all the problems in the database.
+  #
   # GET /problems
   # GET /problems.json
+  #
+  # @return [String] the HTML/JSON for the problems page
   def index
     @problems = Problem.all
 
@@ -12,8 +16,12 @@ class ProblemsController < ApplicationController
     end
   end
 
+  # Shows the page for the problem.
+  #
   # GET /problems/1
   # GET /problems/1.json
+  #
+  # @return [String] the HTML/JSON for the problem.
   def show
     @problem = Problem.find_by_shortname(params[:id])
 
@@ -23,8 +31,12 @@ class ProblemsController < ApplicationController
     end
   end
 
+  # Renders a new problem JSON.
+  #
   # GET /problems/new
   # GET /problems/new.json
+  #
+  # @return [String] the HTML/JSON for the new problem.
   def new
     @problem = Problem.new
 
@@ -34,13 +46,21 @@ class ProblemsController < ApplicationController
     end
   end
 
+  # Edits the values of a problem.
+  #
   # GET /problems/1/edit
+  #
+  # @return [String] the HTML/JSON for the problem edit page
   def edit
     @problem = Problem.find_by_shortname(params[:id])
   end
 
+  # Creates and saves a new problem.
+  #
   # POST /problems
   # POST /problems.json
+  #
+  # @return [String] the HTML/JSON for the saved problem
   def create
     @problem = Problem.new(params[:problem])
     respond_to do |format|
@@ -54,8 +74,12 @@ class ProblemsController < ApplicationController
     end
   end
 
+  # Updates the values of a problem.
+  #
   # PUT /problems/1
   # PUT /problems/1.json
+  #
+  # @return [String] the HTML/JSON for the updated language
   def update
     @problem = Problem.find_by_shortname(params[:id])
 
@@ -70,8 +94,13 @@ class ProblemsController < ApplicationController
     end
   end
 
+  # Deletes a language from the database.
+  #
   # DELETE /problems/1
   # DELETE /problems/1.json
+  #
+  # @return [String] the HTML/JSON notifying the user that the resource was
+  # destroyed
   def destroy
     @problem = Problem.find_by_shortname(params[:id])
     @problem.destroy
