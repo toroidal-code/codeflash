@@ -64,7 +64,7 @@ class ProfilesController < ApplicationController
     @profile = @user.profile
     authorize! :update, @profile
     respond_to do |format|
-      if @user.update_attributes(params[:user]) && @profile.update_attributes(params[:profile]) 
+      if @user.update_attributes(params[:user]) && @profile.update_attributes(params[:profile])
         format.html { redirect_to @profile, notice: 'Profile was successfully updated.' }
         format.json { head :no_content }
       else

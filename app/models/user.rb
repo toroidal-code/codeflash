@@ -11,10 +11,10 @@ class User < ActiveRecord::Base
   attr_accessor :login
   # attr_accessible :title, :body
   # validates :username, :presence => true
-  validates :password, :format => {:with => /(?=.*[a-z])(?=.*[A-Z])(?=\d*)./, 
-            :message => 'must contain at least 1 lowercase character, 
+  validates :password, :format => {:with => /(?=.*[a-z])(?=.*[A-Z])(?=\d*)./,
+            :message => 'must contain at least 1 lowercase character,
                         1 upercase character, and 1 number'}, :on => :create
-  validates :username, :format => {:with => /[a-zA-Z][A-Za-z0-9]*/, 
+  validates :username, :format => {:with => /[a-zA-Z][A-Za-z0-9]*/,
             :message => 'must start with a letter.'} , :length => {:minimum => 4}
   validates :username, :uniqueness => true
   validates :password, :confirmation => true
