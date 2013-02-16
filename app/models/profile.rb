@@ -9,6 +9,9 @@ class Profile < ActiveRecord::Base
 
   validates :about_me, :length => {:maximum => 500}
 
+  # Returns the identifier of the Profile for URLs (the username of its User).
+  #
+  # @return [String] the Profile's User's username
   def to_param
     user.username
   end

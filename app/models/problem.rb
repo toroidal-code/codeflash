@@ -8,6 +8,9 @@ class Problem < ActiveRecord::Base
   validates :point_value, :numericality => { :only_integer => true, :greater_than => 0 }
   validates :shortname, :format => {:with => /[a-z]+/}, :uniqueness => true
 
+  # Returns the identifier of the Problem for URLs (its shortname).
+  #
+  # @return [String] the Problem's shortname
   def to_param
     shortname
   end
