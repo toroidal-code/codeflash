@@ -49,7 +49,7 @@ ActiveRecord::Schema.define(:version => 20130216043403) do
 
   create_table "problem_comments", :force => true do |t|
     t.integer  "problem_id"
-    t.integer  "user_id"
+    t.integer  "profile_id"
     t.text     "body"
     t.integer  "up_votes"
     t.integer  "down_votes"
@@ -58,7 +58,7 @@ ActiveRecord::Schema.define(:version => 20130216043403) do
   end
 
   add_index "problem_comments", ["problem_id"], :name => "index_problem_comments_on_problem_id"
-  add_index "problem_comments", ["user_id"], :name => "index_problem_comments_on_user_id"
+  add_index "problem_comments", ["profile_id"], :name => "index_problem_comments_on_profile_id"
 
   create_table "problems", :force => true do |t|
     t.string   "problem_name"
@@ -86,7 +86,7 @@ ActiveRecord::Schema.define(:version => 20130216043403) do
 
   create_table "solution_comments", :force => true do |t|
     t.integer  "solution_id"
-    t.integer  "user_id"
+    t.integer  "profile_id"
     t.text     "body"
     t.integer  "up_votes"
     t.integer  "down_votes"
@@ -94,8 +94,8 @@ ActiveRecord::Schema.define(:version => 20130216043403) do
     t.datetime "updated_at",  :null => false
   end
 
+  add_index "solution_comments", ["profile_id"], :name => "index_solution_comments_on_profile_id"
   add_index "solution_comments", ["solution_id"], :name => "index_solution_comments_on_solution_id"
-  add_index "solution_comments", ["user_id"], :name => "index_solution_comments_on_user_id"
 
   create_table "solutions", :force => true do |t|
     t.text     "code"
