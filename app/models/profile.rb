@@ -7,7 +7,8 @@ class Profile < ActiveRecord::Base
   has_many :problems
   attr_accessible :about_me, :favorite_language, :github, :name, :user_id
 
-  validates :about_me, :length => {:maximum => 500}
+  validates :about_me,
+    :length => {:maximum => 500}
 
   # Returns the identifier of the Profile for URLs (the username of its User).
   #
@@ -15,5 +16,4 @@ class Profile < ActiveRecord::Base
   def to_param
     user.username
   end
-
 end
