@@ -8,7 +8,8 @@ class Ability
       can :manage, :all
     else
       can :read, :all
-      can [:update, :edit, :create], Profile, id: user.username
+      can :update, Profile, :user_id => user.id
+      can :create, Profile
       can :create, Solution
       can [:destroy, :update, :edit],  Solution, profile_id: user.profile.id
     end

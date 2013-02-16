@@ -1,14 +1,8 @@
 Codeflash::Application.routes.draw do
-
-  # # get "/profiles/:username" => "profiles#show", :username => /[A-Za-z][A-Za-z0-9]*/
-  # # get "/profiles/:username/edit" => "profiles#edit", :username => /[A-Za-z][A-Za-z0-9]*/
-  # get "/problems/:shortname" => "problems#show", :shortname => /[A-Za-z]+/
-  # get "/problems/:shortname/edit" => "problems#edit", :shortname => /[A-Za-z]+/
-
+  
   resources :profiles
 
-
-  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" }
+  devise_for :users
 
   resources :achievements
   resources :languages
