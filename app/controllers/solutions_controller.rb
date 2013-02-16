@@ -1,8 +1,13 @@
 # Manages Solutions and their public interfaces.
 class SolutionsController < ApplicationController
   authorize_resource
+  # Lists all the solutions to a given to the solution's problem
+  # in the database
+  #
   # GET /solutions
   # GET /solutions.json
+  #
+  # @return [String] the HTML/JSON for the solutions page
   def index
     if params[:problem_id]
       @problem = Problem.find_by_shortname(params[:problem_id])
@@ -16,8 +21,12 @@ class SolutionsController < ApplicationController
     end
   end
 
+  # Shows the page for the solution.
+  #
   # GET /solutions/1
   # GET /solutions/1.json
+  #
+  # @return [String] the HTML/JSON for the solution
   def show
     @solution = Solution.find(params[:id])
     @problem = Problem.find_by_shortname(params[:problem_id])
@@ -27,8 +36,12 @@ class SolutionsController < ApplicationController
     end
   end
 
+  # Renders a new solution JSON.
+  #
   # GET /solutions/new
   # GET /solutions/new.json
+  #
+  # @return [String] the HTML/JSON for the new solution
   def new
     @solution = Solution.new
     @problem = Problem.find_by_shortname(params[:problem_id])
@@ -38,14 +51,22 @@ class SolutionsController < ApplicationController
     end
   end
 
+  # Edits the values of a solution.
+  #
   # GET /solutions/1/edit
+  #
+  # @return [String] the HTML/JSON for the solution edit page
   def edit
     @solution = Solution.find(params[:id])
     @problem = @solution.problem
   end
 
+  # Creates and saves a new solution.
+  #
   # POST /solutions
   # POST /solutions.json
+  #
+  # @return [String] the HTML/JSON for the saved solution
   def create
     @problem = Problem.find_by_shortname(params[:problem_id])
     @solution = @problem.solutions.create(params[:solution])
@@ -61,8 +82,12 @@ class SolutionsController < ApplicationController
     end
   end
 
+  # Updates the values of a solution.
+  #
   # PUT /solutions/1
   # PUT /solutions/1.json
+  #
+  # @return [String] the HTML/JSON for the updated solution
   def update
     @solution = Solution.find(params[:id])
     @problem = @solution.problem
@@ -77,8 +102,13 @@ class SolutionsController < ApplicationController
     end
   end
 
+  # Deletes a language from the database.
+  #
   # DELETE /solutions/1
   # DELETE /solutions/1.json
+  #
+  # @return [String] the HTML/JSON notifying the user that the resource 
+  # was destroyed
   def destroy
     @solution = Solution.find(params[:id])
     @problem = @solution.problem
