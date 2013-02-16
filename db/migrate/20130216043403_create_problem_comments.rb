@@ -4,8 +4,8 @@ class CreateProblemComments < ActiveRecord::Migration
       t.references :problem
       t.references :profile
       t.text :body
-      t.integer :up_votes
-      t.integer :down_votes
+      t.integer :up_votes, :default => 0
+      t.integer :down_votes, :default => 0
 
       t.timestamps
     end

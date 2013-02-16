@@ -51,10 +51,10 @@ ActiveRecord::Schema.define(:version => 20130216043403) do
     t.integer  "problem_id"
     t.integer  "profile_id"
     t.text     "body"
-    t.integer  "up_votes"
-    t.integer  "down_votes"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.integer  "up_votes",   :default => 0
+    t.integer  "down_votes", :default => 0
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
   end
 
   add_index "problem_comments", ["problem_id"], :name => "index_problem_comments_on_problem_id"
@@ -88,10 +88,10 @@ ActiveRecord::Schema.define(:version => 20130216043403) do
     t.integer  "solution_id"
     t.integer  "profile_id"
     t.text     "body"
-    t.integer  "up_votes"
-    t.integer  "down_votes"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.integer  "up_votes",    :default => 0
+    t.integer  "down_votes",  :default => 0
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
   end
 
   add_index "solution_comments", ["profile_id"], :name => "index_solution_comments_on_profile_id"
