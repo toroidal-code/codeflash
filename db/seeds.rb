@@ -6,7 +6,7 @@
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
-Language.create([{ name: 'ActionScript'},
+Language.create!([{ name: 'ActionScript'},
                  { name: 'Ada'},
                  { name: 'Apex'},
                  { name: 'AppleScript'},

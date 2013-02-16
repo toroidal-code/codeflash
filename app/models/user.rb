@@ -43,7 +43,7 @@ class User < ActiveRecord::Base
                            )
       user.profile.name = auth.extra.raw_info.name
       user.profile.github = auth.extra.raw_info.login
-      user.profile.save
+      user.profile.save!
     end
     user
   end
