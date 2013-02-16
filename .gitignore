@@ -25,3 +25,6 @@ coverage
 
 # Ignore generated documentation.
 doc/
+
+# Ignore emacs tempfiles
+\#*\#
