@@ -1,7 +1,11 @@
 # Manages Achievements and their public interfaces.
 class AchievementsController < ApplicationController
+  # Lists all achievements in the database.
+  #
   # GET /achievements
   # GET /achievements.json
+  #
+  # @return [String] the HTML/JSON for the achievements page. 
   authorize_resource
   def index
     @achievements = Achievement.all
@@ -11,8 +15,12 @@ class AchievementsController < ApplicationController
     end
   end
 
+  # Shows the page for the achievement.
+  #
   # GET /achievements/1
   # GET /achievements/1.json
+  #
+  # @return [String] the HTML/JSON for the achievement 
   def show
     @achievement = Achievement.find(params[:id])
 
@@ -22,8 +30,12 @@ class AchievementsController < ApplicationController
     end
   end
 
+  # Renders a new achievment JSON.
+  #
   # GET /achievements/new
   # GET /achievements/new.json
+  #
+  # @return [String] the HTML/JSON for the new achievement
   def new
     @achievement = Achievement.new
 
@@ -33,15 +45,23 @@ class AchievementsController < ApplicationController
     end
   end
 
+  # Edits the values of an achievement.
+  #
   # GET /achievements/1/edit
+  #
+  # @return [String] the HTML/JSON for the edited achievement
   def edit
     @achievement = Achievement.find(params[:id])
   end
 
+  # Creates and saves a new achievement.
+  #
   # POST /achievements
   # POST /achievements.json
+  #
+  # @return [String] the HTML/JSON for the saved achievement
   def create
-    @achievement = Achievement.new(params[:achievement])
+    @achievement = Achievement.new(params[:achievement])(params[:achievement])
 
     respond_to do |format|
       if @achievement.save
@@ -54,8 +74,12 @@ class AchievementsController < ApplicationController
     end
   end
 
+  # Updates the values of an achievement.
+  #
   # PUT /achievements/1
   # PUT /achievements/1.json
+  #
+  # @return [String] the HTML/JSON for the updated achievement resource
   def update
     @achievement = Achievement.find(params[:id])
 
@@ -70,8 +94,13 @@ class AchievementsController < ApplicationController
     end
   end
 
+  # Deletes an achievement from the database.
+  #
   # DELETE /achievements/1
   # DELETE /achievements/1.json
+  #
+  # @return [String] the HTML/JSON notifying the user that the resource was
+  # destroyed
   def destroy
     @achievement = Achievement.find(params[:id])
     @achievement.destroy
