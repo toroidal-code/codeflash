@@ -10,9 +10,9 @@ class Solution < ActiveRecord::Base
   attr_accessible :code, :down_votes, :up_votes, :problem_id
 
   validates :code,
-    :presence => true
+    presence: true
   validates :down_votes, :up_votes,
-    :numericality => {:only_integer => true, :greater_than_or_equal_to => 0}
+    numericality: {only_integer: true, greater_than_or_equal_to: 0}
 
   delegate :shortname, to: :problem, prefix: true
 end

@@ -5,12 +5,12 @@ class Problem < ActiveRecord::Base
   attr_accessible :description, :point_value, :problem_name, :shortname
 
   validates :description, :point_value, :problem_name, :shortname,
-    :presence => true
+    presence: true
   validates :point_value,
-    :numericality => { :only_integer => true, :greater_than => 0 }
+    numericality: { only_integer: true, greater_than: 0 }
   validates :shortname,
-    :format => {:with => /[a-z]+/},
-    :uniqueness => true
+    format: {with: /[a-z]+/},
+    uniqueness: true
 
   # Returns the identifier of the Problem for URLs (its shortname).
   #

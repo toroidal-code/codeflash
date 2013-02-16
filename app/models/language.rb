@@ -4,6 +4,6 @@ class Language < ActiveRecord::Base
   attr_accessible :name
 
   validates :name,
-    :uniqueness => true,
-    :presence => true
+    uniqueness: true,
+    presence: true
 end
