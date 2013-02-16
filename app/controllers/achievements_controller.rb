@@ -6,7 +6,7 @@ class AchievementsController < ApplicationController
   # GET /achievements
   # GET /achievements.json
   #
-  # @return [String] the HTML/JSON for the achievements page. 
+  # @return [String] the HTML/JSON for the achievements page.
   authorize_resource
 
   def index
@@ -22,7 +22,7 @@ class AchievementsController < ApplicationController
   # GET /achievements/1
   # GET /achievements/1.json
   #
-  # @return [String] the HTML/JSON for the achievement 
+  # @return [String] the HTML/JSON for the achievement
   def show
     @achievement = Achievement.find(params[:id])
 

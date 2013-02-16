@@ -99,7 +99,7 @@ class ProblemsController < ApplicationController
   # DELETE /problems/1
   # DELETE /problems/1.json
   #
-  # @return [String] the HTML/JSON notifying the user that the resource was 
+  # @return [String] the HTML/JSON notifying the user that the resource was
   # destroyed
   def destroy
     @problem = Problem.find_by_shortname(params[:id])
