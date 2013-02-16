@@ -25,6 +25,7 @@ coverage
 
 # Ignore generated documentation.
 doc/
+.yardoc
 
 # Ignore emacs tempfiles
 \#*\#

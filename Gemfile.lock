@@ -176,6 +176,9 @@ GEM
     warden (1.2.1)
       rack (>= 1.0)
     win32console (1.3.2-x86-mingw32)
+    yard (0.8.4.1)
+    yard-activerecord (0.0.5)
+      yard (>= 0.8.3)
 
 PLATFORMS
   ruby
@@ -203,3 +206,5 @@ DEPENDENCIES
   simplecov
   turbo-sprockets-rails3
   uglifier (>= 1.0.3)
+  yard
+  yard-activerecord
