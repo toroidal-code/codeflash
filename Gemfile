@@ -1,7 +1,9 @@
 source 'https://rubygems.org'
 
-# Important stuff
+# Rails
 gem 'rails', '3.2.12'
+
+# Server
 gem 'puma'
 
 # Database
@@ -30,15 +32,21 @@ group :development do
   gem 'redcarpet'
 end
 
+group :test do
+  gem 'simplecov', require: false
+end
+
 gem 'jquery-rails', '~> 2.2.1'
 gem 'high_voltage', '~> 1.2'
 gem 'omniauth-github', '~> 1.0.3'
 gem 'devise', '~> 2.2.3'
 gem 'cancan', '~> 1.6.9'
-gem 'simplecov', require: false, group: :test
 gem 'gravatar-ultimate'
 gem 'ace-rails-ap'
 
+# Deploying
+gem 'capistrano'
+gem 'rvm-capistrano'
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
@@ -54,5 +62,3 @@ gem 'ace-rails-ap'
 
 # To use debugger
 # gem 'debugger'
-gem 'capistrano'
-gem 'rvm-capistrano'
