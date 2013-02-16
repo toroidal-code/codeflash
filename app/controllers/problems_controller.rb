@@ -50,7 +50,7 @@ class ProblemsController < ApplicationController
   #
   # GET /problems/1/edit
   #
-  # @return [String] the HTML/JSON for the edited problem
+  # @return [String] the HTML/JSON for the problem edit page
   def edit
     @problem = Problem.find_by_shortname(params[:id])
   end

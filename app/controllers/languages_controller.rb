@@ -50,7 +50,7 @@ class LanguagesController < ApplicationController
   #
   # GET /languages/1/edit
   #
-  # @return [String] the HTML/JSON for the edited language
+  # @return [String] the HTML/JSON for the language edit page
   def edit
     @language = Language.find(params[:id])
   end

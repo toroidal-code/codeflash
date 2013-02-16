@@ -51,7 +51,7 @@ class AchievementsController < ApplicationController
   #
   # GET /achievements/1/edit
   #
-  # @return [String] the HTML/JSON for the edited achievement
+  # @return [String] the HTML/JSON for the achievement edit page
   def edit
     @achievement = Achievement.find(params[:id])
   end
