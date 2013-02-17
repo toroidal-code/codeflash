@@ -7,31 +7,40 @@ class User < ActiveRecord::Base
   # :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable, :confirmable
+
   has_one :profile
+
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me,
                   :username, :login, :admin
   validates :username, presence: true
-  validates :password, format: {with:/(?=.*[a-z])(?=.*[A-Z])(?=\d*)./,
-            message: 'must contain at least 1 lowercase character,
-                        1 upercase character, and 1 number'}, on: :create
-  validates :username, format: {with: /[a-zA-Z][A-Za-z0-9]*/,
-            message: 'must start with a letter.'} , length: {minimum: 4}
-  validates :username, uniqueness: true
-  validates :password, confirmation: true
+  validates :password,
+    format: {with:/(?=.*[a-z])(?=.*[A-Z])(?=\d*)./,
+      message: 'must contain at least 1 lowercase character,
+      1 upercase character, and 1 number'},
+    on: :create
+  validates :username,
+    format: {with: /[a-zA-Z][A-Za-z0-9]*/,
+      message: 'must start with a letter.'},
+    length: {minimum: 4}
+  validates :username,
+    uniqueness: true
+  validates :password,
+    confirmation: true
+
   after_create :create_profile
 
   def self.find_first_by_auth_conditions(warden_conditions)
     conditions = warden_conditions.dup
     if login = conditions.delete(:login)
-      where(conditions).where(["lower(username) = :value OR lower(email) = :value", { :value => login.downcase }]).first
+      where(conditions).where(["lower(username) = :value OR lower(email) = :value", { value: login.downcase }]).first
     else
       where(conditions).first
     end
   end
 
   def self.find_for_github_oauth(auth, signed_in_resource=nil)
-    user = User.where(:provider => auth.provider, :uid => auth.uid).first
+    user = User.where(provider: auth.provider, uid: auth.uid).first
     unless user
       user = User.create!(provider:auth.provider,
                            uid:auth.uid,
@@ -60,7 +69,7 @@ class User < ActiveRecord::Base
   # @return [Profile] the new profile, which is connected to the current User
   # and added to the database
   def create_profile
-    Profile.create!(:user_id => id)
+    Profile.create!(user_id: id)
   end
 
   # Remove when we have a proper email address.
