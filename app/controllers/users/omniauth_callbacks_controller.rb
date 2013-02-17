@@ -1,5 +1,7 @@
 # Manages GitHub authentication.
 class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
+
+  # Callback for creating accounts with GitHub (used by OmniAuth).
   def github
     # You need to implement the method below in your model (e.g. app/models/user.rb)
     @user = User.find_for_github_oauth(request.env["omniauth.auth"], current_user)
@@ -12,4 +14,5 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       redirect_to new_user_registration_url
     end
   end
+
 end

@@ -10,10 +10,8 @@ class User < ActiveRecord::Base
   has_one :profile
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me,
-                  :username, :login, :admin, :provider, :uid
-  attr_accessor :login
-  # attr_accessible :title, :body
-  # validates :username, :presence => true
+                  :username, :login, :admin
+  validates :username, :presence => true
   validates :password, :format => {:with => /(?=.*[a-z])(?=.*[A-Z])(?=\d*)./,
             :message => 'must contain at least 1 lowercase character,
                         1 upercase character, and 1 number'}, :on => :create
