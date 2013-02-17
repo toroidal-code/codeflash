@@ -12,7 +12,7 @@ class Solution < ActiveRecord::Base
   has_many :comments, class_name: 'SolutionComment'
   attr_accessible :code, :problem_id
 
-  validates :code, :presence => true
+  validates :code, presence: true
 
   delegate :shortname, to: :problem, prefix: true
 end

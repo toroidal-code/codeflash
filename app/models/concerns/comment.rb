@@ -4,7 +4,7 @@ module Comment
   included do
     belongs_to :profile
     attr_accessible :body
-    validates :body, :length => {:maximum => 200}
+    validates :body, length: {maximum: 200}
   end
 
 end
