@@ -1,5 +1,6 @@
 # Manages Achievements and their public interfaces.
 class AchievementsController < ApplicationController
+  authorize_resource
 
   # Lists all achievements in the database.
   #
@@ -7,8 +8,6 @@ class AchievementsController < ApplicationController
   # GET /achievements.json
   #
   # @return [String] the HTML/JSON for the achievements page.
-  authorize_resource
-
   def index
     @achievements = Achievement.all
     respond_to do |format|
