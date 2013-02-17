@@ -107,7 +107,7 @@ class SolutionsController < ApplicationController
   # DELETE /solutions/1
   # DELETE /solutions/1.json
   #
-  # @return [String] the HTML/JSON notifying the user that the resource 
+  # @return [String] the HTML/JSON notifying the user that the resource
   # was destroyed
   def destroy
     @solution = Solution.find(params[:id])

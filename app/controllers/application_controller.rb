@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
 
   #Determines if page controller is a HighVoltage controller.
   #
-  #@return [Boolean] whether or not the pages controller is a 
+  #@return [Boolean] whether or not the pages controller is a
   #HighVoltage controller
   def hv_controller?
     is_a?(HighVoltage::PagesController)
