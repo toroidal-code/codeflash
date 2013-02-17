@@ -1,5 +1,10 @@
 class SolutionCommentsController < ApplicationController
   authorize_resource
+  #Creates and saves a new solution comment.
+  #
+  # POST /solutions/comments
+  #
+  # @return [String] the HTML/JSON for the solution
   def create
     @problem = Problem.find_by_shortname(params[:problem_id])
     @solution = Solution.find(params[:solution_id])
