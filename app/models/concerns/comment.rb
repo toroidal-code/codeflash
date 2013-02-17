@@ -1,3 +1,5 @@
+# Adds comment functionality to a model. Comments are owned by a profile and
+# contain text (with a maximum of 200 characters).
 module Comment
   extend ActiveSupport::Concern
 
