@@ -5,24 +5,26 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable, :confirmable
+  devise :database_authenticatable, :registerable, :recoverable, :rememberable,
+    :trackable, :validatable, :confirmable
 
   has_one :profile
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me,
-                  :username, :login, :admin
-  validates :username, presence: true
+    :username, :login, :admin
+
+  validates :username,
+    presence: true
   validates :password,
-    format: {with:/(?=.*[a-z])(?=.*[A-Z])(?=\d*)./,
+    format: { with:/(?=.*[a-z])(?=.*[A-Z])(?=\d*)./,
       message: 'must contain at least 1 lowercase character,
-      1 upercase character, and 1 number'},
+      1 upercase character, and 1 number' },
     on: :create
   validates :username,
-    format: {with: /[a-zA-Z][A-Za-z0-9]*/,
-      message: 'must start with a letter.'},
-    length: {minimum: 4}
+    format: { with: /[a-zA-Z][A-Za-z0-9]*/,
+      message: 'must start with a letter.' },
+    length: { minimum: 4 }
   validates :username,
     uniqueness: true
   validates :password,
