@@ -11,14 +11,14 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me,
                   :username, :login, :admin
-  validates :username, :presence => true
-  validates :password, :format => {:with => /(?=.*[a-z])(?=.*[A-Z])(?=\d*)./,
-            :message => 'must contain at least 1 lowercase character,
-                        1 upercase character, and 1 number'}, :on => :create
-  validates :username, :format => {:with => /[a-zA-Z][A-Za-z0-9]*/,
-            :message => 'must start with a letter.'} , :length => {:minimum => 4}
-  validates :username, :uniqueness => true
-  validates :password, :confirmation => true
+  validates :username, presence: true
+  validates :password, format: {with:/(?=.*[a-z])(?=.*[A-Z])(?=\d*)./,
+            message: 'must contain at least 1 lowercase character,
+                        1 upercase character, and 1 number'}, on: :create
+  validates :username, format: {with: /[a-zA-Z][A-Za-z0-9]*/,
+            message: 'must start with a letter.'} , length: {minimum: 4}
+  validates :username, uniqueness: true
+  validates :password, confirmation: true
   after_create :create_profile
 
   def self.find_first_by_auth_conditions(warden_conditions)
