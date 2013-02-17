@@ -57,12 +57,20 @@ class User < ActiveRecord::Base
     end
   end
 
+  # Creates a new Profile for the current User and adds it to the database.
+  #
+  # @return [Profile] the new profile, which is connected to the current User
+  # and added to the database
   def create_profile
     Profile.create!(:user_id => id)
   end
 
-  #Remove when we have a proper email address
+  # Remove when we have a proper email address.
   protected
+
+  # Returns true if confirmation is required (it is currently not).
+  #
+  # @return [FalseClass] false
   def confirmation_required?
     false
   end
