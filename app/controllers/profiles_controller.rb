@@ -104,7 +104,7 @@ class ProfilesController < ApplicationController
   # DELETE /profiles/1
   # DELETE /profiles/1.json
   #
-  # @return [String] the HTML/JSON notifying the user that the resource 
+  # @return [String] the HTML/JSON notifying the user that the resource
   # was destroyed
   def destroy
     @user = User.find_by_username(params[:id])
