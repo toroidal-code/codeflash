@@ -32,6 +32,12 @@ class User < ActiveRecord::Base
 
   after_create :create_profile
 
+  # Finds a User that matches the given conditions.
+  #
+  # @param [Object] warden_conditions the conditions which the desired User
+  # should match
+  #
+  # @return [User] the User that was found with the given conditions
   def self.find_first_by_auth_conditions(warden_conditions)
     conditions = warden_conditions.dup
     if login = conditions.delete(:login)
@@ -41,6 +47,14 @@ class User < ActiveRecord::Base
     end
   end
 
+  # Finds a User with a given GitHub auth. If the User does not already exist, a
+  # new one is created with the given GitHub auth.
+  #
+  # @param [Object] auth the auth of the User that should be found/created
+  # @param [Object] signed_in_resource currently unused (please document)
+  #
+  # @return [User] the User that was found with the GitHub auth, or a new User
+  # with the GitHub auth
   def self.find_for_github_oauth(auth, signed_in_resource=nil)
     user = User.where(provider: auth.provider, uid: auth.uid).first
     unless user
@@ -56,8 +70,15 @@ class User < ActiveRecord::Base
     user
   end
 
-  # GitHub integration. Not currently in use, but we'll leave it here in case we
-  # need it in the future.
+  # Creates a new User with a given session.
+  #
+  # Used for GitHub integration. Not currently in use, but we'll leave it here
+  # in case we need it in the future.
+  #
+  # @param [Object] params the parameters used to create the new User
+  # @param [Object] session the session used to create the new User
+  #
+  # @return [User] the new User
   def self.new_with_session(params, session)
     super.tap do |user|
       if data = session["devise.github_data"] && session["devise.github_data"]["extra"]["raw_info"]
