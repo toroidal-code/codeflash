@@ -8,7 +8,7 @@
 
 <div class="solution well well-small" onclick="$('#<%= css_id %>').slideToggle()">
   <span class="pull-right">submitted by: <%= link_to User.find(solution.profile.user).username, solution.profile %></span>
-  <%= solution.score %>
+  <%= solution.votes %>
   <%= link_to solution.problem.problem_name, problem_solution_path(solution.problem, solution) %>
 </div>
 
