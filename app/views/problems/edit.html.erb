@@ -1,5 +1,8 @@
 <div class="well well-small">
   <h1>Editing problem</h1>
 
-  <%= render 'form', path: @problem %>
+  <%= render 'form', problem: @problem %>
 </div>
+
+<%= link_to 'Show', @problem %> |
+<%= link_to 'Back', problems_path %>

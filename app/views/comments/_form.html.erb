@@ -1,0 +1,17 @@
+<%= form_for(form_array) do |f| %>
+  <div class = 'well well-small'>
+    <fieldset>
+      <legend>Add Comment</legend>
+        <div class="control-group">
+          <%= f.label :comment, :class => 'control-label' %>
+          <div class="controls">
+            <%= f.text_area :body , :class => 'input-xxlarge', :rows=>5 %>
+          </div>
+        </div>
+        <div class="control-group">
+          <%= f.submit 'Submit', :class=> 'btn btn-primary' %>
+        </div>
+      </div>
+    </fieldset>
+  </div>
+<% end %>

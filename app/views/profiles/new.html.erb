@@ -1,5 +1,7 @@
 <div class="well well-small">
   <h1>New profile</h1>
 
-  <%= render 'form', path: profiles_path %>
+  <%= render 'form', profile: @profile, user: @user %>
 </div>
+
+<%= link_to 'Back', profiles_path %>
