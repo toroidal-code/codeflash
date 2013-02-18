@@ -27,7 +27,7 @@ set :use_sudo, false
 # roles (servers)
 role :web, domain                         # Your HTTP server, Apache/etc
 role :app, domain                         # This may be the same as your `Web` server
-role :db, domain, :primary => true        # This is where Rails migrations will run
+role :db, domain, primary: true           # This is where Rails migrations will run
 
 # deploy config
 set :deploy_to, applicationdir
@@ -40,7 +40,7 @@ after "deploy:update_code", "deploy:migrate"
 # if you're still using the script/reaper helper you will need
 # these http://github.com/rails/irs_process_scripts
 namespace :deploy do
-    task :setup_db, :roles => :app do
+    task :setup_db, roles: :app do
         run "cd #{release_path}; bundle exec rake db:setup RAILS_ENV=#{rails_env}"
     end
 end

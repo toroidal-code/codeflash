@@ -1,5 +1,7 @@
+# Manages the creation of ProblemComments (comments on problems).
 class ProblemCommentsController < ApplicationController
   authorize_resource
+
   # Creates and saves a new solution comment.
   #
   # POST /problem/problem_id/comment

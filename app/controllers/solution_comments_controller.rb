@@ -1,5 +1,7 @@
+# Manages the creation of SolutionComments (comments on solutions).
 class SolutionCommentsController < ApplicationController
   authorize_resource
+
   #Creates and saves a new solution comment.
   #
   # POST /solutions/comments

@@ -7,18 +7,18 @@ Codeflash::Application.routes.draw do
   resources :achievements
   resources :languages
   resources :language_families
-  resources :solutions, :only => [:index]
+  resources :solutions, only: [:index]
   resources :problems do
-    resources :solutions do 
+    resources :solutions do
       resources :solution_comments
     end
     resources :problem_comments
   end
 
   devise_scope :user do
-    get "login" , :to => "devise/sessions#new"
-    get "signup", :to => "devise/registrations#new"
-    delete "logout", :to => "devise/sessions#destroy"
+    get "login" , to: "devise/sessions#new"
+    get "signup", to: "devise/registrations#new"
+    delete "logout", to: "devise/sessions#destroy"
   end
 
 
@@ -31,8 +31,8 @@ Codeflash::Application.routes.draw do
   # Keep in mind you can assign values other than :controller and :action
 
   # Sample of named route:
-  #   match 'products/:id/purchase' => 'catalog#purchase', :as => :purchase
-  # This route can be invoked with purchase_url(:id => product.id)
+  #   match 'products/:id/purchase' => 'catalog#purchase', as: :purchase
+  # This route can be invoked with purchase_url(id: product.id)
 
   # Sample resource route (maps HTTP verbs to controller actions automatically):
   #   resources :products
@@ -59,7 +59,7 @@ Codeflash::Application.routes.draw do
   #   resources :products do
   #     resources :comments
   #     resources :sales do
-  #       get 'recent', :on => :collection
+  #       get 'recent', on: :collection
   #     end
   #   end
 
