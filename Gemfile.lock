@@ -35,7 +35,7 @@ GEM
     better_errors (0.6.0)
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
-    binding_of_caller (0.6.9)
+    binding_of_caller (0.7.1)
       debug_inspector (>= 0.0.1)
     bootstrap-sass (2.3.0.0)
       sass (~> 3.2)
@@ -73,7 +73,7 @@ GEM
       win32console (~> 1.3.0)
     gravatar-ultimate (1.0.3)
     hashie (1.2.0)
-    high_voltage (1.2.1)
+    high_voltage (1.2.2)
     highline (1.6.15)
     hike (1.2.1)
     httpauth (0.2.0)
@@ -145,6 +145,7 @@ GEM
     rake (10.0.3)
     rdoc (3.12.1)
       json (~> 1.4)
+    redcarpet (2.2.2)
     rvm-capistrano (1.2.7)
       capistrano (>= 2.0.0)
     sass (3.2.5)
@@ -166,6 +167,9 @@ GEM
     treetop (1.4.12)
       polyglot
       polyglot (>= 0.3.1)
+    turbo-sprockets-rails3 (0.3.6)
+      railties (> 3.2.8, < 4.0.0)
+      sprockets (>= 2.0.0)
     tzinfo (0.3.35)
     uglifier (1.3.0)
       execjs (>= 0.3.0)
@@ -198,9 +202,11 @@ DEPENDENCIES
   pg (~> 0.14)
   puma
   rails (= 3.2.12)
+  redcarpet
   rvm-capistrano
   sass-rails (~> 3.2.3)
   simplecov
+  turbo-sprockets-rails3
   uglifier (>= 1.0.3)
   yard
   yard-activerecord
