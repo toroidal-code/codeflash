@@ -13,9 +13,9 @@
     <td><%= solution.code %></td>
     <td><%= solution.up_votes %></td>
     <td><%= solution.down_votes %></td>
-    <td><%= link_to 'Show', problem_solution_path(solution.problem.shortname, solution) %></td>
-    <td><%= link_to 'Edit', edit_problem_solution_path(solution.problem.shortname, solution) %></td>
-    <td><%= link_to 'Destroy', problem_solution_path(solution.problem.shortname, solution), method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to 'Show', problem_solution_path(solution.problem_shortname, solution) %></td>
+    <td><%= link_to 'Edit', edit_problem_solution_path(solution.problem_shortname, solution) %></td>
+    <td><%= link_to 'Destroy', problem_solution_path(solution.problem_shortname, solution), method: :delete, data: { confirm: 'Are you sure?' } %></td>
   </tr>
 <% end %>
 </table>

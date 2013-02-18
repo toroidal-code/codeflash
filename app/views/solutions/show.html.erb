@@ -21,3 +21,6 @@
 
 <%= link_to 'Edit', edit_problem_solution_path(@problem, @solution) %> |
 <%= link_to 'Back', solutions_path%>
+
+<%= render 'comments/show', comments: @solution.comments %>
+<%= render 'comments/form', form_array: [@problem, @solution, @solution.comments.build] %>

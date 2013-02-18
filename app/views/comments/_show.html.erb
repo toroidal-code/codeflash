@@ -1,0 +1,6 @@
+<% comments.each do |comment| %>
+  <div class="well well-small">
+    <h4><%= comment.profile.user.username %></h2>
+    <p><%= comment.body %></p>
+  </div>
+<% end %>

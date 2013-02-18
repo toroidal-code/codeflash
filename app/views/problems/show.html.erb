@@ -19,3 +19,7 @@
 <%= link_to 'Edit', edit_problem_path(@problem) %> |
 <%= link_to 'Destroy', @problem, method: :delete, data: { confirm: 'Are you sure?' } %> |
 <%= link_to 'Back', problems_path %>
+
+<h2>Comments</h2>
+<%= render 'comments/show', comments: @problem.comments%>
+<%= render 'comments/form', form_array: [@problem, @problem.comments.build] %>
