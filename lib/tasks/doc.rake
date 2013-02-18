@@ -1,4 +1,3 @@
-exit unless RAILS_ENV == 'development'
 require 'yard'
 
 namespace :doc do
