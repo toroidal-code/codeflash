@@ -22,6 +22,9 @@ gem 'cancan', '~> 1.6.9'
 gem 'capistrano'
 gem 'rvm-capistrano'
 
+## Required by rake task doc:app
+gem 'yard'
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -41,7 +44,6 @@ group :development do
   gem 'binding_of_caller', '~> 0.6'
   gem 'better_errors', '~> 0.6'
   gem 'foreman'
-  gem 'yard'
   gem 'yard-activerecord'
   gem 'redcarpet'
 end

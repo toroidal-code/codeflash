@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
     :trackable, :validatable, :confirmable
 
   has_one :profile
+  attr_accessor :login
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me,
@@ -87,9 +88,9 @@ class User < ActiveRecord::Base
     end
   end
 
-  # Creates a new Profile for the current User and adds it to the database.
+  # Creates a new Profile for the new User and adds it to the database.
   #
-  # @return [Profile] the new profile, which is connected to the current User
+  # @return [Profile] the new profile, which is connected to the new User
   # and added to the database
   def create_profile
     Profile.create!(user_id: id)
