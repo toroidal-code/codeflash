@@ -31,4 +31,12 @@ class ApplicationController < ActionController::Base
       super
     end
   end
+
+  #Redirect for access denied error.
+  #
+  #@return nil
+  rescue_from CanCan::AccessDenied do |exception|
+    flash[:error] = "Access denied!"
+    redirect_to root_url
+  end
 end
