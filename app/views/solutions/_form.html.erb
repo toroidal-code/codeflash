@@ -15,7 +15,7 @@
         <select data-placeholder="Choose a Language..." class="chzn-select" style="width:350px;" tabindex="2">
           <option value=""></option> 
           <% @languages.each do |language| %>
-            <option value=<%= language.name %> ><%= language.name %></option> 
+            <option value=<%= language.syntax_highlighting %> ><%= language.name %></option> 
           <% end %>
         </select>
       </div>

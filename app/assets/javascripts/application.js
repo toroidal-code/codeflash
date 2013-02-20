@@ -20,7 +20,7 @@
 $(document).ready(function () {
     $('.chzn-select').chosen().change(
     	function(){
-    		var str = "ace/mode/"+$('.chzn-single').text().toLowerCase();
+    		var str = "ace/mode/"+$('.chzn-select').val();
     		editor.getSession().setMode(str);
     	});
 });
