@@ -1,35 +1,92 @@
+GIT
+  remote: git://github.com/idl3/devise.git
+  revision: 5a96778c678f2bce91bcdd63b16206a516002649
+  branch: rails4
+  specs:
+    devise (2.1.3)
+      bcrypt-ruby (~> 3.0)
+      orm_adapter (~> 0.1)
+      railties (> 3.1)
+      warden (~> 1.2.1)
+
+GIT
+  remote: git://github.com/rails/activerecord-deprecated_finders.git
+  revision: 5937f3e7102f9be461ce2dccaef0e4d14e92cd35
+  specs:
+    activerecord-deprecated_finders (0.0.3)
+
+GIT
+  remote: git://github.com/rails/coffee-rails.git
+  revision: a30c954554022caca62f7b362ee6f43eba7dc166
+  specs:
+    coffee-rails (4.0.0.beta)
+      coffee-script (>= 2.2.0)
+      railties (>= 4.0.0.beta, < 5.0)
+
+GIT
+  remote: git://github.com/rails/journey.git
+  revision: e64274443f8420df2518cf2206a2c640d9d8e196
+  specs:
+    journey (2.0.0.20120723141804)
+
+GIT
+  remote: git://github.com/rails/rails.git
+  revision: 4b48a75230615edf72c9701da86413e09e0dc2fe
+  specs:
+    actionmailer (4.0.0.beta)
+      actionpack (= 4.0.0.beta)
+      mail (~> 2.5.3)
+    actionpack (4.0.0.beta)
+      activesupport (= 4.0.0.beta)
+      builder (~> 3.1.0)
+      erubis (~> 2.7.0)
+      rack (~> 1.5.2)
+      rack-test (~> 0.6.2)
+    activemodel (4.0.0.beta)
+      activesupport (= 4.0.0.beta)
+      builder (~> 3.1.0)
+    activerecord (4.0.0.beta)
+      activemodel (= 4.0.0.beta)
+      activerecord-deprecated_finders (~> 0.0.3)
+      activesupport (= 4.0.0.beta)
+      arel (~> 3.0.2)
+    activesupport (4.0.0.beta)
+      i18n (~> 0.6)
+      minitest (~> 4.2)
+      multi_json (~> 1.3)
+      thread_safe (~> 0.1)
+      tzinfo (~> 0.3.33)
+    rails (4.0.0.beta)
+      actionmailer (= 4.0.0.beta)
+      actionpack (= 4.0.0.beta)
+      activerecord (= 4.0.0.beta)
+      activesupport (= 4.0.0.beta)
+      bundler (>= 1.2.2, < 2.0)
+      railties (= 4.0.0.beta)
+      sprockets-rails (~> 2.0.0.rc1)
+    railties (4.0.0.beta)
+      actionpack (= 4.0.0.beta)
+      activesupport (= 4.0.0.beta)
+      rake (>= 0.8.7)
+      rdoc (~> 3.4)
+      thor (>= 0.17.0, < 2.0)
+
+GIT
+  remote: git://github.com/rails/sass-rails.git
+  revision: f6431cf032e1beaff243b95151fdb13cae60562e
+  specs:
+    sass-rails (4.0.0.beta)
+      railties (>= 4.0.0.beta, < 5.0)
+      sass (>= 3.1.10)
+      sprockets-rails (~> 2.0.0.rc0)
+      tilt (~> 1.3)
+
 GEM
   remote: https://rubygems.org/
   specs:
     ace-rails-ap (2.0.0)
-    actionmailer (3.2.12)
-      actionpack (= 3.2.12)
-      mail (~> 2.4.4)
-    actionpack (3.2.12)
-      activemodel (= 3.2.12)
-      activesupport (= 3.2.12)
-      builder (~> 3.0.0)
-      erubis (~> 2.7.0)
-      journey (~> 1.0.4)
-      rack (~> 1.4.5)
-      rack-cache (~> 1.2)
-      rack-test (~> 0.6.1)
-      sprockets (~> 2.2.1)
-    activemodel (3.2.12)
-      activesupport (= 3.2.12)
-      builder (~> 3.0.0)
-    activerecord (3.2.12)
-      activemodel (= 3.2.12)
-      activesupport (= 3.2.12)
-      arel (~> 3.0.2)
-      tzinfo (~> 0.3.29)
-    activeresource (3.2.12)
-      activemodel (= 3.2.12)
-      activesupport (= 3.2.12)
-    activesupport (3.2.12)
-      i18n (~> 0.6)
-      multi_json (~> 1.0)
     arel (3.0.2)
+    atomic (1.0.1)
     bcrypt-ruby (3.0.1)
     bcrypt-ruby (3.0.1-x86-mingw32)
     better_errors (0.6.0)
@@ -39,7 +96,7 @@ GEM
       debug_inspector (>= 0.0.1)
     bootstrap-sass (2.3.0.0)
       sass (~> 3.2)
-    builder (3.0.4)
+    builder (3.1.4)
     cancan (1.6.9)
     capistrano (2.14.2)
       highline
@@ -47,20 +104,12 @@ GEM
       net-sftp (>= 2.0.0)
       net-ssh (>= 2.0.14)
       net-ssh-gateway (>= 1.1.0)
-    coderay (1.0.8)
-    coffee-rails (3.2.2)
-      coffee-script (>= 2.2.0)
-      railties (~> 3.2.0)
+    coderay (1.0.9)
     coffee-script (2.2.0)
       coffee-script-source
       execjs
     coffee-script-source (1.4.0)
     debug_inspector (0.0.2)
-    devise (2.2.3)
-      bcrypt-ruby (~> 3.0)
-      orm_adapter (~> 0.1)
-      railties (~> 3.1)
-      warden (~> 1.2.1)
     erubis (2.7.0)
     execjs (1.4.0)
       multi_json (~> 1.0)
@@ -78,18 +127,18 @@ GEM
     hike (1.2.1)
     httpauth (0.2.0)
     i18n (0.6.1)
-    journey (1.0.4)
     jquery-rails (2.2.1)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
     json (1.7.7)
     jwt (0.1.5)
       multi_json (>= 1.0)
-    mail (2.4.4)
+    mail (2.5.3)
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.21)
+    minitest (4.6.1)
     multi_json (1.6.1)
     multipart-post (1.1.5)
     net-scp (1.1.0)
@@ -99,7 +148,7 @@ GEM
     net-ssh (2.6.5)
     net-ssh-gateway (1.2.0)
       net-ssh (>= 2.6.5)
-    oauth2 (0.8.0)
+    oauth2 (0.8.1)
       faraday (~> 0.8)
       httpauth (~> 0.1)
       jwt (~> 0.1.4)
@@ -120,28 +169,9 @@ GEM
     polyglot (0.3.3)
     puma (1.6.3)
       rack (~> 1.2)
-    rack (1.4.5)
-    rack-cache (1.2)
-      rack (>= 0.4)
-    rack-ssl (1.3.3)
-      rack
+    rack (1.5.2)
     rack-test (0.6.2)
       rack (>= 1.0)
-    rails (3.2.12)
-      actionmailer (= 3.2.12)
-      actionpack (= 3.2.12)
-      activerecord (= 3.2.12)
-      activeresource (= 3.2.12)
-      activesupport (= 3.2.12)
-      bundler (~> 1.0)
-      railties (= 3.2.12)
-    railties (3.2.12)
-      actionpack (= 3.2.12)
-      activesupport (= 3.2.12)
-      rack-ssl (~> 1.3.2)
-      rake (>= 0.8.7)
-      rdoc (~> 3.4)
-      thor (>= 0.14.6, < 2.0)
     rake (10.0.3)
     rdoc (3.12.1)
       json (~> 1.4)
@@ -149,20 +179,22 @@ GEM
     rvm-capistrano (1.2.7)
       capistrano (>= 2.0.0)
     sass (3.2.5)
-    sass-rails (3.2.6)
-      railties (~> 3.2.0)
-      sass (>= 3.1.10)
-      tilt (~> 1.3)
     simplecov (0.7.1)
       multi_json (~> 1.0)
       simplecov-html (~> 0.7.1)
     simplecov-html (0.7.1)
-    sprockets (2.2.2)
+    sprockets (2.8.2)
       hike (~> 1.2)
       multi_json (~> 1.0)
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
+    sprockets-rails (2.0.0.rc2)
+      actionpack (>= 3.0)
+      activesupport (>= 3.0)
+      sprockets (~> 2.8)
     thor (0.17.0)
+    thread_safe (0.1.0)
+      atomic
     tilt (1.3.3)
     treetop (1.4.12)
       polyglot
@@ -187,24 +219,26 @@ PLATFORMS
 
 DEPENDENCIES
   ace-rails-ap
+  activerecord-deprecated_finders!
   better_errors (~> 0.6)
   binding_of_caller (~> 0.6)
   bootstrap-sass (~> 2.3)
   cancan (~> 1.6.9)
   capistrano
-  coffee-rails (~> 3.2.1)
-  devise (~> 2.2.3)
+  coffee-rails!
+  devise!
   foreman
   gravatar-ultimate
   high_voltage (~> 1.2)
+  journey!
   jquery-rails (~> 2.2.1)
   omniauth-github (~> 1.0.3)
   pg (~> 0.14)
   puma
-  rails (= 3.2.12)
+  rails!
   redcarpet
   rvm-capistrano
-  sass-rails (~> 3.2.3)
+  sass-rails!
   simplecov
   turbo-sprockets-rails3
   uglifier (>= 1.0.3)

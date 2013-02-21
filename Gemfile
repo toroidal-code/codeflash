@@ -1,7 +1,9 @@
 source 'https://rubygems.org'
 
-# Rails
-gem 'rails', '3.2.12'
+# Rails 4
+gem 'rails', github: 'rails/rails'
+gem 'activerecord-deprecated_finders', github: 'rails/activerecord-deprecated_finders'
+gem 'journey', github: 'rails/journey'
 
 # Server
 gem 'puma'
@@ -15,7 +17,7 @@ gem 'gravatar-ultimate'
 
 # Auth
 gem 'omniauth-github', '~> 1.0.3'
-gem 'devise', '~> 2.2.3'
+gem 'devise', github: 'idl3/devise', branch: 'rails4'
 gem 'cancan', '~> 1.6.9'
 
 # Deploying
@@ -28,9 +30,9 @@ gem 'yard'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
+  gem 'sass-rails', github: 'rails/sass-rails'
   gem 'bootstrap-sass', '~> 2.3'
-  gem 'coffee-rails', '~> 3.2.1'
+  gem 'coffee-rails', github: 'rails/coffee-rails'
   gem 'uglifier', '>= 1.0.3'
   gem 'turbo-sprockets-rails3'
   gem 'jquery-rails', '~> 2.2.1'
