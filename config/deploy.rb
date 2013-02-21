@@ -1,27 +1,27 @@
 require "bundler/capistrano"
 require "bundler/setup"
 
-#set :rvm_ruby_string, 'rbx-head'
-#set :rvm_install_ruby_params, '--1.9'      # for jruby/rbx default to 1.9 mode
+# RVM config
+set :rvm_ruby_string, 'rbx-head'
+set :rvm_install_ruby_params, '--1.9'      # for jruby/rbx default to 1.9 mode
+set :rvm_type, :system
+require "rvm/capistrano"
 
-#before 'deploy:setup', 'rvm:install_rvm'   # install RVM
-#before 'deploy:setup', 'rvm:install_ruby'  # install Ruby and create gemset, or:
+#before 'deploy:migrate', 'deploy:setup_db'  # do this on first run of deploy
 
-before 'deploy:migrate', 'deploy:setup_db'  # do this on first run of deploy
-
-#require "rvm/capistrano"
-
+#Application config
 set :domain, 'deb5610.student.rit.edu'
 set :applicationdir, "/home/deploy/codeflash"
-
 set :application, "codeflash"
+
+# VCS config
 set :repository, "git@github.com:codeflash/codeflash.git"
 set :branch, "dev"
 ssh_options[:forward_agent] = false
-
 set :scm, :git # You can set :scm explicitly or Capistrano will make an intelligent guess based on known version control directory names
 set :scm_verbose, true
 
+# Permissions
 set :user, "deploy" #The server's user for deploys
 set :use_sudo, false
 
@@ -38,21 +38,16 @@ set :deploy_via, :remote_cache
 after "deploy:restart", "deploy:cleanup"
 after "deploy:update_code", "deploy:migrate"
 
-# if you're still using the script/reaper helper you will need
-# these http://github.com/rails/irs_process_scripts
 namespace :deploy do
     task :setup_db, roles: :app do
         run "cd #{release_path}; bundle exec rake db:setup RAILS_ENV=#{rails_env}"
     end
 end
 
-#========================
-#CUSTOM
-#========================
 namespace :puma do
   desc "Start Puma"
     task :start, :except => { :no_release => true } do
-      run " /sbin/start-stop-daemon --verbose --start --chdir /home/deploy/codeflash/current/ --chuid deploy --background --exec /usr/local/bin/run-puma -- /home/deploy/codeflash/current/ #{release_path}/config/puma.rb #{release_path}/log/puma.log"
+      run " /sbin/start-stop-daemon --verbose --start --chdir /home/deploy/codeflash/current/ --chuid deploy --background --exec /usr/local/bin/run-puma -- /home/deploy/codeflash/current /home/deploy/codeflash/current/config/puma.rb /home/deploy/codeflash/current/log/puma.log"
   end
   after "deploy:start", "puma:start"
 
