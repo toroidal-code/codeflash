@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 # Rails
 gem 'rails', '3.2.12'
+gem 'strong_parameters'
 
 # Server
 gem 'puma'
