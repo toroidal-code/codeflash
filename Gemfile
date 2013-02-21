@@ -14,7 +14,7 @@ gem 'high_voltage', '~> 1.2'
 gem 'gravatar-ultimate'
 
 # Auth
-gem 'omniauth-github', '~> 1.0.3'
+gem 'omniauth-github', '~> 1.1.0'
 gem 'devise', '~> 2.2.3'
 gem 'cancan', '~> 1.6.9'
 
