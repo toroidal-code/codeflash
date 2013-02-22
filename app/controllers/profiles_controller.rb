@@ -1,6 +1,9 @@
 # Manages Profiles and their public interfaces.
 class ProfilesController < ApplicationController
   authorize_resource
+
+  respond_to :html, :json
+
   # Lists all the profiles in the database.
   #
   # GET /profiles
@@ -9,10 +12,8 @@ class ProfilesController < ApplicationController
   # @return [String] the HTML/JSON for the profiles page
   def index
     @profiles = Profile.all
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @profiles }
-    end
+
+    respond_with @profiles
   end
 
   # Shows the page for the profile.
@@ -26,10 +27,8 @@ class ProfilesController < ApplicationController
     @user = User.find_by_username(params[:id])
     # @user = User.find_by_username(params[:id])
     @profile = @user.profile
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @profile }
-    end
+
+    respond_with @profile
   end
 
   # Renders a new language JSON.
@@ -41,10 +40,8 @@ class ProfilesController < ApplicationController
   def new
     @user = current_user
     @profile = Profile.new
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @profile }
-    end
+
+    respond_with @profile
   end
 
   # Edits the valuses of a profile.
@@ -66,7 +63,7 @@ class ProfilesController < ApplicationController
   #
   # @return [String] the HTML/JSON for the saved profile.
   def create
-    @profile = Profile.new(params[:profile])
+    @profile = Profile.new(profile_params)
     respond_to do |format|
       if @profile.save
         format.html { redirect_to @profile, notice: 'Profile was successfully created.' }
@@ -89,7 +86,7 @@ class ProfilesController < ApplicationController
     @profile = @user.profile
     authorize! :update, @profile
     respond_to do |format|
-      if @user.update_attributes(params[:user]) && @profile.update_attributes(params[:profile])
+      if @user.update_attributes(params[:user]) && @profile.update_attributes(profile_params)
         format.html { redirect_to @profile, notice: 'Profile was successfully updated.' }
         format.json { head :no_content }
       else
@@ -115,5 +112,10 @@ class ProfilesController < ApplicationController
       format.html { redirect_to profiles_url }
       format.json { head :no_content }
     end
+  end
+
+  private
+  def profile_params
+    params[:profile].permit(:about_me, :favorite_language, :github, :name, :user_id)
   end
 end

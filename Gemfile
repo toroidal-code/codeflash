@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 # Rails
 gem 'rails', '3.2.12'
+gem 'strong_parameters'
 
 # Server
 gem 'puma'
@@ -14,13 +15,16 @@ gem 'high_voltage', '~> 1.2'
 gem 'gravatar-ultimate'
 
 # Auth
-gem 'omniauth-github', '~> 1.0.3'
+gem 'omniauth-github', '~> 1.1.0'
 gem 'devise', '~> 2.2.3'
 gem 'cancan', '~> 1.6.9'
 
 # Deploying
 gem 'capistrano'
 gem 'rvm-capistrano'
+
+## Required by rake task doc:app
+gem 'yard'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -40,7 +44,6 @@ group :development do
   gem 'binding_of_caller', '~> 0.6'
   gem 'better_errors', '~> 0.6'
   gem 'foreman'
-  gem 'yard'
   gem 'yard-activerecord'
   gem 'redcarpet'
 end
