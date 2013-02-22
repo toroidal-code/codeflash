@@ -66,4 +66,7 @@ Codeflash::Application.configure do
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
 
   config.action_mailer.default_url_options = { host: 'codeflash.herokuapp.com' }
+
+  # Use SSL on the entire site for production
+  config.force_ssl = true
 end
