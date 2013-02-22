@@ -1,6 +1,9 @@
 # Manages Problems and their public interfaces.
 class ProblemsController < ApplicationController
   authorize_resource
+
+  respond_to :html, :json
+
   # Lists all the problems in the database.
   #
   # GET /problems
@@ -10,10 +13,7 @@ class ProblemsController < ApplicationController
   def index
     @problems = Problem.all
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @problems }
-    end
+    respond_with @problems
   end
 
   # Shows the page for the problem.
@@ -25,10 +25,7 @@ class ProblemsController < ApplicationController
   def show
     @problem = Problem.find_by_shortname(params[:id])
 
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @problem }
-    end
+    respond_with @problem
   end
 
   # Renders a new problem JSON.
@@ -40,10 +37,7 @@ class ProblemsController < ApplicationController
   def new
     @problem = Problem.new
 
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @problem }
-    end
+    respond_with @problem
   end
 
   # Edits the values of a problem.
