@@ -69,7 +69,7 @@ class SolutionsController < ApplicationController
   # @return [String] the HTML/JSON for the saved solution
   def create
     @problem = Problem.find_by_shortname(params[:problem_id])
-    @solution = @problem.solutions.create(params[:solution])
+    @solution = @problem.solutions.create(solution_params)
     @solution.profile = current_user.profile
     respond_to do |format|
       if @solution.save
@@ -92,7 +92,7 @@ class SolutionsController < ApplicationController
     @solution = Solution.find(params[:id])
     @problem = @solution.problem
     respond_to do |format|
-      if @solution.update_attributes(params[:solution])
+      if @solution.update_attributes(solution_params)
         format.html { redirect_to  problem_solution_path(@problem, @solution), notice: 'Solution was successfully updated.' }
         format.json { head :no_content }
       else
@@ -118,5 +118,10 @@ class SolutionsController < ApplicationController
       format.html { redirect_to problem_solutions_url }
       format.json { head :no_content }
     end
+  end
+
+  private
+  def solution_params
+    params[:solution].permit(:code, :problem_id, :up_votes, :down_votes)
   end
 end

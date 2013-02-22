@@ -1,10 +1,9 @@
 # A programming problem which is meant to be solved by users.
 class Problem < ActiveRecord::Base
+  include ActiveModel::ForbiddenAttributesProtection
   has_many :solutions
   has_many :comments, class_name: 'ProblemComment'
   has_and_belongs_to_many :categories
-
-  attr_accessible :description, :point_value, :problem_name, :shortname
 
   validates :description, :point_value, :problem_name, :shortname,
     presence: true

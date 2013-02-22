@@ -1,8 +1,7 @@
 # A category of problems.
 class Category < ActiveRecord::Base
+  include ActiveModel::ForbiddenAttributesProtection
   has_and_belongs_to_many :problems
-
-  attr_accessible :name
 
   validates :name,
     uniqueness: true,
