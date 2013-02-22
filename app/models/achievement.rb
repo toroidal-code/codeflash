@@ -3,8 +3,6 @@ class Achievement < ActiveRecord::Base
   include ActiveModel::ForbiddenAttributesProtection
   has_and_belongs_to_many :solutions
 
-  #attr_accessible :description, :name, :point_value
-
   validates :name, :description, :point_value,
     presence: true
   validates :point_value,
