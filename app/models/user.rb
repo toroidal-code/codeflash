@@ -5,28 +5,27 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable, :confirmable
+  devise :database_authenticatable, :registerable, :recoverable, :rememberable,
+    :trackable, :validatable, :confirmable
 
   has_one :profile
+  attr_accessor :login
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me,
-                  :username, :login, :admin, :provider, :uid
-  attr_accessor :login
-  # attr_accessible :title, :body
+    :username, :login, :admin
 
-  # validates :username,
-  #   presence: true
+  validates :username,
+    presence: true
   validates :password,
-    format: {with: /(?=.*[a-z])(?=.*[A-Z])(?=\d*)./,
-      message: 'must contain at least 1 lowercase character, 1 upercase
-      character, and 1 number'},
+    format: { with:/(?=.*[a-z])(?=.*[A-Z])(?=\d*)./,
+      message: 'must contain at least 1 lowercase character,
+      1 upercase character, and 1 number' },
     on: :create
   validates :username,
-    format: {with: /[a-zA-Z][A-Za-z0-9]*/,
-      message: 'must start with a letter.'},
-    length: {minimum: 4}
+    format: { with: /[a-zA-Z][A-Za-z0-9]*/,
+      message: 'must start with a letter.' },
+    length: { minimum: 4 }
   validates :username,
     uniqueness: true
   validates :password,
@@ -34,6 +33,12 @@ class User < ActiveRecord::Base
 
   after_create :create_profile
 
+  # Finds a User that matches the given conditions.
+  #
+  # @param [Object] warden_conditions the conditions which the desired User
+  # should match
+  #
+  # @return [User] the User that was found with the given conditions
   def self.find_first_by_auth_conditions(warden_conditions)
     conditions = warden_conditions.dup
     if login = conditions.delete(:login)
@@ -43,10 +48,14 @@ class User < ActiveRecord::Base
     end
   end
 
-  def create_profile
-    profile = Profile.create!(user_id: id)
-  end
-
+  # Finds a User with a given GitHub auth. If the User does not already exist, a
+  # new one is created with the given GitHub auth.
+  #
+  # @param [Object] auth the auth of the User that should be found/created
+  # @param [Object] signed_in_resource currently unused (please document)
+  #
+  # @return [User] the User that was found with the GitHub auth, or a new User
+  # with the GitHub auth
   def self.find_for_github_oauth(auth, signed_in_resource=nil)
     user = User.where(provider: auth.provider, uid: auth.uid).first
     unless user
@@ -62,8 +71,15 @@ class User < ActiveRecord::Base
     user
   end
 
-  # GitHub integration. Not currently in use, but we'll leave it here in case we
-  # need it in the future.
+  # Creates a new User with a given session.
+  #
+  # Used for GitHub integration. Not currently in use, but we'll leave it here
+  # in case we need it in the future.
+  #
+  # @param [Object] params the parameters used to create the new User
+  # @param [Object] session the session used to create the new User
+  #
+  # @return [User] the new User
   def self.new_with_session(params, session)
     super.tap do |user|
       if data = session["devise.github_data"] && session["devise.github_data"]["extra"]["raw_info"]
@@ -72,12 +88,20 @@ class User < ActiveRecord::Base
     end
   end
 
+  # Creates a new Profile for the new User and adds it to the database.
+  #
+  # @return [Profile] the new profile, which is connected to the new User
+  # and added to the database
   def create_profile
     Profile.create!(user_id: id)
   end
 
-  #Remove when we have a proper email address
+  # Remove when we have a proper email address.
   protected
+
+  # Returns true if confirmation is required (it is currently not).
+  #
+  # @return [FalseClass] false
   def confirmation_required?
     false
   end

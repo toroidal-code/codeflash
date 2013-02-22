@@ -27,5 +27,11 @@ coverage
 doc/
 .yardoc
 
-# Ignore emacs tempfiles
+# Ignore emacs tempfiles.
 \#*\#
+
+# Ignore precompiled assets.
+/public/assets
+
+# Ignore rvmrc's
+.rvmrc

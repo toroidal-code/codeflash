@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130215212823) do
+ActiveRecord::Schema.define(:version => 20130218210146) do
 
   create_table "achievements", :force => true do |t|
     t.string   "name"
@@ -43,9 +43,23 @@ ActiveRecord::Schema.define(:version => 20130215212823) do
 
   create_table "languages", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+    t.string   "syntax_highlighting"
   end
+
+  create_table "problem_comments", :force => true do |t|
+    t.integer  "problem_id"
+    t.integer  "profile_id"
+    t.text     "body"
+    t.integer  "up_votes",   :default => 0
+    t.integer  "down_votes", :default => 0
+    t.datetime "created_at",                :null => false
+    t.datetime "updated_at",                :null => false
+  end
+
+  add_index "problem_comments", ["problem_id"], :name => "index_problem_comments_on_problem_id"
+  add_index "problem_comments", ["profile_id"], :name => "index_problem_comments_on_profile_id"
 
   create_table "problems", :force => true do |t|
     t.string   "problem_name"
@@ -70,6 +84,19 @@ ActiveRecord::Schema.define(:version => 20130215212823) do
   end
 
   add_index "profiles", ["user_id"], :name => "index_profiles_on_user_id"
+
+  create_table "solution_comments", :force => true do |t|
+    t.integer  "solution_id"
+    t.integer  "profile_id"
+    t.text     "body"
+    t.integer  "up_votes",    :default => 0
+    t.integer  "down_votes",  :default => 0
+    t.datetime "created_at",                 :null => false
+    t.datetime "updated_at",                 :null => false
+  end
+
+  add_index "solution_comments", ["profile_id"], :name => "index_solution_comments_on_profile_id"
+  add_index "solution_comments", ["solution_id"], :name => "index_solution_comments_on_solution_id"
 
   create_table "solutions", :force => true do |t|
     t.text     "code"

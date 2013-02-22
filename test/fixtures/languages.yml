@@ -2,6 +2,8 @@
 
 one:
   name: MyString
+  syntax_highlighting: ruby
 
 two:
   name: MyStrings
+  syntax_highlighting: ruby
