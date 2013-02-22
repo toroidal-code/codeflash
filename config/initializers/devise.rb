@@ -237,4 +237,14 @@ Devise.setup do |config|
   # When using omniauth, Devise cannot automatically set Omniauth path,
   # so you need to do it manually. For the users scope, it would be:
   config.omniauth_path_prefix = "/my_engine/users/auth"
+
+  #config/initializers/devise.rb
+
+  # If you wish to add an extra permitted parameter you can add it to the array as follows
+  config.params_whitelist += [:username, :login, :admin]
+
+  # If you wish further customize and redefine your permitted parameters you can do so via an assignment
+  # e.g. adding username to the list but removing email
+  #config.params_whitelist = [:username, :password, :password_confirmation, :current_password]
+  #note that current_password will need to be permitted for updating of resource
 end
