@@ -16,6 +16,7 @@
 //= require chosen-jquery
 //= require bootstrap
 //= require ace/ace
+//= require holder
 
 $(document).ready(function () {
     $('.chzn-select').chosen().change(

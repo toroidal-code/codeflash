@@ -36,6 +36,7 @@ group :assets do
   gem 'jquery-rails', '~> 2.2.1'
   gem 'ace-rails-ap'
   gem 'chosen-rails'
+  gem 'holder_rails'
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platforms => :ruby
 end
