@@ -62,7 +62,7 @@ class AchievementsController < ApplicationController
   #
   # @return [String] the HTML/JSON for the saved achievement
   def create
-    @achievement = Achievement.new(params[:achievement])
+    @achievement = Achievement.new(achievement_params)
 
     respond_to do |format|
       if @achievement.save
@@ -85,7 +85,7 @@ class AchievementsController < ApplicationController
     @achievement = Achievement.find(params[:id])
 
     respond_to do |format|
-      if @achievement.update_attributes(params[:achievement])
+      if @achievement.update_attributes(achievement_params)
         format.html { redirect_to @achievement, notice: 'Achievement was successfully updated.' }
         format.json { head :no_content }
       else
@@ -110,5 +110,11 @@ class AchievementsController < ApplicationController
       format.html { redirect_to achievements_url }
       format.json { head :no_content }
     end
+  end
+
+  private
+
+  def achievement_params
+    params[:achievement].permit(:description, :name, :point_value)
   end
 end

@@ -2,8 +2,6 @@
 class Achievement < ActiveRecord::Base
   has_and_belongs_to_many :solutions
 
-  attr_accessible :description, :name, :point_value
-
   validates :name, :description, :point_value,
     presence: true
   validates :point_value,

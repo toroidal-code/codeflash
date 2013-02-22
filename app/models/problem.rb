@@ -4,8 +4,6 @@ class Problem < ActiveRecord::Base
   has_many :comments, class_name: 'ProblemComment'
   has_and_belongs_to_many :categories
 
-  attr_accessible :description, :point_value, :problem_name, :shortname
-
   validates :description, :point_value, :problem_name, :shortname,
     presence: true
   validates :point_value,

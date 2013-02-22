@@ -66,7 +66,7 @@ class ProfilesController < ApplicationController
   #
   # @return [String] the HTML/JSON for the saved profile.
   def create
-    @profile = Profile.new(params[:profile])
+    @profile = Profile.new(profile_params)
     respond_to do |format|
       if @profile.save
         format.html { redirect_to @profile, notice: 'Profile was successfully created.' }
@@ -89,7 +89,7 @@ class ProfilesController < ApplicationController
     @profile = @user.profile
     authorize! :update, @profile
     respond_to do |format|
-      if @user.update_attributes(params[:user]) && @profile.update_attributes(params[:profile])
+      if @user.update_attributes(params[:user]) && @profile.update_attributes(profile_params)
         format.html { redirect_to @profile, notice: 'Profile was successfully updated.' }
         format.json { head :no_content }
       else
@@ -115,5 +115,10 @@ class ProfilesController < ApplicationController
       format.html { redirect_to profiles_url }
       format.json { head :no_content }
     end
+  end
+
+  private
+  def profile_params
+    params[:profile].permit(:about_me, :favorite_language, :github, :name, :user_id)
   end
 end

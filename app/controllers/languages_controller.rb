@@ -62,7 +62,7 @@ class LanguagesController < ApplicationController
   #
   # @return [String] the HTML/JSON for the saved language
   def create
-    @language = Language.new(params[:language])
+    @language = Language.new(language_params)
 
     respond_to do |format|
       if @language.save
@@ -85,7 +85,7 @@ class LanguagesController < ApplicationController
     @language = Language.find(params[:id])
 
     respond_to do |format|
-      if @language.update_attributes(params[:language])
+      if @language.update_attributes(language_params)
         format.html { redirect_to @language, notice: 'Language was successfully updated.' }
         format.json { head :no_content }
       else
@@ -110,5 +110,11 @@ class LanguagesController < ApplicationController
       format.html { redirect_to languages_url }
       format.json { head :no_content }
     end
+  end
+
+  private
+
+  def language_params
+    params[:language].permit(:name, :syntax_highlighting)
   end
 end

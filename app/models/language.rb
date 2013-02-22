@@ -2,8 +2,6 @@
 class Language < ActiveRecord::Base
   has_many :solutions
 
-  attr_accessible :name, :syntax_highlighting
-
   validates :name,
     uniqueness: true,
     presence: true
