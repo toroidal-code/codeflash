@@ -1,6 +1,9 @@
 # Manages Languages and their public interfaces.
 class LanguagesController < ApplicationController
   authorize_resource
+
+  respond_to :html, :json
+
   # Lists all languages in the database.
   #
   # GET /languages
@@ -10,10 +13,7 @@ class LanguagesController < ApplicationController
   def index
     @languages = Language.all
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @languages }
-    end
+    respond_with @languages
   end
 
   # Shows the page for the language.
@@ -25,10 +25,7 @@ class LanguagesController < ApplicationController
   def show
     @language = Language.find(params[:id])
 
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @language }
-    end
+    respond_with @language
   end
 
   # Renders a new language JSON.
@@ -40,10 +37,7 @@ class LanguagesController < ApplicationController
   def new
     @language = Language.new
 
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @language }
-    end
+    respond_with @language
   end
 
   # Edits the values of a language.
