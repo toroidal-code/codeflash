@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
     :trackable, :validatable, :confirmable
 
   has_one :profile
+  attr_accessor :login
 
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me,

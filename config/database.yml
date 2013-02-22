@@ -7,7 +7,7 @@ development:
   adapter: postgresql
   encoding: unicode
   database: codeflash_dev
-  pool: 5
+  pool: 16
   username: codeflash
   timeout: 5000
   password: somepassword
@@ -19,7 +19,7 @@ test:
   adapter: postgresql
   encoding: unicode
   database: codeflash_test
-  pool: 5
+  pool: 16
   username: codeflash
   timeout: 5000
   password: somepassword
@@ -28,7 +28,7 @@ production:
   adapter: postgresql
   encoding: unicode
   database: codeflash_production
-  pool: 5
+  pool: 16
   username: codeflash
   timeout: 5000
   password: somepassword

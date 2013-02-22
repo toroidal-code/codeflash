@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130216043403) do
+ActiveRecord::Schema.define(:version => 20130218210146) do
 
   create_table "achievements", :force => true do |t|
     t.string   "name"
@@ -43,8 +43,9 @@ ActiveRecord::Schema.define(:version => 20130216043403) do
 
   create_table "languages", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.datetime "created_at",          :null => false
+    t.datetime "updated_at",          :null => false
+    t.string   "syntax_highlighting"
   end
 
   create_table "problem_comments", :force => true do |t|
