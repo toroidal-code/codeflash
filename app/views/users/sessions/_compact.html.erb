@@ -1,34 +1,21 @@
 <div class = "well well-small compact-form">
 
-<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-<legend>Sign in</legend>
-  <div class="control-group">
-    <div class="controls">
-      <%= f.text_field :login, :class => 'input-xlarge', :placeholder => 'Email or Username' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <div class="controls">
-      <%= f.password_field :password, :class => 'input-xlarge', :placeholder => 'Password' %>
-    </div>
-  </div>
-
-  <% if devise_mapping.rememberable? -%>
-  <div class="control-group">
-    <div class="controls">
-      <label class="checkbox">
-        <%= f.check_box :remember_me %> <%= f.label :remember_me  %>
-      </label>
-  <% end -%>
-  <div><%= f.submit "Sign in", :class=> 'btn btn-primary' %></div></br>
+<%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+  <legend>Sign in</legend>
+  <%= f.input :login,
+    input_html: { class: 'input-xlarge', placeholder: 'Email or Username'},
+    label: false %>
+  <%= f.input :password,
+    input_html: { class: 'input-xlarge', placeholder: 'Password'},
+    label: false %>
+  <%= f.input :remember_me,
+    :as => :boolean,
+    :label => false,
+    :inline_label => true
+    if devise_mapping.rememberable? %>
+  <%= f.button :submit, "Sign in", :class=> 'btn btn-primary' %>
 <% end %>
-</div>
-
-<%- if devise_mapping.recoverable? && controller_name != 'passwords' %>
-  <%= link_to "Forgot your password?", new_password_path(resource_name) %><br />
+<%- if devise_mapping.recoverable? && controller_name != 'passwords' && display_forgot  %>
+  <%= link_to "Forgot your password?", new_password_path(resource_name) %>
 <% end -%>
-
-<%# These close divs are here to close some random divs that wouldn't close. %>
-<%# This is a terrible hack which should be fixed as soon as possible. %>
-</div>
 </div>
