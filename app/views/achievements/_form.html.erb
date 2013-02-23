@@ -1,13 +1,9 @@
 <%= simple_form_for(achievement) do |f| %>
   <%= f.input :name,
-    label_html: { class: 'control-label' },
     input_html: { class: 'input-xlarge' } %>
   <%= f.input :description,
-    label_html: { class: 'control-label' },
     input_html: { class: 'input-block-level' } %>
   <%= f.input :point_value,
-    as: :integer,
-    label_html: { class: 'control-label' },
     input_html: { class: 'input-xlarge', min: '1' }  %>
   <%= f.button :submit, class: 'btn btn-primary' %>
   <%= link_to 'Back', path, :class => 'btn' %>
