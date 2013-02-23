@@ -9,6 +9,7 @@ class SolutionsControllerTest < ActionController::TestCase
     @problem = Problem.create!(description: "lol", point_value: 9, problem_name: "lololol", shortname: "lolololsdjkfnasd")
     @solution = solutions(:one)
     @solution.problem = @problem
+    @solution.save
   end
 
   test "should get index" do
