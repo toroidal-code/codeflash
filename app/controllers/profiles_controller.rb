@@ -116,6 +116,6 @@ class ProfilesController < ApplicationController
 
   private
   def profile_params
-    params[:profile].permit(:about_me, :favorite_language, :github, :name, :user_id)
+    params[:profile].permit(:about_me, :language_id, :github, :name, :user_id)
   end
 end
