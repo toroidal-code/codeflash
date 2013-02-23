@@ -6,6 +6,6 @@ best solution to a problem in the hopes of supporting good programming practices
 and a strong community.
 
 ## Deploying
-If you are an admin and are already set up with our Heroku app, you can deploy to production with `rake deploy`.
+If you are an admin, you can deploy to production with `cap deploy`.
 
 For more detailed information, see the [Deploying](https://github.com/codeflash/codeflash/wiki/Deploying) article on our wiki.
