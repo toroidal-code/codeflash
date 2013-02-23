@@ -6,7 +6,7 @@ module Comment
   included do
     belongs_to :profile
     validates :body,
-      length: { maximum: 200 },
+      length: { maximum: 500 },
       presence: true
   end
 end

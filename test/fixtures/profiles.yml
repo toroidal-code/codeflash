@@ -3,11 +3,9 @@
 one:
   name: MyString
   about_me: MyText
-  favorite_language: MyString
   github: MyString
 
 two:
   name: MyString
   about_me: MyText
-  favorite_language: MyString
   github: MyString
