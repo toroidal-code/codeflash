@@ -32,7 +32,7 @@ GEM
     arel (3.0.2)
     bcrypt-ruby (3.0.1)
     bcrypt-ruby (3.0.1-x86-mingw32)
-    better_errors (0.6.0)
+    better_errors (0.7.0)
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
     binding_of_caller (0.7.1)
@@ -191,7 +191,7 @@ PLATFORMS
 
 DEPENDENCIES
   ace-rails-ap
-  better_errors (~> 0.6)
+  better_errors (~> 0.7)
   binding_of_caller (~> 0.6)
   bootstrap-sass (~> 2.3)
   cancan (~> 1.6.9)
