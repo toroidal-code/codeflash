@@ -3,6 +3,7 @@
 class Profile < ActiveRecord::Base
   include ActiveModel::ForbiddenAttributesProtection
   belongs_to :user
+  belongs_to :language
   has_many :solutions
   has_many :achievements, through: :solutions
   has_many :problems

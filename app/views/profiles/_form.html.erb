@@ -7,7 +7,7 @@
     input_html: { class: 'input-xlarge' } %>
   <%= f.input :about_me,
     input_html: { class: 'input-block-level', maxlength:750 } %>
-  <%= f.input :favorite_language,
+  <%= f.association :language,
     collection: Language.all,
     input_html: { class: 'input-xlarge' } %>
   <%= f.input :github,
