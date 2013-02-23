@@ -32,3 +32,6 @@ doc/
 
 # Ignore precompiled assets.
 /public/assets
+
+# Ignore rvmrc's
+.rvmrc

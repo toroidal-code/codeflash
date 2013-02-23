@@ -1,8 +1,8 @@
 # A programming language that users can write solutions in.
 class Language < ActiveRecord::Base
+  include ActiveModel::ForbiddenAttributesProtection
   has_many :solutions
-
-  attr_accessible :name, :syntax_highlighting
+  has_many :profiles
 
   validates :name,
     uniqueness: true,

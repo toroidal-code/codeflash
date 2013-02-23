@@ -2,6 +2,8 @@
 class AchievementsController < ApplicationController
   authorize_resource
 
+  respond_to :html, :json
+
   # Lists all achievements in the database.
   #
   # GET /achievements
@@ -10,10 +12,8 @@ class AchievementsController < ApplicationController
   # @return [String] the HTML/JSON for the achievements page.
   def index
     @achievements = Achievement.all
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @achievements }
-    end
+
+    respond_with @achievements
   end
 
   # Shows the page for the achievement.
@@ -25,10 +25,7 @@ class AchievementsController < ApplicationController
   def show
     @achievement = Achievement.find(params[:id])
 
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @achievement }
-    end
+    respond_with @achievement
   end
 
   # Renders a new achievment JSON.
@@ -40,10 +37,7 @@ class AchievementsController < ApplicationController
   def new
     @achievement = Achievement.new
 
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @achievement }
-    end
+    respond_with @achievement
   end
 
   # Edits the values of an achievement.
@@ -62,7 +56,7 @@ class AchievementsController < ApplicationController
   #
   # @return [String] the HTML/JSON for the saved achievement
   def create
-    @achievement = Achievement.new(params[:achievement])
+    @achievement = Achievement.new(achievement_params)
 
     respond_to do |format|
       if @achievement.save
@@ -85,7 +79,7 @@ class AchievementsController < ApplicationController
     @achievement = Achievement.find(params[:id])
 
     respond_to do |format|
-      if @achievement.update_attributes(params[:achievement])
+      if @achievement.update_attributes(achievement_params)
         format.html { redirect_to @achievement, notice: 'Achievement was successfully updated.' }
         format.json { head :no_content }
       else
@@ -110,5 +104,11 @@ class AchievementsController < ApplicationController
       format.html { redirect_to achievements_url }
       format.json { head :no_content }
     end
+  end
+
+  private
+
+  def achievement_params
+    params[:achievement].permit(:description, :name, :point_value)
   end
 end

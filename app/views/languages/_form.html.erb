@@ -1,23 +1,6 @@
-<%= form_for(language) do |f| %>
-  <% if language.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(language.errors.count, "error") %> prohibited this language from being saved:</h2>
-
-      <ul>
-      <% language.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="control-group">
-    <%= f.label :name, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :name, :class => "input-xlarge" %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.submit 'Submit', :class => 'btn btn-primary' %>
-  </div>
+<%= simple_form_for(language) do |f| %>
+  <%= f.input :name,
+    input_html: { class: 'input-xlarge' } %>
+  <%= f.button :submit, class: 'btn btn-primary' %>
+  <%= link_to 'Back', back_path, :class => 'btn' %>
 <% end %>

@@ -1,6 +1,9 @@
 # Manages Solutions and their public interfaces.
 class SolutionsController < ApplicationController
   authorize_resource
+
+  respond_to :html, :json
+
   # Lists all the solutions to a given to the solution's problem
   # in the database
   #
@@ -15,10 +18,8 @@ class SolutionsController < ApplicationController
     else
       @solutions = Solution.all
     end
-    respond_to do |format|
-      format.html
-      format.json { render json: @solutions }
-    end
+
+    respond_with @solutions
   end
 
   # Shows the page for the solution.
@@ -30,10 +31,8 @@ class SolutionsController < ApplicationController
   def show
     @solution = Solution.find(params[:id])
     @problem = Problem.find_by_shortname(params[:problem_id])
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @solution }
-    end
+
+    respond_with @solution
   end
 
   # Renders a new solution JSON.
@@ -46,10 +45,8 @@ class SolutionsController < ApplicationController
     @solution = Solution.new
     @problem = Problem.find_by_shortname(params[:problem_id])
     @languages = Language.all
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @solution }
-    end
+    respond_with @solution
+
   end
 
   # Edits the values of a solution.
@@ -71,7 +68,7 @@ class SolutionsController < ApplicationController
   # @return [String] the HTML/JSON for the saved solution
   def create
     @problem = Problem.find_by_shortname(params[:problem_id])
-    @solution = @problem.solutions.create(params[:solution])
+    @solution = @problem.solutions.create(solution_params)
     @solution.profile = current_user.profile
     respond_to do |format|
       if @solution.save
@@ -94,7 +91,7 @@ class SolutionsController < ApplicationController
     @solution = Solution.find(params[:id])
     @problem = @solution.problem
     respond_to do |format|
-      if @solution.update_attributes(params[:solution])
+      if @solution.update_attributes(solution_params)
         format.html { redirect_to  problem_solution_path(@problem, @solution), notice: 'Solution was successfully updated.' }
         format.json { head :no_content }
       else
@@ -120,5 +117,10 @@ class SolutionsController < ApplicationController
       format.html { redirect_to problem_solutions_url }
       format.json { head :no_content }
     end
+  end
+
+  private
+  def solution_params
+    params[:solution].permit(:code, :problem_id, :up_votes, :down_votes)
   end
 end

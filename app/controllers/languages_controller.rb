@@ -1,6 +1,9 @@
 # Manages Languages and their public interfaces.
 class LanguagesController < ApplicationController
   authorize_resource
+
+  respond_to :html, :json
+
   # Lists all languages in the database.
   #
   # GET /languages
@@ -10,10 +13,7 @@ class LanguagesController < ApplicationController
   def index
     @languages = Language.all
 
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @languages }
-    end
+    respond_with @languages
   end
 
   # Shows the page for the language.
@@ -25,10 +25,7 @@ class LanguagesController < ApplicationController
   def show
     @language = Language.find(params[:id])
 
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @language }
-    end
+    respond_with @language
   end
 
   # Renders a new language JSON.
@@ -40,10 +37,7 @@ class LanguagesController < ApplicationController
   def new
     @language = Language.new
 
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @language }
-    end
+    respond_with @language
   end
 
   # Edits the values of a language.
@@ -62,7 +56,7 @@ class LanguagesController < ApplicationController
   #
   # @return [String] the HTML/JSON for the saved language
   def create
-    @language = Language.new(params[:language])
+    @language = Language.new(language_params)
 
     respond_to do |format|
       if @language.save
@@ -85,7 +79,7 @@ class LanguagesController < ApplicationController
     @language = Language.find(params[:id])
 
     respond_to do |format|
-      if @language.update_attributes(params[:language])
+      if @language.update_attributes(language_params)
         format.html { redirect_to @language, notice: 'Language was successfully updated.' }
         format.json { head :no_content }
       else
@@ -110,5 +104,11 @@ class LanguagesController < ApplicationController
       format.html { redirect_to languages_url }
       format.json { head :no_content }
     end
+  end
+
+  private
+
+  def language_params
+    params[:language].permit(:name, :syntax_highlighting)
   end
 end

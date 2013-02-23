@@ -10,7 +10,7 @@ class SolutionCommentsController < ApplicationController
   def create
     @problem = Problem.find_by_shortname(params[:problem_id])
     @solution = Solution.find(params[:solution_id])
-    @comment = @solution.comments.create(params[:solution_comment])
+    @comment = @solution.comments.create(params[:solution_comment].permit(:up_votes,:down_votes,:body))
     @comment.profile = current_user.profile
     @comment.save!
     redirect_to problem_solution_path(@problem, @solution)

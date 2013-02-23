@@ -1,41 +1,12 @@
-<%= form_for(problem) do |f| %>
-  <% if problem.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(problem.errors.count, "error") %> prohibited this problem from being saved:</h2>
-
-      <ul>
-      <% problem.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
-    </div>
-  <% end %>
-
-  <div class="control-group">
-    <%= f.label :problem_name, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :problem_name, :class => "input-xlarge" %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :shortname, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :shortname, :class => "input-xlarge" %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :description , :class => "control-label" %>
-    <div class="controls">
-      <%= f.text_area :description, :class => 'input-block-level'  %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :point_value, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.number_field :point_value , :class => 'input-xlarge' %>
-    </div>
-  </div>
-  <div class="control-groups">
-    <%= f.submit 'Submit' , :class => 'btn btn-primary' %> <%= link_to 'Back', problem, :class => 'btn' %>
-  </div>
+<%= simple_form_for(problem) do |f| %>
+  <%= f.input :problem_name,
+      input_html: { class: 'input-xlarge' } %>
+  <%= f.input :shortname,
+      input_html: { class: 'input-xlarge' } %>
+  <%= f.input :description,
+    input_html: { class: 'input-block-level' } %>
+  <%= f.input :point_value,
+    input_html: { class: 'input-xlarge', min: '1' }  %>
+  <%= f.button :submit, class: 'btn btn-primary' %>
+  <%= link_to 'Back', back_path, :class => 'btn' %>
 <% end %>

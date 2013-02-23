@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 # Rails
 gem 'rails', '3.2.12'
+gem 'strong_parameters'
 
 # Server
 gem 'puma'
@@ -14,7 +15,7 @@ gem 'high_voltage', '~> 1.2'
 gem 'gravatar-ultimate'
 
 # Auth
-gem 'omniauth-github', '~> 1.0.3'
+gem 'omniauth-github', '~> 1.1.0'
 gem 'devise', '~> 2.2.3'
 gem 'cancan', '~> 1.6.9'
 
@@ -37,13 +38,14 @@ group :assets do
   gem 'ace-rails-ap'
   gem 'chosen-rails'
   gem 'holder_rails'
+  gem 'simple_form'
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platforms => :ruby
 end
 
 group :development do
   gem 'binding_of_caller', '~> 0.6'
-  gem 'better_errors', '~> 0.6'
+  gem 'better_errors', '~> 0.7'
   gem 'foreman'
   gem 'yard-activerecord'
   gem 'redcarpet'

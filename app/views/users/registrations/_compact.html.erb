@@ -1,29 +1,17 @@
-<%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+<%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
-
- <legend>Sign Up</legend>
-  <div class="control-group">
-    <div class="controls">
-      <%= f.email_field :email, :class => 'input-xlarge', :placeholder => 'Email' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <div class="controls">
-      <%= f.text_field :username, :class => 'input-xlarge', :placeholder =>
-      'Username' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <div class="controls">
-      <%= f.password_field :password, :class => 'input-xlarge', :placeholder => 'Password' %>
-    </div>
-  </div>
-
-  <div class="control-group">
-    <div class="controls">
-      <%= f.password_field :password_confirmation, :class => 'input-xlarge', :placeholder => 'Password confirmation' %>
-    </div>
-  </div>
-
-  <div><%= f.submit "Sign up", :class=> "btn btn-primary" %></div>
+  <legend>Sign Up</legend>
+  <%= f.input :email,
+    input_html: {class: 'input-xlarge', placeholder: 'Email'},
+    label: false %>
+  <%= f.input :username,
+    input_html: {class: 'input-xlarge', placeholder: 'Username'},
+    label: false %>
+  <%= f.input :password,
+    input_html: {class: 'input-xlarge', placeholder: 'Password'},
+    label: false %>
+  <%= f.input :password_confirmation,
+    input_html: {class: 'input-xlarge', placeholder: 'Password confirmation'},
+    label: false %>
+  <%= f.button :submit, "Sign up", class: "btn btn-primary" %>
 <% end %>
