@@ -12,7 +12,7 @@
 
 <p>
   <b>Favorite language:</b>
-  <%= @profile.favorite_language %>
+  <%= Language.find(@profile.favorite_language).name %>
 </p>
 
 <p>
