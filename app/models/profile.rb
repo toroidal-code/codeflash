@@ -10,7 +10,7 @@ class Profile < ActiveRecord::Base
   has_many :solution_comments
 
   validates :about_me,
-    length: { maximum: 500 }
+    length: { maximum: 750 }
 
   # Returns the identifier of the Profile for URLs (the username of its User).
   #
