@@ -27,7 +27,7 @@ gem 'rvm-capistrano'
 gem 'yard'
 
 ## Pygments
-gem 'pygments.rb'
+gem 'pygments.rb', require: 'pygments'
 
 # Gems used only for assets and not required
 # in production environments by default.

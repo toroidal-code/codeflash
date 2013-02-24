@@ -1,9 +1,6 @@
 # Provides helper methods for the application's models, views, and controllers.
 module ApplicationHelper
 
-  # Starts a pygemnts process so we can use it.
-  require 'pygments'
-
   # Returns true if the given path matches the path of the current page.
   #
   # @param [String] str the path to check against the current page
