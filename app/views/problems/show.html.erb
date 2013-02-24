@@ -21,12 +21,6 @@
 <%= link_to 'Destroy', @problem, method: :delete, data: { confirm: 'Are you sure?' } %> |
 <%= link_to 'Back', problems_path %>
 
-<!-- Hide the code view by default -->
-<script type="text/javascript">
-    $('.hide').hide();
-</script>
-
-
 <h2>Comments</h2>
 <%= render 'comments/show', comments: @problem.comments%>
 <%= render 'comments/form', form_array: [@problem, @problem.comments.build] %>
