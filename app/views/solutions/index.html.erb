@@ -25,10 +25,12 @@
     <ul class="nav nav-list well well-small">
       <li class="nav-header">Languages</li>
       <li class="active"><a href="#">All</a></li>
-      <li><a href="#">Clojure (1)</a></li>
-      <li><a href="#">Common Lisp (1)</a></li>
-      <li><a href="#">Ruby (3)</a></li>
-      <li><a href="#">Scala (1)</a></li>
+      <% Language.all.each do |language|
+            num = @solutions.count{|s| s.language == language}
+            if num != 0 %>
+              <li><a href="#"><%= "#{language.name} (#{num})" %></a></li>
+            <%end%>
+         <% end %>
     </ul>
   </div>
 
