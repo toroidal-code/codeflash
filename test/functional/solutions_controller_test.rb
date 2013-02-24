@@ -9,6 +9,7 @@ class SolutionsControllerTest < ActionController::TestCase
     @solution = solutions(:one)
     @solution.problem = @problem
     @solution.profile = @user.profile
+    @solution.language = languages(:one)
     @solution.save
   end
 
@@ -25,7 +26,10 @@ class SolutionsControllerTest < ActionController::TestCase
 
   test "should create solution" do
     assert_difference('Solution.count') do
-      post :create, problem_id: @problem, solution: { code: @solution.code, down_votes: @solution.down_votes, up_votes: @solution.up_votes, problem_id: @problem}
+      post :create, problem_id: @problem, solution: { code: @solution.code,
+                                                      down_votes: @solution.down_votes,
+                                                      up_votes: @solution.up_votes,
+                                                      problem_id: @problem}
     end
 
     assert_redirected_to problem_solution_path(@problem, assigns(:solution))

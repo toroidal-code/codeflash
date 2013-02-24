@@ -6,8 +6,6 @@ rvm:
 before_script:
 - psql -c 'create database codeflash_test;' -U postgres
 - mv config/database.yml.travis config/database.yml
-- sudo apt-get install python
-- which python
 script:
 - RAILS_ENV=test bundle exec rake db:migrate --trace
 - bundle exec rake db:test:prepare
