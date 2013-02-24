@@ -7,5 +7,11 @@
 </div>
 
 <div class="hide code-container" id="<%= css_id %>">
-  <%== Pygments.highlight(solution.code, lexer: solution.language.syntax_highlighting) %>
+  <%==
+       begin
+         Pygments.highlight(solution.code, lexer: solution.language.syntax_highlighting)
+       rescue
+         Pygments.highlight(solution.code)
+       end
+  %>
 </div>
