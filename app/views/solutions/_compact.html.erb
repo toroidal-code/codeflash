@@ -6,4 +6,4 @@
   <%= link_to solution.problem.problem_name, problem_solution_path(solution.problem, solution) %>
 </div>
 
-<div class="hide code-container" id="<%= css_id %>"><%== Pygments.highlight(solution.code, :lexer => solution.language.) %></div>
+<div class="hide code-container" id="<%= css_id %>"><%== Pygments.highlight(solution.code) %></div>
