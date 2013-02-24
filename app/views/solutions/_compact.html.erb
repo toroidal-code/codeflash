@@ -10,6 +10,9 @@
   <span class="pull-right">submitted by: <%= link_to User.find(solution.profile.user).username, solution.profile %></span>
   <%= solution.votes %>
   <%= link_to solution.problem.problem_name, problem_solution_path(solution.problem, solution) %>
+  <% if !params[:problem_id] %>
+    - <%= solution.language.name %>
+  <% end %>
 </div>
 
 <pre class="highlighted hide" id="<%= css_id %>"><code><%= solution.code %></code></pre>
