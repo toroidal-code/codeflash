@@ -9,7 +9,8 @@
     input_html: { class: 'input-block-level', maxlength:750 } %>
   <%= f.association :language,
     collection: Language.all,
-    input_html: { class: 'input-xlarge' } %>
+    input_html: {"data-placeholder" => "Choose a Language...",
+      class: "input-xlarge chzn-select"} %>
   <%= f.input :github,
     input_html: { class: 'input-xlarge' } %>
   <%= f.button :submit, class: 'btn btn-primary' %>
