@@ -26,8 +26,8 @@ gem 'rvm-capistrano'
 ## Required by rake task doc:app
 gem 'yard'
 
-## Pygments
-gem 'pygments.rb', require: 'pygments'
+## Pygments, using DHowett's fork (updated to pygments 1.6) until tmm1 approves the pull request.
+gem 'pygments.rb', github: 'DHowett/pygments.rb', require: 'pygments'
 
 # Gems used only for assets and not required
 # in production environments by default.

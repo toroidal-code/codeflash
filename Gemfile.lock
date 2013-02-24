@@ -1,3 +1,11 @@
+GIT
+  remote: git://github.com/DHowett/pygments.rb.git
+  revision: c7441b34771a77651c1d97cd9536ea62aff0ca4f
+  specs:
+    pygments.rb (0.3.7)
+      posix-spawn (~> 0.3.6)
+      yajl-ruby (~> 1.1.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -127,9 +135,6 @@ GEM
     posix-spawn (0.3.6)
     puma (1.6.3)
       rack (~> 1.2)
-    pygments.rb (0.3.7)
-      posix-spawn (~> 0.3.6)
-      yajl-ruby (~> 1.1.0)
     rack (1.4.5)
     rack-cache (1.2)
       rack (>= 0.4)
@@ -222,7 +227,7 @@ DEPENDENCIES
   omniauth-github (~> 1.1.0)
   pg (~> 0.14)
   puma
-  pygments.rb
+  pygments.rb!
   rails (= 3.2.12)
   redcarpet
   rvm-capistrano
