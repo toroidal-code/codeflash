@@ -121,6 +121,6 @@ class SolutionsController < ApplicationController
 
   private
   def solution_params
-    params[:solution].permit(:code, :problem_id, :up_votes, :down_votes)
+    params[:solution].permit(:code, :language_id, :problem_id, :up_votes, :down_votes)
   end
 end

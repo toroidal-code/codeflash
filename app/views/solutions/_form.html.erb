@@ -1,14 +1,7 @@
 <%= simple_form_for([problem, solution]) do |f| %>
-<div class="control-group">
-      <div class="controls">
-        <select data-placeholder="Choose a Language..." class="chzn-select" style="width:350px;" tabindex="2">
-          <option value=""></option> 
-          <% @languages.each do |language| %>
-            <option value=<%= language.syntax_highlighting %> ><%= language.name %></option> 
-          <% end %>
-        </select>
-      </div>
-    </div>
+  <%= f.select :language_id, @languages.map{ |l| [l.name, l.id, {"data-syntax" => l.syntax_highlighting}, l.id]},{},
+     {"data-placeholder" => "Choose a Language...",
+      class: "input-xlarge chzn-select" }%>
   <%= f.input :code,
     input_html: { class: 'input-block-level'} %>
   <div id='editor'></div>

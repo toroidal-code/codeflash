@@ -21,7 +21,19 @@
 $(document).ready(function () {
     $('.chzn-select').chosen().change(
     	function(){
-    		var str = "ace/mode/"+$('.chzn-select').val();
-    		editor.getSession().setMode(str);
+	    	var str;
+			if($('.chzn-select option:selected').data().syntax == "none"){
+				str = null;
+			}else{
+				str = "ace/mode/"+$('.chzn-select option:selected').data().syntax;
+			}
+			editor.getSession().setMode(str);
     	});
+	var str;
+	if($('.chzn-select option:selected').data().syntax == "none"){
+		str = null;
+	}else{
+		str = "ace/mode/"+$('.chzn-select option:selected').data().syntax;
+	}
+	editor.getSession().setMode(str);
 });

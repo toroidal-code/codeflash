@@ -10,7 +10,7 @@
 
 <p>
   <b>Favorite language:</b>
-  <%= @profile.language %>
+  <%= @profile.language.name if !@profile.language.nil? %>
 </p>
 
 <p>
