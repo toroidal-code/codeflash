@@ -1,9 +1,3 @@
-<style type="text/css">
-  .solution, .highlighted {
-    margin: 0px;
-  }
-</style>
-
 <% css_id = SecureRandom.uuid %>
 
 <div class="solution well well-small" onclick="$('#<%= css_id %>').slideToggle()">
@@ -12,4 +6,4 @@
   <%= link_to solution.problem.problem_name, problem_solution_path(solution.problem, solution) %>
 </div>
 
-<pre class="highlighted hide" id="<%= css_id %>"><code><%= solution.code %></code></pre>
+<div class="hide code-container" id="<%= css_id %>"><%== Pygments.highlight(solution.code, :lexer => solution.language.) %></div>

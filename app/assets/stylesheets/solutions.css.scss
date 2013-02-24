@@ -10,3 +10,22 @@
   margin-top: 5px;
   margin-bottom: 5px;
 }
+
+.code-container {
+  padding: 0px;
+  margin: 0px;;
+}
+
+.highlight {
+  border: 1px solid rgba(0,0,0,0.15);
+  border-radius: 4px;
+}
+
+.highlight pre {
+  margin-bottom: 0px;
+  background-color: transparent;
+}
+
+.solution {
+  margin: 0px;
+}

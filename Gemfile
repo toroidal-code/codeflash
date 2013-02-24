@@ -26,6 +26,9 @@ gem 'rvm-capistrano'
 ## Required by rake task doc:app
 gem 'yard'
 
+## Pygments
+gem 'pygments.rb'
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
