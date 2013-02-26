@@ -6,8 +6,8 @@
 
 <% @problems.each do |problem| %>
   <tr>
-    <td><%= link_to problem.problem_name, problem %></td>
-    <td><%= problem.point_value %></td>
+    <td><%= link_to problem.name, problem %></td>
+    <td><%= problem.points %></td>
   </tr>
 <% end %>
 </table>

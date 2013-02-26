@@ -10,7 +10,7 @@
 <% @achievements.each do |achievement| %>
   <tr>
     <td><%= achievement.name %></td>
-    <td><%= achievement.point_value %></td>
+    <td><%= achievement.points %></td>
     <td><%= link_to 'Show', achievement %></td>
     <td><%= link_to 'Edit', edit_achievement_path(achievement) %></td>
     <td><%= link_to 'Destroy', achievement, method: :delete, data: { confirm: 'Are you sure?' } %></td>

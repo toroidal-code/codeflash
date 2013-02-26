@@ -14,7 +14,7 @@
   <% if !user_signed_in? %>
     </div>
     <div class="span4">
-      <%= render 'users/sessions/compact' %>
+      <%= render 'users/sessions/compact', display_forgot: true%>
       <%= render 'users/registrations/compact' %>
     </div>
   <% end %>

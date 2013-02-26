@@ -1,7 +1,7 @@
 <div class = "well well-small">
-  <h1>New solution for <%= @problem.problem_name %>
-  </h1>
-
-  <%= render 'create_form', solution: @solution %>
+  <h1>New solution for <%= @problem.name %></h1>
+  <%= render 'form',
+    problem: @problem,
+    solution: @solution,
+    back_path: problem_solutions_path(@problem)%>
 </div>
-<%= link_to 'Back', problem_solutions_path %>

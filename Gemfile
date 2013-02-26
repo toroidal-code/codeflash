@@ -36,13 +36,14 @@ group :assets do
   gem 'turbo-sprockets-rails3'
   gem 'jquery-rails', '~> 2.2.1'
   gem 'ace-rails-ap'
+  gem 'simple_form'
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platforms => :ruby
 end
 
 group :development do
   gem 'binding_of_caller', '~> 0.6'
-  gem 'better_errors', '~> 0.6'
+  gem 'better_errors', '~> 0.7'
   gem 'foreman'
   gem 'yard-activerecord'
   gem 'redcarpet'
