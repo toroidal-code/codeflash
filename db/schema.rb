@@ -11,12 +11,12 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130223184720) do
+ActiveRecord::Schema.define(:version => 20130226005008) do
 
   create_table "achievements", :force => true do |t|
     t.string   "name"
     t.text     "description"
-    t.integer  "point_value"
+    t.integer  "points"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
@@ -62,11 +62,11 @@ ActiveRecord::Schema.define(:version => 20130223184720) do
   add_index "problem_comments", ["profile_id"], :name => "index_problem_comments_on_profile_id"
 
   create_table "problems", :force => true do |t|
-    t.string   "problem_name"
+    t.string   "name"
     t.text     "description"
-    t.integer  "point_value"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.integer  "points"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
     t.integer  "profile_id"
     t.string   "shortname"
   end
