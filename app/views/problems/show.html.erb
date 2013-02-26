@@ -13,6 +13,17 @@
   <%= @problem.points %>
 </p>
 
+<hr>
+
+<ul>
+<% @solutions.each do |solution| %>
+  <%= render 'solutions/compact', solution: solution %>
+<% end %>
+<div class="pagination-centered">
+  <%= will_paginate @solutions %>
+</div>
+</ul>
+
 <%= link_to 'New Solution', new_problem_solution_path(@problem) %> |
 <%= link_to 'Edit', edit_problem_path(@problem) %> |
 <%= link_to 'Destroy', @problem, method: :delete, data: { confirm: 'Are you sure?' } %> |
