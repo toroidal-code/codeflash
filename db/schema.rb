@@ -11,12 +11,12 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130218210146) do
+ActiveRecord::Schema.define(:version => 20130226005008) do
 
   create_table "achievements", :force => true do |t|
     t.string   "name"
     t.text     "description"
-    t.integer  "point_value"
+    t.integer  "points"
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
   end
@@ -62,11 +62,11 @@ ActiveRecord::Schema.define(:version => 20130218210146) do
   add_index "problem_comments", ["profile_id"], :name => "index_problem_comments_on_profile_id"
 
   create_table "problems", :force => true do |t|
-    t.string   "problem_name"
+    t.string   "name"
     t.text     "description"
-    t.integer  "point_value"
-    t.datetime "created_at",   :null => false
-    t.datetime "updated_at",   :null => false
+    t.integer  "points"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
     t.integer  "profile_id"
     t.string   "shortname"
   end
@@ -76,13 +76,14 @@ ActiveRecord::Schema.define(:version => 20130218210146) do
   create_table "profiles", :force => true do |t|
     t.string   "name"
     t.text     "about_me"
-    t.string   "favorite_language"
     t.string   "github"
     t.integer  "user_id"
-    t.datetime "created_at",        :null => false
-    t.datetime "updated_at",        :null => false
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
+    t.integer  "language_id"
   end
 
+  add_index "profiles", ["language_id"], :name => "index_profiles_on_language_id"
   add_index "profiles", ["user_id"], :name => "index_profiles_on_user_id"
 
   create_table "solution_comments", :force => true do |t|
