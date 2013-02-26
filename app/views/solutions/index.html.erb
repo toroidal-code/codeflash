@@ -23,11 +23,16 @@
       <li class="nav-header">Languages</li>
       <li class="active"><a href="#">All</a></li>
       <% Language.all.each do |language|
-            num = @problem.solutions.find_all{|s| s.language == language}.count
-            if num != 0 %>
-              <li><a href="#"><%= "#{language.name} (#{num})" %></a></li>
-            <%end%>
-         <% end %>
+          if @problem.nil?
+            solutions = Solution.all
+          else
+            solutions = @problem.solutions
+          end
+          num = solutions.find_all{|s| s.language == language}.count
+          if num != 0 %>
+            <li><a href="#"><%= "#{language.name} (#{num})" %></a></li>
+          <%end%>
+       <% end %>
     </ul>
   </div>
 
