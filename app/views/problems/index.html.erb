@@ -34,8 +34,8 @@
     <% @problems.each do |problem| %>
       <div class="row-fluid well well-small">
         <div class="span3">
-          <%= link_to problem.problem_name, problem %>
-          <span class="muted">(<%= problem.point_value %> points)</span>
+          <%= link_to problem.name, problem %>
+          <span class="muted">(<%= problem.points %> points)</span>
         </div>
         <div class="span9">
           <%= problem.description %>

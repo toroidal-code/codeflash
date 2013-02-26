@@ -5,7 +5,7 @@ class SolutionsControllerTest < ActionController::TestCase
     @user = User.create!(email: "lol@lol.lol", username: "LOLOLOLOLOL", password: "LOLlol101", admin: true)
     # user.skip_confirmation!
     sign_in(@user)
-    @problem = Problem.create!(description: "lol", point_value: 9, problem_name: "lololol", shortname: "lolololsdjkfnasd")
+    @problem = Problem.create!(description: "lol", points: 9, name: "lololol", shortname: "lolololsdjkfnasd")
     @solution = solutions(:one)
     @solution.problem = @problem
     @solution.profile = @user.profile
