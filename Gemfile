@@ -39,6 +39,8 @@ group :assets do
   gem 'chosen-rails'
   gem 'holder_rails'
   gem 'simple_form'
+  gem 'will_paginate'
+  gem 'bootstrap-will_paginate'
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platforms => :ruby
 end

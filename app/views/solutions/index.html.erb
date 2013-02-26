@@ -23,7 +23,7 @@
       <li class="nav-header">Languages</li>
       <li class="active"><a href="#">All</a></li>
       <% Language.all.each do |language|
-            num = @solutions.count{|s| s.language == language}
+            num = @problem.solutions.find_all{|s| s.language == language}.count
             if num != 0 %>
               <li><a href="#"><%= "#{language.name} (#{num})" %></a></li>
             <%end%>
@@ -36,9 +36,12 @@
     <% @solutions.each do |solution| %>
       <%= render 'solutions/compact', solution: solution %>
     <% end %>
+    <div class="pagination-centered">
+      <%= will_paginate @solutions %>
+    </div>
   </div>
-
 </div>
+
 
 <!-- Hide the code view by default -->
 <script type="text/javascript">

@@ -39,6 +39,8 @@ GEM
       debug_inspector (>= 0.0.1)
     bootstrap-sass (2.3.0.1)
       sass (~> 3.2)
+    bootstrap-will_paginate (0.0.9)
+      will_paginate
     builder (3.0.4)
     cancan (1.6.9)
     capistrano (2.14.2)
@@ -189,6 +191,7 @@ GEM
       multi_json (~> 1.0, >= 1.0.2)
     warden (1.2.1)
       rack (>= 1.0)
+    will_paginate (3.0.4)
     win32console (1.3.2-x86-mingw32)
     yard (0.8.5)
     yard-activerecord (0.0.8)
@@ -203,6 +206,7 @@ DEPENDENCIES
   better_errors (~> 0.7)
   binding_of_caller (~> 0.6)
   bootstrap-sass (~> 2.3)
+  bootstrap-will_paginate
   cancan (~> 1.6.9)
   capistrano
   chosen-rails
@@ -225,5 +229,6 @@ DEPENDENCIES
   strong_parameters
   turbo-sprockets-rails3
   uglifier (>= 1.0.3)
+  will_paginate
   yard
   yard-activerecord
