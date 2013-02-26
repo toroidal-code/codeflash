@@ -11,7 +11,7 @@ class ProblemsController < ApplicationController
   #
   # @return [String] the HTML/JSON for the problems page
   def index
-    @problems = Problem.all
+    @problems = Problem.paginate(page: params[:page], per_page: 10 ).order('created_at DESC')
 
     respond_with @problems
   end
@@ -24,7 +24,7 @@ class ProblemsController < ApplicationController
   # @return [String] the HTML/JSON for the problem.
   def show
     @problem = Problem.find_by_shortname(params[:id])
-
+    @solutions = Solution.where(problem_id: @problem.id).paginate(page: params[:page], per_page: 10 ).order('created_at DESC')
     respond_with @problem
   end
 
