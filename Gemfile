@@ -34,7 +34,6 @@ group :assets do
   gem 'bootstrap-sass', '~> 2.3'
   gem 'coffee-rails', github: 'rails/coffee-rails'
   gem 'uglifier', '>= 1.0.3'
-  gem 'turbo-sprockets-rails3'
   gem 'jquery-rails', '~> 2.2.1'
   gem 'ace-rails-ap'
   gem 'simple_form', github: 'plataformatec/simple_form', branch: 'rails_4'
