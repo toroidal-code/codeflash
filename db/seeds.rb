@@ -111,9 +111,9 @@ User.create!([{email: 'code@flash.io',
 Profile.create!([{user: User.find_by_username('codeflash'),
                   name: 'codeflash'}])
 
-Problem.create!([{problem_name: 'Swag',
+Problem.create!([{name: 'Swag',
                   shortname: 'swag',
-                  point_value: 1,
+                  points: 1,
                   description: 'Wait 15s, print "Swag", repeat.',
                   profile_id: Profile.find_by_name('codeflash').id}])
 

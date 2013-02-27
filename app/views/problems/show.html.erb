@@ -2,8 +2,8 @@
     <%== Pygments.css('.highlight', {:style => "monokai"}) %>
 </style>
 <h1>
-  <%= @problem.problem_name %>
-  <span class="muted">(<%= @problem.point_value %> points)</span>
+  <%= @problem.name %>
+  <span class="muted">(<%= @problem.points %> points)</span>
 </h1>
 
 <p><%= @problem.description %></p>
@@ -11,9 +11,12 @@
 <hr>
 
 <ul>
-<% @problem.solutions.each do |solution| %>
+<% @solutions.each do |solution| %>
   <%= render 'solutions/compact', solution: solution %>
 <% end %>
+<div class="pagination-centered">
+  <%= will_paginate @solutions %>
+</div>
 </ul>
 
 <%= link_to 'New Solution', new_problem_solution_path(@problem) %> |

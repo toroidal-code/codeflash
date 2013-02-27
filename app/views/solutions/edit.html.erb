@@ -3,5 +3,5 @@
   <%= render 'form',
     problem: @problem,
     solution: @solution,
-    back_path: problem_solution_path(@solution) %>
+    back_path: problem_solution_path(@problem, @solution) %>
 </div>

@@ -109,6 +109,6 @@ class AchievementsController < ApplicationController
   private
 
   def achievement_params
-    params[:achievement].permit(:description, :name, :point_value)
+    params[:achievement].permit(:description, :name, :points)
   end
 end

@@ -3,7 +3,7 @@
 <div class="solution well well-small" onclick="$('#<%= css_id %>').slideToggle()">
   <span class="pull-right">submitted by: <%= link_to User.find(solution.profile.user).username, solution.profile %></span>
   <%= solution.votes %>
-  <%= link_to solution.problem.problem_name, problem_solution_path(solution.problem, solution) %>
+  <%= link_to solution.problem.name, problem_solution_path(solution.problem, solution) %>
   <% if !params[:problem_id] %>
     - <%= solution.language.name %>
   <% end %>
