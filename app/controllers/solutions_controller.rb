@@ -2,6 +2,8 @@
 class SolutionsController < ApplicationController
   authorize_resource
 
+  before_filter :find_solution, only: [:show, :edit, :update, :destroy]
+
   respond_to :html, :json
 
   # Lists all the solutions to a given to the solution's problem
@@ -29,7 +31,6 @@ class SolutionsController < ApplicationController
   #
   # @return [String] the HTML/JSON for the solution
   def show
-    @solution = Solution.find(params[:id])
     @problem = Problem.find_by_shortname(params[:problem_id])
 
     respond_with @solution
@@ -54,7 +55,6 @@ class SolutionsController < ApplicationController
   #
   # @return [String] the HTML/JSON for the solution edit page
   def edit
-    @solution = Solution.find(params[:id])
     @problem = @solution.problem
   end
 
@@ -86,7 +86,6 @@ class SolutionsController < ApplicationController
   #
   # @return [String] the HTML/JSON for the updated solution
   def update
-    @solution = Solution.find(params[:id])
     @problem = @solution.problem
     respond_to do |format|
       if @solution.update_attributes(solution_params)
@@ -107,7 +106,6 @@ class SolutionsController < ApplicationController
   # @return [String] the HTML/JSON notifying the user that the resource
   # was destroyed
   def destroy
-    @solution = Solution.find(params[:id])
     @problem = @solution.problem
     @solution.destroy
 
@@ -117,7 +115,12 @@ class SolutionsController < ApplicationController
     end
   end
 
+  def find_solution
+    @solution = Solution.find(params[:id])
+  end
+
   private
+
   def solution_params
     params[:solution].permit(:code, :problem_id, :up_votes, :down_votes)
   end
