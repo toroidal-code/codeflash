@@ -108,6 +108,6 @@ class ProblemsController < ApplicationController
   private
 
   def problem_params
-    params[:problem].permit(:description, :point_value, :problem_name, :shortname)
+    params[:problem].permit(:description, :points, :name, :shortname)
   end
 end
