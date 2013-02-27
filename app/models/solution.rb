@@ -3,6 +3,7 @@
 # well the user did with his/her solution. Vote counts affect the scores of
 # users. Additionally, users can win achievements from having good solutions.
 class Solution < ActiveRecord::Base
+  include ActiveModel::ForbiddenAttributesProtection
   include Votable
 
   belongs_to :profile
@@ -10,8 +11,6 @@ class Solution < ActiveRecord::Base
   belongs_to :language
   has_and_belongs_to_many :achievements
   has_many :comments, class_name: 'SolutionComment'
-
-  #attr_accessible :code, :problem_id
 
   validates :code,
     presence: true

@@ -1,6 +1,9 @@
 # Manages Profiles and their public interfaces.
 class ProfilesController < ApplicationController
   authorize_resource
+
+  respond_to :html, :json
+
   # Lists all the profiles in the database.
   #
   # GET /profiles
@@ -9,10 +12,8 @@ class ProfilesController < ApplicationController
   # @return [String] the HTML/JSON for the profiles page
   def index
     @profiles = Profile.all
-    respond_to do |format|
-      format.html # index.html.erb
-      format.json { render json: @profiles }
-    end
+
+    respond_with @profiles
   end
 
   # Shows the page for the profile.
@@ -26,10 +27,8 @@ class ProfilesController < ApplicationController
     @user = User.find_by_username(params[:id])
     # @user = User.find_by_username(params[:id])
     @profile = @user.profile
-    respond_to do |format|
-      format.html # show.html.erb
-      format.json { render json: @profile }
-    end
+
+    respond_with @profile
   end
 
   # Renders a new language JSON.
@@ -41,10 +40,8 @@ class ProfilesController < ApplicationController
   def new
     @user = current_user
     @profile = Profile.new
-    respond_to do |format|
-      format.html # new.html.erb
-      format.json { render json: @profile }
-    end
+
+    respond_with @profile
   end
 
   # Edits the valuses of a profile.
@@ -119,6 +116,6 @@ class ProfilesController < ApplicationController
 
   private
   def profile_params
-    params[:profile].permit(:about_me, :favorite_language, :github, :name, :user_id)
+    params[:profile].permit(:about_me, :language_id, :github, :name, :user_id)
   end
 end

@@ -2,8 +2,8 @@
 class Achievement < ActiveRecord::Base
   has_and_belongs_to_many :solutions
 
-  validates :name, :description, :point_value,
+  validates :name, :description, :points,
     presence: true
-  validates :point_value,
+  validates :points,
     numericality: { only_integer: true, greater_than: 0 }
 end

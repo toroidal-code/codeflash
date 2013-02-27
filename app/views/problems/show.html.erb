@@ -1,8 +1,6 @@
-<p id="notice"><%= notice %></p>
-
 <p>
   <b>Problem name:</b>
-  <%= @problem.problem_name %>
+  <%= @problem.name %>
 </p>
 
 <p>
@@ -12,7 +10,7 @@
 
 <p>
   <b>Point value:</b>
-  <%= @problem.point_value %>
+  <%= @problem.points %>
 </p>
 
 <%= link_to 'New Solution', new_problem_solution_path(@problem) %> |

@@ -69,4 +69,7 @@ Codeflash::Application.configure do
 
   #Eager loading
   config.eager_load = true
+
+  # Use SSL on the entire site for production
+  config.force_ssl = false
 end
