@@ -24,8 +24,9 @@ gem 'cancan', '~> 1.6.9'
 gem 'capistrano'
 gem 'rvm-capistrano'
 
-## Required by rake task doc:app
+# Required by rake for RAILS_ENV=production, thus outside :assets
 gem 'yard', '~> 0.8.5.2'
+gem 'simple_form', github: 'plataformatec/simple_form', branch: 'rails_4'
 
 ## Pygments, using DHowett's fork (updated to pygments 1.6) until tmm1 approves the pull request.
 gem 'pygments.rb', github: 'DHowett/pygments.rb', require: 'pygments'
@@ -37,14 +38,12 @@ group :assets do
   gem 'bootstrap-sass', '~> 2.3'
   gem 'coffee-rails', github: 'rails/coffee-rails'
   gem 'uglifier', '>= 1.0.3'
-  gem 'turbo-sprockets-rails3'
   gem 'jquery-rails', '~> 2.2.1'
   gem 'ace-rails-ap'
   gem 'chosen-rails'
   gem 'holder_rails'
   gem 'will_paginate'
   gem 'bootstrap-will_paginate'
-  gem 'simple_form', github: 'plataformatec/simple_form', branch: 'rails_4'
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platforms => :ruby
 end
