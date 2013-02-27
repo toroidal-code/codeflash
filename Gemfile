@@ -28,8 +28,12 @@ gem 'rvm-capistrano'
 gem 'yard', '~> 0.8.5.2'
 gem 'simple_form', github: 'plataformatec/simple_form', branch: 'rails_4'
 
-## Pygments, using DHowett's fork (updated to pygments 1.6) until tmm1 approves the pull request.
+# Pygments, using DHowett's fork (updated to pygments 1.6) until tmm1 approves the pull request.
 gem 'pygments.rb', github: 'DHowett/pygments.rb', require: 'pygments'
+
+# Required by methods called inside RAILS_ENV=production
+gem 'will_paginate'
+gem 'bootstrap-will_paginate'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -42,8 +46,6 @@ group :assets do
   gem 'ace-rails-ap'
   gem 'chosen-rails'
   gem 'holder_rails'
-  gem 'will_paginate'
-  gem 'bootstrap-will_paginate'
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platforms => :ruby
 end
