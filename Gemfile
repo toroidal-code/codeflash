@@ -25,7 +25,7 @@ gem 'capistrano'
 gem 'rvm-capistrano'
 
 ## Required by rake task doc:app
-gem 'yard'
+gem 'yard', '~> 0.8.5.2'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -37,7 +37,7 @@ group :assets do
   gem 'turbo-sprockets-rails3'
   gem 'jquery-rails', '~> 2.2.1'
   gem 'ace-rails-ap'
-  gem 'simple_form'
+  gem 'simple_form', github: 'plataformatec/simple_form', branch: 'rails_4'
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platforms => :ruby
 end
@@ -46,7 +46,7 @@ group :development do
   gem 'binding_of_caller', '~> 0.6'
   gem 'better_errors', '~> 0.7'
   gem 'foreman'
-  gem 'yard-activerecord'
+  gem 'yard-activerecord', '~> 0.0.8'
   gem 'redcarpet'
 end
 

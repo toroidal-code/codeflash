@@ -10,6 +10,15 @@ GIT
       warden (~> 1.2.1)
 
 GIT
+  remote: git://github.com/plataformatec/simple_form.git
+  revision: f70d638f38459474609a452bf3df71a8dc969cff
+  branch: rails_4
+  specs:
+    simple_form (3.0.0.dev)
+      actionpack (>= 4.0.0.beta, < 4.1)
+      activemodel (>= 4.0.0.beta, < 4.1)
+
+GIT
   remote: git://github.com/rails/activerecord-deprecated_finders.git
   revision: 5937f3e7102f9be461ce2dccaef0e4d14e92cd35
   specs:
@@ -174,7 +183,6 @@ GEM
     rvm-capistrano (1.2.7)
       capistrano (>= 2.0.0)
     sass (3.2.6)
-    simple_form (1.4.1)
     simplecov (0.7.1)
       multi_json (~> 1.0)
       simplecov-html (~> 0.7.1)
@@ -233,9 +241,9 @@ DEPENDENCIES
   redcarpet
   rvm-capistrano
   sass-rails!
-  simple_form
+  simple_form!
   simplecov
   turbo-sprockets-rails3
   uglifier (>= 1.0.3)
-  yard
-  yard-activerecord
+  yard (~> 0.8.5.2)
+  yard-activerecord (~> 0.0.8)
