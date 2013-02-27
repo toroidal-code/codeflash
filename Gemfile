@@ -28,6 +28,10 @@ gem 'rvm-capistrano'
 gem 'yard', '~> 0.8.5.2'
 gem 'simple_form', github: 'plataformatec/simple_form', branch: 'rails_4'
 
+# Required by methods called inside RAILS_ENV=production
+gem 'will_paginate'
+gem 'bootstrap-will_paginate'
+
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -39,8 +43,6 @@ group :assets do
   gem 'ace-rails-ap'
   gem 'chosen-rails'
   gem 'holder_rails'
-  gem 'will_paginate'
-  gem 'bootstrap-will_paginate'
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platforms => :ruby
 end
