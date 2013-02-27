@@ -9,7 +9,7 @@ class Problem < ActiveRecord::Base
   validates :points,
     numericality: { only_integer: true, greater_than: 0 }
   validates :shortname,
-    format: { with: /[a-z]+/ },
+    format: { with: /[a-z0-9-]+/ },
     uniqueness: true
 
   # Returns the identifier of the Problem for URLs (its shortname).
