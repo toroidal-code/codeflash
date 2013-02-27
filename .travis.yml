@@ -7,6 +7,7 @@ before_script:
 - psql -c 'create database codeflash_test;' -U postgres
 - mv config/database.yml.travis config/database.yml
 script:
+- RAILS_ENV=test bundle exec rake db:reset --trace
 - RAILS_ENV=test bundle exec rake db:migrate --trace
 - bundle exec rake db:test:prepare
 - bundle exec rake test
