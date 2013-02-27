@@ -20,8 +20,8 @@ ActiveRecord::Schema.define(version: 20130226005008) do
     t.string   "name"
     t.text     "description"
     t.integer  "points"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
   end
 
   create_table "achievements_solutions", id: false, force: true do |t|
@@ -33,8 +33,8 @@ ActiveRecord::Schema.define(version: 20130226005008) do
 
   create_table "categories", force: true do |t|
     t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
   create_table "categories_problems", id: false, force: true do |t|
@@ -46,8 +46,8 @@ ActiveRecord::Schema.define(version: 20130226005008) do
 
   create_table "languages", force: true do |t|
     t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",          null: false
+    t.datetime "updated_at",          null: false
     t.string   "syntax_highlighting"
   end
 
@@ -57,8 +57,8 @@ ActiveRecord::Schema.define(version: 20130226005008) do
     t.text     "body"
     t.integer  "up_votes",   default: 0
     t.integer  "down_votes", default: 0
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   add_index "problem_comments", ["problem_id"], name: "index_problem_comments_on_problem_id"
@@ -68,8 +68,8 @@ ActiveRecord::Schema.define(version: 20130226005008) do
     t.string   "name"
     t.text     "description"
     t.integer  "points"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.integer  "profile_id"
     t.string   "shortname"
   end
@@ -81,8 +81,8 @@ ActiveRecord::Schema.define(version: 20130226005008) do
     t.text     "about_me"
     t.string   "github"
     t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",  null: false
+    t.datetime "updated_at",  null: false
     t.integer  "language_id"
   end
 
@@ -95,8 +95,8 @@ ActiveRecord::Schema.define(version: 20130226005008) do
     t.text     "body"
     t.integer  "up_votes",    default: 0
     t.integer  "down_votes",  default: 0
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
   end
 
   add_index "solution_comments", ["profile_id"], name: "index_solution_comments_on_profile_id"
@@ -108,8 +108,8 @@ ActiveRecord::Schema.define(version: 20130226005008) do
     t.integer  "up_votes",    default: 0
     t.integer  "down_votes",  default: 0
     t.integer  "problem_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
     t.integer  "language_id"
   end
 
@@ -128,8 +128,8 @@ ActiveRecord::Schema.define(version: 20130226005008) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
-    t.datetime "created_at"
-    t.datetime "updated_at"
+    t.datetime "created_at",                             null: false
+    t.datetime "updated_at",                             null: false
     t.boolean  "admin",                  default: false
     t.string   "username"
     t.string   "confirmation_token"
