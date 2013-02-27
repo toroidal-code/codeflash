@@ -1,7 +1,6 @@
 # Contains a user's progress on Codeflash, along with other information about
 # him/her that should appear on his/her profile page.
 class Profile < ActiveRecord::Base
-  include ActiveModel::ForbiddenAttributesProtection
   belongs_to :user
   belongs_to :language
   has_many :solutions

@@ -67,6 +67,9 @@ Codeflash::Application.configure do
 
   config.action_mailer.default_url_options = { host: 'codeflash.herokuapp.com' }
 
+  #Eager loading
+  config.eager_load = true
+
   # Use SSL on the entire site for production
   config.force_ssl = false
 end

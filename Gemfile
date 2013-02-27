@@ -1,8 +1,9 @@
 source 'https://rubygems.org'
 
-# Rails
-gem 'rails', '3.2.12'
-gem 'strong_parameters'
+# Rails 4
+gem 'rails', github: 'rails/rails'
+gem 'activerecord-deprecated_finders', github: 'rails/activerecord-deprecated_finders'
+gem 'journey', github: 'rails/journey'
 
 # Server
 gem 'puma'
@@ -16,7 +17,7 @@ gem 'gravatar-ultimate'
 
 # Auth
 gem 'omniauth-github', '~> 1.1.0'
-gem 'devise', '~> 2.2.3'
+gem 'devise', github: 'idl3/devise', branch: 'rails4'
 gem 'cancan', '~> 1.6.9'
 
 # Deploying
@@ -24,19 +25,19 @@ gem 'capistrano'
 gem 'rvm-capistrano'
 
 ## Required by rake task doc:app
-gem 'yard'
+gem 'yard', '~> 0.8.5.2'
 
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
-  gem 'sass-rails',   '~> 3.2.3'
+  gem 'sass-rails', github: 'rails/sass-rails'
   gem 'bootstrap-sass', '~> 2.3'
-  gem 'coffee-rails', '~> 3.2.1'
+  gem 'coffee-rails', github: 'rails/coffee-rails'
   gem 'uglifier', '>= 1.0.3'
   gem 'turbo-sprockets-rails3'
   gem 'jquery-rails', '~> 2.2.1'
   gem 'ace-rails-ap'
-  gem 'simple_form'
+  gem 'simple_form', github: 'plataformatec/simple_form', branch: 'rails_4'
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platforms => :ruby
 end
@@ -45,7 +46,7 @@ group :development do
   gem 'binding_of_caller', '~> 0.6'
   gem 'better_errors', '~> 0.7'
   gem 'foreman'
-  gem 'yard-activerecord'
+  gem 'yard-activerecord', '~> 0.0.8'
   gem 'redcarpet'
 end
 
