@@ -2,7 +2,7 @@
 class ProblemsController < ApplicationController
   authorize_resource
 
-  respond_to :html, :json
+  respond_to :html, :json, :js
 
   # Lists all the problems in the database.
   #
