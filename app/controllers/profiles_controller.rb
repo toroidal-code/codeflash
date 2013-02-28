@@ -2,6 +2,8 @@
 class ProfilesController < ApplicationController
   authorize_resource
 
+  before_filter :find_profile, only: [:show, :edit, :update, :destroy]
+
   respond_to :html, :json
 
   # Lists all the profiles in the database.
@@ -24,10 +26,6 @@ class ProfilesController < ApplicationController
   #
   # @return [String] the HTML/JSON for the profile
   def show
-    @user = User.find_by_username(params[:id])
-    # @user = User.find_by_username(params[:id])
-    @profile = @user.profile
-
     respond_with @profile
   end
 
@@ -51,8 +49,6 @@ class ProfilesController < ApplicationController
   #
   # @return [String] the HTML/JSON for the profile edit page
   def edit
-    @user = User.find_by_username(params[:id])
-    @profile = @user.profile
     authorize! :edit, @profile
   end
 
@@ -82,8 +78,6 @@ class ProfilesController < ApplicationController
   #
   # @return [String] the HTML/JSON for the updated profile
   def update
-    @user = User.find_by_username(params[:id])
-    @profile = @user.profile
     authorize! :update, @profile
     respond_to do |format|
       if @user.update_attributes(params[:user]) && @profile.update_attributes(profile_params)
@@ -104,14 +98,17 @@ class ProfilesController < ApplicationController
   # @return [String] the HTML/JSON notifying the user that the resource
   # was destroyed
   def destroy
-    @user = User.find_by_username(params[:id])
-    @profile = @user.profile
     @profile.destroy
 
     respond_to do |format|
       format.html { redirect_to profiles_url }
       format.json { head :no_content }
     end
+  end
+
+  def find_profile
+    @user = User.find_by_username(params[:id])
+    @profile = @user.profile
   end
 
   private
