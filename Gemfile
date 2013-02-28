@@ -31,8 +31,6 @@ gem 'simple_form', github: 'plataformatec/simple_form', branch: 'rails_4'
 # Required by methods called inside RAILS_ENV=production
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
-gem 'ajax_pagination'
-gem "historyjs-rails"
 
 # Gems used only for assets and not required
 # in production environments by default.

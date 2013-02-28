@@ -18,11 +18,8 @@ class SolutionsController < ApplicationController
     else
       @solutions = Solution.paginate(page: params[:page], per_page: 10 ).order('created_at DESC')
     end
-    respond_to do |format|
-      format.html
-      ajax_respond format, section_id: 'solutions'
-      format.json { render json: @solutions }
-    end
+
+    respond_with @solutions
   end
 
   # Shows the page for the solution.
