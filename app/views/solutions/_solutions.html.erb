@@ -1,0 +1,6 @@
+<% @solutions.each do |solution| %>
+    <%= render 'solutions/compact', solution: solution %>
+<% end %>
+<div class="pagination-centered">
+  <%= will_paginate @solutions, renderer: WillPaginate::ActionView::LinkRenderer %>
+</div>

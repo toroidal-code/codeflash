@@ -19,7 +19,7 @@ class SolutionsController < ApplicationController
       @solutions = Solution.paginate(page: params[:page], per_page: 10 ).order('created_at DESC')
     end
 
-    respond_with @solutions
+    respond_to :html, :json, :js
   end
 
   # Shows the page for the solution.
