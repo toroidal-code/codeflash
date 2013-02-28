@@ -38,12 +38,7 @@
 
   <!-- problem list -->
   <div class="span9">
-    <% @solutions.each do |solution| %>
-      <%= render 'solutions/compact', solution: solution %>
-    <% end %>
-    <div class="pagination-centered">
-      <%= will_paginate @solutions %>
-    </div>
+    <%= ajax_section id: 'solutions', render: 'solutions' %>
   </div>
 </div>
 
