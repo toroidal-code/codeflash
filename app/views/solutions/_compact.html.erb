@@ -1,12 +1,15 @@
 <style type="text/css">
-  .solution, .highlighted {
+  .solution, .highlighted, .nomargin{
     margin: 0px;
   }
 </style>
 
 <% css_id = SecureRandom.uuid %>
+<% css_id2 = SecureRandom.uuid %>
+<% css_id3 = SecureRandom.uuid %>
 
-<div class="solution well well-small" onclick="$('#<%= css_id %>').slideToggle()">
+<div class="nomargin" id="<%= css_id3%>">
+<div class="solution well well-small" >
   <span class="pull-right">submitted by: <%= link_to User.find(solution.profile.user).username, solution.profile %></span>
   <%= solution.votes %>
   <%= link_to solution.problem.name, problem_solution_path(solution.problem, solution) %>
@@ -15,4 +18,36 @@
   <% end %>
 </div>
 
-<pre class="highlighted hide" id="<%= css_id %>"><code><%= solution.code %></code></pre>
+    <pre class="highlighted hide" id="<%= css_id %>">
+        <code>
+            <%= solution.code %>
+        </code>
+    </pre>
+    <div class="nomargin hide" id="<%= css_id2 %>">
+        <a href="javascript:void(0)">Click here to expand</a>
+    </div>
+</div>
+
+
+<script>
+    $('#<%=css_id3%>').mouseenter(function() {
+        $('#<%= css_id2%>').slideDown();
+    }).mouseleave(function() {
+        if ($('#<%=css_id%>').css('display') == 'none'){
+            $('#<%= css_id2%>').slideUp();
+        }
+    });
+    var click = false;
+    $('#<%= css_id2%> a').click(function(){
+        if (click == true){
+            $('#<%= css_id %>').slideUp();
+            $('#<%= css_id2%>').slideUp();
+            $('#<%= css_id2%> a').text('Click here to expand');
+            click = false;
+        } else {
+            $('#<%= css_id %>').slideDown();
+            $('#<%= css_id2%> a').text('Click here to hide');
+            click = true;
+        }
+    });
+</script>
