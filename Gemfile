@@ -24,8 +24,9 @@ gem 'cancan', '~> 1.6.9'
 gem 'capistrano'
 gem 'rvm-capistrano'
 
-## Required by rake task doc:app
+# Required by rake for RAILS_ENV=production, thus outside :assets
 gem 'yard', '~> 0.8.5.2'
+gem 'simple_form', github: 'plataformatec/simple_form', branch: 'rails_4'
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -36,7 +37,6 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
   gem 'jquery-rails', '~> 2.2.1'
   gem 'ace-rails-ap'
-  gem 'simple_form', github: 'plataformatec/simple_form', branch: 'rails_4'
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platforms => :ruby
 end
