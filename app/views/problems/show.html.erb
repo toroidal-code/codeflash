@@ -10,13 +10,8 @@
 
 <hr>
 
-<ul>
-<% @solutions.each do |solution| %>
-  <%= render 'solutions/compact', solution: solution %>
-<% end %>
-<div class="pagination-centered">
-  <%= will_paginate @solutions %>
-</div>
+<ul id="solutions">
+  <%= render 'solutions/solutions' %>
 </ul>
 
 <%= link_to 'New Solution', new_problem_solution_path(@problem) %> |

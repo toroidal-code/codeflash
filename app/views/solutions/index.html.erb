@@ -29,12 +29,7 @@
   </div>
 
   <!-- problem list -->
-  <div class="span9">
-    <% @solutions.each do |solution| %>
-      <%= render 'solutions/compact', solution: solution %>
-    <% end %>
-    <div class="pagination-centered">
-      <%= will_paginate @solutions %>
-    </div>
+  <div class="span9" id="solutions">
+    <%= render partial: 'solutions' %>
   </div>
 </div>
