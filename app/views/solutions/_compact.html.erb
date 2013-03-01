@@ -1,49 +1,19 @@
 <style type="text/css">
-  .solution, .highlighted, .nomargin{
+  .solution, .highlighted {
     margin: 0px;
   }
 </style>
 
-<div class="nomargin" id="solution-<%=solution.id%>">
-  <div class="solution well well-small" >
-    <span class="pull-right">submitted by: <%= link_to solution.profile.user.username, solution.profile %></span>
-    <%= solution.votes %>
-    <%= link_to solution.problem.name, problem_solution_path(solution.problem, solution) %>
-    <% if !params[:problem_id] %>
-        - <%= solution.language.name %>
-    <% end %>
-  </div>
+<% css_id = SecureRandom.uuid %>
 
-  <pre class="highlighted hide">
-    <code>
-      <%= solution.code %>
-    </code>
-  </pre>
-  <div class="nomargin hide" id="link">
-    <a href="javascript:void(0)">Click here to expand</a>
-  </div>
+<div class="solution well well-small" onclick="$('#<%= css_id %>').slideToggle()">
+  <span class="pull-right">submitted by: <%= link_to User.find(solution.profile.user).username, solution.profile %></span>
+  <%= solution.votes %>
+  <%= link_to solution.problem.name, problem_solution_path(solution.problem, solution) %>
+  <% if !params[:problem_id] %>
+    - <%= solution.language.name %>
+  <% end %>
 </div>
 
+<pre class="highlighted hide" id="<%= css_id %>"><code><%= solution.code %></code></pre>
 
-<script>
-    $('#solution-<%=solution.id%>').mouseenter(function() {
-        $('#solution-<%=solution.id%> #link').slideDown();
-    }).mouseleave(function() {
-        if ($('#solution-<%=solution.id%> .highlighted').css('display') == 'none'){
-            $('#solution-<%=solution.id%> #link').slideUp();
-        }
-    });
-    var click = false;
-    $('#solution-<%=solution.id%> #link a').click(function(){
-        if (click == true){
-            $('#solution-<%=solution.id%> .highlighted').slideUp();
-            $('#solution-<%=solution.id%> ').slideUp();
-            $('#solution-<%=solution.id%> #link a').text('Click here to expand');
-            click = false;
-        } else {
-            $('#solution-<%=solution.id%> .highlighted').slideDown();
-            $('#solution-<%=solution.id%> #link a').text('Click here to hide');
-            click = true;
-        }
-    });
-</script>
