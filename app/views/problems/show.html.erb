@@ -20,3 +20,4 @@
 
 <h2>Comments</h2>
 <%= render 'comments/show', comments: @problem.comments%>
+<%= render 'comments/form', form_array: [@problem, @problem.comments.build] %>

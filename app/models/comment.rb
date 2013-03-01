@@ -1,5 +1,6 @@
 class Comment < ActiveRecord::Base
   include Votable
+
   belongs_to :profile
   belongs_to :commentable, polymorphic: true
 

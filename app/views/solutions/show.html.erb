@@ -21,3 +21,4 @@
 <%= link_to 'Back', solutions_path%>
 
 <%= render 'comments/show', comments: @solution.comments %>
+<%= render 'comments/form', form_array: [@problem, @solution, @solution.comments.build] %>

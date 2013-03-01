@@ -46,6 +46,8 @@ ActiveRecord::Schema.define(version: 20130301012706) do
 
   create_table "comments", force: true do |t|
     t.text     "body"
+    t.integer  "up_votes",         default: 0
+    t.integer  "down_votes",       default: 0
     t.integer  "profile_id"
     t.integer  "commentable_id"
     t.string   "commentable_type"
