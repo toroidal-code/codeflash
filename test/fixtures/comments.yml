@@ -1,15 +1,11 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  solution:
-  profile:
   body: MyText
-  up_votes: 1
-  down_votes: 1
+  profile_id: 
+  commentable_id: 
 
 two:
-  solution:
-  profile:
   body: MyText
-  up_votes: 1
-  down_votes: 1
+  profile_id: 
+  commentable_id: 
