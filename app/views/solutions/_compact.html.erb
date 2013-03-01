@@ -1,19 +1,17 @@
-<style type="text/css">
-  .solution, .highlighted {
-    margin: 0px;
-  }
-</style>
 
-<% css_id = SecureRandom.uuid %>
 
-<div class="solution well well-small" onclick="$('#<%= css_id %>').slideToggle()">
-  <span class="pull-right">submitted by: <%= link_to User.find(solution.profile.user).username, solution.profile %></span>
-  <%= solution.votes %>
-  <%= link_to solution.problem.name, problem_solution_path(solution.problem, solution) %>
-  <% if !params[:problem_id] %>
-    - <%= solution.language.name %>
-  <% end %>
-</div>
-
-<pre class="highlighted hide" id="<%= css_id %>"><code><%= solution.code %></code></pre>
-
+  <div class="accordion-group">
+    <div class="accordion-heading">
+      <span class="pull-right">submitted by: <%= link_to User.find(solution.profile.user).username, solution.profile %></span>
+      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#collapse<%= index %>">
+        <%= solution.votes %>
+        <%= solution.problem.name %>
+        <% if !params[:problem_id] %>
+          - <%= solution.language.name %>
+        <% end %>
+      </a>
+    </div>
+    <div id="collapse<%=index%>" class=" solution accordion-body collapse">
+        <pre class="accordion-inner highlighted"><code><%= solution.code %></code></pre>
+    </div>
+  </div>

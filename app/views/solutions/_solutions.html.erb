@@ -1,6 +1,8 @@
-<% @solutions.each do |solution| %>
-    <%= render 'solutions/compact', solution: solution %>
-<% end %>
+<div class="accordion" id="accordion1">
+  <% @solutions.each_with_index do |solution, index| %>
+    <%= render 'solutions/compact', solution: solution, index: index %>
+  <% end %>
+</div>
 <div class="pagination-centered">
   <%= paginate @solutions %>
 </div>
