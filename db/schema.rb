@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130301010347) do
+ActiveRecord::Schema.define(version: 20130301012706) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -63,19 +63,6 @@ ActiveRecord::Schema.define(version: 20130301010347) do
     t.string   "syntax_highlighting"
   end
 
-  create_table "problem_comments", force: true do |t|
-    t.integer  "problem_id"
-    t.integer  "profile_id"
-    t.text     "body"
-    t.integer  "up_votes",   default: 0
-    t.integer  "down_votes", default: 0
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
-  end
-
-  add_index "problem_comments", ["problem_id"], name: "index_problem_comments_on_problem_id"
-  add_index "problem_comments", ["profile_id"], name: "index_problem_comments_on_profile_id"
-
   create_table "problems", force: true do |t|
     t.string   "name"
     t.text     "description"
@@ -100,19 +87,6 @@ ActiveRecord::Schema.define(version: 20130301010347) do
 
   add_index "profiles", ["language_id"], name: "index_profiles_on_language_id"
   add_index "profiles", ["user_id"], name: "index_profiles_on_user_id"
-
-  create_table "solution_comments", force: true do |t|
-    t.integer  "solution_id"
-    t.integer  "profile_id"
-    t.text     "body"
-    t.integer  "up_votes",    default: 0
-    t.integer  "down_votes",  default: 0
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
-  end
-
-  add_index "solution_comments", ["profile_id"], name: "index_solution_comments_on_profile_id"
-  add_index "solution_comments", ["solution_id"], name: "index_solution_comments_on_solution_id"
 
   create_table "solutions", force: true do |t|
     t.text     "code"
