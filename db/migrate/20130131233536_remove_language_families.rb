@@ -14,6 +14,6 @@ class RemoveLanguageFamilies < ActiveRecord::Migration
     end
 
     add_column :languages, :language_family_id, :integer
-    add_index :lanaguages, :language_family_id
+    add_index :languages, :language_family_id
   end
 end

@@ -10,7 +10,7 @@ class Solution < ActiveRecord::Base
   belongs_to :problem
   belongs_to :language
   has_and_belongs_to_many :achievements
-  has_many :comments, class_name: 'SolutionComment'
+  has_many :comments, as: :commentable
 
   validates :code,
     presence: true
