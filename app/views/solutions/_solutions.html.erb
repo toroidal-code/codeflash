@@ -3,6 +3,15 @@
     <%= render 'solutions/compact', solution: solution, index: index, collapsed: true%>
   <% end %>
 </div>
+
 <div class="pagination-centered">
   <%= paginate @solutions %>
 </div>
+
+<script>
+$(".solution").click(function(){
+     window.location=$(this).attr("href");
+     return false;
+});
+$(".solution").tooltip();
+</script>
