@@ -1,14 +1,16 @@
 <div class="accordion-group">
-  <div class="solution-heading well well-small accordion-toggle" data-toggle="collapse" href="#collapse<%= index %>">
-    <span class="pull-right">submitted by: <%= link_to User.find(solution.profile.user).username, solution.profile %></span>
-    <a class="accordion-toggle" data-toggle="collapse" href="#collapse<%= index %>">
-      <%= solution.votes %>
-      <%= solution.problem.name %>
-      <% if !params[:problem_id] %>
-        - <%= solution.language.name %>
-      <% end %>
-    </a>
+  <div class="solution-heading well well-small">
+    <span class="pull-right">submitted by: <%= link_to User.find(solution.profile.user).username, solution.profile, id: "user" %></span>
+    <div class="accordion-toggle" data-toggle="collapse" href="#collapse<%= index %>">
+      <a >
+        <%= solution.votes %>
+        <%= solution.problem.name %>
+        <% if !params[:problem_id] %>
+          - <%= solution.language.name %>
+        <% end %>
+      </a>
   </div>
+</div>
   <div href = <%= problem_solution_path solution.problem, solution %> id="collapse<%=index%>" data-toggl="tooltip" data-original-title="Click to view Solution" class=" solution accordion-body collapse <%= "in" if !collapsed %>" >
       <pre class="accordion-inner highlighted"><code><%= solution.code %></code></pre>
   </div>
