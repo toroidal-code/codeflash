@@ -1,4 +1,4 @@
-<%= render 'compact', solution: @solution %>
+<%= render 'compact', solution: @solution, index: 0, collapsed: false%>
 
 <%= link_to 'Edit', edit_problem_solution_path(@problem,@solution) %> |
 <%= link_to 'Destroy', problem_solution_path(@problem, @solution), method: :delete, data: { confirm: 'Are you sure?' } %> |

@@ -1,17 +1,15 @@
-
-
-  <div class="accordion-group">
-    <div class="solution-heading well well-small accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#collapse<%= index %>">
-      <span class="pull-right">submitted by: <%= link_to User.find(solution.profile.user).username, solution.profile %></span>
-      <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#collapse<%= index %>">
-        <%= solution.votes %>
-        <%= solution.problem.name %>
-        <% if !params[:problem_id] %>
-          - <%= solution.language.name %>
-        <% end %>
-      </a>
-    </div>
-    <div id="collapse<%=index%>" class=" solution accordion-body collapse">
-        <pre class="accordion-inner highlighted"><code><%= solution.code %></code></pre>
-    </div>
+<div class="accordion-group">
+  <div class="solution-heading well well-small accordion-toggle" data-toggle="collapse" href="#collapse<%= index %>">
+    <span class="pull-right">submitted by: <%= link_to User.find(solution.profile.user).username, solution.profile %></span>
+    <a class="accordion-toggle" data-toggle="collapse" href="#collapse<%= index %>">
+      <%= solution.votes %>
+      <%= solution.problem.name %>
+      <% if !params[:problem_id] %>
+        - <%= solution.language.name %>
+      <% end %>
+    </a>
   </div>
+  <div id="collapse<%=index%>" class=" solution accordion-body collapse <%= "in" if !collapsed %>" >
+      <pre class="accordion-inner highlighted"><code><%= solution.code %></code></pre>
+  </div>
+</div>
