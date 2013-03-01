@@ -1,7 +1,7 @@
 
 
   <div class="accordion-group">
-    <div class="accordion-heading">
+    <div class="solution-heading well well-small accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#collapse<%= index %>">
       <span class="pull-right">submitted by: <%= link_to User.find(solution.profile.user).username, solution.profile %></span>
       <a class="accordion-toggle" data-toggle="collapse" data-parent="#accordion1" href="#collapse<%= index %>">
         <%= solution.votes %>
