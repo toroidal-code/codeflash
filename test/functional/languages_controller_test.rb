@@ -23,7 +23,7 @@ class LanguagesControllerTest < ActionController::TestCase
 
   test "should create language" do
     assert_difference('Language.count') do
-      post :create, language: { name: @language.name, syntax_highlighting: @language.syntax_highlighting }
+      post :create, language: { name: @language.name, ace_syntax: @language.ace_syntax, pygments_syntax: @language.pygments_syntax }
     end
 
     assert_redirected_to language_path(assigns(:language))

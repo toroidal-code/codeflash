@@ -1,5 +1,5 @@
 <%= simple_form_for([problem, solution]) do |f| %>
-  <%= f.select :language_id, @languages.map{ |l| [l.name, l.id, {"data-syntax" => l.syntax_highlighting}, l.id]},{},
+  <%= f.select :language_id, @languages.map{ |l| [l.name, l.id, {"data-syntax" => l.ace_syntax}, l.id]},{},
      {"data-placeholder" => "Choose a Language...",
       class: "input-xlarge chzn-select" }%>
   <%= f.input :code,
