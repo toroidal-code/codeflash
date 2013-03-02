@@ -1,1 +1,2 @@
 $('#solutions').html('<%= escape_javascript(render 'solutions/solutions') %>');
+History.pushState(null, null, /\?.*/g.exec($("div.pagination ul li.active a").attr('href')));

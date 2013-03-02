@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'http://rubygems.org'
 
 # Rails 4
 gem 'rails', github: 'rails/rails'
@@ -38,6 +38,7 @@ gem 'bootstrap-will_paginate'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
+  gem 'historyjs-rails'
   gem 'sass-rails', github: 'rails/sass-rails'
   gem 'bootstrap-sass', '~> 2.3'
   gem 'coffee-rails', github: 'rails/coffee-rails'

@@ -17,6 +17,7 @@
 //= require bootstrap
 //= require ace/ace
 //= require holder
+//= require history_jquery
 
 $(document).ready(function () {
     $('.chzn-select').chosen().change(

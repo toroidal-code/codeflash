@@ -1,20 +1,25 @@
-<% css_id = SecureRandom.uuid %>
-
-<div class="solution well well-small" onclick="$('#<%= css_id %>').slideToggle()">
-  <span class="pull-right">submitted by: <%= link_to User.find(solution.profile.user).username, solution.profile %></span>
-  <%= solution.votes %>
-  <%= link_to solution.problem.name, problem_solution_path(solution.problem, solution) %>
-  <% if !params[:problem_id] %>
-    - <%= solution.language.name %>
-  <% end %>
+<div class="accordion-group">
+  <div class="solution-heading well well-small">
+    <span class="pull-right">submitted by: <%= link_to User.find(solution.profile.user).username, solution.profile, id: "user" %></span>
+    <div class="accordion-toggle" data-toggle="collapse" href="#collapse<%= index %>">
+      <a>
+        <%= solution.votes %>
+        <%= solution.problem.name %>
+        <% if !params[:problem_id] %>
+          - <%= solution.language.name %>
+        <% end %>
+      </a>
+  </div>
 </div>
-
-<div class="hide code-container" id="<%= css_id %>">
-  <%==
-       begin
-         Pygments.highlight(solution.code, lexer: solution.language.syntax_highlighting)
-       rescue
-         Pygments.highlight(solution.code)
-       end
-  %>
+  <div href="<%= problem_solution_path solution.problem, solution %>" id="collapse<%=index%>" data-toggle="tooltip" data-original-title="Click to view Solution" class=" solution accordion-body collapse <%= "in" if !collapsed %>" >
+      <div class="accordion-inner nomargin nopadding">
+          <%==
+               begin
+                 Pygments.highlight(solution.code, lexer: solution.language.syntax_highlighting)
+               rescue
+                 Pygments.highlight(solution.code)
+               end
+          %>
+      </div>
+  </div>
 </div>
