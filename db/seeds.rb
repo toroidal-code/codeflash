@@ -1,12 +1,6 @@
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' , ace_highlighting: 'none'}, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
 
-<<<<<<< Updated upstream
 Language.create!([{ name: 'ActionScript', ace_syntax: 'none', pygments_syntax: 'actionscript'},
                   { name: 'Ada', ace_syntax: 'none', pygments_syntax: 'ada'},
                   { name: 'Apex', ace_syntax: 'none', pygments_syntax: 'none'},

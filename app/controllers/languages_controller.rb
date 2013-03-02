@@ -109,6 +109,6 @@ class LanguagesController < ApplicationController
   private
 
   def language_params
-    params[:language].permit(:name, :syntax_highlighting)
+    params[:language].permit(:name, :ace_syntax, :pygments_syntax)
   end
 end
