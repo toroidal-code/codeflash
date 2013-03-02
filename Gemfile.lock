@@ -140,6 +140,8 @@ GEM
     high_voltage (1.2.2)
     highline (1.6.15)
     hike (1.2.1)
+    historyjs-rails (1.0.1)
+      railties (>= 3.0)
     holder_rails (1.7.0)
       railties (>= 3.1.0)
     httpauth (0.2.0)
@@ -247,6 +249,7 @@ DEPENDENCIES
   foreman
   gravatar-ultimate
   high_voltage (~> 1.2)
+  historyjs-rails
   holder_rails
   journey!
   jquery-rails (~> 2.2.1)
