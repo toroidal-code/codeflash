@@ -2,8 +2,10 @@
 
 one:
   name: MyString
-  syntax_highlighting: ruby
+  ace_syntax: ruby
+  pygments_syntax: ruby
 
 two:
   name: MyStrings
-  syntax_highlighting: ruby
+  ace_syntax: ruby
+  pygments_syntax: ruby

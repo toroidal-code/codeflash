@@ -36,10 +36,11 @@ gem 'bootstrap-will_paginate'
 # in production environments by default.
 group :assets do
   gem 'historyjs-rails'
+  gem 'yui-compressor'
+  gem 'closure-compiler'
   gem 'sass-rails', github: 'rails/sass-rails'
   gem 'bootstrap-sass', '~> 2.3'
   gem 'coffee-rails', github: 'rails/coffee-rails'
-  gem 'uglifier', '>= 1.0.3'
   gem 'jquery-rails', '~> 2.2.1'
   gem 'ace-rails-ap'
   gem 'chosen-rails'
