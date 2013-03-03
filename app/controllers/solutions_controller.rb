@@ -45,7 +45,6 @@ class SolutionsController < ApplicationController
   def new
     @solution = Solution.new
     @problem = Problem.find_by_shortname(params[:problem_id])
-    @languages = Language.all
     respond_with @solution
 
   end

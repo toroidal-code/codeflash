@@ -1,7 +1,9 @@
 <%= simple_form_for([problem, solution]) do |f| %>
-  <%= f.select :language_id, @languages.map{ |l| [l.name, l.id, {"data-syntax" => l.ace_syntax}, l.id]},{},
+<%= f.input :languge_id do %>
+  <%= f.select :language_id, Language.all.map { |l| [l.name, l.id, { "data-syntax" => l.ace_syntax }] },{},
      {"data-placeholder" => "Choose a Language...",
-      class: "input-xlarge chzn-select" }%>
+      class: "input-xlarge chzn-select" } %>
+  <% end %>
   <%= f.input :code,
     input_html: { class: 'input-block-level'} %>
   <div id='editor'></div>
