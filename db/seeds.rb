@@ -101,7 +101,8 @@ Language.create!([{ name: 'ActionScript', ace_syntax: 'none', pygments_syntax: '
 
 User.create!([{email: 'code@flash.io',
                username: 'codeflash',
-               password: 'Something123'}])
+               password: 'Something123',
+               admin: true}])
 
 Profile.create!([{user: User.find_by_username('codeflash'),
                   name: 'codeflash'}])
