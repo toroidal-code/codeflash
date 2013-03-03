@@ -29,7 +29,7 @@ gem 'yard', '~> 0.8.5.2'
 gem 'simple_form', github: 'plataformatec/simple_form', branch: 'rails_4'
 
 # Pygments, using DHowett's fork (updated to pygments 1.6) until tmm1 approves the pull request.
-gem 'pygments.rb', github: 'DHowett/pygments.rb', require: 'pygments'
+gem 'pygments.rb'
 
 # Required by methods called inside RAILS_ENV=production
 gem 'will_paginate'
