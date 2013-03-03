@@ -12,7 +12,6 @@ class AchievementsController < ApplicationController
   # @return [String] the HTML/JSON for the achievements page.
   def index
     @achievements = Achievement.all
-
     respond_with @achievements
   end
 
@@ -24,7 +23,7 @@ class AchievementsController < ApplicationController
   # @return [String] the HTML/JSON for the achievement
   def show
     @achievement = Achievement.find(params[:id])
-
+    @solutions = @achievement.solutions.scoped.paginate(page: params[:page], per_page: 10)
     respond_with @achievement
   end
 

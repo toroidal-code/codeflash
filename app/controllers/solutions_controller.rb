@@ -16,7 +16,7 @@ class SolutionsController < ApplicationController
   def index
     if params[:problem_id]
       @problem = Problem.find_by_shortname(params[:problem_id])
-      @solutions =Solution.where(problem_id: @problem.id).paginate(page: params[:page], per_page: 10 ).order('created_at DESC')
+      @solutions = @problem.solution.scoped.paginate(page: params[:page], per_page: 10 ).order('created_at DESC')
     else
       @solutions = Solution.paginate(page: params[:page], per_page: 10 ).order('created_at DESC')
     end
