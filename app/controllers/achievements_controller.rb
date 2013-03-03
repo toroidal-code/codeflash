@@ -23,7 +23,7 @@ class AchievementsController < ApplicationController
   # @return [String] the HTML/JSON for the achievement
   def show
     @achievement = Achievement.find(params[:id])
-    @solutions = @achievement.solutions.scoped.paginate(page: params[:page], per_page: 10)
+    @solutions = @achievement.solutions.paginate(page: params[:page], per_page: 10).order('created_at DESC')
     respond_with @achievement
   end
 

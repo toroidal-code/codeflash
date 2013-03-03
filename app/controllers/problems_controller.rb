@@ -24,7 +24,7 @@ class ProblemsController < ApplicationController
   # @return [String] the HTML/JSON for the problem.
   def show
     @problem = Problem.find_by_shortname(params[:id])
-    @solutions = Solution.where(problem_id: @problem.id).paginate(page: params[:page], per_page: 10 ).order('created_at DESC')
+    @solutions = @problem.solutions.paginate(page: params[:page], per_page: 10 ).order('created_at DESC')
     respond_with @problem
   end
 
