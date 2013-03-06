@@ -9,7 +9,7 @@ class ProfilesControllerTest < ActionController::TestCase
     @profile = profiles(:one)
     @profile.user_id = @user.id
   end
-  
+
   test "should get new" do
     get :new
     assert_response :success
@@ -34,7 +34,7 @@ class ProfilesControllerTest < ActionController::TestCase
   end
 
   test "should update profile" do
-    put :update, id: @profile.user.username, profile: { about_me: @profile.about_me, github: @profile.github, name: @profile.name }
+    put :update, id: @user.username, profile: { about_me: @profile.about_me, github: @profile.github, name: @profile.name}, user: {}
     assert_redirected_to profile_path(assigns(:profile))
   end
 

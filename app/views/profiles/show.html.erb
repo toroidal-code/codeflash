@@ -7,7 +7,9 @@
       <p><span class="username lighter"><%= @user.username %></span></p>
       <hr>
       <p class="lighter">
-        <b>Last Logged In:</b> <%= @user.last_sign_in_at.to_date.to_formatted_s(:long) %>
+        <% if !@user.last_sign_in_at.blank? %>
+          <b>Last Logged In:</b> <%= @user.last_sign_in_at.to_date.to_formatted_s(:long) %>
+        <% end %>
         <br>
         <b>Joined:</b> <%= @user.created_at.to_date.to_formatted_s(:long) %>
         <br>
