@@ -6,27 +6,25 @@
       <p><span class="name"><%= @profile.name %></span></p>
       <p><span class="username lighter"><%= @user.username %></span></p>
       <hr>
-      <p>
-        <b>Last Logged In:</b> <span class="lighter"><%= @user.last_sign_in_at.to_date.to_formatted_s(:long) %></span>
+      <p class="lighter">
+        <b>Last Logged In:</b> <%= @user.last_sign_in_at.to_date.to_formatted_s(:long) %>
         <br>
-        <b>Joined:</b> <span class="lighter"><%= @user.created_at.to_date.to_formatted_s(:long) %></span>
+        <b>Joined:</b> <%= @user.created_at.to_date.to_formatted_s(:long) %>
         <br>
         <% if !@profile.github.blank? %>
-          <b>Github Username:</b> 
-          <span class="lighter">
+          <b>Github Username:</b>
             <a href="https://github.com/<%=@profile.github%>"><%=@profile.github%></a>
-          </span>
         <%end%>
         <br>
         <% if !@profile.language.blank? %>
-          <b>Favorite Language:</b> 
-          <span class="lighter">
+          <b>Favorite Language:</b>
             <%=@profile.language.name%></a>
-          </span>
         <%end%>
     </div>
   </div>
-  <div class="span9">
+  <div class="span9 lighter">
+    <p><%= @profile.about_me %></p>
+    <hr>
     <% if can? :edit, @profile %><%= link_to 'Edit', edit_profile_path(@profile) %> |<% end %>
     <%= link_to 'Back', profiles_path %>
   </div>
