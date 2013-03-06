@@ -1,28 +1,34 @@
-<p>
-  <b>Name:</b>
-  <%= @profile.name %>
-</p>
 
-<p>
-  <b>About me:</b>
-  <%= @profile.about_me %>
-</p>
+<div class="row-fluid">
+  <div class="span3">
+    <div class="sidebar-nav sidebar-nav-fixed">
+      <p><%= image_tag Gravatar.new(@user.email).image_url, size: '256x256' %></p>
+      <p><span class="name"><%= @profile.name %></span></p>
+      <p><span class="username lighter"><%= @user.username %></span></p>
+      <hr>
+      <p>
+        <b>Last Logged In:</b> <span class="lighter"><%= @user.last_sign_in_at.to_date.to_formatted_s(:long) %></span>
+        <br>
+        <b>Joined:</b> <span class="lighter"><%= @user.created_at.to_date.to_formatted_s(:long) %></span>
+        <br>
+        <% if !@profile.github.blank? %>
+          <b>Github Username:</b> 
+          <span class="lighter">
+            <a href="https://github.com/<%=@profile.github%>"><%=@profile.github%></a>
+          </span>
+        <%end%>
+        <br>
+        <% if !@profile.language.blank? %>
+          <b>Favorite Language:</b> 
+          <span class="lighter">
+            <%=@profile.language.name%></a>
+          </span>
+        <%end%>
+    </div>
+  </div>
+  <div class="span9">
+    <% if can? :edit, @profile %><%= link_to 'Edit', edit_profile_path(@profile) %> |<% end %>
+    <%= link_to 'Back', profiles_path %>
+  </div>
+</div>
 
-<p>
-  <b>Favorite language:</b>
-  <%= @profile.language.name if !@profile.language.nil? %>
-</p>
-
-<p>
-  <b>Github:</b>
-  <%= @profile.github %>
-</p>
-
-<p>
-  <b>User:</b>
-  <%= @user.username %>
-</p>
-
-
-<% if can? :edit, @profile %><%= link_to 'Edit', edit_profile_path(@profile) %> |<% end %>
-<%= link_to 'Back', profiles_path %>

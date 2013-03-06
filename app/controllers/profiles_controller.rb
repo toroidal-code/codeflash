@@ -80,7 +80,7 @@ class ProfilesController < ApplicationController
   def update
     authorize! :update, @profile
     respond_to do |format|
-      if @user.update_attributes(params[:user]) && @profile.update_attributes(profile_params)
+      if @user.update_attributes(user_params) && @profile.update_attributes(profile_params)
         format.html { redirect_to @profile, notice: 'Profile was successfully updated.' }
         format.json { head :no_content }
       else
@@ -114,5 +114,8 @@ class ProfilesController < ApplicationController
   private
   def profile_params
     params[:profile].permit(:about_me, :language_id, :github, :name, :user_id)
+  end
+  def user_params
+    params[:user].permit(:username)
   end
 end
