@@ -27,6 +27,8 @@
   <div class="span9 lighter">
     <p><%= @profile.about_me %></p>
     <hr>
+    <%= render 'solutions/solutions' %>
+    <hr>
     <% if can? :edit, @profile %><%= link_to 'Edit', edit_profile_path(@profile) %> |<% end %>
     <%= link_to 'Back', profiles_path %>
   </div>

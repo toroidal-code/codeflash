@@ -26,6 +26,7 @@ class ProfilesController < ApplicationController
   #
   # @return [String] the HTML/JSON for the profile
   def show
+    @solutions = @profile.solutions.paginate(page: params[:page], per_page: 10 ).order('created_at DESC')
     respond_with @profile
   end
 
