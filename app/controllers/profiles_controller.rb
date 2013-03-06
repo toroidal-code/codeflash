@@ -4,7 +4,7 @@ class ProfilesController < ApplicationController
 
   before_filter :find_profile, only: [:show, :edit, :update, :destroy]
 
-  respond_to :html, :json
+  respond_to :html, :json, :js
 
   # Lists all the profiles in the database.
   #

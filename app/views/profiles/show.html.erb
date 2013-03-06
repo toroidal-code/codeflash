@@ -1,4 +1,6 @@
-
+<style type="text/css">
+    <%== Pygments.css('.highlight', {:style => "monokai"}) %>
+</style>
 <div class="row-fluid">
   <div class="span3">
     <div class="sidebar-nav sidebar-nav-fixed">
@@ -27,10 +29,11 @@
   <div class="span9 lighter">
     <p><%= @profile.about_me %></p>
     <hr>
-    <%= render 'solutions/solutions' %>
+    <ul id="solutions">
+      <%= render 'solutions/solutions' %>
+    </ul>
     <hr>
     <% if can? :edit, @profile %><%= link_to 'Edit', edit_profile_path(@profile) %> |<% end %>
     <%= link_to 'Back', profiles_path %>
   </div>
 </div>
-
