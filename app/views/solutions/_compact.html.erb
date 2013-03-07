@@ -15,9 +15,9 @@
       <div class="accordion-inner nomargin nopadding">
           <%==
                begin
-                 Pygments.highlight(solution.code, lexer: solution.language.pygments_syntax)
+                 Pygments.highlight(solution.code, lexer: solution.language.pygments_syntax, options: {linenos: 'inline'})
                rescue
-                 Pygments.highlight(solution.code)
+                 Pygments.highlight(solution.code, options: {linenos: 'inline'})
                end
           %>
       </div>
