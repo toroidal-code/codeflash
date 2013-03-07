@@ -2,7 +2,7 @@
 class AchievementsController < ApplicationController
   authorize_resource
 
-  respond_to :html, :json
+  respond_to :html, :json, :js
 
   # Lists all achievements in the database.
   #

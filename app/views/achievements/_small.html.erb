@@ -1,10 +1,3 @@
-<div class="media">
-  <a class="pull-left" href=<%= achievement_path achievement %> >
+<a class='achievement' href=<%= achievement_path achievement %> data-toggle="tooltip" data-original-title="<%= achievement.name %>">
     <img class="media-object" data-src="holder.js/64x64">
-  </a>
-  <div class="media-body">
-    <a class="media-heading" href=<%= achievement_path achievement %>><%= achievement.name %></a>
-    <p><b>Problem:</b> <a href= <%= problem_path achievement.solutions.first.problem %>><%=achievement.solutions.first.problem.name%></a><br>
-    <a href= <%= problem_solution_path achievement.solutions.first.problem, achievement.solutions.first %>>Solution</a></p>
-  </div>
-</div>
+</a>

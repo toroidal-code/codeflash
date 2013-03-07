@@ -33,10 +33,15 @@
       <%= render 'solutions/solutions' %>
     </ul>
     <hr>
-    <% @profile.achievements.each do |achievement| %>
-      <%= render 'achievements/small', achievement: achievement %>
-    <% end %>
-    <% if can? :edit, @profile %><%= link_to 'Edit', edit_profile_path(@profile) %> |<% end %>
+    <div class="row-fluid">
+      <% @profile.achievements.each do |achievement| %>
+        <%= render 'achievements/small', achievement: achievement %>
+      <% end %>
+    </div>
+  <% if can? :edit, @profile %><%= link_to 'Edit', edit_profile_path(@profile) %> |<% end %>
     <%= link_to 'Back', profiles_path %>
-  </div>
 </div>
+
+<script>
+$(".achievement").tooltip();
+</script>
