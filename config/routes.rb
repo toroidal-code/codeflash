@@ -10,9 +10,9 @@ Codeflash::Application.routes.draw do
   resources :solutions, only: [:index]
   resources :problems do
     resources :solutions do
-      resources :solution_comments
+      resources :comments
     end
-    resources :problem_comments
+    resources :comments
   end
 
   devise_scope :user do

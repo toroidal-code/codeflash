@@ -6,6 +6,6 @@ class Language < ActiveRecord::Base
   validates :name,
     uniqueness: true,
     presence: true
-  validates :syntax_highlighting,
+  validates :ace_syntax, :pygments_syntax,
     presence: true
 end

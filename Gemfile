@@ -26,15 +26,16 @@ gem 'rvm-capistrano'
 
 # Required by rake for RAILS_ENV=production, thus outside :assets
 gem 'yard', '~> 0.8.5.2'
-gem 'simple_form', github: 'plataformatec/simple_form', branch: 'rails_4'
+gem 'simple_form', github: 'plataformatec/simple_form'
 
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
+  gem 'yui-compressor'
+  gem 'closure-compiler'
   gem 'sass-rails', github: 'rails/sass-rails'
   gem 'bootstrap-sass', '~> 2.3'
   gem 'coffee-rails', github: 'rails/coffee-rails'
-  gem 'uglifier', '>= 1.0.3'
   gem 'jquery-rails', '~> 2.2.1'
   gem 'ace-rails-ap'
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes

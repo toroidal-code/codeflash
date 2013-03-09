@@ -1,7 +1,7 @@
 # A programming problem which is meant to be solved by users.
 class Problem < ActiveRecord::Base
   has_many :solutions
-  has_many :comments, class_name: 'ProblemComment'
+  has_many :comments, as: :commentable
   has_and_belongs_to_many :categories
 
   validates :description, :points, :name, :shortname,
