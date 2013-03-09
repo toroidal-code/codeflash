@@ -2,38 +2,15 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
-.sidebar-fixed {
-     position:fixed;
-     top:60px;
-     width:21.97%;
- }
-
-.sidebar {
-    padding: 9px 0;
-}
-
- @media (max-width: 767px) {
-     .sidebar-fixed {
-         width:auto;
-     }
- }
-
- @media (max-width: 979px) {
-     .sidebar-fixed {
-         position:static;
-        width: auto;
-     }
- }
-
- .name{
+.name{
  	font-size: 24pt;
  	font-weight: bold;
  	letter-spacing: -1px;
- }
+}
 
- .username{
- 	font-size: 24pt;
- }
+.username{
+	font-size: 24pt;
+}
 
 .lighter {
 	font-weight: lighter;
