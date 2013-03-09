@@ -5,9 +5,9 @@
   <div class="span3">
     <p><%= image_tag Gravatar.new(@user.email).image_url, size: '256x256' %></p>
     <p><span class="name"><%= @profile.name %></span></p>
-    <p><span class="username lighter"><%= @user.username %></span></p>
+    <p><span class="username"><%= @user.username %></span></p>
     <hr>
-    <p class="lighter">
+    <p>
       <% if !@user.last_sign_in_at.blank? %>
         <b>Last Logged In:</b> <%= @user.last_sign_in_at.to_date.to_formatted_s(:long) %>
       <% end %>
@@ -24,7 +24,7 @@
           <%=@profile.language.name%></a>
       <%end%>
   </div>
-  <div class="span9 lighter">
+  <div class="span9">
     <p><%= @profile.about_me %></p>
     <hr>
     <ul id="solutions">
