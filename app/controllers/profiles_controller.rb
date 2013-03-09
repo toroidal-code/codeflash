@@ -6,18 +6,6 @@ class ProfilesController < ApplicationController
 
   respond_to :html, :json, :js
 
-  # Lists all the profiles in the database.
-  #
-  # GET /profiles
-  # GET /profiles.json
-  #
-  # @return [String] the HTML/JSON for the profiles page
-  def index
-    @profiles = Profile.all
-
-    respond_with @profiles
-  end
-
   # Shows the page for the profile.
   #
   # GET /profiles/1

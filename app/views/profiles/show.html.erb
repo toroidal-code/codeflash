@@ -36,8 +36,7 @@
         <%= render 'achievements/small', achievement: achievement %>
       <% end %>
     </div>
-  <% if can? :edit, @profile %><%= link_to 'Edit', edit_profile_path(@profile) %> |<% end %>
-    <%= link_to 'Back', profiles_path %>
+  <% if can? :edit, @profile %><%= link_to 'Edit', edit_profile_path(@profile) %> <% end %>
 </div>
 
 <script>
