@@ -11,10 +11,9 @@ GIT
 
 GIT
   remote: git://github.com/plataformatec/simple_form.git
-  revision: f70d638f38459474609a452bf3df71a8dc969cff
-  branch: rails_4
+  revision: d64d7ddd99b8158eb4cb1abb0a729a3921eb49c8
   specs:
-    simple_form (3.0.0.dev)
+    simple_form (3.0.0.beta1)
       actionpack (>= 4.0.0.beta, < 4.1)
       activemodel (>= 4.0.0.beta, < 4.1)
 
@@ -102,7 +101,7 @@ GEM
     atomic (1.0.1)
     bcrypt-ruby (3.0.1)
     bcrypt-ruby (3.0.1-x86-mingw32)
-    better_errors (0.7.0)
+    better_errors (0.7.2)
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
     binding_of_caller (0.7.1)
