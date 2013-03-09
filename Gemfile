@@ -26,7 +26,7 @@ gem 'rvm-capistrano'
 
 # Required by rake for RAILS_ENV=production, thus outside :assets
 gem 'yard', '~> 0.8.5.2'
-gem 'simple_form', github: 'plataformatec/simple_form', branch: 'rails_4'
+gem 'simple_form', github: 'plataformatec/simple_form'
 
 # Gems used only for assets and not required
 # in production environments by default.
