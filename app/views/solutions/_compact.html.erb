@@ -2,6 +2,7 @@
   <div class="solution-heading well well-small">
     <span class="pull-right">submitted by: <%= link_to User.find(solution.profile.user).username, solution.profile, id: "user" %></span>
     <div class="accordion-toggle" data-toggle="collapse" href="#collapse<%= index %>">
+      <i class="icon-angle-<%= collapsed ? 'right' : 'down'%>"></i>
       <a>
         <%= solution.votes %>
         <%= solution.problem.name %>

@@ -31,10 +31,15 @@ $(document).ready(function () {
 			editor.getSession().setMode(str);
     	});
 	var str;
-	if($('.chzn-select option:selected').data().syntax == "none"){
-		str = null;
-	}else{
-		str = "ace/mode/"+$('.chzn-select option:selected').data().syntax;
+	if($('.chzn-select option:selected').data() != null){
+		if($('.chzn-select option:selected').data().syntax == "none"){
+			str = null;
+		}else{
+			str = "ace/mode/"+$('.chzn-select option:selected').data().syntax;
+		}
+		editor.getSession().setMode(str);
 	}
-	editor.getSession().setMode(str);
+	$('.accordion').on('show hide', function(e){
+    	$(e.target).siblings('.solution-heading').find('.accordion-toggle i').toggleClass('icon-angle-down icon-angle-right', 200);
+	});
 });
