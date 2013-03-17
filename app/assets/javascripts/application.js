@@ -13,8 +13,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
+//= require vendor
 //= require chosen-jquery
-//= require bootstrap
 //= require ace/ace
 //= require holder
 //= require history_jquery
@@ -39,7 +39,7 @@ $(document).ready(function () {
 		}
 		editor.getSession().setMode(str);
 	}
-	$('.accordion').on('show hide', function(e){
+	$('.accordion').on('expand collapse', function(e){
     	$(e.target).siblings('.solution-heading').find('.accordion-toggle i').toggleClass('icon-angle-down icon-angle-right', 200);
 	});
 });
