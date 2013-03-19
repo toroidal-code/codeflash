@@ -4,6 +4,8 @@ class SolutionsController < ApplicationController
 
   before_filter :find_solution, only: [:show, :edit, :update, :destroy]
 
+  add_breadcrumb("Problems",:problems_path)
+
   respond_to :html, :json
 
   # Lists all the solutions to a given to the solution's problem
