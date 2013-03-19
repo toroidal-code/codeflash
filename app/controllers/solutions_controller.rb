@@ -17,10 +17,11 @@ class SolutionsController < ApplicationController
     if params[:problem_id]
       @problem = Problem.find_by_shortname(params[:problem_id])
       @solutions = @problem.solutions.paginate(page: params[:page], per_page: 10 ).order('created_at DESC')
+      add_breadcrumb(@problem.name, problem_path(@problem))
     else
       @solutions = Solution.paginate(page: params[:page], per_page: 10 ).order('created_at DESC')
     end
-
+    add_breadcrumb "Solutions", problem_solutions_path(@problem)
     respond_to :html, :json, :js
   end
 
@@ -32,7 +33,8 @@ class SolutionsController < ApplicationController
   # @return [String] the HTML/JSON for the solution
   def show
     @problem = Problem.find_by_shortname(params[:problem_id])
-
+    breadcrumbs
+    add_breadcrumb @solution.profile.user.username, problem_solution_path(@problem, @solution)
     respond_with @solution
   end
 
@@ -45,6 +47,8 @@ class SolutionsController < ApplicationController
   def new
     @solution = Solution.new
     @problem = Problem.find_by_shortname(params[:problem_id])
+    breadcrumbs
+    add_breadcrumb "New Solution"
     respond_with @solution
 
   end
@@ -57,6 +61,8 @@ class SolutionsController < ApplicationController
   def edit
     @problem = @solution.problem
     @languages = Language.all
+    breadcrumbs
+    add_breadcrumb "Edit Solution"
   end
 
   # Creates and saves a new solution.
@@ -118,6 +124,11 @@ class SolutionsController < ApplicationController
 
   def find_solution
     @solution = Solution.find(params[:id])
+  end
+
+  def breadcrumbs
+    add_breadcrumb(@problem.name, problem_path(@problem))
+    add_breadcrumb "Solutions", problem_solutions_path(@problem)
   end
 
   private
