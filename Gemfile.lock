@@ -106,8 +106,6 @@ GEM
       erubis (>= 2.6.6)
     binding_of_caller (0.7.1)
       debug_inspector (>= 0.0.1)
-    bootstrap-sass (2.3.0.1)
-      sass (~> 3.2)
     bootstrap-will_paginate (0.0.9)
       will_paginate
     builder (3.1.4)
@@ -134,8 +132,6 @@ GEM
       multi_json (~> 1.0)
     faraday (0.8.6)
       multipart-post (~> 1.1)
-    font-awesome-rails (3.0.2.0)
-      railties (>= 3.1)
     foreman (0.62.0)
       thor (>= 0.13.6)
     foreman (0.62.0-x86-mingw32)
@@ -229,6 +225,10 @@ GEM
     treetop (1.4.12)
       polyglot
       polyglot (>= 0.3.1)
+    twitter-bootstrap-rails (2.2.6)
+      actionpack (>= 3.1)
+      execjs
+      railties (>= 3.1)
     tzinfo (0.3.36)
     warden (1.2.1)
       rack (>= 1.0)
@@ -251,7 +251,6 @@ DEPENDENCIES
   activerecord-deprecated_finders!
   better_errors (~> 0.7)
   binding_of_caller (~> 0.6)
-  bootstrap-sass (~> 2.3)
   bootstrap-will_paginate
   cancan (~> 1.6.9)
   capistrano
@@ -259,7 +258,6 @@ DEPENDENCIES
   closure-compiler
   coffee-rails!
   devise!
-  font-awesome-rails
   foreman
   gravatar-ultimate
   high_voltage (~> 1.2)
@@ -277,6 +275,7 @@ DEPENDENCIES
   sass-rails!
   simple_form!
   simplecov
+  twitter-bootstrap-rails
   will_paginate
   yard (~> 0.8.5.2)
   yard-activerecord (~> 0.0.8)

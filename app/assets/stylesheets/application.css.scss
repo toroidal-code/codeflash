@@ -11,13 +11,17 @@
  *
  *= require_self
  *= require_tree .
- *= require font-awesome
  */
-@import "bootstrap";
-@import "bootstrap-responsive";
+
 @import "scaffolds";
 
 /* all pages */
+
+body {
+  font-weight: lighter;
+  padding-top: 60px;
+  padding-left: 20px;
+}
 
 .avatar {
   border-radius: 50%;
@@ -73,9 +77,4 @@ pre.highlighted {
 }
 .red{
   color: #990000;
-}
-
-
-body {
-  font-weight: lighter;
 }
