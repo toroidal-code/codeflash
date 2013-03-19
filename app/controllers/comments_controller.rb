@@ -16,9 +16,33 @@ class CommentsController < ApplicationController
     redirect_to path
   end
 
+  def upvote
+    vote true
+  end
+
+  def downvote
+    vote false
+  end
+
   private
 
   def comment_params
     params[:comment].permit(:body, :up_votes, :down_votes)
+  end
+
+  def vote up
+    @comment = Comment.find(params[:id])
+    if up
+      @comment.up_votes += 1
+    else
+      @comment.down_votes += 1
+    end
+    @comment.save!
+    path = @problem
+    if !params[:solution_id].nil?
+      @solution = Solution.find(params[:solution_id])
+      path = problem_solution_path(@problem, @solution)
+    end
+    redirect_to path
   end
 end

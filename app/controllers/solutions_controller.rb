@@ -115,6 +115,18 @@ class SolutionsController < ApplicationController
     end
   end
 
+  def upvote
+    @solution = Solution.find(params[:id])
+    @solution.up_votes += 1
+    redirect_to problems_solution_path @solution.problem, @solution
+  end
+
+  def downote
+    @solution = Solution.find(params[:id])
+    @solution.down_votes += 1
+    redirect_to problems_solution_path @solution.problem, @solution
+  end
+
   def find_solution
     @solution = Solution.find(params[:id])
   end
