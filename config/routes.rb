@@ -4,29 +4,23 @@ Codeflash::Application.routes.draw do
 
   devise_for :users
 
+  concern :votable do
+    member do
+      put 'upvote'
+      put 'downvote'
+    end
+  end
+
+  concern :commentable do
+    resources :comments, concerns: :votable
+  end
+
   resources :achievements
   resources :languages
   resources :language_families
   resources :solutions, only: [:index]
-  resources :problems do
-    resources :solutions do
-      member do
-        put 'upvote'
-        put 'downvote'
-      end
-      resources :comments do
-        member do
-          put 'upvote'
-          put 'downvote'
-        end
-      end
-    end
-    resources :comments do
-      member do
-        put 'upvote'
-        put 'downvote'
-      end
-    end
+  resources :problems, concerns: :commentable do
+    resources :solutions, concerns: [:votable, :commentable]
   end
 
   devise_scope :user do
