@@ -98,7 +98,7 @@ class SolutionsController < ApplicationController
     end
   end
 
-  # Deletes a language from the database.
+  # Deletes a solution from the database.
   #
   # DELETE /solutions/1
   # DELETE /solutions/1.json
@@ -115,13 +115,15 @@ class SolutionsController < ApplicationController
     end
   end
 
+  # Adds an upvote
   def upvote
     @solution = Solution.find(params[:id])
     @solution.up_votes += 1
     redirect_to problems_solution_path @solution.problem, @solution
   end
 
-  def downote
+  # Adds a down vote
+  def downvote
     @solution = Solution.find(params[:id])
     @solution.down_votes += 1
     redirect_to problems_solution_path @solution.problem, @solution

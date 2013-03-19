@@ -1,6 +1,7 @@
 class CommentsController < ApplicationController
   authorize_resource
 
+  # Creates a new comment
   def create
     @problem = Problem.find_by_shortname(params[:problem_id])
     commentable = @problem
@@ -16,10 +17,12 @@ class CommentsController < ApplicationController
     redirect_to path
   end
 
+  # Adds an upvote
   def upvote
     vote true
   end
 
+  # Adds a downvote
   def downvote
     vote false
   end
@@ -30,6 +33,7 @@ class CommentsController < ApplicationController
     params[:comment].permit(:body, :up_votes, :down_votes)
   end
 
+  # Helper method for voting
   def vote up
     @comment = Comment.find(params[:id])
     if up
