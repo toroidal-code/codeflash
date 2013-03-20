@@ -34,7 +34,7 @@ class ProfilesControllerTest < ActionController::TestCase
   end
 
   test "should update profile" do
-    put :update, id: @user.username, profile: { about_me: @profile.about_me, github: @profile.github, name: @profile.name}, user: {}
+    put :update, id: @profile.user.username, profile: { about_me: @profile.about_me, github: @profile.github, name: @profile.name }, user: {username: @user.username}
     assert_redirected_to profile_path(assigns(:profile))
   end
 
