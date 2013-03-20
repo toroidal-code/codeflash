@@ -131,6 +131,7 @@ class SolutionsController < ApplicationController
 
   private
 
+  # Helper method for voting
   def vote up
      @solution = Solution.find(params[:id])
     begin
