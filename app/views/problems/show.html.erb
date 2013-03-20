@@ -20,5 +20,5 @@
 <%= link_to 'Destroy', @problem, method: :delete, data: { confirm: 'Are you sure?' } %>
 
 <h2>Comments</h2>
-<%= render 'comments/show', comments: @problem.comments%>
+<%= render 'comments/show', comments: @problem.comments, solution: false %>
 <%= render 'comments/form', form_array: [@problem, @problem.comments.build] %>

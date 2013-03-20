@@ -107,7 +107,7 @@ class SolutionsController < ApplicationController
     end
   end
 
-  # Deletes a language from the database.
+  # Deletes a solution from the database.
   #
   # DELETE /solutions/1
   # DELETE /solutions/1.json
@@ -124,6 +124,16 @@ class SolutionsController < ApplicationController
     end
   end
 
+  # Adds an upvote
+  def upvote
+    vote true
+  end
+
+  # Adds a down vote
+  def downvote
+   vote false
+  end
+
   def find_solution
     @solution = Solution.find(params[:id])
   end
@@ -134,6 +144,24 @@ class SolutionsController < ApplicationController
   end
 
   private
+
+  # Helper method for voting
+  def vote up
+     @solution = Solution.find(params[:id])
+    begin
+      @solution.profiles_voted << current_user.profile
+      @solution.save
+      if up
+        @solution.up_votes += 1
+      else
+        @solution.down_votes += 1
+      end
+      @solution.save
+    rescue => e
+      flash[:error] = "You have already voted on this solution."
+    end
+    redirect_to problem_solution_path(@solution.problem, @solution)
+  end
 
   def solution_params
     params[:solution].permit(:code, :language_id, :problem_id, :up_votes, :down_votes)
