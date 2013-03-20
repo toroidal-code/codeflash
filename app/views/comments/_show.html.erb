@@ -1,5 +1,9 @@
 <% comments.each do |comment| %>
   <div class="well well-small">
+    <a href="<% if solution %> <%= upvote_problem_solution_comment_path(@problem, @solution, comment) %>
+      <% else %> <%= upvote_problem_comment_path(@problem, comment)%> <%end%>" data-method="put">Upvote</a> |
+    <a href="<% if solution %><%= downvote_problem_solution_comment_path(@problem, @solution, comment) %>
+      <% else %><%= downvote_problem_comment_path(@problem, comment)%> <%end%>" data-method="put">Downvote</a>
     <h4><%= comment.profile.user.username %></h2>
     <p><%= comment.body %></p>
   </div>

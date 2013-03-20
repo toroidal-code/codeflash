@@ -6,9 +6,11 @@ class Profile < ActiveRecord::Base
   has_many :solutions
   has_many :achievements, through: :solutions
   has_many :problems
-  has_many :problem_comments
-  has_many :solution_comments
-
+  has_many :comments
+  has_and_belongs_to_many :comments_voted,
+                          class_name: 'Comment'
+  has_and_belongs_to_many :solutions_voted,
+                          class_name: 'Solution'
   validates :about_me,
     length: { maximum: 750 }
 
