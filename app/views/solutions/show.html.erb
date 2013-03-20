@@ -16,9 +16,11 @@
 
 <p>
 
+ <a href="<%= upvote_problem_solution_path %>" data-method="put">Upvote</a> |
+<a href="<%= downvote_problem_solution_path %>" data-method="put">Downvote</a>
 
 <%= link_to 'Edit', edit_problem_solution_path(@problem, @solution) %> |
 <%= link_to 'Back', solutions_path%>
 
-<%= render 'comments/show', comments: @solution.comments %>
+<%= render 'comments/show', comments: @solution.comments, solution:true %>
 <%= render 'comments/form', form_array: [@problem, @solution, @solution.comments.build] %>
