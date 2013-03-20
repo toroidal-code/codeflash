@@ -7,8 +7,12 @@ class Profile < ActiveRecord::Base
   has_many :achievements, through: :solutions
   has_many :problems
   has_many :comments
-  # has_many_and_belongs_to :comments
-
+  has_and_belongs_to_many :comments_voted,
+                          class_name: 'Comment',
+                          foreign_key: :comment_id
+  has_and_belongs_to_many :solutions_voted,
+                          class_name: 'Solution',
+                          foreign_key: :solution_id
   validates :about_me,
     length: { maximum: 750 }
 

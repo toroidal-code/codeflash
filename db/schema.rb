@@ -58,6 +58,13 @@ ActiveRecord::Schema.define(version: 20130320141115) do
   add_index "comments", ["commentable_id", "commentable_type"], name: "index_comments_on_commentable_id_and_commentable_type"
   add_index "comments", ["profile_id"], name: "index_comments_on_profile_id"
 
+  create_table "comments_profiles", id: false, force: true do |t|
+    t.integer "profile_id", null: false
+    t.integer "comment_id", null: false
+  end
+
+  add_index "comments_profiles", ["profile_id", "comment_id"], name: "index_comments_profiles_on_profile_id_and_comment_id", unique: true
+
   create_table "languages", force: true do |t|
     t.string   "name"
     t.datetime "created_at",      null: false
@@ -90,13 +97,6 @@ ActiveRecord::Schema.define(version: 20130320141115) do
 
   add_index "profiles", ["language_id"], name: "index_profiles_on_language_id"
   add_index "profiles", ["user_id"], name: "index_profiles_on_user_id"
-
-  create_table "profiles_comments", id: false, force: true do |t|
-    t.integer "profile_id", null: false
-    t.integer "comment_id", null: false
-  end
-
-  add_index "profiles_comments", ["profile_id", "comment_id"], name: "index_profiles_comments_on_profile_id_and_comment_id", unique: true
 
   create_table "profiles_solutions", id: false, force: true do |t|
     t.integer "profile_id"
