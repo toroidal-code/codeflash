@@ -119,14 +119,16 @@ class SolutionsController < ApplicationController
   def upvote
     @solution = Solution.find(params[:id])
     @solution.up_votes += 1
-    redirect_to problems_solution_path @solution.problem, @solution
+    @solution.save!
+    redirect_to problem_solution_path(@solution.problem, @solution)
   end
 
   # Adds a down vote
   def downvote
     @solution = Solution.find(params[:id])
     @solution.down_votes += 1
-    redirect_to problems_solution_path @solution.problem, @solution
+    @solution.save!
+    redirect_to problem_solution_path(@solution.problem, @solution)
   end
 
   def find_solution
