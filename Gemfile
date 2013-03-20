@@ -4,6 +4,7 @@ source 'http://rubygems.org'
 gem 'rails', github: 'rails/rails'
 gem 'activerecord-deprecated_finders', github: 'rails/activerecord-deprecated_finders'
 gem 'journey', github: 'rails/journey'
+gem 'rails-perftest', github: 'rails/rails-perftest'
 
 # Server
 gem 'puma'
@@ -34,7 +35,7 @@ gem 'pygments.rb'
 # Required by methods called inside RAILS_ENV=production
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
-
+gem 'twitter-bootstrap-rails'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
@@ -42,7 +43,6 @@ group :assets do
   gem 'yui-compressor'
   gem 'closure-compiler'
   gem 'sass-rails', github: 'rails/sass-rails'
-  gem "twitter-bootstrap-rails"
   gem 'coffee-rails', github: 'rails/coffee-rails'
   gem 'jquery-rails', '~> 2.2.1'
   gem 'ace-rails-ap'

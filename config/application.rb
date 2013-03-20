@@ -68,5 +68,10 @@ module Codeflash
     # Disable SSL by default
     config.force_ssl = false
 
+    config.assets.precompile += ["fontawesome-webfont.ttf",
+                                 "fontawesome-webfont.eot",
+                                 "fontawesome-webfont.svg",
+                                 "fontawesome-webfont.woff"]
+
   end
 end
