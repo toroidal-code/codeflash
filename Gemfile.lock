@@ -196,7 +196,6 @@ GEM
     rdoc (3.12.2)
       json (~> 1.4)
     redcarpet (2.2.2)
-    ruby-prof (0.13.0)
     rvm-capistrano (1.2.7)
       capistrano (>= 2.0.0)
     sass (3.2.7)
@@ -256,7 +255,6 @@ DEPENDENCIES
   rails!
   rails-perftest!
   redcarpet
-  ruby-prof
   rvm-capistrano
   sass-rails!
   simple_form!

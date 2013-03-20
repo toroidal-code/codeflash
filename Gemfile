@@ -53,7 +53,6 @@ end
 
 group :test do
   gem 'simplecov', require: false
-  gem 'ruby-prof'
 end
 
 # To use ActiveModel has_secure_password
