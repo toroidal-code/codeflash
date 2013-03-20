@@ -8,11 +8,9 @@ class Profile < ActiveRecord::Base
   has_many :problems
   has_many :comments
   has_and_belongs_to_many :comments_voted,
-                          class_name: 'Comment',
-                          foreign_key: :comment_id
+                          class_name: 'Comment'
   has_and_belongs_to_many :solutions_voted,
-                          class_name: 'Solution',
-                          foreign_key: :solution_id
+                          class_name: 'Solution'
   validates :about_me,
     length: { maximum: 750 }
 

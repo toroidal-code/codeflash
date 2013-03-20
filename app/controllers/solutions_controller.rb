@@ -117,18 +117,12 @@ class SolutionsController < ApplicationController
 
   # Adds an upvote
   def upvote
-    @solution = Solution.find(params[:id])
-    @solution.up_votes += 1
-    @solution.save!
-    redirect_to problem_solution_path(@solution.problem, @solution)
+    vote true
   end
 
   # Adds a down vote
   def downvote
-    @solution = Solution.find(params[:id])
-    @solution.down_votes += 1
-    @solution.save!
-    redirect_to problem_solution_path(@solution.problem, @solution)
+   vote false
   end
 
   def find_solution
@@ -136,6 +130,23 @@ class SolutionsController < ApplicationController
   end
 
   private
+
+  def vote up
+     @solution = Solution.find(params[:id])
+    begin
+      @solution.profiles_voted << current_user.profile
+      @solution.save
+      if up
+        @solution.up_votes += 1
+      else
+        @solution.down_votes += 1
+      end
+      @solution.save
+    rescue => e
+      flash[:error] = "You have already voted on this solution."
+    end
+    redirect_to problem_solution_path(@solution.problem, @solution)
+  end
 
   def solution_params
     params[:solution].permit(:code, :problem_id, :up_votes, :down_votes)

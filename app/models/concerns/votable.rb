@@ -8,8 +8,7 @@ module Votable
     validates :down_votes, :up_votes,
       numericality: { only_integer: true, greater_than_or_equal_to: 0 }
     has_and_belongs_to_many :profiles_voted,
-                          class_name: 'Profile',
-                          foreign_key: :profile_id
+                          class_name: 'Profile'
   end
 
   # Calculates the total number of votes for the Votable model. For now, it

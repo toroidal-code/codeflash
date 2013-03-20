@@ -36,16 +36,22 @@ class CommentsController < ApplicationController
   # Helper method for voting
   def vote up
     @comment = Comment.find(params[:id])
-    if up
-      @comment.up_votes += 1
-    else
-      @comment.down_votes += 1
-    end
-    @comment.save!
-    path = @problem
-    if !params[:solution_id].nil?
-      @solution = Solution.find(params[:solution_id])
-      path = problem_solution_path(@problem, @solution)
+    begin
+      @comment.profiles_voted << current_user.profile
+      @comment.save
+      if up
+        @comment.up_votes += 1
+      else
+        @comment.down_votes += 1
+      end
+      @comment.save!
+      path = @problem
+      if !params[:solution_id].nil?
+        @solution = Solution.find(params[:solution_id])
+        path = problem_solution_path(@problem, @solution)
+      end
+    rescue => e
+      flash[:error] = "You have already voted on this comment"
     end
     redirect_to path
   end
