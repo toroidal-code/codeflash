@@ -6,8 +6,7 @@ class Profile < ActiveRecord::Base
   has_many :solutions
   has_many :achievements, through: :solutions
   has_many :problems
-  has_many :problem_comments
-  has_many :solution_comments
+  has_many :comments, as: :commentable
 
   validates :about_me,
     length: { maximum: 750 }
