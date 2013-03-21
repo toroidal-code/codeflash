@@ -4,6 +4,7 @@ source 'https://rubygems.org'
 gem 'rails', github: 'rails/rails'
 gem 'activerecord-deprecated_finders', github: 'rails/activerecord-deprecated_finders'
 gem 'journey', github: 'rails/journey'
+gem 'rails-perftest', github: 'rails/rails-perftest'
 
 # Server
 gem 'puma'

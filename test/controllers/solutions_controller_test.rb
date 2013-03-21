@@ -49,4 +49,18 @@ class SolutionsControllerTest < ActionController::TestCase
 
     assert_redirected_to problem_solutions_path(@problem)
   end
+
+  test "should upvote solution" do
+    assert_difference('Solution.find(@solution).up_votes') do
+      put :upvote, problem_id: @problem, id: @solution
+    end
+    assert_redirected_to problem_solution_path(@problem, @solution)
+  end
+
+  test "should downvote solution" do
+    assert_difference('Solution.find(@solution).down_votes') do
+      put :downvote, problem_id: @problem, id: @solution
+    end
+    assert_redirected_to problem_solution_path(@problem, @solution)
+  end
 end
