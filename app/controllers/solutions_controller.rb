@@ -134,6 +134,8 @@ class SolutionsController < ApplicationController
    vote false
   end
 
+  # finds the solution based on params[:id]
+  # before_filter method for show edit update and destroy
   def find_solution
     @solution = Solution.find(params[:id])
   end

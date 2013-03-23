@@ -1,3 +1,4 @@
+#Manages comments
 class CommentsController < ApplicationController
   authorize_resource
 
@@ -29,6 +30,7 @@ class CommentsController < ApplicationController
 
   private
 
+  # Strong parameters for comments
   def comment_params
     params[:comment].permit(:body, :up_votes, :down_votes)
   end
