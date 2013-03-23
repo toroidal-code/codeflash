@@ -106,6 +106,8 @@ class ProfilesController < ApplicationController
     end
   end
 
+  # Finds the profile for a given user
+  # The before_filter method for show edit update and destroy
   def find_profile
     @user = User.find_by_username(params[:id])
     @profile = @user.profile
