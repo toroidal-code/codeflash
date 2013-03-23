@@ -66,6 +66,12 @@ module ApplicationHelper
     @devise_mapping ||= Devise.mappings[:user]
   end
 
+  # paginate your collection
+  #
+  # @param [Array] collection the collection of items to paginate
+  # @param [Hash] params any parameters needed
+  #
+  # @return html representing the paginated collection
   def paginate(collection, params= {})
     will_paginate collection, params.merge(:renderer => RemoteLinkPaginationHelper::LinkRenderer)
   end

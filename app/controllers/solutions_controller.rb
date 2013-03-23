@@ -140,6 +140,7 @@ class SolutionsController < ApplicationController
     @solution = Solution.find(params[:id])
   end
 
+  # adds the problem name breadcrumb and the problem's solutions breadcrumb
   def breadcrumbs
     add_breadcrumb(@problem.name, problem_path(@problem))
     add_breadcrumb "Solutions", problem_solutions_path(@problem)
