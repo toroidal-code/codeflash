@@ -27,14 +27,20 @@
   <div class="span9">
     <p><%= @profile.about_me %></p>
     <hr>
+    <% if @profile.solutions.empty? %>
+        <p><%=@profile.user.username %> hasn't submitted any solutions...</p>
+    <% end %>
     <ul id="solutions">
       <%= render 'solutions/solutions' %>
     </ul>
     <hr>
     <div class="row-fluid">
-      <% @profile.achievements.each do |achievement| %>
-        <%= render 'achievements/small', achievement: achievement %>
+      <% if @profile.achievements.empty? %>
+        <p><%=@profile.user.username %> hasn't won any achievements...</p>
       <% end %>
+        <% @profile.achievements.each do |achievement| %>
+          <%= render 'achievements/small', achievement: achievement %>
+        <% end %>
     </div>
   <% if can? :edit, @profile %><%= link_to 'Edit', edit_profile_path(@profile) %> <% end %>
 </div>

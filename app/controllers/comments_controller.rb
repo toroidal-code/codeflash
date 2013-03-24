@@ -54,7 +54,7 @@ class CommentsController < ApplicationController
       end
       @comment.save!
     rescue => e
-      flash[:error] = "You have already voted on this "
+      flash[:error] = "You have already voted on this comment."
     end
     redirect_to :back
   end
