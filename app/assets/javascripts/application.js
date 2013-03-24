@@ -13,5 +13,33 @@
 //= require jquery
 //= require jquery_ujs
 //= require_tree .
-//= require bootstrap
+//= require vendor
+//= require chosen-jquery
 //= require ace/ace
+//= require holder
+//= require history_jquery
+
+$(document).ready(function () {
+    $('.chzn-select').chosen().change(
+    	function(){
+	    	var str;
+			if($('.chzn-select option:selected').data().syntax == "none"){
+				str = null;
+			}else{
+				str = "ace/mode/"+$('.chzn-select option:selected').data().syntax;
+			}
+			editor.getSession().setMode(str);
+    	});
+	var str;
+	if($('.chzn-select option:selected').data() != null){
+		if($('.chzn-select option:selected').data().syntax == "none"){
+			str = null;
+		}else{
+			str = "ace/mode/"+$('.chzn-select option:selected').data().syntax;
+		}
+		editor.getSession().setMode(str);
+	}
+	$('.accordion').on('expand collapse', function(e){
+    	$(e.target).siblings('.solution-heading').find('.accordion-toggle i').toggleClass('icon-angle-down icon-angle-right', 200);
+	});
+});

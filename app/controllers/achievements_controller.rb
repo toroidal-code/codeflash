@@ -2,7 +2,9 @@
 class AchievementsController < ApplicationController
   authorize_resource
 
-  respond_to :html, :json
+  add_breadcrumb "Achievements", :achievements_path
+
+  respond_to :html, :json, :js
 
   # Lists all achievements in the database.
   #
@@ -12,7 +14,6 @@ class AchievementsController < ApplicationController
   # @return [String] the HTML/JSON for the achievements page.
   def index
     @achievements = Achievement.all
-
     respond_with @achievements
   end
 
@@ -24,7 +25,8 @@ class AchievementsController < ApplicationController
   # @return [String] the HTML/JSON for the achievement
   def show
     @achievement = Achievement.find(params[:id])
-
+    @solutions = @achievement.solutions.paginate(page: params[:page], per_page: 10).order('created_at DESC')
+    add_breadcrumb @achievement.name, achievement_path(@achievement)
     respond_with @achievement
   end
 
@@ -36,7 +38,7 @@ class AchievementsController < ApplicationController
   # @return [String] the HTML/JSON for the new achievement
   def new
     @achievement = Achievement.new
-
+    add_breadcrumb "New Achievement"
     respond_with @achievement
   end
 
@@ -47,6 +49,7 @@ class AchievementsController < ApplicationController
   # @return [String] the HTML/JSON for the achievement edit page
   def edit
     @achievement = Achievement.find(params[:id])
+    add_breadcrumb "Edit #{@achievement.name}"
   end
 
   # Creates and saves a new achievement.

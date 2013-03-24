@@ -4,19 +4,7 @@ class ProfilesController < ApplicationController
 
   before_filter :find_profile, only: [:show, :edit, :update, :destroy]
 
-  respond_to :html, :json
-
-  # Lists all the profiles in the database.
-  #
-  # GET /profiles
-  # GET /profiles.json
-  #
-  # @return [String] the HTML/JSON for the profiles page
-  def index
-    @profiles = Profile.all
-
-    respond_with @profiles
-  end
+  respond_to :html, :json, :js
 
   # Shows the page for the profile.
   #
@@ -26,6 +14,7 @@ class ProfilesController < ApplicationController
   #
   # @return [String] the HTML/JSON for the profile
   def show
+    @solutions = @profile.solutions.paginate(page: params[:page], per_page: 10 ).order('created_at DESC')
     respond_with @profile
   end
 
