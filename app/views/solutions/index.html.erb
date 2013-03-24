@@ -32,7 +32,7 @@
           <% else %>
               <% solutions = @problem.solutions %>
           <% end %>
-          <% num = solutions.find_all_by_language_id(language).count %>
+          <% num = solutions.where({language_id: language}).to_a.count %>
           <% if num != 0 %>
               <li><a href="#"><%= "#{language.name} (#{num})" %></a></li>
           <%end%>
