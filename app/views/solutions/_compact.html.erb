@@ -24,7 +24,6 @@
         <div class="accordion-toggle" data-toggle="collapse" href="#collapse<%= index %>">
           <i class="icon-angle-<%= collapsed ? 'right' : 'down'%>"></i>
           <a>
-            <%= solution.votes %>
             <%= solution.problem.name %>
             <% if !params[:problem_id] %>
               - <%= solution.language.name %>
