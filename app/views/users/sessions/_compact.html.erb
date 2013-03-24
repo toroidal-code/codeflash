@@ -1,5 +1,3 @@
-<div class = "well well-small compact-form">
-
 <%= simple_form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
   <legend>Sign in</legend>
   <%= f.input :login,
@@ -17,4 +15,3 @@
 <%- if devise_mapping.recoverable? && controller_name != 'passwords' && display_forgot  %>
   <%= link_to "Forgot your password?", new_password_path(resource_name) %>
 <% end -%>
-</div>

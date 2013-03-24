@@ -1,26 +1,25 @@
-<p>
-  <b>Code:</b>
-  <%= @solution.code %>
-</p>
+<style type="text/css">
+    <%== Pygments.css('.highlight', {style: "default"}) %>
+</style>
+<%= render_breadcrumbs %>
+<div class="accordion" id="accordion">
+  <%= render 'compact', solution: @solution, index: 0, collapsed: false%>
+</div>
 
-
-<p>
-  <b>Up votes:</b>
-  <%= @solution.up_votes %>
-</p>
-
-<p>
-  <b>Down votes:</b>
-  <%= @solution.down_votes %>
-</p>
-
-<p>
-
- <a href="<%= upvote_problem_solution_path %>" data-method="put">Upvote</a> |
-<a href="<%= downvote_problem_solution_path %>" data-method="put">Downvote</a>
-
-<%= link_to 'Edit', edit_problem_solution_path(@problem, @solution) %> |
-<%= link_to 'Back', solutions_path%>
+<%= link_to 'Edit', edit_problem_solution_path(@problem,@solution) %> |
+<%= link_to 'Destroy', problem_solution_path(@problem, @solution), method: :delete, data: { confirm: 'Are you sure?' } %> |
+<%= link_to 'Back', solutions_path %>
+<style>
+.solution:hover{
+  cursor:default;
+  border: none;
+  box-shadow: none;
+}
+</style>
 
 <%= render 'comments/show', comments: @solution.comments, solution:true %>
 <%= render 'comments/form', form_array: [@problem, @solution, @solution.comments.build] %>
+
+<script>
+  $('.hide').show()
+</script>

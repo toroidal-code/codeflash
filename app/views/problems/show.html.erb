@@ -1,22 +1,23 @@
-<p>
-  <b>Problem name:</b>
+<style type="text/css">
+    <%== Pygments.css('.highlight', {style: "default"}) %>
+</style>
+<%= render_breadcrumbs %>
+<h1>
   <%= @problem.name %>
-</p>
+  <span class="muted">(<%= @problem.points %> points)</span>
+</h1>
 
-<p>
-  <b>Description:</b>
-  <%= @problem.description %>
-</p>
+<p><%= @problem.description %></p>
 
-<p>
-  <b>Point value:</b>
-  <%= @problem.points %>
-</p>
+<hr>
+
+<ul id="solutions">
+  <%= render 'solutions/solutions' %>
+</ul>
 
 <%= link_to 'New Solution', new_problem_solution_path(@problem) %> |
 <%= link_to 'Edit', edit_problem_path(@problem) %> |
-<%= link_to 'Destroy', @problem, method: :delete, data: { confirm: 'Are you sure?' } %> |
-<%= link_to 'Back', problems_path %>
+<%= link_to 'Destroy', @problem, method: :delete, data: { confirm: 'Are you sure?' } %>
 
 <h2>Comments</h2>
 <%= render 'comments/show', comments: @problem.comments, solution: false %>

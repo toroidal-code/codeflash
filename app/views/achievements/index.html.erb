@@ -1,23 +1,8 @@
-<table class="table table-striped table-bordered table-hover">
-  <tr>
-    <th>Name</th>
-    <th>Point value</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
+<%= render_breadcrumbs %>
+<h1>Achievements</h1>
+<hr>
 <% @achievements.each do |achievement| %>
-  <tr>
-    <td><%= achievement.name %></td>
-    <td><%= achievement.points %></td>
-    <td><%= link_to 'Show', achievement %></td>
-    <td><%= link_to 'Edit', edit_achievement_path(achievement) %></td>
-    <td><%= link_to 'Destroy', achievement, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-  </tr>
+  <%= render "compact", achievement:achievement, header:"h4", image_size:"96x96" %>
 <% end %>
-</table>
-
-<br />
 
 <%= link_to 'New Achievement', new_achievement_path %>
