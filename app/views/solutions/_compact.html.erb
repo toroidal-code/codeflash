@@ -1,11 +1,19 @@
-
-
 <div class="row-fluid">
   <div class="span1">
     <div class = "pull-right">
-      <span class="blockcenter"><i class="icon-angle-up icon-large"> </i></span>
-      <span class="blockcenter"><%=solution.votes %></span>
-      <span class="blockcenter"><i class="icon-angle-down icon-large"></i></span>
+      <div class="blockcenter">
+        <a href="<%= upvote_problem_solution_path(solution.problem, solution)%>"
+          data-method="put" class="nodecoration">
+          <i class="icon-angle-up icon-large"> </i>
+        </a>
+      </div>
+      <div class="blockcenter"><%=solution.votes %></div>
+      <div class="blockcenter">
+        <a href="<%= downvote_problem_solution_path(solution.problem, solution)%>"
+         data-method="put" class="nodecoration">
+          <i class="icon-angle-down icon-large" ></i>
+        </a>
+      </div>
     </div>
   </div>
   <div class="span11" style="padding-top: 10.5px;">
