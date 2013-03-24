@@ -6,8 +6,6 @@
   <%= render 'compact', solution: @solution, index: 0, collapsed: false%>
 </div>
 
-<a href="<%= upvote_problem_solution_path %>" data-method="put">Upvote</a> |
-<a href="<%= downvote_problem_solution_path %>" data-method="put">Downvote</a>
 <%= link_to 'Edit', edit_problem_solution_path(@problem,@solution) %> |
 <%= link_to 'Destroy', problem_solution_path(@problem, @solution), method: :delete, data: { confirm: 'Are you sure?' } %> |
 <%= link_to 'Back', solutions_path %>
