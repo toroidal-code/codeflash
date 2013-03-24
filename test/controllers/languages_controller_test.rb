@@ -29,6 +29,14 @@ class LanguagesControllerTest < ActionController::TestCase
     assert_redirected_to language_path(assigns(:language))
   end
 
+  test "should not create language" do
+    assert_no_difference('Language.count') do
+      post :create, language: { ace_syntax: @language.ace_syntax, pygments_syntax: @language.pygments_syntax }
+    end
+
+    assert_template :new
+  end
+
   test "should show language" do
     get :show, id: @language
     assert_response :success
@@ -42,6 +50,11 @@ class LanguagesControllerTest < ActionController::TestCase
   test "should update language" do
     put :update, id: @language, language: { name: @language.name }
     assert_redirected_to language_path(assigns(:language))
+  end
+
+  test "should not update language" do
+    put :update, id: @language, language: { name: languages(:two).name }
+    assert_template :edit
   end
 
   test "should destroy language" do
