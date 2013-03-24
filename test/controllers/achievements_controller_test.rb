@@ -28,6 +28,15 @@ class AchievementsControllerTest < ActionController::TestCase
     assert_redirected_to achievement_path(assigns(:achievement))
   end
 
+  test "should not create achievement" do
+    assert_no_difference('Achievement.count') do
+      post :create, achievement: { description: @achievement.description, name: @achievement.name }
+    end
+
+    assert_template :new
+  end
+
+
   test "should show achievement" do
     get :show, id: @achievement
     assert_response :success
@@ -41,6 +50,11 @@ class AchievementsControllerTest < ActionController::TestCase
   test "should update achievement" do
     put :update, id: @achievement, achievement: { description: @achievement.description, name: @achievement.name, points: @achievement.points }
     assert_redirected_to achievement_path(assigns(:achievement))
+  end
+
+  test "should not update achievement" do
+    put :update, id: @achievement, achievement: { description: @achievement.description, name: @achievement.name, points: "string" }
+    assert_template :edit
   end
 
   test "should destroy achievement" do
