@@ -53,6 +53,7 @@ class SolutionsControllerTest < ActionController::TestCase
                                                    up_votes: @solution.up_votes,
                                                    problem_id: @problem}
    end
+   assert_template :new
   end
 
   test "should show solution" do

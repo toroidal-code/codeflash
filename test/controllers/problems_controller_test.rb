@@ -28,6 +28,14 @@ class ProblemsControllerTest < ActionController::TestCase
     assert_redirected_to problem_path(assigns(:problem))
   end
 
+  test "should not create problem" do
+    assert_no_difference('Problem.count') do
+      post :create, problem: { description: @problem.description, points: @problem.points, name: @problem.name, shortname: @problem.shortname }
+    end
+
+    assert_template :new
+  end
+
   test "should show problem" do
     get :show, id: @problem
     assert_response :success
@@ -41,6 +49,11 @@ class ProblemsControllerTest < ActionController::TestCase
   test "should update problem" do
     put :update, id: @problem, problem: { description: @problem.description, points: @problem.points, name: @problem.name, shortname: @problem.shortname }
     assert_redirected_to problem_path(assigns(:problem))
+  end
+
+  test "should not update problem" do
+    put :update, id: @problem, problem: { description: @problem.description, points: "string", name: @problem.name, shortname: @problem.shortname }
+    assert_template :edit
   end
 
   test "should destroy problem" do
