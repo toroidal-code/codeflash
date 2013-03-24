@@ -163,7 +163,7 @@ class SolutionsController < ApplicationController
     rescue => e
       flash[:error] = "You have already voted on this solution."
     end
-    redirect_to problem_solution_path(@solution.problem, @solution)
+    redirect_to :back
   end
 
   def solution_params

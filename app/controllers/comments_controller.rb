@@ -56,6 +56,6 @@ class CommentsController < ApplicationController
     rescue => e
       flash[:error] = "You have already voted on this "
     end
-    redirect_to path
+    redirect_to :back
   end
 end
