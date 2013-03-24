@@ -49,6 +49,7 @@ class ProfilesController < ApplicationController
   # @return [String] the HTML/JSON for the saved profile.
   def create
     @profile = Profile.new(profile_params)
+    @user = current_user
     respond_to do |format|
       if @profile.save
         format.html { redirect_to @profile, notice: 'Profile was successfully created.' }

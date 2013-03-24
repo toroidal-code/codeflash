@@ -23,6 +23,15 @@ class ProfilesControllerTest < ActionController::TestCase
     assert_redirected_to profile_path(assigns(:profile))
   end
 
+  test "should not create profile" do
+    assert_no_difference('Profile.count') do
+      post :create, profile: { about_me: "x"*751, github: @profile.github, name: @profile.name, user_id: @user.id}
+    end
+
+    assert_template :new
+  end
+
+
   test "should show profile" do
     get :show, id: @profile.user.username
     assert_response :success
@@ -36,6 +45,12 @@ class ProfilesControllerTest < ActionController::TestCase
   test "should update profile" do
     put :update, id: @user.username, profile: { about_me: @profile.about_me, github: @profile.github, name: @profile.name }, user: {username: @user.username}
     assert_redirected_to profile_path(assigns(:profile))
+  end
+
+  test "should not update profile" do
+    put :update, id: @user.username, profile: { about_me: "x"*751, github: @profile.github, name: @profile.name }, user: {username: @user.username}
+
+    assert_template :edit
   end
 
   test "should destroy profile" do
