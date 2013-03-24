@@ -1,0 +1,12 @@
+<%= simple_form_for @flag, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= f.input :profile_id %>
+  <%= f.input :reason %>
+  <%= f.input :explanation %>
+  <%= f.input :flaggable_id %>
+  <%= f.input :flaggable_type %>
+  <div class="form-actions">
+    <%= f.button :submit, :class => 'btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                flags_path, :class => 'btn' %>
+  </div>
+<% end %>

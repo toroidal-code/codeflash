@@ -1,5 +1,7 @@
 Codeflash::Application.routes.draw do
 
+  resources :flags
+
   resources :profiles
 
   devise_for :users

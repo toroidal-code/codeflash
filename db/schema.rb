@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130320141115) do
+ActiveRecord::Schema.define(version: 20130324224215) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -64,6 +64,19 @@ ActiveRecord::Schema.define(version: 20130320141115) do
   end
 
   add_index "comments_profiles", ["profile_id", "comment_id"], name: "index_comments_profiles_on_profile_id_and_comment_id", unique: true
+
+  create_table "flags", force: true do |t|
+    t.integer  "profile_id"
+    t.string   "reason"
+    t.text     "explanation"
+    t.integer  "flaggable_id"
+    t.string   "flaggable_type"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "flags", ["flaggable_id", "flaggable_type"], name: "index_flags_on_flaggable_id_and_flaggable_type"
+  add_index "flags", ["profile_id"], name: "index_flags_on_profile_id"
 
   create_table "languages", force: true do |t|
     t.string   "name"
