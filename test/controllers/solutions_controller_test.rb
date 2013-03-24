@@ -12,6 +12,12 @@ class SolutionsControllerTest < ActionController::TestCase
     @solution.profile = @user.profile
     @solution.language = languages(:one)
     @solution.save
+    @solution2 = solutions(:two)
+    @solution2.problem = @problem
+    @solution2.profile = @user.profile
+    @solution2.language = languages(:one)
+    @solution2.save
+
   end
 
   test "should get index" do
@@ -20,8 +26,14 @@ class SolutionsControllerTest < ActionController::TestCase
     assert_not_nil assigns(:solutions)
   end
 
+  test "should get all index" do
+    get :index
+    assert_response :success
+    assert_not_nil assigns(:solutions)
+  end
+
   test "should get new" do
-    get :new, problem_id: @problem 
+    get :new, problem_id: @problem
     assert_response :success
   end
 
