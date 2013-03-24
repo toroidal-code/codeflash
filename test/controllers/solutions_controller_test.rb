@@ -2,6 +2,7 @@ require 'test_helper'
 
 class SolutionsControllerTest < ActionController::TestCase
   setup do
+    @request.env['HTTP_REFERER'] = 'http://test.host/solutions/show'
     @user = User.create!(email: "lol@lol.lol", username: "LOLOLOLOLOL", password: "LOLlol101", admin: true)
     # user.skip_confirmation!
     sign_in(@user)
@@ -57,13 +58,13 @@ class SolutionsControllerTest < ActionController::TestCase
     assert_difference('Solution.find(@solution).up_votes') do
       put :upvote, problem_id: @problem, id: @solution
     end
-    assert_redirected_to problem_solution_path(@problem, @solution)
+    assert_redirected_to :back
   end
 
   test "should downvote solution" do
     assert_difference('Solution.find(@solution).down_votes') do
       put :downvote, problem_id: @problem, id: @solution
     end
-    assert_redirected_to problem_solution_path(@problem, @solution)
+    assert_redirected_to :back
   end
 end
