@@ -3,7 +3,14 @@
 </style>
 <%= render_breadcrumbs %>
 <%= render 'compact', achievement:@achievement, header:'h2', image_size: '128x128' %>
+<% if can? :update, Achievement %> <div class="btn-group">
+  <a class="btn btn-primary" href="#">Achievement</a>
+  <a class="btn btn-primary dropdown-toggle" data-toggle="dropdown" href="#"><span class="caret"></span></a>
+  <ul class="dropdown-menu">
+    <li><a href="<%=edit_achievement_path(@achievement)%>"><i class="icon-pencil"></i> Edit</a></li>
+    <li><a href="<%= @achievement %>" data-method="delete" data-confirm="Are you sure?" %><i class="icon-trash"></i>  Delete</a></li>
+  </ul>
+</div>
+<% end %>
 <hr>
 <%= render 'solutions/solutions' %>
-<%= link_to 'Edit', edit_achievement_path(@achievement) %> |
-<%= link_to 'Back', achievements_path %>
