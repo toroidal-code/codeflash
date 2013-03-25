@@ -14,32 +14,39 @@
 //= require jquery_ujs
 //= require_tree .
 //= require vendor
-//= require chosen-jquery
+//= require select2
 //= require ace/ace
 //= require holder
 //= require history_jquery
 
 $(document).ready(function () {
-    $('.chzn-select').chosen().change(
+    $("#profilelang").select2();
+    $('#solutionlang').select2().change(
     	function(){
 	    	var str;
-			if($('.chzn-select option:selected').data().syntax == "none"){
+			if($('#solutionlang option:selected').data().syntax == "none"){
 				str = null;
 			}else{
-				str = "ace/mode/"+$('.chzn-select option:selected').data().syntax;
+				str = "ace/mode/"+$('#solutionlang option:selected').data().syntax;
 			}
-			editor.getSession().setMode(str);
+			if(typeof(editor) != 'undefined'){
+				editor.getSession().setMode(str);
+			}
     	});
 	var str;
-	if($('.chzn-select option:selected').data() != null){
-		if($('.chzn-select option:selected').data().syntax == "none"){
+	if($('#solutionlang option:selected').data() != null){
+		if($('#solutionlang option:selected').data().syntax == "none"){
 			str = null;
 		}else{
-			str = "ace/mode/"+$('.chzn-select option:selected').data().syntax;
+			str = "ace/mode/"+$('#solutionlang option:selected').data().syntax;
 		}
-		editor.getSession().setMode(str);
+		if(typeof(editor) != 'undefined'){
+			editor.getSession().setMode(str);
+		}
 	}
 	$('.accordion').on('expand collapse', function(e){
     	$(e.target).siblings('.solution-heading').find('.accordion-toggle i').toggleClass('icon-angle-down icon-angle-right', 200);
 	});
 });
+
+
