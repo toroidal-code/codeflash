@@ -1,3 +1,4 @@
+#Manages comments
 class CommentsController < ApplicationController
   authorize_resource
 
@@ -29,6 +30,7 @@ class CommentsController < ApplicationController
 
   private
 
+  # Strong parameters for comments
   def comment_params
     params[:comment].permit(:body, :up_votes, :down_votes)
   end
@@ -52,8 +54,8 @@ class CommentsController < ApplicationController
       end
       @comment.save!
     rescue => e
-      flash[:error] = "You have already voted on this "
+      flash[:error] = "You have already voted on this comment."
     end
-    redirect_to path
+    redirect_to :back
   end
 end

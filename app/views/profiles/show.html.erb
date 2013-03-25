@@ -1,28 +1,50 @@
-<p>
-  <b>Name:</b>
-  <%= @profile.name %>
-</p>
+<style type="text/css">
+    <%== Pygments.css('.highlight', {style: "default"}) %>
+</style>
+<div class="row-fluid">
+  <div class="span3">
+    <p><%= image_tag Gravatar.new(@user.email).image_url, size: '256x256' %></p>
+    <p><span class="name"><%= @profile.name %></span></p>
+    <p><span class="username"><%= @user.username %></span></p>
+    <hr>
+    <p>
+      <% if !@user.last_sign_in_at.blank? %>
+        <b>Last Logged In:</b> <%= @user.last_sign_in_at.to_date.to_formatted_s(:long) %>
+      <% end %>
+      <br>
+      <b>Joined:</b> <%= @user.created_at.to_date.to_formatted_s(:long) %>
+      <br>
+      <% if !@profile.github.blank? %>
+        <b>Github Username:</b>
+          <a href="https://github.com/<%=@profile.github%>"><%=@profile.github%></a>
+      <%end%>
+      <br>
+      <% if !@profile.language.blank? %>
+        <b>Favorite Language:</b>
+          <%=@profile.language.name%></a>
+      <%end%>
+  </div>
+  <div class="span9">
+    <p><%= @profile.about_me %></p>
+    <hr>
+    <% if @profile.solutions.empty? %>
+        <p><%=@profile.user.username %> hasn't submitted any solutions...</p>
+    <% end %>
+    <ul id="solutions">
+      <%= render 'solutions/solutions' %>
+    </ul>
+    <hr>
+    <div class="row-fluid">
+      <% if @profile.achievements.empty? %>
+        <p><%=@profile.user.username %> hasn't won any achievements...</p>
+      <% end %>
+      <% @profile.achievements.each do |achievement| %>
+        <%= render 'achievements/small', achievement: achievement %>
+      <% end %>
+    </div>
+  </div>
+</div>
 
-<p>
-  <b>About me:</b>
-  <%= @profile.about_me %>
-</p>
-
-<p>
-  <b>Favorite language:</b>
-  <%= @profile.language %>
-</p>
-
-<p>
-  <b>Github:</b>
-  <%= @profile.github %>
-</p>
-
-<p>
-  <b>User:</b>
-  <%= @user.username %>
-</p>
-
-
-<% if can? :edit, @profile %><%= link_to 'Edit', edit_profile_path(@profile) %> |<% end %>
-<%= link_to 'Back', profiles_path %>
+<script>
+$(".achievement").tooltip();
+</script>

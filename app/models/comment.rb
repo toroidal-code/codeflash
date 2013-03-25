@@ -1,3 +1,4 @@
+#A comment that is assigned to either a post or a solution
 class Comment < ActiveRecord::Base
   include Votable
 

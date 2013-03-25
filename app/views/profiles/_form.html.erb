@@ -6,13 +6,13 @@
   <%= f.input :name,
     input_html: { class: 'input-xlarge' } %>
   <%= f.input :about_me,
-    input_html: { class: 'input-block-level', maxlength:750 } %>
+    input_html: { class: 'input-block-level', maxlength:750, rows: 10 } %>
   <%= f.association :language,
     collection: Language.all,
-    input_html: { class: 'input-xlarge' } %>
+    input_html: {"data-placeholder" => "Choose a Language...",
+      class: "input-xlarge", id: "profilelang"} %>
   <%= f.input :github,
     input_html: { class: 'input-xlarge' } %>
   <%= f.button :submit, class: 'btn btn-primary' %>
-  <%= link_to 'Back', back_path, :class => 'btn' %>
+  <%= link_to 'Back', back_path, :class => 'btn' if !back_path.blank? %>
 <% end %>
- <!-- -->

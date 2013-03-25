@@ -1,4 +1,9 @@
 <%= simple_form_for([problem, solution]) do |f| %>
+<%= f.input :languge_id do %>
+  <%= f.select :language_id, Language.all.map { |l| [l.name, l.id, { "data-syntax" => l.ace_syntax }] },{},
+     {"data-placeholder" => "Choose a Language...",
+      class: "input-xlarge", id: "solutionlang" } %>
+  <% end %>
   <%= f.input :code,
     input_html: { class: 'input-block-level'} %>
   <div id='editor'></div>
@@ -11,7 +16,6 @@
       editor.getSession().on('change', function(){
           textarea.val(editor.getSession().getValue());
       });
-      editor.setTheme("ace/theme/monokai");
-      editor.getSession().setMode("ace/mode/javascript");
+      editor.setTheme("ace/theme/xcode");
   </script>
 <% end %>

@@ -1,0 +1,17 @@
+<% @problems.each do |problem| %>
+    <div class="row-fluid well well-small">
+      <div class="span3">
+        <%= link_to problem.name, problem %>
+        <span class="muted">(<%= problem.points %> points)</span>
+      </div>
+      <div class="span9">
+        <%= problem.description %>
+      </div>
+    </div>
+<% end %>
+<div class= "pagination-centered">
+  <%= paginate @problems %>
+</div>
+<% if can? :create, @problem  %>
+    <%= link_to 'New Problem', new_problem_path, class: "btn btn-primary" %>
+<% end %>

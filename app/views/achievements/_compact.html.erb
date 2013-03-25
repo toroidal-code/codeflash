@@ -1,0 +1,9 @@
+<div class="media">
+  <a class="pull-left" href=<%= achievement_path achievement %> >
+    <img class="media-object" data-src="holder.js/<%=image_size%>">
+  </a>
+  <div class="media-body">
+  <<%== header %> class="media-heading"><%= achievement.name %><span class="muted"> (<%= achievement.points %> points)</<%== header %>>
+    <%= achievement.description %>
+  </div>
+</div>

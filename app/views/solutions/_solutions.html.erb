@@ -1,0 +1,17 @@
+<div class="accordion" id="accordion">
+  <% @solutions.each_with_index do |solution, index| %>
+    <%= render 'solutions/compact', solution: solution, index: index, collapsed: true%>
+  <% end %>
+</div>
+
+<div class="pagination-centered">
+  <%= paginate @solutions %>
+</div>
+
+<script>
+$(".solution").click(function(){
+     window.location=$(this).attr("href");
+     return false;
+});
+$(".solution").tooltip();
+</script>
