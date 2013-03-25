@@ -38,11 +38,11 @@
       <% if @profile.achievements.empty? %>
         <p><%=@profile.user.username %> hasn't won any achievements...</p>
       <% end %>
-        <% @profile.achievements.each do |achievement| %>
-          <%= render 'achievements/small', achievement: achievement %>
-        <% end %>
+      <% @profile.achievements.each do |achievement| %>
+        <%= render 'achievements/small', achievement: achievement %>
+      <% end %>
     </div>
-  <% if can? :edit, @profile %><%= link_to 'Edit', edit_profile_path(@profile) %> <% end %>
+  </div>
 </div>
 
 <script>
