@@ -35,7 +35,7 @@
          solutions.each do |x|
            hash[x.language] += 1
          end
-         hash.each do |language, count| %>
+         Hash[hash.sort_by{|language, count| language.name}].each do |language, count| %>
           <li><a href="#<%= language.name %>"><%= "#{language.name} (#{count})" %></a></li>
       <% end %>
     </ul>
