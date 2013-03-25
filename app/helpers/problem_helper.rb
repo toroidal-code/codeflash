@@ -1,9 +1,5 @@
 module ProblemHelper
   def display_categories category_array
-    categories = ""
-    category_array.each do |category|
-      categories += "#{category.name},"
-    end
-    categories
+    category_array.map{|x| x.name}.join(',')
   end
 end
