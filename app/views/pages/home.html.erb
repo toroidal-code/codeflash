@@ -14,8 +14,12 @@
   <% if !user_signed_in? %>
     </div>
     <div class="span4">
-      <%= render 'users/sessions/compact', display_forgot: true%>
-      <%= render 'users/registrations/compact' %>
+      <div class = "well well-small compact-form">
+        <%= render 'users/sessions/compact', display_forgot: true%>
+      </div>
+      <div>
+        <%= render 'users/registrations/compact' %>
+      </div>
     </div>
   <% end %>
 

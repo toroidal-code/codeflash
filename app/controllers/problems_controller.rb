@@ -2,7 +2,9 @@
 class ProblemsController < ApplicationController
   authorize_resource
 
-  respond_to :html, :json
+  respond_to :html, :json, :js
+
+  add_breadcrumb "Problems", :problems_path
 
   # Lists all the problems in the database.
   #
@@ -11,7 +13,7 @@ class ProblemsController < ApplicationController
   #
   # @return [String] the HTML/JSON for the problems page
   def index
-    @problems = Problem.all
+    @problems = Problem.paginate(page: params[:page], per_page: 10 ).order('created_at DESC')
 
     respond_with @problems
   end
@@ -24,7 +26,8 @@ class ProblemsController < ApplicationController
   # @return [String] the HTML/JSON for the problem.
   def show
     @problem = Problem.find_by_shortname(params[:id])
-
+    @solutions = @problem.solutions.paginate(page: params[:page], per_page: 10 ).order('created_at DESC')
+    add_breadcrumb @problem.name, problem_path(@problem)
     respond_with @problem
   end
 
@@ -36,7 +39,7 @@ class ProblemsController < ApplicationController
   # @return [String] the HTML/JSON for the new problem.
   def new
     @problem = Problem.new
-
+    add_breadcrumb "New Problem"
     respond_with @problem
   end
 
@@ -47,6 +50,7 @@ class ProblemsController < ApplicationController
   # @return [String] the HTML/JSON for the problem edit page
   def edit
     @problem = Problem.find_by_shortname(params[:id])
+    add_breadcrumb "Edit #{@problem.name}"
   end
 
   # Creates and saves a new problem.
@@ -57,6 +61,7 @@ class ProblemsController < ApplicationController
   # @return [String] the HTML/JSON for the saved problem
   def create
     @problem = Problem.new(problem_params)
+    create_categories
     respond_to do |format|
       if @problem.save
         format.html { redirect_to @problem, notice: 'Problem was successfully created.' }
@@ -76,7 +81,7 @@ class ProblemsController < ApplicationController
   # @return [String] the HTML/JSON for the updated language
   def update
     @problem = Problem.find_by_shortname(params[:id])
-
+    create_categories
     respond_to do |format|
       if @problem.update_attributes(problem_params)
         format.html { redirect_to @problem, notice: 'Problem was successfully updated.' }
@@ -109,5 +114,19 @@ class ProblemsController < ApplicationController
 
   def problem_params
     params[:problem].permit(:description, :points, :name, :shortname)
+  end
+
+  def create_categories
+    @problem.categories = Array.new
+    categories = params[:categories].split(",")
+    categories.each do |category|
+      if !Category.exists?(name: category)
+        c = Category.create(name: category)
+      else
+        c = Category.find_by_name(category)
+      end
+      @problem.categories << c
+    end
+    @problem.save
   end
 end

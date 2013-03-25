@@ -4,6 +4,8 @@ class SolutionsController < ApplicationController
 
   before_filter :find_solution, only: [:show, :edit, :update, :destroy]
 
+  add_breadcrumb("Problems",:problems_path)
+
   respond_to :html, :json
 
   # Lists all the solutions to a given to the solution's problem
@@ -16,12 +18,13 @@ class SolutionsController < ApplicationController
   def index
     if params[:problem_id]
       @problem = Problem.find_by_shortname(params[:problem_id])
-      @solutions = @problem.solutions
+      @solutions = @problem.solutions.paginate(page: params[:page], per_page: 10 ).order('created_at DESC')
+      add_breadcrumb(@problem.name, problem_path(@problem))
     else
-      @solutions = Solution.all
+      @solutions = Solution.paginate(page: params[:page], per_page: 10 ).order('created_at DESC')
     end
-
-    respond_with @solutions
+    add_breadcrumb "Solutions", problem_solutions_path(@problem)
+    respond_to :html, :json, :js
   end
 
   # Shows the page for the solution.
@@ -32,7 +35,8 @@ class SolutionsController < ApplicationController
   # @return [String] the HTML/JSON for the solution
   def show
     @problem = Problem.find_by_shortname(params[:problem_id])
-
+    breadcrumbs
+    add_breadcrumb @solution.profile.user.username, problem_solution_path(@problem, @solution)
     respond_with @solution
   end
 
@@ -45,8 +49,10 @@ class SolutionsController < ApplicationController
   def new
     @solution = Solution.new
     @problem = Problem.find_by_shortname(params[:problem_id])
-
+    breadcrumbs
+    add_breadcrumb "New Solution"
     respond_with @solution
+
   end
 
   # Edits the values of a solution.
@@ -56,6 +62,9 @@ class SolutionsController < ApplicationController
   # @return [String] the HTML/JSON for the solution edit page
   def edit
     @problem = @solution.problem
+    @languages = Language.all
+    breadcrumbs
+    add_breadcrumb "Edit Solution"
   end
 
   # Creates and saves a new solution.
@@ -125,8 +134,16 @@ class SolutionsController < ApplicationController
    vote false
   end
 
+  # finds the solution based on params[:id]
+  # before_filter method for show edit update and destroy
   def find_solution
     @solution = Solution.find(params[:id])
+  end
+
+  # adds the problem name breadcrumb and the problem's solutions breadcrumb
+  def breadcrumbs
+    add_breadcrumb(@problem.name, problem_path(@problem))
+    add_breadcrumb "Solutions", problem_solutions_path(@problem)
   end
 
   private
@@ -146,10 +163,10 @@ class SolutionsController < ApplicationController
     rescue => e
       flash[:error] = "You have already voted on this solution."
     end
-    redirect_to problem_solution_path(@solution.problem, @solution)
+    redirect_to :back
   end
 
   def solution_params
-    params[:solution].permit(:code, :problem_id, :up_votes, :down_votes)
+    params[:solution].permit(:code, :language_id, :problem_id, :up_votes, :down_votes)
   end
 end

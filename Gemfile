@@ -1,4 +1,4 @@
-source 'https://rubygems.org'
+source 'http://rubygems.org'
 
 # Rails 4
 gem 'rails', github: 'rails/rails'
@@ -29,16 +29,25 @@ gem 'rvm-capistrano'
 gem 'yard', '~> 0.8.5.2'
 gem 'simple_form', github: 'plataformatec/simple_form'
 
+# Pygments, using DHowett's fork (updated to pygments 1.6) until tmm1 approves the pull request.
+gem 'pygments.rb'
+
+# Required by methods called inside RAILS_ENV=production
+gem 'will_paginate'
+gem 'bootstrap-will_paginate'
+gem 'twitter-bootstrap-rails'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
+  gem 'historyjs-rails'
   gem 'yui-compressor'
   gem 'closure-compiler'
   gem 'sass-rails', github: 'rails/sass-rails'
-  gem 'bootstrap-sass', '~> 2.3'
   gem 'coffee-rails', github: 'rails/coffee-rails'
   gem 'jquery-rails', '~> 2.2.1'
   gem 'ace-rails-ap'
+  gem 'select2-rails'
+  gem 'holder_rails'
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platforms => :ruby
 end
