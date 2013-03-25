@@ -26,6 +26,17 @@
     <ul class="nav nav-list well well-small">
       <li class="nav-header">Languages</li>
       <li class="active"><a href="#">All</a></li>
+      <% Language.all.each do |language| %>
+          <% if @problem.nil? %>
+              <% solutions = Solution.all %>
+          <% else %>
+              <% solutions = @problem.solutions %>
+          <% end %>
+          <% num = solutions.where({language_id: language}).to_a.count %>
+          <% if num != 0 %>
+              <li><a href="#"><%= "#{language.name} (#{num})" %></a></li>
+          <%end%>
+      <% end %>
     </ul>
   </div>
 
