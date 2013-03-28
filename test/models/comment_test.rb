@@ -16,12 +16,12 @@ class CommentTest < ActiveSupport::TestCase
   end
 
   test 'should not be valid upvotes not integer' do
-    comment = Comment.new({body:"x"*501, up_votes:"string"})
+    comment = Comment.new({body:@comment.body, up_votes:"string"})
     assert !comment.valid?
   end
 
   test 'should not be valid downvotes not integer' do
-    comment = Comment.new({body:"x"*501, down_votes:"string"})
+    comment = Comment.new({body:@comment.body, down_votes:"string"})
     assert !comment.valid?
   end
 
