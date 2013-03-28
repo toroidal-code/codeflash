@@ -2,7 +2,7 @@
 class SolutionsController < ApplicationController
   authorize_resource
 
-  before_filter :find_solution, only: [:show, :edit, :update, :destroy]
+  before_action :find_solution, only: [:show, :edit, :update, :destroy]
 
   add_breadcrumb("Problems",:problems_path)
 

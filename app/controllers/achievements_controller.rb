@@ -1,6 +1,7 @@
 # Manages Achievements and their public interfaces.
 class AchievementsController < ApplicationController
   authorize_resource
+  before_action :set_achievement, only: [:show, :edit, :update, :destroy]
 
   add_breadcrumb "Achievements", :achievements_path
 
@@ -24,7 +25,6 @@ class AchievementsController < ApplicationController
   #
   # @return [String] the HTML/JSON for the achievement
   def show
-    @achievement = Achievement.find(params[:id])
     @solutions = @achievement.solutions.paginate(page: params[:page], per_page: 10).order('created_at DESC')
     add_breadcrumb @achievement.name, achievement_path(@achievement)
     respond_with @achievement
@@ -48,7 +48,6 @@ class AchievementsController < ApplicationController
   #
   # @return [String] the HTML/JSON for the achievement edit page
   def edit
-    @achievement = Achievement.find(params[:id])
     add_breadcrumb "Edit #{@achievement.name}"
   end
 
@@ -79,8 +78,6 @@ class AchievementsController < ApplicationController
   #
   # @return [String] the HTML/JSON for the updated achievement resource
   def update
-    @achievement = Achievement.find(params[:id])
-
     respond_to do |format|
       if @achievement.update_attributes(achievement_params)
         format.html { redirect_to @achievement, notice: 'Achievement was successfully updated.' }
@@ -100,7 +97,6 @@ class AchievementsController < ApplicationController
   # @return [String] the HTML/JSON notifying the user that the resource was
   # destroyed
   def destroy
-    @achievement = Achievement.find(params[:id])
     @achievement.destroy
 
     respond_to do |format|
@@ -110,8 +106,10 @@ class AchievementsController < ApplicationController
   end
 
   private
-
-  def achievement_params
-    params[:achievement].permit(:description, :name, :points)
-  end
+    def set_achievement
+      @achievement = Achievement.find(params[:id])
+    end
+    def achievement_params
+      params[:achievement].permit(:description, :name, :points)
+    end
 end
