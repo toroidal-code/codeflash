@@ -6,7 +6,7 @@ class CategoryTest < ActiveSupport::TestCase
   end
 
   test 'should not be valid name not unique' do
-    category = Category.new({name: @category.name})
+    category = Category.new(name: @category.name)
     assert !category.valid?
   end
 
@@ -16,7 +16,7 @@ class CategoryTest < ActiveSupport::TestCase
   end
 
   test 'should be valid' do
-    category = Category.new({name: "Smile"})
+    category = Category.new(name: "Smile")
     assert category.valid?
   end
 end

@@ -11,26 +11,26 @@ class CommentTest < ActiveSupport::TestCase
   end
 
   test 'should not be valid too long body' do
-    comment = Comment.new({body:"x"*501})
+    comment = Comment.new(body:"x"*501)
     assert !comment.valid?
   end
 
   test 'should not be valid upvotes not integer' do
-    comment = Comment.new({ body:@comment.body,
-                            up_votes:"string"})
+    comment = Comment.new(body:@comment.body,
+                          up_votes:1.5)
     assert !comment.valid?
   end
 
   test 'should not be valid downvotes not integer' do
-    comment = Comment.new({ body:@comment.body,
-                            down_votes:"string"})
+    comment = Comment.new(body:@comment.body,
+                          down_votes:1.5)
     assert !comment.valid?
   end
 
   test 'should be valid' do
-    comment = Comment.new({ body:@comment.body,
-                            up_votes:4,
-                            down_votes:5})
+    comment = Comment.new(body:@comment.body,
+                          up_votes:4,
+                          down_votes:5)
     assert comment.valid?
   end
 

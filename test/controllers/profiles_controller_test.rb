@@ -9,7 +9,7 @@ class ProfilesControllerTest < ActionController::TestCase
     @user.skip_confirmation!
     sign_in(@user)
     @profile = profiles(:one)
-    @profile.user_id = @user.id
+    @profile.user = @user
   end
 
   test "should get new" do
