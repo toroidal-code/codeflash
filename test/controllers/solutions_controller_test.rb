@@ -3,8 +3,11 @@ require 'test_helper'
 class SolutionsControllerTest < ActionController::TestCase
   setup do
     @request.env['HTTP_REFERER'] = 'http://test.host/solutions/show'
-    @user = User.create!(email: "lol@lol.lol", username: "LOLOLOLOLOL", password: "LOLlol101", admin: true)
-    # user.skip_confirmation!
+    @user = User.create(email: "lol@lol.lol",
+                    username: "LOLOLOLOLOL",
+                    password: "LOLlol101",
+                    admin: true)
+    @user.skip_confirmation!
     sign_in(@user)
     @problem = Problem.create!(description: "lol", points: 9, name: "lololol", shortname: "lolololsdjkfnasd")
     @solution = solutions(:one)

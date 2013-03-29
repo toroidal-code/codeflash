@@ -3,8 +3,11 @@ require 'test_helper'
 class CommentsControllerTest < ActionController::TestCase
   setup do
     @request.env['HTTP_REFERER'] = 'http://test.host/'
-    user =  User.new(email: "lol@lol.lol", username: "LOLOLOLOLOL", password: "LOLlol101", admin: true)
-    user.save
+    user = User.create(email: "lol@lol.lol",
+                    username: "LOLOLOLOLOL",
+                    password: "LOLlol101",
+                    admin: true)
+    user.skip_confirmation!
     sign_in(user)
     @problem = problems(:one)
     @problem

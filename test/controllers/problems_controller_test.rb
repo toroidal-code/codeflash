@@ -2,9 +2,11 @@ require 'test_helper'
 
 class ProblemsControllerTest < ActionController::TestCase
   setup do
-    user = User.new(email: "lol@lol.lol", username: "LOLOLOLOLOL", password: "LOLlol101", admin: true)
+    user = User.create(email: "lol@lol.lol",
+                    username: "LOLOLOLOLOL",
+                    password: "LOLlol101",
+                    admin: true)
     user.skip_confirmation!
-    user.save
     sign_in(user)
     @problem = problems(:one)
   end
@@ -22,7 +24,11 @@ class ProblemsControllerTest < ActionController::TestCase
 
   test "should create problem" do
     assert_difference('Problem.count') do
-      post :create, problem: { description: @problem.description, points: @problem.points, name: @problem.name, shortname: "mystringss" }, categories:"MyString,mystring2"
+      post :create, problem: {description: @problem.description,
+                              points: @problem.points,
+                              name: @problem.name,
+                              shortname: "mystringss" },
+                    categories:"MyString,mystring2"
     end
 
     assert_redirected_to problem_path(assigns(:problem))
@@ -30,7 +36,11 @@ class ProblemsControllerTest < ActionController::TestCase
 
   test "should not create problem" do
     assert_no_difference('Problem.count') do
-      post :create, problem: { description: @problem.description, points: @problem.points, name: @problem.name, shortname: @problem.shortname }, categories:""
+      post :create, problem: {description: @problem.description,
+                              points: @problem.points,
+                              name: @problem.name,
+                              shortname: @problem.shortname },
+                    categories:""
     end
 
     assert_template :new
@@ -47,12 +57,20 @@ class ProblemsControllerTest < ActionController::TestCase
   end
 
   test "should update problem" do
-    put :update, id: @problem, problem: { description: @problem.description, points: @problem.points, name: @problem.name, shortname: @problem.shortname }, categories:""
+    put :update, id: @problem, problem: { description: @problem.description,
+                                          points: @problem.points,
+                                          name: @problem.name,
+                                          shortname: @problem.shortname },
+                               categories:""
     assert_redirected_to problem_path(assigns(:problem))
   end
 
   test "should not update problem" do
-    put :update, id: @problem, problem: { description: @problem.description, points: "string", name: @problem.name, shortname: @problem.shortname }, categories:""
+    put :update, id: @problem, problem: { description: @problem.description,
+                                          points: "string",
+                                          name: @problem.name,
+                                          shortname: @problem.shortname },
+                               categories:""
     assert_template :edit
   end
 
