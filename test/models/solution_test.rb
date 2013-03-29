@@ -12,17 +12,21 @@ class SolutionTest < ActiveSupport::TestCase
   end
 
   test 'should not be valid upvotes not integer' do
-    solution = Solution.new({code:@solution.code, up_votes:"string"})
+    solution = Solution.new({ code:@solution.code,
+                              up_votes:"string"})
     assert !solution.valid?
   end
 
   test 'should not be valid downvotes not integer' do
-    solution = Solution.new({code:@solution.code, down_votes:"string"})
+    solution = Solution.new({ code:@solution.code,
+                              down_votes:"string"})
     assert !solution.valid?
   end
 
   test 'should be valid' do
-    solution = Solution.new({code:@solution.code, up_votes:4, down_votes:5})
+    solution = Solution.new({ code:@solution.code,
+                              up_votes:4,
+                              down_votes:5})
     assert solution.valid?
   end
 
