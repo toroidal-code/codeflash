@@ -16,13 +16,8 @@ class User < ActiveRecord::Base
 
   validates :username,
     presence: true
-  validates :password,
-    format: { with:/(?=.*[a-z])(?=.*[A-Z])(?=\d*)./,
-      message: 'must contain at least 1 lowercase character,
-      1 upercase character, and 1 number' },
-    on: :create
   validates :username,
-    format: { with: /[a-zA-Z][A-Za-z0-9]*/,
+    format: { with: /\A[a-zA-Z][A-Za-z0-9]*\z/,
       message: 'must start with a letter.' },
     length: { minimum: 4 }
   validates :username,
@@ -31,6 +26,14 @@ class User < ActiveRecord::Base
     confirmation: true
 
   after_create :create_profile
+
+  validate :password_complexity
+
+  def password_complexity
+    if password.present? and not password.match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+/)
+      errors.add :password, "must include at least one lowercase letter, one uppercase letter, and one digit"
+    end
+  end
 
   # Finds a User that matches the given conditions.
   #
