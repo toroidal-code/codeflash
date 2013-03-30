@@ -25,14 +25,9 @@
       <%end%>
   </div>
   <div class="span9">
-    <p><%= @profile.about_me %></p>
-    <hr>
-    <% if @profile.solutions.empty? %>
-        <p><%=@profile.user.username %> hasn't submitted any solutions...</p>
-    <% end %>
-    <ul id="solutions">
-      <%= render 'solutions/solutions' %>
-    </ul>
+    <div class="row-fluid">
+      <p><%= @profile.about_me %></p>
+    </div>
     <hr>
     <div class="row-fluid">
       <% if @profile.achievements.empty? %>
@@ -41,6 +36,15 @@
       <% @profile.achievements.each do |achievement| %>
         <%= render 'achievements/small', achievement: achievement %>
       <% end %>
+    </div>
+    <hr>
+    <div class="row-fluid">
+      <% if @profile.solutions.empty? %>
+          <p><%=@profile.user.username %> hasn't submitted any solutions...</p>
+      <% end %>
+      <ul id="solutions">
+        <%= render 'solutions/solutions' %>
+      </ul>
     </div>
   </div>
 </div>
