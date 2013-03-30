@@ -49,4 +49,6 @@ $(document).ready(function () {
 	});
 });
 
+var deluxe_spinning_action = new Konami();
+deluxe_spinning_action.load('http://terp.in/');
 
