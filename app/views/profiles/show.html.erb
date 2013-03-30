@@ -3,7 +3,7 @@
 </style>
 <div class="row-fluid">
   <div class="span3">
-    <p><%= image_tag Gravatar.new(@user.email).image_url, size: '256x256' %></p>
+    <p><%= image_tag(Gravatar.new(@user.email).image_url + "?s=256", size: '256x256') %></p>
     <p><span class="name"><%= @profile.name %></span></p>
     <p><span class="username"><%= @user.username %></span></p>
     <hr>
