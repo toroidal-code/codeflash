@@ -10,7 +10,7 @@
   <%= f.association :language,
     collection: Language.all,
     input_html: {"data-placeholder" => "Choose a Language...",
-      class: "input-xlarge chzn-select"} %>
+      class: "input-xlarge", id: "profilelang"} %>
   <%= f.input :github,
     input_html: { class: 'input-xlarge' } %>
   <%= f.button :submit, class: 'btn btn-primary' %>

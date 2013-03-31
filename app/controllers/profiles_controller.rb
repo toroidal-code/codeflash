@@ -2,7 +2,7 @@
 class ProfilesController < ApplicationController
   authorize_resource
 
-  before_filter :find_profile, only: [:show, :edit, :update, :destroy]
+  before_action :find_profile, only: [:show, :edit, :update, :destroy]
 
   respond_to :html, :json, :js
 

@@ -27,9 +27,12 @@ class Profile < ActiveRecord::Base
   # @return [Integer] the number of points a user has.
   def points
     vote_sums = Proc.new{|sum, x| sum + x.votes}
-    solutions.inject(0, &vote_sums) + problem_comments.inject(0, &vote_sums) +
-    solution_comments.inject(0, &vote_sums) +
+    solutions.inject(0, &vote_sums) + comments.inject(0, &vote_sums) +
     achievements.inject(0){|sum, x| sum + x.points}
+  end
+
+  def voted? solution
+    solutions_voted.include? solution
   end
 
 end

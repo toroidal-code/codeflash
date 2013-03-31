@@ -5,8 +5,16 @@
       input_html: { class: 'input-xlarge' } %>
   <%= f.input :description,
     input_html: { class: 'input-block-level', rows: 10} %>
+  <%= f.input :categories,
+    input_html: { name: "categories",
+                  value:display_categories(problem.categories),
+                  id: "categories",
+                  class: 'input-xlarge'}%>
   <%= f.input :points,
     input_html: { class: 'input-xlarge', min: '1' }  %>
   <%= f.button :submit, class: 'btn btn-primary' %>
   <%= link_to 'Back', back_path, :class => 'btn' %>
 <% end %>
+<script>
+  $("#categories").select2({tags:<%== Category.all.map{|x| x.name} %>, placeholder: "Choose Categories"});
+</script>

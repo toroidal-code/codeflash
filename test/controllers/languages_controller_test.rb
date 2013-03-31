@@ -2,9 +2,11 @@ require 'test_helper'
 
 class LanguagesControllerTest < ActionController::TestCase
   setup do
-    user = User.new(email: "lol@lol.lol", username: "LOLOLOLOLOL", password: "LOLlol101", admin: true)
+    user = User.create(email: "lol@lol.lol",
+                    username: "LOLOLOLOLOL",
+                    password: "LOLlol101",
+                    admin: true)
     user.skip_confirmation!
-    user.save
     sign_in(user)
     @language = languages(:one)
     @language.name = 'unique name'
@@ -23,7 +25,9 @@ class LanguagesControllerTest < ActionController::TestCase
 
   test "should create language" do
     assert_difference('Language.count') do
-      post :create, language: { name: @language.name, ace_syntax: @language.ace_syntax, pygments_syntax: @language.pygments_syntax }
+      post :create, language: { name: @language.name,
+                                ace_syntax: @language.ace_syntax,
+                                pygments_syntax: @language.pygments_syntax }
     end
 
     assert_redirected_to language_path(assigns(:language))
@@ -31,7 +35,8 @@ class LanguagesControllerTest < ActionController::TestCase
 
   test "should not create language" do
     assert_no_difference('Language.count') do
-      post :create, language: { ace_syntax: @language.ace_syntax, pygments_syntax: @language.pygments_syntax }
+      post :create, language: { ace_syntax: @language.ace_syntax,
+                                pygments_syntax: @language.pygments_syntax }
     end
 
     assert_template :new

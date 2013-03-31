@@ -3,10 +3,13 @@ require 'test_helper'
 class SolutionsControllerTest < ActionController::TestCase
   setup do
     @request.env['HTTP_REFERER'] = 'http://test.host/solutions/show'
-    @user = User.create!(email: "lol@lol.lol", username: "LOLOLOLOLOL", password: "LOLlol101", admin: true)
-    # user.skip_confirmation!
+    @user = User.create(email: "lol@lol.lol",
+                    username: "LOLOLOLOLOL",
+                    password: "LOLlol101",
+                    admin: true)
+    @user.skip_confirmation!
     sign_in(@user)
-    @problem = Problem.create!(description: "lol", points: 9, name: "lololol", shortname: "lolololsdjkfnasd")
+    @problem = problems(:one)
     @solution = solutions(:one)
     @solution.problem = @problem
     @solution.profile = @user.profile
@@ -103,11 +106,14 @@ class SolutionsControllerTest < ActionController::TestCase
   end
 
   test "should downvote solution" do
-    assert_difference('Solution.find(@solution).down_votes') do
+    assert_difference('Solution.find(@solution).up_votes') do
+      put :upvote, problem_id: @problem, id: @solution
+    end
+    assert_difference('Solution.find(@solution).up_votes', -1) do
       put :downvote, problem_id: @problem, id: @solution
     end
     assert_redirected_to :back
-    assert_no_difference('Solution.find(@solution).down_votes') do
+    assert_no_difference('Solution.find(@solution).up_votes') do
       put :downvote, problem_id: @problem, id: @solution
     end
     assert_equal 'You have already voted on this solution.', flash[:error]

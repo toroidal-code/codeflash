@@ -46,7 +46,7 @@ group :assets do
   gem 'coffee-rails', github: 'rails/coffee-rails'
   gem 'jquery-rails', '~> 2.2.1'
   gem 'ace-rails-ap'
-  gem 'chosen-rails'
+  gem 'select2-rails'
   gem 'holder_rails'
   # See https://github.com/sstephenson/execjs#readme for more supported runtimes
   # gem 'therubyracer', :platforms => :ruby
