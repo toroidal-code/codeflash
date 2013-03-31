@@ -12,16 +12,17 @@ Codeflash::Application.routes.draw do
 
   concern :commentable do
     resources :comments, concerns: :votable do
-      resources :flags
+      resources :flags, except: :index
     end
   end
 
   resources :achievements
+  resources :flags, only: :index
   resources :languages
-  resources :solutions, only: [:index]
+  resources :solutions, only: :index
   resources :problems, concerns: :commentable do
     resources :solutions, concerns: [:votable, :commentable] do
-      resources :flags
+      resources :flags, except: :index
     end
   end
   resources :profiles

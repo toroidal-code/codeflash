@@ -6,7 +6,7 @@
   <thead>
     <tr>
       <th><%= model_class.human_attribute_name(:id) %></th>
-      <th><%= model_class.human_attribute_name(:profile_id) %></th>
+      <th>Flaggable</th>
       <th><%= model_class.human_attribute_name(:reason) %></th>
       <th><%= model_class.human_attribute_name(:explanation) %></th>
       <th><%= model_class.human_attribute_name(:flaggable_id) %></th>
@@ -18,8 +18,8 @@
   <tbody>
     <% @flags.each do |flag| %>
       <tr>
-        <td><%= link_to flag.id, @path %></td>
-        <td><%= flag.profile_id %></td>
+        <td><%= link_to flag.id, get_flag_path_with_flag(flag) %></td>
+        <td><%= link_to "Flaggable", get_flaggable_path(flag) %></td>
         <td><%= flag.reason %></td>
         <td><%= flag.explanation %></td>
         <td><%= flag.flaggable_id %></td>

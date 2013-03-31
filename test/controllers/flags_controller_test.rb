@@ -23,20 +23,7 @@ class FlagsControllerTest < ActionController::TestCase
   end
 
   test "should get problem solution index" do
-    get :index, problem_id: @problem, solution_id: @solution
-    assert_response :success
-    assert_not_nil assigns(:flags)
-  end
-
-  test "should get problem comment index" do
-    get :index, problem_id: @problem, comment_id: @comment1
-    assert_response :success
-    assert_not_nil assigns(:flags)
-  end
-
-
-  test "should get problem solution comment index" do
-    get :index, problem_id: @problem, solution_id: @solution, comment_id: @comment2
+    get :index
     assert_response :success
     assert_not_nil assigns(:flags)
   end
@@ -70,7 +57,7 @@ class FlagsControllerTest < ActionController::TestCase
       post :create, flag: { explanation: @flag1.explanation, profile_id: @flag1.profile_id, reason: @flag1.reason }, problem_id: @problem, comment_id: @comment1
     end
 
-    assert_redirected_to problem_comment_path(@problem, @comment1)
+    assert_redirected_to problem_path(@problem)
   end
 
   test "should create problem solution comment flag" do
@@ -78,7 +65,7 @@ class FlagsControllerTest < ActionController::TestCase
       post :create, flag: { explanation: @flag2.explanation, profile_id: @flag2.profile_id, reason: @flag2.reason }, problem_id: @problem, solution_id: @solution, comment_id: @comment2
     end
 
-    assert_redirected_to problem_solution_comment_path(@problem, @solution, @comment2)
+    assert_redirected_to problem_solution_path(@problem, @solution)
   end
 
   test "should not create problem solution flag" do
@@ -118,7 +105,7 @@ class FlagsControllerTest < ActionController::TestCase
       delete :destroy, id: @flag2, problem_id: @problem, solution_id: @solution, comment_id: @comment2
     end
 
-    assert_redirected_to problem_solution_comment_path(@problem, @solution, @comment2)
+    assert_redirected_to problem_solution_path(@problem, @solution)
   end
 
   test "should destroy problem comment flag" do
@@ -126,6 +113,6 @@ class FlagsControllerTest < ActionController::TestCase
       delete :destroy, id: @flag1, problem_id: @problem, comment_id: @comment1
     end
 
-    assert_redirected_to problem_comment_path(@problem, @comment1)
+    assert_redirected_to problem_path(@problem)
   end
 end

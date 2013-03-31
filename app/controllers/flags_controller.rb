@@ -2,7 +2,7 @@
 class FlagsController < ApplicationController
   authorize_resource
   before_action :set_flag, only: [:show, :destroy]
-  before_action :set_path
+  before_action :set_path, except: :index
 
   # GET /flags
   def index
@@ -50,11 +50,9 @@ class FlagsController < ApplicationController
       @solution = Solution.find(params[:solution_id]) if !params[:solution_id].nil?
       @problem = Problem.find_by_shortname(params[:problem_id])
       if @solution.nil?
-        @path = problem_comment_path(@problem, @comment)
-      elsif @comment.nil?
-        @path = problem_solution_path(@problem, @solution)
+        @path = problem_path(@problem)
       else
-        @path = problem_solution_comment_path(@problem, @solution, @comment)
+        @path = problem_solution_path(@problem, @solution)
       end
     end
 

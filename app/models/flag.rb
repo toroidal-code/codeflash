@@ -1,7 +1,7 @@
 # The model class representing a flag
 class Flag < ActiveRecord::Base
   belongs_to :profile
-  belongs_to :flagable, polymorphic: true
+  belongs_to :flaggable, polymorphic: true
 
   validates :reason, :explanation,
     presence: true
