@@ -10,6 +10,7 @@ class Ability
       can :manage, :all
     else
       can :read, :all
+      cannot :read, Flag
       can :update, Profile, user_id: user.id
       can :create, [Profile, Solution, Comment ]
       can :create, Flag
