@@ -81,6 +81,15 @@ class FlagsControllerTest < ActionController::TestCase
     assert_redirected_to problem_solution_comment_path(@problem, @solution, @comment2)
   end
 
+  test "should not create problem solution flag" do
+    assert_no_difference('Flag.count') do
+      post :create, flag: { explanation: @flag3.explanation, profile_id: @flag3.profile_id }, problem_id: @problem, solution_id: @solution
+    end
+
+    assert_template :new
+  end
+
+
   test "should show problem solution flag" do
     get :show, id: @flag3, problem_id: @problem, solution_id: @solution
     assert_response :success
