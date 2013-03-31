@@ -1,3 +1,4 @@
+# The controller for the flags
 class FlagsController < ApplicationController
   authorize_resource
   before_action :set_flag, only: [:show, :destroy]
@@ -43,6 +44,7 @@ class FlagsController < ApplicationController
       @flag = Flag.find(params[:id])
     end
 
+    #Sets the path instance variable for a fath
     def set_path
       @comment = Comment.find(params[:comment_id]) if !params[:comment_id].nil?
       @solution = Solution.find(params[:solution_id]) if !params[:solution_id].nil?
