@@ -30,9 +30,18 @@
     </div>
     <div class="span11" style="padding-top: 10.5px;">
       <div class="well well-small">
-        <a href="<%= profile_path comment.profile %>">
-          <h4><%= comment.profile.user.username %></h4>
-        </a>
+        <div class="pull-right">
+          <i class="icon-warning-sign"><a href="
+            <% if solution %>
+              <%=new_problem_solution_comment_flag_path(@problem, @solution, comment)%>
+            <% else %>
+              <%=new_problem_comment_flag_path(@problem, comment)%>
+            <% end %>"></i> Report Comment</a>
+        </div>
+        <h4> <a href="<%= profile_path comment.profile %>">
+         <%= comment.profile.user.username %>
+        </a></h4>
+
         <p><%= comment.body %></p>
       </div>
     </div>
