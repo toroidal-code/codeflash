@@ -1,6 +1,7 @@
 class FlagsController < ApplicationController
   authorize_resource
-  before_action :set_flag, only: [:show, :edit, :update, :destroy]
+  before_action :set_flag, only: [:show, :destroy]
+  before_action :set_path
 
   # GET /flags
   def index
@@ -16,40 +17,43 @@ class FlagsController < ApplicationController
     @flag = Flag.new
   end
 
-  # GET /flags/1/edit
-  def edit
-  end
-
   # POST /flags
   def create
-    @flag = Flag.new(flag_params)
-
+    if @comment.nil?
+      @flag = @solution.flags.create(flag_params)
+    else
+      @flag = @comment.flags.create(flag_params)
+    end
     if @flag.save
-      redirect_to @flag, notice: 'Flag was successfully created.'
+      redirect_to @path, notice: 'Flag was successfully created.'
     else
       render action: 'new'
-    end
-  end
-
-  # PATCH/PUT /flags/1
-  def update
-    if @flag.update(flag_params)
-      redirect_to @flag, notice: 'Flag was successfully updated.'
-    else
-      render action: 'edit'
     end
   end
 
   # DELETE /flags/1
   def destroy
     @flag.destroy
-    redirect_to flags_url, notice: 'Flag was successfully destroyed.'
+    redirect_to @path, notice: 'Flag was successfully destroyed.'
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_flag
       @flag = Flag.find(params[:id])
+    end
+
+    def set_path
+      @comment = Comment.find(params[:comment_id]) if !params[:comment_id].nil?
+      @solution = Solution.find(params[:solution_id]) if !params[:solution_id].nil?
+      @problem = Problem.find_by_shortname(params[:problem_id])
+      if @solution.nil?
+        @path = problem_comment_path(@problem, @comment)
+      elsif @comment.nil?
+        @path = problem_solution_path(@problem, @solution)
+      else
+        @path = problem_solution_comment_path(@problem, @solution, @comment)
+      end
     end
 
     # Only allow a trusted parameter "white list" through.
