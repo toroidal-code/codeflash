@@ -63,7 +63,7 @@ $(document).ready(function () {
 
 var deluxe_spinning_action = new Konami();
 deluxe_spinning_action.code = function() {
-  $("i").addClass("icon-spin");
-  $("img").addClass("spin");
+  $('i').addClass('icon-spin');
+  $('img').addClass('spin');
 }
 deluxe_spinning_action.load();
