@@ -1,17 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  profile_id: 
-  reason: MyString
+  reason: Inappropriate
   explanation: MyText
 
 two:
-  profile_id: 
-  reason: MyString
+  reason: Other
   explanation: MyText
 
 three:
-  profile_id: 
-  reason: MyString
+  reason: Spam
   explanation: MyText
-

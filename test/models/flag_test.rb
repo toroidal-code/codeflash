@@ -20,6 +20,11 @@ class FlagTest < ActiveSupport::TestCase
     assert !flag.valid?
   end
 
+  test 'should not be valid reason not in list' do
+    flag = Flag.new(reason:"Strinnnng", explanation:"f"*751)
+    assert !flag.valid?
+  end
+
   test 'should  be valid' do
     flag = Flag.new(reason:@flag.reason, explanation:@flag.explanation)
     assert flag.valid?

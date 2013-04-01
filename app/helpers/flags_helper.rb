@@ -56,23 +56,6 @@ module FlagsHelper
     path
   end
 
-  #Gets the proper new path for a flag
-  #
-  # @param [Problem] problem  the problem that the flag is associated with
-  # @param [Solution] solution the solution that the flag is associated with (might be nil)
-  # @param [Comment] comment the comment that the flag is associated with (might be nil)
-  #
-  # @return the path
-  def get_new_flag_path problem, solution, comment
-    if solution.nil?
-      path = new_problem_comment_flag_path(problem, comment)
-    elsif comment.nil?
-      path = new_problem_solution_flag_path(problem, solution)
-    else
-      path = new_problem_solution_comment_flag_path(problem, solution, comment)
-    end
-  end
-
   def type comment
     comment.nil? ? 'Solution' : 'Comment'
   end
