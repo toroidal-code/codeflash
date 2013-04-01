@@ -8,6 +8,15 @@ class FlagsControllerTest < ActionController::TestCase
     @flag1 = flags(:one)
     @flag2 = flags(:two)
     @flag3 = flags(:three)
+    @p = profiles(:one)
+    @p.user = users(:one)
+    @p.save
+    @flag1.profile = @p
+    @flag3.profile = @p
+    @p = profiles(:two)
+    @p.user = users(:two)
+    @p.save
+    @flag2.profile = @p
     @problem = problems(:one)
     @solution = solutions(:one)
     @comment1 = comments(:one)
