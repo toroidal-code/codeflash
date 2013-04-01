@@ -1,7 +1,11 @@
 # The model class representing a flag
 class Flag < ActiveRecord::Base
   #The reasons possible for a flag
-  REASONS = ['Inappropriate', 'Spam', 'Duplicate', 'Other']
+  REASONS_SOLUTIONS = ['Duplicate code', 'Malicious code', 'Does not attempt to solve problem',
+   'Intentionally obfuscated code', 'Language port', 'Wrong language', 'Not code', 'Other']
+
+  REASONS_COMMENTS = ['Spam', 'Off topic', 'Not in English', 'Uncostructive content', 'Inappropriate content', 'Offensive content', 'Other' ]
+
   belongs_to :profile
   belongs_to :flaggable, polymorphic: true
 
@@ -10,5 +14,5 @@ class Flag < ActiveRecord::Base
   validates :explanation,
     length: { maximum: 750 }
   validates :reason,
-    inclusion: {in: REASONS}
+    inclusion: {in: REASONS_COMMENTS + REASONS_SOLUTIONS}
 end

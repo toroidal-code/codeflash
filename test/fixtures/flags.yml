@@ -1,13 +1,13 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
 one:
-  reason: Inappropriate
+  reason: Language port
   explanation: MyText
 
 two:
-  reason: Other
+  reason: Not in English
   explanation: MyText
 
 three:
-  reason: Spam
+  reason: Off topic
   explanation: MyText

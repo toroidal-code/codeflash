@@ -1,5 +1,5 @@
 <%= simple_form_for get_flag_path_array(@problem, @solution, @comment, @flag) do |f| %>
-  <%= f.select :reason, Flag::REASONS %>
+  <%= f.select :reason, @comment.nil? ? Flag::REASONS_SOLUTIONS : Flag::REASONS_COMMENTS %>
   <%= f.input :explanation, input_html:
   { class: 'input-xxlarge', maxlength:750, rows: 10 }, as: :text %>
     <%= f.button :submit, 'Report', :class => 'btn-primary' %>
