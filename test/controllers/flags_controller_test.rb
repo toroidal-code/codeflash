@@ -32,16 +32,31 @@ class FlagsControllerTest < ActionController::TestCase
   test "should get problem solution new" do
     get :new, problem_id: @problem, solution_id: @solution
     assert_response :success
+    assert_difference('Flag.count') do
+      post :create, flag: { explanation: @flag3.explanation, profile_id: @flag3.profile_id, reason: @flag3.reason }, problem_id: @problem, solution_id: @solution
+    end
+    get :new, problem_id: @problem, solution_id: @solution
+    assert_equal 'You have already reported this.', flash[:error]
   end
 
   test "should get problem solution comment new" do
     get :new, problem_id: @problem, solution_id: @solution, comment_id: @comment2
     assert_response :success
+    assert_difference('Flag.count') do
+      post :create, flag: { explanation: @flag2.explanation, profile_id: @user.profile, reason: @flag2.reason }, problem_id: @problem, solution_id: @solution, comment_id: @comment2
+    end
+    get :new, problem_id: @problem, solution_id: @solution, comment_id: @comment2
+    assert_equal 'You have already reported this.', flash[:error]
   end
 
   test "should get problem comment new" do
     get :new, problem_id: @problem, comment_id: @comment1
     assert_response :success
+    assert_difference('Flag.count') do
+      post :create, flag: { explanation: @flag1.explanation, profile_id: @flag1.profile_id, reason: @flag1.reason }, problem_id: @problem, comment_id: @comment1
+    end
+    get :new, problem_id: @problem, comment_id: @comment1
+    assert_equal 'You have already reported this.', flash[:error]
   end
 
   test "should create problem solution flag" do
