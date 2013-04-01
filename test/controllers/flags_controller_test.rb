@@ -50,6 +50,11 @@ class FlagsControllerTest < ActionController::TestCase
     end
 
     assert_redirected_to problem_solution_path(@problem, @solution)
+    assert_no_difference('Flag.count') do
+      post :create, flag: { explanation: @flag3.explanation, profile_id: @flag3.profile_id, reason: @flag3.reason }, problem_id: @problem, solution_id: @solution
+    end
+    assert_equal 'You have already reported this.', flash[:error]
+    assert_redirected_to problem_solution_path(@problem, @solution)
   end
 
   test "should create problem comment flag" do
@@ -58,13 +63,23 @@ class FlagsControllerTest < ActionController::TestCase
     end
 
     assert_redirected_to problem_path(@problem)
+    assert_no_difference('Flag.count') do
+      post :create, flag: { explanation: @flag1.explanation, profile_id: @flag1.profile_id, reason: @flag1.reason }, problem_id: @problem, comment_id: @comment1
+    end
+    assert_equal 'You have already reported this.', flash[:error]
+    assert_redirected_to problem_path(@problem)
   end
 
   test "should create problem solution comment flag" do
     assert_difference('Flag.count') do
-      post :create, flag: { explanation: @flag2.explanation, profile_id: @flag2.profile_id, reason: @flag2.reason }, problem_id: @problem, solution_id: @solution, comment_id: @comment2
+      post :create, flag: { explanation: @flag2.explanation, profile_id: @user.profile, reason: @flag2.reason }, problem_id: @problem, solution_id: @solution, comment_id: @comment2
     end
 
+    assert_redirected_to problem_solution_path(@problem, @solution)
+    assert_no_difference('Flag.count') do
+      post :create, flag: { explanation: @flag2.explanation, profile_id: @user.profile, reason: @flag2.reason }, problem_id: @problem, solution_id: @solution, comment_id: @comment2
+    end
+    assert_equal 'You have already reported this.', flash[:error]
     assert_redirected_to problem_solution_path(@problem, @solution)
   end
 

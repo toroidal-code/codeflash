@@ -15,17 +15,26 @@ class FlagsController < ApplicationController
 
   # GET /flags/new
   def new
-    @flag = Flag.new
+    if @comment.nil?
+      should_new_flag @solution
+    else
+      should_new_flag @comment
+    end
+    if @flag.nil?
+      flash[:error] = 'You have already reported this.'
+      redirect_to @path
+    end
   end
 
   # POST /flags
   def create
+    @should = false
     if @comment.nil?
       should_create_flag @solution
     else
       should_create_flag @comment
     end
-    if @flag.nil?
+    if !@should
       flash[:error] = 'You have already reported this.'
       redirect_to @path
     elsif @flag.save
@@ -59,10 +68,17 @@ class FlagsController < ApplicationController
       end
     end
 
+    def should_new_flag flaggable
+      if Flag.where(profile: current_user.profile, flaggable: flaggable).count == 0
+        @flag = Flag.new
+      end
+    end
+
     def should_create_flag flaggable
       if Flag.where(profile: current_user.profile, flaggable: flaggable).count == 0
         @flag = flaggable.flags.create(flag_params)
         @flag.profile = current_user.profile
+        @should = true
       end
     end
 
