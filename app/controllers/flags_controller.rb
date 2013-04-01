@@ -48,7 +48,7 @@ class FlagsController < ApplicationController
   # DELETE /flags/1
   def destroy
     @flag.destroy
-    redirect_to @path, notice: 'Flag was successfully destroyed.'
+    redirect_to flags_path, notice: 'Flag was successfully destroyed.'
   end
 
   private

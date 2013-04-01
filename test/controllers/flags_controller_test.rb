@@ -127,7 +127,7 @@ class FlagsControllerTest < ActionController::TestCase
       delete :destroy, id: @flag3, problem_id: @problem, solution_id: @solution
     end
 
-    assert_redirected_to problem_solution_path(@problem, @solution)
+    assert_redirected_to flags_path
   end
 
   test "should destroy problem solution comment flag" do
@@ -135,7 +135,7 @@ class FlagsControllerTest < ActionController::TestCase
       delete :destroy, id: @flag2, problem_id: @problem, solution_id: @solution, comment_id: @comment2
     end
 
-    assert_redirected_to problem_solution_path(@problem, @solution)
+    assert_redirected_to flags_path
   end
 
   test "should destroy problem comment flag" do
@@ -143,6 +143,6 @@ class FlagsControllerTest < ActionController::TestCase
       delete :destroy, id: @flag1, problem_id: @problem, comment_id: @comment1
     end
 
-    assert_redirected_to problem_path(@problem)
+    assert_redirected_to flags_path
   end
 end

@@ -27,7 +27,7 @@
         <td><%=l flag.created_at %></td>
         <td>
           <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-                      get_flag_path(@problem, @solution, @comment, flag),
+                      get_flag_path_with_flag(flag),
                       :method => :delete,
                       :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
                       :class => 'btn btn-mini btn-danger' %>
