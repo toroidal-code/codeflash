@@ -18,6 +18,11 @@ class CommentsController < ApplicationController
     redirect_to path
   end
 
+  def show
+    @comment = Comment.find(params[:id])
+    @solution = @comment.commentable_type == 'Solution'
+  end
+
   # Adds an upvote
   def upvote
     vote true
