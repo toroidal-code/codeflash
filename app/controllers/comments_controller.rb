@@ -18,10 +18,6 @@ class CommentsController < ApplicationController
     redirect_to path
   end
 
-  def show
-
-  end
-
   # Adds an upvote
   def upvote
     vote true
