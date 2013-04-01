@@ -42,6 +42,16 @@ class CommentsControllerTest < ActionController::TestCase
     assert_redirected_to problem_solution_path(@problem, @solution)
   end
 
+  test 'should show problem comment' do
+    get :show, id: @comment, problem_id: @problem
+    assert_response :success
+  end
+
+  test 'should show solution comment' do
+    get :show, id: @comment2, problem_id: @problem, solution_id: @solution
+    assert_response :success
+  end
+
   test "should upvote problem comment" do
     assert_difference('Comment.find(@comment).up_votes') do
       put :upvote, problem_id: @problem, id: @comment
