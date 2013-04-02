@@ -2,7 +2,7 @@
 class SolutionsController < ApplicationController
   authorize_resource
 
-  before_filter :find_solution, only: [:show, :edit, :update, :destroy]
+  before_action :find_solution, only: [:show, :edit, :update, :destroy]
 
   add_breadcrumb("Problems",:problems_path)
 
@@ -107,7 +107,7 @@ class SolutionsController < ApplicationController
     end
   end
 
-  # Deletes a language from the database.
+  # Deletes a solution from the database.
   #
   # DELETE /solutions/1
   # DELETE /solutions/1.json
@@ -124,16 +124,52 @@ class SolutionsController < ApplicationController
     end
   end
 
+  # Adds an upvote
+  def upvote
+    @solution = Solution.find(params[:id])
+    begin
+      @solution.profiles_voted << current_user.profile
+      @solution.save
+      @solution.up_votes += 1
+      @solution.save
+    rescue => e
+      flash[:error] = "You have already voted on this solution."
+    end
+    redirect_to :back
+  end
+
+  # Adds a down vote
+  def downvote
+    @solution = Solution.find(params[:id])
+    puts @solution.profiles_voted
+    if @solution.profiles_voted.include?(current_user.profile)
+      @solution.profiles_voted.delete(current_user.profile)
+      @solution.save
+      @solution.up_votes -= 1
+      @solution.save
+    else
+      flash[:error] = "You have already voted on this solution."
+    end
+    redirect_to :back
+  end
+
+  # finds the solution based on params[:id]
+  # before_filter method for show edit update and destroy
   def find_solution
     @solution = Solution.find(params[:id])
   end
 
+  # adds the problem name breadcrumb and the problem's solutions breadcrumb
   def breadcrumbs
     add_breadcrumb(@problem.name, problem_path(@problem))
     add_breadcrumb "Solutions", problem_solutions_path(@problem)
   end
 
   private
+
+  # Helper method for voting
+  def vote up
+  end
 
   def solution_params
     params[:solution].permit(:code, :language_id, :problem_id, :up_votes, :down_votes)

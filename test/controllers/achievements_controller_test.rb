@@ -2,9 +2,11 @@ require 'test_helper'
 
 class AchievementsControllerTest < ActionController::TestCase
   setup do
-    user = User.new(email: "lol@lol.lol", username: "LOLOLOLOLOL", password: "LOLlol101", admin: true)
+    user = User.create(email: "lol@lol.lol",
+                    username: "LOLOLOLOLOL",
+                    password: "LOLlol101",
+                    admin: true)
     user.skip_confirmation!
-    user.save
     sign_in(user)
     @achievement = achievements(:one)
   end
@@ -22,11 +24,23 @@ class AchievementsControllerTest < ActionController::TestCase
 
   test "should create achievement" do
     assert_difference('Achievement.count') do
-      post :create, achievement: { description: @achievement.description, name: @achievement.name, points: @achievement.points }
+      post :create, achievement: {description: @achievement.description,
+                                  name: @achievement.name,
+                                  points: @achievement.points }
     end
 
     assert_redirected_to achievement_path(assigns(:achievement))
   end
+
+  test "should not create achievement" do
+    assert_no_difference('Achievement.count') do
+      post :create, achievement: { description: @achievement.description,
+                                   name: @achievement.name }
+    end
+
+    assert_template :new
+  end
+
 
   test "should show achievement" do
     get :show, id: @achievement
@@ -39,8 +53,17 @@ class AchievementsControllerTest < ActionController::TestCase
   end
 
   test "should update achievement" do
-    put :update, id: @achievement, achievement: { description: @achievement.description, name: @achievement.name, points: @achievement.points }
+    put :update, id: @achievement, achievement: { description: @achievement.description,
+                                                  name: @achievement.name,
+                                                  points: @achievement.points }
     assert_redirected_to achievement_path(assigns(:achievement))
+  end
+
+  test "should not update achievement" do
+    put :update, id: @achievement, achievement: { description: @achievement.description,
+                                                  name: @achievement.name,
+                                                  points: "string" }
+    assert_template :edit
   end
 
   test "should destroy achievement" do

@@ -1,26 +1,51 @@
-<div class="accordion-group">
-  <div class="solution-heading well well-small">
-    <span class="pull-right">submitted by: <%= link_to User.find(solution.profile.user).username, solution.profile, id: "user" %></span>
-    <div class="accordion-toggle" data-toggle="collapse" href="#collapse<%= index %>">
-      <i class="icon-angle-<%= collapsed ? 'right' : 'down'%>"></i>
-      <a>
-        <%= solution.votes %>
-        <%= solution.problem.name %>
-        <% if !params[:problem_id] %>
-          - <%= solution.language.name %>
-        <% end %>
-      </a>
-  </div>
-</div>
-  <div href="<%= problem_solution_path solution.problem, solution %>" id="collapse<%=index%>" data-toggle="tooltip" data-original-title="Click to view Solution" class=" solution accordion-body collapse <%= "in" if !collapsed %>" >
-      <div class="accordion-inner nomargin nopadding">
-          <%==
-               begin
-                 Pygments.highlight(solution.code, lexer: solution.language.pygments_syntax, options: {linenos: 'inline'})
-               rescue
-                 Pygments.highlight(solution.code, options: {linenos: 'inline'})
-               end
-          %>
+<div class="row-fluid">
+  <div class="span1">
+    <div class = "pull-right">
+      <div class="blockcenter">
+        <% if current_user %>
+            <% if current_user.profile.voted? solution %>
+              <a href="<%= downvote_problem_solution_path(solution.problem, solution)%>"
+                data-method="put" class="nodecoration">
+                <i class="icon-heart"> </i>
+              </a>
+            <% else %>
+              <a href="<%= upvote_problem_solution_path(solution.problem, solution)%>"
+               data-method="put" class="nodecoration">
+                <i class="icon-heart-empty" ></i>
+              </a>
+            <% end %>
+        <%end%>
+        <%=solution.votes %>
       </div>
+      <div class="blockcenter"></div>
+    </div>
+  </div>
+  <div class="span11">
+    <div class="accordion-group">
+
+      <div class="solution-heading well well-small">
+        <span class="pull-right">submitted by: <%= link_to solution.profile.user.username, solution.profile, id: "user" %></span>
+        <div class="accordion-toggle" data-toggle="collapse" href="#collapse<%= index %>">
+          <i class="icon-angle-<%= collapsed ? 'right' : 'down'%>"></i>
+          <a>
+            <%= solution.problem.name %>
+            <% if !params[:problem_id] %>
+              - <%= solution.language.name %>
+            <% end %>
+          </a>
+      </div>
+    </div>
+      <div href="<%= problem_solution_path solution.problem, solution %>" id="collapse<%=index%>" data-toggle="tooltip" data-original-title="Click to view Solution" class=" solution accordion-body collapse <%= "in" if !collapsed %>" >
+          <div class="accordion-inner nomargin nopadding">
+              <%==
+                   begin
+                     Pygments.highlight(solution.code, lexer: solution.language.pygments_syntax, options: {linenos: 'inline'})
+                   rescue
+                     Pygments.highlight(solution.code, options: {linenos: 'inline'})
+                   end
+              %>
+          </div>
+      </div>
+    </div>
   </div>
 </div>

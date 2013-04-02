@@ -1,6 +1,40 @@
+<hr>
 <% comments.each do |comment| %>
-  <div class="well well-small">
-    <h4><%= comment.profile.user.username %></h2>
-    <p><%= comment.body %></p>
+  <div class="row-fluid">
+    <div class="span1">
+      <div class = "pull-right">
+        <div class="blockcenter">
+          <a href="
+            <% if solution %>
+              <%= upvote_problem_solution_comment_path(@problem, @solution, comment) %>
+            <% else %>
+              <%= upvote_problem_comment_path(@problem, comment)%>
+            <%end%>"
+            data-method="put" class="nodecoration">
+            <i class="icon-angle-up icon-large"> </i>
+          </a>
+        </div>
+        <div class="blockcenter"><%=comment.votes %></div>
+        <div class="blockcenter">
+          <a href="
+            <% if solution %>
+              <%= downvote_problem_solution_comment_path(@problem, @solution, comment) %>
+            <% else %>
+              <%= downvote_problem_comment_path(@problem, comment)%>
+            <%end%>"
+            data-method="put" class="nodecoration">
+            <i class="icon-angle-down icon-large" ></i>
+          </a>
+        </div>
+      </div>
+    </div>
+    <div class="span11" style="padding-top: 10.5px;">
+      <div class="well well-small">
+        <a href="<%= profile_path comment.profile %>">
+          <h4><%= comment.profile.user.username %></h4>
+        </a>
+        <p><%= comment.body %></p>
+      </div>
+    </div>
   </div>
 <% end %>

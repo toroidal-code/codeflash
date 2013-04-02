@@ -61,3 +61,21 @@
 .nopadding {
   padding: 0px;
 }
+
+.blockcenter{
+  display:block;
+  text-align: center;
+  padding-top: 10.5px;
+}
+
+.nodecoration:hover{
+  text-decoration: none;
+}
+
+.icon-heart:hover {
+  content: "\f08a";
+}
+
+.icon-heart-empty:hover {
+  content:"\f004";
+}

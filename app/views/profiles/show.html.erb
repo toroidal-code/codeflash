@@ -3,7 +3,7 @@
 </style>
 <div class="row-fluid">
   <div class="span3">
-    <p><%= image_tag Gravatar.new(@user.email).image_url, size: '256x256' %></p>
+    <p><%= image_tag(Gravatar.new(@user.email).image_url + "?s=256", size: '210x210') %></p>
     <p><span class="name"><%= @profile.name %></span></p>
     <p><span class="username"><%= @user.username %></span></p>
     <hr>
@@ -25,18 +25,28 @@
       <%end%>
   </div>
   <div class="span9">
-    <p><%= @profile.about_me %></p>
-    <hr>
-    <ul id="solutions">
-      <%= render 'solutions/solutions' %>
-    </ul>
+    <div class="row-fluid">
+      <p><%= @profile.about_me %></p>
+    </div>
     <hr>
     <div class="row-fluid">
+      <% if @profile.achievements.empty? %>
+        <p><%=@profile.user.username %> hasn't won any achievements...</p>
+      <% end %>
       <% @profile.achievements.each do |achievement| %>
         <%= render 'achievements/small', achievement: achievement %>
       <% end %>
     </div>
-  <% if can? :edit, @profile %><%= link_to 'Edit', edit_profile_path(@profile) %> <% end %>
+    <hr>
+    <div class="row-fluid">
+      <% if @profile.solutions.empty? %>
+          <p><%=@profile.user.username %> hasn't submitted any solutions...</p>
+      <% end %>
+      <ul id="solutions">
+        <%= render 'solutions/solutions' %>
+      </ul>
+    </div>
+  </div>
 </div>
 
 <script>

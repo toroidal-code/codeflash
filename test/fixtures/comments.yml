@@ -2,10 +2,10 @@
 
 one:
   body: MyText
-  profile_id: 
-  commentable_id: 
+  up_votes: 100
+  down_votes: 10
 
 two:
   body: MyText
-  profile_id: 
-  commentable_id: 
+  up_votes: 1
+  down_votes: 10

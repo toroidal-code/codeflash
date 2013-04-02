@@ -2,7 +2,7 @@
 class ProfilesController < ApplicationController
   authorize_resource
 
-  before_filter :find_profile, only: [:show, :edit, :update, :destroy]
+  before_action :find_profile, only: [:show, :edit, :update, :destroy]
 
   respond_to :html, :json, :js
 
@@ -49,6 +49,7 @@ class ProfilesController < ApplicationController
   # @return [String] the HTML/JSON for the saved profile.
   def create
     @profile = Profile.new(profile_params)
+    @user = current_user
     respond_to do |format|
       if @profile.save
         format.html { redirect_to @profile, notice: 'Profile was successfully created.' }
@@ -95,6 +96,8 @@ class ProfilesController < ApplicationController
     end
   end
 
+  # Finds the profile for a given user
+  # The before_filter method for show edit update and destroy
   def find_profile
     @user = User.find_by_username(params[:id])
     @profile = @user.profile
