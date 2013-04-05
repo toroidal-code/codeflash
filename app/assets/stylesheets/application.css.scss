@@ -59,6 +59,15 @@ body {
   margin-bottom: 0px;
 }
 
+footer {
+  text-align: center;
+  font-size: 12px;
+  li {
+    display: inline;
+    margin-right: 20px;
+  }
+}
+
 @media (max-width: 480px) {
   body, #main {
     margin: 0px !important;
