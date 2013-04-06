@@ -10,7 +10,7 @@ gem 'rails-perftest', github: 'rails/rails-perftest'
 gem 'puma'
 
 # Database
-gem 'pg', '~> 0.15'
+gem 'pg', '~> 0.14'
 
 # Controllers
 gem 'high_voltage', '~> 1.2'
@@ -54,7 +54,7 @@ end
 
 group :development do
   gem 'binding_of_caller', '~> 0.6'
-  gem 'better_errors', '~> 0.8'
+  gem 'better_errors', '~> 0.7'
   gem 'foreman'
   gem 'yard-activerecord', '~> 0.0.8'
   gem 'redcarpet'
