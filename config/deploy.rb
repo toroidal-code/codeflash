@@ -35,7 +35,7 @@ set :deploy_to, applicationdir
 set :deploy_via, :remote_cache
 
 # if you want to clean up old releases on each deploy uncomment this:
-after "deploy:restart", "deploy:cleanup"
+#after "deploy:restart", "deploy:cleanup"
 after "deploy:update_code", "deploy:migrate"
 
 namespace :deploy do

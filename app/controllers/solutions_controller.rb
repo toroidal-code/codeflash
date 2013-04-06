@@ -126,12 +126,31 @@ class SolutionsController < ApplicationController
 
   # Adds an upvote
   def upvote
-    vote true
+    @solution = Solution.find(params[:id])
+    begin
+      @solution.profiles_voted << current_user.profile
+      @solution.save
+      @solution.up_votes += 1
+      @solution.save
+    rescue => e
+      flash[:error] = "You have already voted on this solution."
+    end
+    redirect_to :back
   end
 
   # Adds a down vote
   def downvote
-   vote false
+    @solution = Solution.find(params[:id])
+    puts @solution.profiles_voted
+    if @solution.profiles_voted.include?(current_user.profile)
+      @solution.profiles_voted.delete(current_user.profile)
+      @solution.save
+      @solution.up_votes -= 1
+      @solution.save
+    else
+      flash[:error] = "You have already voted on this solution."
+    end
+    redirect_to :back
   end
 
   # finds the solution based on params[:id]
@@ -150,20 +169,6 @@ class SolutionsController < ApplicationController
 
   # Helper method for voting
   def vote up
-     @solution = Solution.find(params[:id])
-    begin
-      @solution.profiles_voted << current_user.profile
-      @solution.save
-      if up
-        @solution.up_votes += 1
-      else
-        @solution.down_votes += 1
-      end
-      @solution.save
-    rescue => e
-      flash[:error] = "You have already voted on this solution."
-    end
-    redirect_to :back
   end
 
   def solution_params

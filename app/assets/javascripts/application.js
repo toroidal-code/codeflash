@@ -47,6 +47,18 @@ $(document).ready(function () {
 	$('.accordion').on('expand collapse', function(e){
     	$(e.target).siblings('.solution-heading').find('.accordion-toggle i').toggleClass('icon-angle-down icon-angle-right', 200);
 	});
+
+	$('.icon-heart-empty').hover( function(e){
+    	$(this).toggleClass('icon-heart icon-heart-empty', 200);
+	}, function(){
+		$(this).toggleClass('icon-heart icon-heart-empty', 200);
+	});
+
+	$('.icon-heart').hover( function(e){
+    	$(this).toggleClass('icon-heart icon-heart-empty', 200);
+	}, function(){
+		$(this).toggleClass('icon-heart icon-heart-empty', 200);
+	});
 });
 
 

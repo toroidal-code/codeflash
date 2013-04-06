@@ -106,11 +106,14 @@ class SolutionsControllerTest < ActionController::TestCase
   end
 
   test "should downvote solution" do
-    assert_difference('Solution.find(@solution).down_votes') do
+    assert_difference('Solution.find(@solution).up_votes') do
+      put :upvote, problem_id: @problem, id: @solution
+    end
+    assert_difference('Solution.find(@solution).up_votes', -1) do
       put :downvote, problem_id: @problem, id: @solution
     end
     assert_redirected_to :back
-    assert_no_difference('Solution.find(@solution).down_votes') do
+    assert_no_difference('Solution.find(@solution).up_votes') do
       put :downvote, problem_id: @problem, id: @solution
     end
     assert_equal 'You have already voted on this solution.', flash[:error]

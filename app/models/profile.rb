@@ -31,4 +31,8 @@ class Profile < ActiveRecord::Base
     achievements.inject(0){|sum, x| sum + x.points}
   end
 
+  def voted? solution
+    solutions_voted.include? solution
+  end
+
 end
