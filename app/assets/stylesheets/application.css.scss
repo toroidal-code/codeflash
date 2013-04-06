@@ -95,3 +95,13 @@ pre.highlighted {
 .red{
   color: #990000;
 }
+
+/* Note: This is borrowed from the source for .icon-spin in Font Awesome. We
+ * don't like "display: inline-block;" though, so that's why I'm making a custom
+ * class for making non-icons spin. */
+.spin {
+  -moz-animation: spin 2s infinite linear;
+  -o-animation: spin 2s infinite linear;
+  -webkit-animation: spin 2s infinite linear;
+  animation: spin 2s infinite linear;
+}
