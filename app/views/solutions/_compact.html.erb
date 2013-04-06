@@ -2,21 +2,25 @@
   <div class="span1">
     <div class = "pull-right">
       <div class="blockcenter">
-        <a href="<%= upvote_problem_solution_path(solution.problem, solution)%>"
-          data-method="put" class="nodecoration">
-          <i class="icon-angle-up icon-large"> </i>
-        </a>
+        <% if current_user %>
+            <% if current_user.profile.voted? solution %>
+              <a href="<%= downvote_problem_solution_path(solution.problem, solution)%>"
+                data-method="put" class="nodecoration">
+                <i class="icon-heart"> </i>
+              </a>
+            <% else %>
+              <a href="<%= upvote_problem_solution_path(solution.problem, solution)%>"
+               data-method="put" class="nodecoration">
+                <i class="icon-heart-empty" ></i>
+              </a>
+            <% end %>
+        <%end%>
+        <%=solution.votes %>
       </div>
-      <div class="blockcenter"><%=solution.votes %></div>
-      <div class="blockcenter">
-        <a href="<%= downvote_problem_solution_path(solution.problem, solution)%>"
-         data-method="put" class="nodecoration">
-          <i class="icon-angle-down icon-large" ></i>
-        </a>
-      </div>
+      <div class="blockcenter"></div>
     </div>
   </div>
-  <div class="span11" style="padding-top: 10.5px;">
+  <div class="span11">
     <div class="accordion-group">
 
       <div class="solution-heading well well-small">
