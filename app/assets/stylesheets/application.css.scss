@@ -68,6 +68,12 @@ footer {
   }
 }
 
+h1, h2, h3, h4, h5, h6,
+#problems, #solutions,
+.breadcrumb, .solution-heading {
+  word-wrap: break-word;
+}
+
 @media (max-width: 480px) {
   body, #main {
     margin: 0px !important;
