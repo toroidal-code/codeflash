@@ -28,6 +28,7 @@ gem 'rvm-capistrano'
 # Required by rake for RAILS_ENV=production, thus outside :assets
 gem 'yard', '~> 0.8.5.2'
 gem 'simple_form', github: 'plataformatec/simple_form'
+gem 'rdoc'
 
 # Pygments, using DHowett's fork (updated to pygments 1.6) until tmm1 approves the pull request.
 gem 'pygments.rb'
