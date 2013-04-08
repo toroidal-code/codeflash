@@ -126,6 +126,13 @@ GEM
       coffee-script-source
       execjs
     coffee-script-source (1.6.2)
+    colorize (0.5.8)
+    coveralls (0.6.4)
+      colorize
+      multi_json (~> 1.3)
+      rest-client
+      simplecov (>= 0.7)
+      thor
     debug_inspector (0.0.2)
     erubis (2.7.0)
     execjs (1.4.0)
@@ -198,6 +205,8 @@ GEM
     rdoc (4.0.1)
       json (~> 1.4)
     redcarpet (2.2.2)
+    rest-client (1.6.7)
+      mime-types (>= 1.16)
     rvm-capistrano (1.2.7)
       capistrano (>= 2.0.0)
     sass (3.2.7)
@@ -252,6 +261,7 @@ DEPENDENCIES
   capistrano
   closure-compiler
   coffee-rails!
+  coveralls
   devise!
   foreman
   gravatar-ultimate
@@ -272,7 +282,6 @@ DEPENDENCIES
   sass-rails!
   select2-rails
   simple_form!
-  simplecov
   twitter-bootstrap-rails
   will_paginate
   yard (~> 0.8.5.2)
