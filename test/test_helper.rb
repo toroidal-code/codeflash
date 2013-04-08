@@ -4,7 +4,7 @@
 
 # Set up code coverage with Coveralls
 require 'coveralls'
-Coveralls.wear!
+Coveralls.wear! 'rails'
 
 ENV["RAILS_ENV"] = "test"
 require File.expand_path('../../config/environment', __FILE__)
