@@ -65,6 +65,9 @@ group :test do
   #gem 'simplecov', require: false
 end
 
+# Coveralls for code coverage... in the cloud!!!!1!1!!one!
+gem 'coveralls', require: false
+
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
