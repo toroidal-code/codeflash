@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  reason: Language port
+  explanation: MyText
+
+two:
+  reason: Not in English
+  explanation: MyText
+
+three:
+  reason: Off topic
+  explanation: MyText
