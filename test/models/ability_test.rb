@@ -25,6 +25,10 @@ class ATest < ActiveSupport::TestCase
     assert @ability.can?(:create, Comment)
   end
 
+  test 'should be able to create flag' do
+    assert @ability.can?(:create, Flag)
+  end
+
   test 'should be able to create upvote/downvote Solution' do
     assert @ability.can?(:upvote, Solution)
     assert @ability.can?(:downvote, Solution)

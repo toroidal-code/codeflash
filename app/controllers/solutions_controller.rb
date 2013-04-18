@@ -141,7 +141,6 @@ class SolutionsController < ApplicationController
   # Adds a down vote
   def downvote
     @solution = Solution.find(params[:id])
-    puts @solution.profiles_voted
     if @solution.profiles_voted.include?(current_user.profile)
       @solution.profiles_voted.delete(current_user.profile)
       @solution.save

@@ -11,6 +11,7 @@ class Solution < ActiveRecord::Base
   belongs_to :language
   has_and_belongs_to_many :achievements
   has_many :comments, as: :commentable
+  has_many :flags, as: :flaggable
 
   validates :code,
     presence: true
