@@ -11,7 +11,7 @@ GIT
 
 GIT
   remote: git://github.com/plataformatec/simple_form.git
-  revision: 9dca432fd48284c1cd413f6852ae85e42ddaa412
+  revision: 68856acc82441ef99ca22dacbf7eb0902aac285e
   specs:
     simple_form (3.0.0.beta1)
       actionpack (>= 4.0.0.beta, < 4.1)
@@ -19,15 +19,15 @@ GIT
 
 GIT
   remote: git://github.com/rails/activerecord-deprecated_finders.git
-  revision: 46aa99efc9c3c1db1d4f2e55373481212e6b2e26
+  revision: 5ed930cfb6bbfa71284d3e81b3bde8dbf78d8093
   specs:
-    activerecord-deprecated_finders (0.0.3)
+    activerecord-deprecated_finders (1.0.1)
 
 GIT
   remote: git://github.com/rails/coffee-rails.git
-  revision: 948fef30464235e7588e34faa513b448a00c0e6b
+  revision: 78d4d7ac5baf4e76a6717f303f51b505c40b9770
   specs:
-    coffee-rails (4.0.0.beta1)
+    coffee-rails (4.0.0)
       coffee-script (>= 2.2.0)
       railties (>= 4.0.0.beta, < 5.0)
 
@@ -45,7 +45,7 @@ GIT
 
 GIT
   remote: git://github.com/rails/rails.git
-  revision: 136e3a46e139e6105b0f18c29f7207bac7770be6
+  revision: 226de24fa2c9c402495287f5d8153e132759c8c8
   specs:
     actionmailer (4.0.0.beta1)
       actionpack (= 4.0.0.beta1)
@@ -61,9 +61,9 @@ GIT
       builder (~> 3.1.0)
     activerecord (4.0.0.beta1)
       activemodel (= 4.0.0.beta1)
-      activerecord-deprecated_finders (~> 0.0.3)
+      activerecord-deprecated_finders (~> 1.0.1)
       activesupport (= 4.0.0.beta1)
-      arel (~> 4.0.0.beta2)
+      arel (~> 4.0.0)
     activesupport (4.0.0.beta1)
       i18n (~> 0.6, >= 0.6.4)
       minitest (~> 4.2)
@@ -77,7 +77,7 @@ GIT
       activesupport (= 4.0.0.beta1)
       bundler (>= 1.3.0, < 2.0)
       railties (= 4.0.0.beta1)
-      sprockets-rails (~> 2.0.0.rc3)
+      sprockets-rails (~> 2.0.0.rc4)
     railties (4.0.0.beta1)
       actionpack (= 4.0.0.beta1)
       activesupport (= 4.0.0.beta1)
@@ -86,13 +86,12 @@ GIT
 
 GIT
   remote: git://github.com/rails/sass-rails.git
-  revision: d435679b0fe528b954a9abd0059f975d94707574
+  revision: aeae25d22c8392a8ac0a07c86664d37d6acd9e25
   specs:
-    sass-rails (4.0.0.beta1)
+    sass-rails (4.0.0.rc1)
       railties (>= 4.0.0.beta, < 5.0)
       sass (>= 3.1.10)
-      sprockets-rails (~> 2.0.0.rc0)
-      tilt (~> 1.3)
+      sprockets-rails (~> 2.0.0.rc4)
 
 GEM
   remote: http://rubygems.org/
@@ -102,8 +101,8 @@ GEM
       open4
     Platform (0.4.0)
     ace-rails-ap (2.0.0)
-    arel (4.0.0.beta2)
-    atomic (1.1.6)
+    arel (4.0.0)
+    atomic (1.1.8)
     bcrypt-ruby (3.0.1)
     better_errors (0.8.0)
       coderay (>= 1.0.0)
@@ -114,7 +113,7 @@ GEM
       will_paginate
     builder (3.1.4)
     cancan (1.6.9)
-    capistrano (2.14.2)
+    capistrano (2.15.3)
       highline
       net-scp (>= 1.0.0)
       net-sftp (>= 2.0.0)
@@ -127,28 +126,30 @@ GEM
       execjs
     coffee-script-source (1.6.2)
     colorize (0.5.8)
-    coveralls (0.6.4)
+    coveralls (0.6.7)
       colorize
       multi_json (~> 1.3)
       rest-client
       simplecov (>= 0.7)
       thor
     debug_inspector (0.0.2)
+    dotenv (0.7.0)
     erubis (2.7.0)
     execjs (1.4.0)
       multi_json (~> 1.0)
     faraday (0.8.7)
       multipart-post (~> 1.1)
-    foreman (0.62.0)
+    foreman (0.63.0)
+      dotenv (>= 0.7)
       thor (>= 0.13.6)
     gravatar-ultimate (1.0.3)
-    hashie (1.2.0)
+    hashie (2.0.4)
     high_voltage (1.2.2)
-    highline (1.6.16)
-    hike (1.2.1)
+    highline (1.6.18)
+    hike (1.2.2)
     historyjs-rails (1.0.1)
       railties (>= 3.0)
-    holder_rails (1.7.0)
+    holder_rails (1.9.0)
       railties (>= 3.1.0)
     httpauth (0.2.0)
     i18n (0.6.4)
@@ -162,15 +163,15 @@ GEM
       i18n (>= 0.4.0)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
-    mime-types (1.22)
-    minitest (4.7.0)
+    mime-types (1.23)
+    minitest (4.7.3)
     multi_json (1.7.2)
     multipart-post (1.2.0)
     net-scp (1.1.0)
       net-ssh (>= 2.6.5)
     net-sftp (2.1.1)
       net-ssh (>= 2.6.5)
-    net-ssh (2.6.6)
+    net-ssh (2.6.7)
     net-ssh-gateway (1.2.0)
       net-ssh (>= 2.6.5)
     oauth2 (0.8.1)
@@ -179,8 +180,8 @@ GEM
       jwt (~> 0.1.4)
       multi_json (~> 1.0)
       rack (~> 1.2)
-    omniauth (1.1.3)
-      hashie (~> 1.2)
+    omniauth (1.1.4)
+      hashie (>= 1.2, < 3)
       rack
     omniauth-github (1.1.0)
       omniauth (~> 1.0)
@@ -190,12 +191,12 @@ GEM
       omniauth (~> 1.0)
     open4 (1.3.0)
     orm_adapter (0.4.0)
-    pg (0.15.0)
+    pg (0.15.1)
     polyglot (0.3.3)
     posix-spawn (0.3.6)
     puma (1.6.3)
       rack (~> 1.2)
-    pygments.rb (0.4.2)
+    pygments.rb (0.5.0)
       posix-spawn (~> 0.3.6)
       yajl-ruby (~> 1.1.0)
     rack (1.5.2)
@@ -207,9 +208,9 @@ GEM
     redcarpet (2.2.2)
     rest-client (1.6.7)
       mime-types (>= 1.16)
-    rvm-capistrano (1.2.7)
+    rvm-capistrano (1.3.0)
       capistrano (>= 2.0.0)
-    sass (3.2.7)
+    sass (3.2.8)
     select2-rails (3.3.1)
       sass-rails (>= 3.2)
       thor (~> 0.14)
@@ -217,19 +218,19 @@ GEM
       multi_json (~> 1.0)
       simplecov-html (~> 0.7.1)
     simplecov-html (0.7.1)
-    sprockets (2.9.0)
+    sprockets (2.9.3)
       hike (~> 1.2)
       multi_json (~> 1.0)
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
-    sprockets-rails (2.0.0.rc3)
+    sprockets-rails (2.0.0.rc4)
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (~> 2.8)
     thor (0.18.1)
     thread_safe (0.1.0)
       atomic
-    tilt (1.3.6)
+    tilt (1.3.7)
     treetop (1.4.12)
       polyglot
       polyglot (>= 0.3.1)
