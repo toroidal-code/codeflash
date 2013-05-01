@@ -20,12 +20,15 @@ class ProfileTest < ActiveSupport::TestCase
   end
 
   test 'get profile points' do
+    s1 = solutions(:one)
+    s2 = solutions(:two)
+    s2.language = languages(:one)
     @profile.comments << comments(:one) << comments(:two)
-    solutions(:one).achievements  << achievements(:one)
-    solutions(:two).achievements  << achievements(:two)
-    solutions(:one).save
-    solutions(:two).save
-    @profile.solutions << solutions(:one) << solutions(:two)
+    s1.achievements  << achievements(:one)
+    s2.achievements  << achievements(:two)
+    @profile.solutions << s1 << s2
+    s1.save
+    s2.save
     @profile.save
 
     assert_equal 85, @profile.points

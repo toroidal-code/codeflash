@@ -13,6 +13,7 @@ class CommentsControllerTest < ActionController::TestCase
     @problem
     @solution = solutions(:one)
     @solution.problem = @problem
+    @solution.profile = user.profile
     @solution.save
     @profile = user.profile
     @comment = comments(:one)

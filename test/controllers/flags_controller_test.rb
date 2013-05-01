@@ -19,6 +19,7 @@ class FlagsControllerTest < ActionController::TestCase
     @flag2.profile = @p
     @problem = problems(:one)
     @solution = solutions(:one)
+    @solution.profile = @p
     @comment1 = comments(:one)
     @comment2 = comments(:two)
     @comment1.flags << @flag1

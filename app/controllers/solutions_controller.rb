@@ -75,8 +75,9 @@ class SolutionsController < ApplicationController
   # @return [String] the HTML/JSON for the saved solution
   def create
     @problem = Problem.find_by_shortname(params[:problem_id])
-    @solution = @problem.solutions.create(solution_params)
-    @solution.profile = current_user.profile
+    @solution = @problem.solutions.create(solution_params) do |solution|
+      solution.profile = current_user.profile
+    end
     respond_to do |format|
       if @solution.save
         format.html { redirect_to problem_solution_path(@problem, @solution), notice: 'Solution was successfully created.' }

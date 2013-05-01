@@ -37,6 +37,7 @@ gem 'pygments.rb'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
 gem 'twitter-bootstrap-rails'
+gem 'bootstrap-sass'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
