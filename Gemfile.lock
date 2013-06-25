@@ -215,7 +215,7 @@ GEM
       rack (>= 1.0)
     will_paginate (3.0.4)
     yajl-ruby (1.1.0)
-    yard (0.8.5.2)
+    yard (0.8.6.1)
     yard-activerecord (0.0.9)
       yard (>= 0.8.3)
     yui-compressor (0.9.6)
@@ -257,6 +257,6 @@ DEPENDENCIES
   simple_form!
   twitter-bootstrap-rails
   will_paginate
-  yard (~> 0.8.5.2)
+  yard (~> 0.8.6.1)
   yard-activerecord (~> 0.0.8)
   yui-compressor

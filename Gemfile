@@ -26,7 +26,7 @@ gem 'capistrano'
 gem 'rvm-capistrano'
 
 # Required by rake for RAILS_ENV=production, thus outside :assets
-gem 'yard', '~> 0.8.5.2'
+gem 'yard', '~> 0.8.6.1'
 gem 'simple_form', github: 'plataformatec/simple_form'
 gem 'rdoc'
 
