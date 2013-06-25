@@ -11,87 +11,11 @@ GIT
 
 GIT
   remote: git://github.com/plataformatec/simple_form.git
-  revision: 68856acc82441ef99ca22dacbf7eb0902aac285e
+  revision: a2286a6d6d9aa9c251a272fbe9dbcf77669ce51f
   specs:
-    simple_form (3.0.0.beta1)
-      actionpack (>= 4.0.0.beta, < 4.1)
-      activemodel (>= 4.0.0.beta, < 4.1)
-
-GIT
-  remote: git://github.com/rails/activerecord-deprecated_finders.git
-  revision: a92945732a9df76354dab93b9f9b395d71bd2f7c
-  specs:
-    activerecord-deprecated_finders (1.0.2)
-
-GIT
-  remote: git://github.com/rails/coffee-rails.git
-  revision: 78d4d7ac5baf4e76a6717f303f51b505c40b9770
-  specs:
-    coffee-rails (4.0.0)
-      coffee-script (>= 2.2.0)
-      railties (>= 4.0.0.beta, < 5.0)
-
-GIT
-  remote: git://github.com/rails/journey.git
-  revision: f0938d664286dc0b47f13092fa5d04a9225038d4
-  specs:
-    journey (2.0.0.20120723141804)
-
-GIT
-  remote: git://github.com/rails/rails-perftest.git
-  revision: fa504e007510684e4ff7fd1189072859e40229b0
-  specs:
-    rails-perftest (0.0.2)
-
-GIT
-  remote: git://github.com/rails/rails.git
-  revision: 630d2e4e38f06b3998c663aa3e3bbd554ec2a78b
-  specs:
-    actionmailer (4.1.0.beta)
-      actionpack (= 4.1.0.beta)
-      mail (~> 2.5.3)
-    actionpack (4.1.0.beta)
-      activesupport (= 4.1.0.beta)
-      builder (~> 3.1.0)
-      erubis (~> 2.7.0)
-      rack (~> 1.5.2)
-      rack-test (~> 0.6.2)
-    activemodel (4.1.0.beta)
-      activesupport (= 4.1.0.beta)
-      builder (~> 3.1.0)
-    activerecord (4.1.0.beta)
-      activemodel (= 4.1.0.beta)
-      activerecord-deprecated_finders (~> 1.0.2)
-      activesupport (= 4.1.0.beta)
-      arel (~> 4.0.0)
-    activesupport (4.1.0.beta)
-      i18n (~> 0.6, >= 0.6.4)
-      minitest (~> 4.2)
-      multi_json (~> 1.3)
-      thread_safe (~> 0.1)
-      tzinfo (~> 0.3.37)
-    rails (4.1.0.beta)
-      actionmailer (= 4.1.0.beta)
-      actionpack (= 4.1.0.beta)
-      activerecord (= 4.1.0.beta)
-      activesupport (= 4.1.0.beta)
-      bundler (>= 1.3.0, < 2.0)
-      railties (= 4.1.0.beta)
-      sprockets-rails (~> 2.0.0.rc4)
-    railties (4.1.0.beta)
-      actionpack (= 4.1.0.beta)
-      activesupport (= 4.1.0.beta)
-      rake (>= 0.8.7)
-      thor (>= 0.18.1, < 2.0)
-
-GIT
-  remote: git://github.com/rails/sass-rails.git
-  revision: aa9737b943095f3ce3f7ab0b4319a62518139c38
-  specs:
-    sass-rails (4.0.0.rc1)
-      railties (>= 4.0.0.beta, < 5.0)
-      sass (>= 3.1.10)
-      sprockets-rails (~> 2.0.0.rc4)
+    simple_form (3.0.0.rc)
+      actionpack (>= 4.0.0.rc1, < 4.1)
+      activemodel (>= 4.0.0.rc1, < 4.1)
 
 GEM
   remote: http://rubygems.org/
@@ -101,28 +25,55 @@ GEM
       open4
     Platform (0.4.0)
     ace-rails-ap (2.0.0)
+    actionmailer (4.0.0)
+      actionpack (= 4.0.0)
+      mail (~> 2.5.3)
+    actionpack (4.0.0)
+      activesupport (= 4.0.0)
+      builder (~> 3.1.0)
+      erubis (~> 2.7.0)
+      rack (~> 1.5.2)
+      rack-test (~> 0.6.2)
+    activemodel (4.0.0)
+      activesupport (= 4.0.0)
+      builder (~> 3.1.0)
+    activerecord (4.0.0)
+      activemodel (= 4.0.0)
+      activerecord-deprecated_finders (~> 1.0.2)
+      activesupport (= 4.0.0)
+      arel (~> 4.0.0)
+    activerecord-deprecated_finders (1.0.3)
+    activesupport (4.0.0)
+      i18n (~> 0.6, >= 0.6.4)
+      minitest (~> 4.2)
+      multi_json (~> 1.3)
+      thread_safe (~> 0.1)
+      tzinfo (~> 0.3.37)
     arel (4.0.0)
-    atomic (1.1.8)
+    atomic (1.1.9)
     bcrypt-ruby (3.0.1)
-    better_errors (0.8.0)
+    better_errors (0.9.0)
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
-    binding_of_caller (0.7.1)
+    binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
-    bootstrap-sass (2.3.1.0)
+    bootstrap-sass (2.3.2.0)
       sass (~> 3.2)
     bootstrap-will_paginate (0.0.9)
       will_paginate
     builder (3.1.4)
-    cancan (1.6.9)
+    cancan (1.6.10)
     capistrano (2.15.4)
       highline
       net-scp (>= 1.0.0)
       net-sftp (>= 2.0.0)
       net-ssh (>= 2.0.14)
       net-ssh-gateway (>= 1.1.0)
-    closure-compiler (1.1.8)
+    closure-compiler (1.1.10)
     coderay (1.0.9)
+    coffee-rails (4.0.0)
+      coffee-script (>= 2.2.0)
+      railties (>= 4.0.0.beta, < 5.0)
     coffee-script (2.2.0)
       coffee-script-source
       execjs
@@ -135,7 +86,7 @@ GEM
       simplecov (>= 0.7)
       thor
     debug_inspector (0.0.2)
-    dotenv (0.7.0)
+    dotenv (0.8.0)
     erubis (2.7.0)
     execjs (1.4.0)
       multi_json (~> 1.0)
@@ -145,33 +96,33 @@ GEM
       dotenv (>= 0.7)
       thor (>= 0.13.6)
     gravatar-ultimate (1.0.3)
-    hashie (2.0.4)
-    high_voltage (1.2.2)
-    highline (1.6.18)
-    hike (1.2.2)
+    hashie (2.0.5)
+    high_voltage (1.2.3)
+    highline (1.6.19)
+    hike (1.2.3)
     historyjs-rails (1.0.1)
       railties (>= 3.0)
     holder_rails (1.9.0)
       railties (>= 3.1.0)
     httpauth (0.2.0)
     i18n (0.6.4)
-    jquery-rails (2.2.1)
+    journey (1.0.4)
+    jquery-rails (2.2.2)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
-    json (1.7.7)
+    json (1.8.0)
     jwt (0.1.8)
       multi_json (>= 1.5)
-    mail (2.5.3)
-      i18n (>= 0.4.0)
+    mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.23)
-    minitest (4.7.3)
-    multi_json (1.7.2)
+    minitest (4.7.5)
+    multi_json (1.7.7)
     multipart-post (1.2.0)
-    net-scp (1.1.0)
+    net-scp (1.1.1)
       net-ssh (>= 2.6.5)
-    net-sftp (2.1.1)
+    net-sftp (2.1.2)
       net-ssh (>= 2.6.5)
     net-ssh (2.6.7)
     net-ssh-gateway (1.2.0)
@@ -196,7 +147,7 @@ GEM
     pg (0.15.1)
     polyglot (0.3.3)
     posix-spawn (0.3.6)
-    puma (2.0.1)
+    puma (2.1.1)
       rack (>= 1.1, < 2.0)
     pygments.rb (0.5.0)
       posix-spawn (~> 0.3.6)
@@ -204,41 +155,60 @@ GEM
     rack (1.5.2)
     rack-test (0.6.2)
       rack (>= 1.0)
-    rake (10.0.4)
+    rails (4.0.0)
+      actionmailer (= 4.0.0)
+      actionpack (= 4.0.0)
+      activerecord (= 4.0.0)
+      activesupport (= 4.0.0)
+      bundler (>= 1.3.0, < 2.0)
+      railties (= 4.0.0)
+      sprockets-rails (~> 2.0.0)
+    rails-perftest (0.0.2)
+    railties (4.0.0)
+      actionpack (= 4.0.0)
+      activesupport (= 4.0.0)
+      rake (>= 0.8.7)
+      thor (>= 0.18.1, < 2.0)
+    rake (10.1.0)
     rdoc (4.0.1)
       json (~> 1.4)
-    redcarpet (2.2.2)
+    redcarpet (2.3.0)
     rest-client (1.6.7)
       mime-types (>= 1.16)
-    rvm-capistrano (1.3.0)
+    rvm-capistrano (1.3.2)
       capistrano (>= 2.0.0)
-    sass (3.2.8)
-    select2-rails (3.3.1)
-      sass-rails (>= 3.2)
+    sass (3.2.9)
+    sass-rails (4.0.0)
+      railties (>= 4.0.0.beta, < 5.0)
+      sass (>= 3.1.10)
+      sprockets-rails (~> 2.0.0)
+    select2-rails (3.4.2)
+      sass-rails
       thor (~> 0.14)
     simplecov (0.7.1)
       multi_json (~> 1.0)
       simplecov-html (~> 0.7.1)
     simplecov-html (0.7.1)
-    sprockets (2.9.3)
+    sprockets (2.10.0)
       hike (~> 1.2)
       multi_json (~> 1.0)
       rack (~> 1.0)
       tilt (~> 1.1, != 1.3.0)
-    sprockets-rails (2.0.0.rc4)
+    sprockets-rails (2.0.0)
       actionpack (>= 3.0)
       activesupport (>= 3.0)
       sprockets (~> 2.8)
     thor (0.18.1)
     thread_safe (0.1.0)
       atomic
-    tilt (1.4.0)
-    treetop (1.4.12)
+    tilt (1.4.1)
+    treetop (1.4.14)
       polyglot
       polyglot (>= 0.3.1)
-    twitter-bootstrap-rails (2.2.6)
+    twitter-bootstrap-rails (2.2.7)
       actionpack (>= 3.1)
       execjs
+      rails (>= 3.1)
       railties (>= 3.1)
     tzinfo (0.3.37)
     warden (1.2.1)
@@ -256,7 +226,6 @@ PLATFORMS
 
 DEPENDENCIES
   ace-rails-ap
-  activerecord-deprecated_finders!
   better_errors (~> 0.7)
   binding_of_caller (~> 0.6)
   bootstrap-sass
@@ -264,7 +233,7 @@ DEPENDENCIES
   cancan (~> 1.6.9)
   capistrano
   closure-compiler
-  coffee-rails!
+  coffee-rails
   coveralls
   devise!
   foreman
@@ -272,18 +241,18 @@ DEPENDENCIES
   high_voltage (~> 1.2)
   historyjs-rails
   holder_rails
-  journey!
+  journey
   jquery-rails (~> 2.2.1)
   omniauth-github (~> 1.1.0)
   pg (~> 0.14)
   puma
   pygments.rb
-  rails!
-  rails-perftest!
+  rails (~> 4.0)
+  rails-perftest
   rdoc
   redcarpet
   rvm-capistrano
-  sass-rails!
+  sass-rails
   select2-rails
   simple_form!
   twitter-bootstrap-rails

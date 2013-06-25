@@ -1,10 +1,10 @@
 source 'http://rubygems.org'
 
 # Rails 4
-gem 'rails', github: 'rails/rails'
-gem 'activerecord-deprecated_finders', github: 'rails/activerecord-deprecated_finders'
-gem 'journey', github: 'rails/journey'
-gem 'rails-perftest', github: 'rails/rails-perftest'
+gem 'rails', '~> 4.0'
+#gem 'activerecord-deprecated_finders', github: 'rails/activerecord-deprecated_finders'
+gem 'journey'
+gem 'rails-perftest'
 
 # Server
 gem 'puma'
@@ -44,8 +44,8 @@ group :assets do
   gem 'historyjs-rails'
   gem 'yui-compressor'
   gem 'closure-compiler'
-  gem 'sass-rails', github: 'rails/sass-rails'
-  gem 'coffee-rails', github: 'rails/coffee-rails'
+  gem 'sass-rails'
+  gem 'coffee-rails'
   gem 'jquery-rails', '~> 2.2.1'
   gem 'ace-rails-ap'
   gem 'select2-rails'
@@ -66,7 +66,7 @@ group :test do
   #gem 'simplecov', require: false
 end
 
-# Coveralls for code coverage... in the cloud!!!!1!1!!one!
+# Coveralls for code coverage
 gem 'coveralls', require: false
 
 # To use ActiveModel has_secure_password
