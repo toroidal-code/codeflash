@@ -1,3 +1,5 @@
+# TODO refactor this to make it more readable and more CoffeeScript-like
+
 $(document).ready ->
   $("#profilelang").select2()
   $("#solutionlang").select2().change ->
