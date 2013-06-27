@@ -38,21 +38,19 @@ gem 'will_paginate'
 gem 'bootstrap-will_paginate'
 gem 'twitter-bootstrap-rails'
 gem 'bootstrap-sass'
-# Gems used only for assets and not required
-# in production environments by default.
-group :assets do
-  gem 'historyjs-rails'
-  gem 'yui-compressor'
-  gem 'closure-compiler'
-  gem 'sass-rails'
-  gem 'coffee-rails'
-  gem 'jquery-rails', '~> 2.2.1'
-  gem 'ace-rails-ap'
-  gem 'select2-rails'
-  gem 'holder_rails'
-  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  # gem 'therubyracer', :platforms => :ruby
-end
+
+# Gems used for assets.
+gem 'historyjs-rails'
+gem 'yui-compressor'
+gem 'closure-compiler'
+gem 'sass-rails'
+gem 'coffee-rails'
+gem 'jquery-rails', '~> 2.2.1'
+gem 'ace-rails-ap'
+gem 'select2-rails'
+gem 'holder_rails'
+# See https://github.com/sstephenson/execjs#readme for more supported runtimes
+# gem 'therubyracer', :platforms => :ruby
 
 group :development do
   gem 'binding_of_caller', '~> 0.6'
