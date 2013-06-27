@@ -18,7 +18,10 @@ $(document).ready ->
       str = "ace/mode/" + $("#solutionlang option:selected").data().syntax
     editor.getSession().setMode str  unless typeof (editor) is "undefined"
   $(".accordion").on "expand collapse", (e) ->
-    $(e.target).siblings(".solution-heading").find(".accordion-toggle i").toggleClass "icon-angle-down icon-angle-right", 200
+    $(e.target)
+      .siblings(".solution-heading")
+      .find(".accordion-toggle i")
+      .toggleClass "icon-angle-down icon-angle-right", 200
 
   $(".icon-heart-empty").hover ((e) ->
     $(this).toggleClass "icon-heart icon-heart-empty", 200
