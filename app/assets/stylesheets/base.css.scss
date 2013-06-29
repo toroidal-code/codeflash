@@ -1,0 +1,86 @@
+body {
+  font-weight: lighter;
+  padding-top: 60px;
+  padding-left: 20px;
+}
+
+.avatar {
+  border-radius: 50%;
+  margin-right: 5px;
+  margin-left: 5px;
+}
+
+.navbar .nav > li > .avatar-link {
+  padding-top: 5px;
+  padding-right: 15px;
+  padding-bottom: 5px;
+  padding-left: 15px;
+}
+
+.navbar {
+  position: static;
+}
+
+#navbar-container {
+  max-width: 960px
+}
+
+.navbar .pull-right > li > a {
+  padding-top: 10px;
+  padding-right: 5px;
+  padding-bottom: 10px;
+  padding-left: 5px;
+}
+
+#main {
+  max-width: 960px;
+  margin: 25px auto;
+  margin-bottom: 0px;
+}
+
+footer {
+  text-align: center;
+  font-size: 12px;
+  li {
+    display: inline;
+    margin-right: 20px;
+  }
+}
+
+h1, h2, h3, h4, h5, h6,
+#problems, #solutions,
+.breadcrumb, .solution-heading {
+  word-wrap: break-word;
+}
+
+@media (max-width: 480px) {
+  body, #main {
+    margin: 0px !important;
+    padding: 0px;
+  }
+}
+
+.compact-form {
+  input[type=text], input[type=email], input[type=password] {
+    width: 95%;
+  }
+}
+
+pre.highlighted {
+  padding: 0px;
+  border: none;
+  margin-bottom: 0px;
+}
+.red{
+  color: #990000;
+}
+
+/* Note: This is borrowed from the source for .icon-spin in Font Awesome. We
+ * don't like "display: inline-block;" though, so that's why I'm making a custom
+ * class for making non-icons spin. */
+.spin {
+  -moz-animation: spin 2s infinite linear;
+  -o-animation: spin 2s infinite linear;
+  -webkit-animation: spin 2s infinite linear;
+  animation: spin 2s infinite linear;
+}

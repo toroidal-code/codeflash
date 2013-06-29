@@ -4,6 +4,7 @@ class Comment < ActiveRecord::Base
 
   belongs_to :profile
   belongs_to :commentable, polymorphic: true
+  has_many :flags, as: :flaggable
 
   validates :body,
     length: { maximum: 500 },

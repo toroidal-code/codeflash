@@ -1,10 +1,10 @@
 source 'http://rubygems.org'
 
 # Rails 4
-gem 'rails', github: 'rails/rails'
-gem 'activerecord-deprecated_finders', github: 'rails/activerecord-deprecated_finders'
-gem 'journey', github: 'rails/journey'
-gem 'rails-perftest', github: 'rails/rails-perftest'
+gem 'rails', '~> 4.0'
+#gem 'activerecord-deprecated_finders', github: 'rails/activerecord-deprecated_finders'
+gem 'journey'
+gem 'rails-perftest'
 
 # Server
 gem 'puma'
@@ -26,8 +26,9 @@ gem 'capistrano'
 gem 'rvm-capistrano'
 
 # Required by rake for RAILS_ENV=production, thus outside :assets
-gem 'yard', '~> 0.8.5.2'
+gem 'yard', '~> 0.8.6.1'
 gem 'simple_form', github: 'plataformatec/simple_form'
+gem 'rdoc'
 
 # Pygments, using DHowett's fork (updated to pygments 1.6) until tmm1 approves the pull request.
 gem 'pygments.rb'
@@ -36,21 +37,20 @@ gem 'pygments.rb'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
 gem 'twitter-bootstrap-rails'
-# Gems used only for assets and not required
-# in production environments by default.
-group :assets do
-  gem 'historyjs-rails'
-  gem 'yui-compressor'
-  gem 'closure-compiler'
-  gem 'sass-rails', github: 'rails/sass-rails'
-  gem 'coffee-rails', github: 'rails/coffee-rails'
-  gem 'jquery-rails', '~> 2.2.1'
-  gem 'ace-rails-ap'
-  gem 'select2-rails'
-  gem 'holder_rails'
-  # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-  # gem 'therubyracer', :platforms => :ruby
-end
+gem 'bootstrap-sass'
+
+# Gems used for assets.
+gem 'historyjs-rails'
+gem 'yui-compressor'
+gem 'closure-compiler'
+gem 'sass-rails'
+gem 'coffee-rails'
+gem 'jquery-rails'
+gem 'ace-rails-ap'
+gem 'select2-rails'
+gem 'holder_rails'
+# See https://github.com/sstephenson/execjs#readme for more supported runtimes
+# gem 'therubyracer', :platforms => :ruby
 
 group :development do
   gem 'binding_of_caller', '~> 0.6'
@@ -61,8 +61,11 @@ group :development do
 end
 
 group :test do
-  gem 'simplecov', require: false
+  #gem 'simplecov', require: false
 end
+
+# Coveralls for code coverage
+gem 'coveralls', require: false
 
 # To use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
