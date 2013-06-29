@@ -18,10 +18,21 @@ class SolutionsController < ApplicationController
   def index
     if params[:problem_id]
       @problem = Problem.find_by_shortname(params[:problem_id])
-      @solutions = @problem.solutions.paginate(page: params[:page], per_page: 10 ).order('created_at DESC')
+      solutions = @problem.solutions
       add_breadcrumb(@problem.name, problem_path(@problem))
+      @path = problem_solutions_path (@problem)
     else
-      @solutions = Solution.paginate(page: params[:page], per_page: 10 ).order('created_at DESC')
+      solutions = Solution.all
+      @path = solutions_path
+    end
+    if params[:language]
+      @solutions = solutions.paginate(page: params[:page],
+                                      per_page: 10,
+                                      conditions: ["language_id = #{params[:language]}"]).order('created_at DESC')
+      @language_id = params[:language].to_i
+    else
+      @solutions = solutions.paginate(page: params[:page], per_page: 10 ).order('created_at DESC')
+      @language_id = 0
     end
     add_breadcrumb "Solutions", problem_solutions_path(@problem)
     respond_to :html, :json, :js

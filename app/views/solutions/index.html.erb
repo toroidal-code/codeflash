@@ -25,19 +25,24 @@
   <div class="span3">
     <ul class="nav nav-list well well-small">
       <li class="nav-header">Languages</li>
-      <li class="active"><a href="#">All</a></li>
-      <% if @problem.nil? %>
-          <% solutions = Solution.all %>
-      <% else %>
-          <% solutions = @problem.solutions %>
-      <% end %>
-      <% hash = Hash.new(0)
-         solutions.each do |x|
-           hash[x.language] += 1
-         end
-         Hash[hash.sort_by{|language, count| language.name}].each do |language, count| %>
-          <li><a href="#<%= language.name %>"><%= "#{language.name} (#{count})" %></a></li>
-      <% end %>
+      <%if @problem.nil?
+          solutions = Solution.all
+        else
+          solutions = @problem.solutions
+        end %>
+        <li <%if @language_id == 0 %> class="active"<%end%>><a href="<%=@path%>">All</a></li>
+        <% hash = Hash.new(0)
+        solutions.each do |x|
+          hash[x.language] += 1
+        end
+        Hash[hash.sort_by{|language, count| language.name}].each do |language, count|
+          if @problem.nil?
+            path = solutions_path(language: language.id)
+          else
+            path = problem_solutions_path @problem, language: language.id
+          end %>
+          <li <%if @language_id == language.id %> class="active"<%end%>><a href="<%= path %>"><%= "#{language.name} (#{count})" %></a></li>
+      <%end %>
     </ul>
   </div>
 
