@@ -1,12 +1,9 @@
 # This file should contain all the record creation needed to seed the database with its default values.
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
 
-
-
-
 # Require the data files in the right order so dependant data doesn't break
 # TODO make this DRY and less hacky
-data_root = "#{Rails.root}/lib/seed_data/"
+data_root = "#{Rails.root}/db/seed_data/"
 
 require "#{data_root}/languages"
 Language.create! LANGUAGES
