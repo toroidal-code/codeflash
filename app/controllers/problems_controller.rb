@@ -13,8 +13,16 @@ class ProblemsController < ApplicationController
   #
   # @return [String] the HTML/JSON for the problems page
   def index
-    @problems = Problem.paginate(page: params[:page], per_page: 10 ).order('created_at DESC')
-
+    conditions = []
+    if params[:tag]
+      @tag_id = params[:tag].to_i
+      problems = Tag.find(params[:tag]).problems
+    else
+      @tag_id = 0
+      problems = Problem.all
+    end
+    @problems = problems.paginate(page: params[:page], per_page: 10 ).order('created_at DESC')
+    @tags = Tag.all
     respond_with @problems
   end
 
