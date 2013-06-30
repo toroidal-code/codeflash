@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130324224215) do
+ActiveRecord::Schema.define(version: 20130630165627) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,20 +29,7 @@ ActiveRecord::Schema.define(version: 20130324224215) do
     t.integer "solution_id",    null: false
   end
 
-  add_index "achievements_solutions", ["achievement_id", "solution_id"], name: "index_achievements_solutions_on_achievement_id_and_solution_id", unique: true
-
-  create_table "categories", force: true do |t|
-    t.string   "name"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "categories_problems", id: false, force: true do |t|
-    t.integer "category_id", null: false
-    t.integer "problem_id",  null: false
-  end
-
-  add_index "categories_problems", ["category_id", "problem_id"], name: "index_categories_problems_on_category_id_and_problem_id", unique: true
+  add_index "achievements_solutions", ["achievement_id", "solution_id"], name: "index_achievements_solutions_on_achievement_id_and_solution_id", unique: true, using: :btree
 
   create_table "comments", force: true do |t|
     t.text     "body"
@@ -55,15 +42,15 @@ ActiveRecord::Schema.define(version: 20130324224215) do
     t.datetime "updated_at"
   end
 
-  add_index "comments", ["commentable_id", "commentable_type"], name: "index_comments_on_commentable_id_and_commentable_type"
-  add_index "comments", ["profile_id"], name: "index_comments_on_profile_id"
+  add_index "comments", ["commentable_id", "commentable_type"], name: "index_comments_on_commentable_id_and_commentable_type", using: :btree
+  add_index "comments", ["profile_id"], name: "index_comments_on_profile_id", using: :btree
 
   create_table "comments_profiles", id: false, force: true do |t|
     t.integer "profile_id", null: false
     t.integer "comment_id", null: false
   end
 
-  add_index "comments_profiles", ["profile_id", "comment_id"], name: "index_comments_profiles_on_profile_id_and_comment_id", unique: true
+  add_index "comments_profiles", ["profile_id", "comment_id"], name: "index_comments_profiles_on_profile_id_and_comment_id", unique: true, using: :btree
 
   create_table "flags", force: true do |t|
     t.integer  "profile_id"
@@ -75,8 +62,8 @@ ActiveRecord::Schema.define(version: 20130324224215) do
     t.datetime "updated_at"
   end
 
-  add_index "flags", ["flaggable_id", "flaggable_type"], name: "index_flags_on_flaggable_id_and_flaggable_type"
-  add_index "flags", ["profile_id"], name: "index_flags_on_profile_id"
+  add_index "flags", ["flaggable_id", "flaggable_type"], name: "index_flags_on_flaggable_id_and_flaggable_type", using: :btree
+  add_index "flags", ["profile_id"], name: "index_flags_on_profile_id", using: :btree
 
   create_table "languages", force: true do |t|
     t.string   "name"
@@ -96,7 +83,14 @@ ActiveRecord::Schema.define(version: 20130324224215) do
     t.string   "shortname"
   end
 
-  add_index "problems", ["profile_id"], name: "index_problems_on_profile_id"
+  add_index "problems", ["profile_id"], name: "index_problems_on_profile_id", using: :btree
+
+  create_table "problems_tags", id: false, force: true do |t|
+    t.integer "tag_id",     null: false
+    t.integer "problem_id", null: false
+  end
+
+  add_index "problems_tags", ["tag_id", "problem_id"], name: "index_problems_tags_on_tag_id_and_problem_id", unique: true, using: :btree
 
   create_table "profiles", force: true do |t|
     t.string   "name"
@@ -108,15 +102,15 @@ ActiveRecord::Schema.define(version: 20130324224215) do
     t.integer  "language_id"
   end
 
-  add_index "profiles", ["language_id"], name: "index_profiles_on_language_id"
-  add_index "profiles", ["user_id"], name: "index_profiles_on_user_id"
+  add_index "profiles", ["language_id"], name: "index_profiles_on_language_id", using: :btree
+  add_index "profiles", ["user_id"], name: "index_profiles_on_user_id", using: :btree
 
   create_table "profiles_solutions", id: false, force: true do |t|
     t.integer "profile_id"
     t.integer "solution_id"
   end
 
-  add_index "profiles_solutions", ["profile_id", "solution_id"], name: "index_profiles_solutions_on_profile_id_and_solution_id", unique: true
+  add_index "profiles_solutions", ["profile_id", "solution_id"], name: "index_profiles_solutions_on_profile_id_and_solution_id", unique: true, using: :btree
 
   create_table "solutions", force: true do |t|
     t.text     "code"
@@ -129,9 +123,15 @@ ActiveRecord::Schema.define(version: 20130324224215) do
     t.integer  "language_id"
   end
 
-  add_index "solutions", ["language_id"], name: "index_solutions_on_language_id"
-  add_index "solutions", ["problem_id"], name: "index_solutions_on_problem_id"
-  add_index "solutions", ["profile_id"], name: "index_solutions_on_profile_id"
+  add_index "solutions", ["language_id"], name: "index_solutions_on_language_id", using: :btree
+  add_index "solutions", ["problem_id"], name: "index_solutions_on_problem_id", using: :btree
+  add_index "solutions", ["profile_id"], name: "index_solutions_on_profile_id", using: :btree
+
+  create_table "tags", force: true do |t|
+    t.string   "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "",    null: false
@@ -153,8 +153,8 @@ ActiveRecord::Schema.define(version: 20130324224215) do
     t.datetime "confirmation_sent_at"
   end
 
-  add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true, using: :btree
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
 end
