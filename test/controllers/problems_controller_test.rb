@@ -28,7 +28,7 @@ class ProblemsControllerTest < ActionController::TestCase
                               points: @problem.points,
                               name: @problem.name,
                               shortname: "mystringss" },
-                    categories:"MyString,mystring2"
+                    tags:"MyString,mystring2"
     end
 
     assert_redirected_to problem_path(assigns(:problem))
@@ -40,7 +40,7 @@ class ProblemsControllerTest < ActionController::TestCase
                               points: @problem.points,
                               name: @problem.name,
                               shortname: @problem.shortname },
-                    categories:""
+                    tags:""
     end
 
     assert_template :new
@@ -61,7 +61,7 @@ class ProblemsControllerTest < ActionController::TestCase
                                           points: @problem.points,
                                           name: @problem.name,
                                           shortname: @problem.shortname },
-                               categories:""
+                               tags:""
     assert_redirected_to problem_path(assigns(:problem))
   end
 
@@ -70,7 +70,7 @@ class ProblemsControllerTest < ActionController::TestCase
                                           points: "string",
                                           name: @problem.name,
                                           shortname: @problem.shortname },
-                               categories:""
+                               tags:""
     assert_template :edit
   end
 
