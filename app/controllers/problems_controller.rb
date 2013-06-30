@@ -61,7 +61,7 @@ class ProblemsController < ApplicationController
   # @return [String] the HTML/JSON for the saved problem
   def create
     @problem = Problem.new(problem_params)
-    create_categories
+    create_tags
     respond_to do |format|
       if @problem.save
         format.html { redirect_to @problem, notice: 'Problem was successfully created.' }
@@ -81,7 +81,7 @@ class ProblemsController < ApplicationController
   # @return [String] the HTML/JSON for the updated language
   def update
     @problem = Problem.find_by_shortname(params[:id])
-    create_categories
+    create_tags
     respond_to do |format|
       if @problem.update_attributes(problem_params)
         format.html { redirect_to @problem, notice: 'Problem was successfully updated.' }
@@ -116,16 +116,16 @@ class ProblemsController < ApplicationController
     params[:problem].permit(:description, :points, :name, :shortname)
   end
 
-  def create_categories
-    @problem.categories = Array.new
-    categories = params[:categories].split(",")
-    categories.each do |category|
-      if !Category.exists?(name: category)
-        c = Category.create(name: category)
+  def create_tags
+    @problem.tags = Array.new
+    tags = params[:tags].split(",")
+    tags.each do |tag|
+      if !Tag.exists?(name: tag)
+        c = Tag.create(name: tag)
       else
-        c = Category.find_by_name(category)
+        c = Tag.find_by_name(tag)
       end
-      @problem.categories << c
+      @problem.tags << c
     end
     @problem.save
   end

@@ -1,12 +1,12 @@
 #Helper for the problem views
 module ProblemHelper
 
-  #lists the category names for a problem in CSV format
+  #lists the tag names for a problem in CSV format
   #
-  # @param [Array] category_array the array of categories
+  # @param [Array] tag_array the array of tags
   #
-  # @return a string of category names comma deliminated
-  def display_categories category_array
-    category_array.map{|x| x.name}.join(',')
+  # @return a string of tag names comma deliminated
+  def display_tags tag_array
+    tag_array.map{|x| x.name}.join(',')
   end
 end
