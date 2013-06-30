@@ -281,11 +281,14 @@ Solution.create!([{language: Language.find_by_name('Basic'),
                    code: "while 1\n\techom \"Swag\"\n\tsleep 15\nendwhile\n"}])
 
 Language.all.each do |language|
-  achievement = Achievement.create!({ name: "Best Solution - #{language.name}",
-                        points: 15,
-                        description: "Awarded for having the best #{language.name} solution for a given problem 30 days after problem creation"})
+  achievement = Achievement.create!({
+    name: "Best Solution - #{language.name}",
+    points: 15,
+    description: "Awarded for having the best #{language.name} solution for a given problem 30 days after problem creation"
+  })
   solution = Solution.where(problem_id: Problem.find_by_shortname('swag'), language_id: language).first
-  if !solution.blank?
+
+  if solution.present?
     solution.achievements << achievement
     solution.save!
   end
