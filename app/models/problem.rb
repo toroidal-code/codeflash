@@ -2,7 +2,7 @@
 class Problem < ActiveRecord::Base
   has_many :solutions
   has_many :comments, as: :commentable
-  has_and_belongs_to_many :categories
+  has_and_belongs_to_many :tags
 
   validates :description, :points, :name, :shortname,
     presence: true
