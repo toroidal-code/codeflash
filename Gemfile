@@ -25,6 +25,9 @@ gem 'cancan', '~> 1.6.9'
 gem 'capistrano'
 gem 'rvm-capistrano'
 
+# Factories
+gem 'factory_girl_rails', '~> 4.0'
+
 # Required by rake for RAILS_ENV=production, thus outside :assets
 gem 'yard', '~> 0.8.6.1'
 gem 'simple_form', github: 'plataformatec/simple_form'
