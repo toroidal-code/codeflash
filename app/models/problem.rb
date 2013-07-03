@@ -22,9 +22,7 @@ class Problem < ActiveRecord::Base
 
   private
   def render_description
-    renderer = PygmentizeHelper::PygmentizeHTML.new
-    extensions = {fenced_code_blocks: true}
-    redcarpet = Redcarpet::Markdown.new(renderer, extensions)
+    redcarpet = RedcarpetHelper::redcarpet_helper
     self.rendered_description = redcarpet.render self.description
   end
 end

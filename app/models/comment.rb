@@ -13,9 +13,7 @@ class Comment < ActiveRecord::Base
 
   private
   def render_body
-    renderer = PygmentizeHelper::PygmentizeHTML.new
-    extensions = {fenced_code_blocks: true}
-    redcarpet = Redcarpet::Markdown.new(renderer, extensions)
+    redcarpet = RedcarpetHelper::redcarpet_helper
     self.rendered_body = redcarpet.render self.body
   end
 end
