@@ -22,8 +22,10 @@
     <ul class="nav nav-list well well-small">
       <li class="nav-header">Tags</li>
       <li <%if @tag_id == 0 %> class="active" <%end%>><a data-remote="true" href="/problems">All</a></li>
-      <% @tags.each do |tag| %>
-        <li<%if @tag_id == tag.id %> class="active" <%end%>><a data-remote="true" href="/problems?tag=<%=tag.id%>"><%=tag.name%></a></li>
+      <% @tags.each do |tag|
+          count = tag.problems.count
+          next if count == 0 %>
+        <li<%if @tag_id == tag.id %> class="active" <%end%>><a data-remote="true" href="/problems?tag=<%=tag.id%>"><%="#{tag.name} (#{count})"%></a></li>
       <% end %>
     <ul>
   </div>
