@@ -49,6 +49,7 @@ gem 'jquery-rails'
 gem 'ace-rails-ap'
 gem 'select2-rails'
 gem 'holder_rails'
+gem 'redcarpet'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
 # gem 'therubyracer', :platforms => :ruby
 
@@ -57,7 +58,6 @@ group :development do
   gem 'better_errors', '~> 0.7'
   gem 'foreman'
   gem 'yard-activerecord', '~> 0.0.8'
-  gem 'redcarpet'
 end
 
 group :test do

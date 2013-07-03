@@ -113,7 +113,7 @@ class ProblemsController < ApplicationController
   private
 
   def problem_params
-    params[:problem].permit(:description, :points, :name, :shortname)
+    params[:problem].permit(:description, :points, :name, :shortname, :rendered_description)
   end
 
   def create_tags
