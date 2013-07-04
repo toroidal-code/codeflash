@@ -6,8 +6,8 @@ Codeflash::Application.routes.draw do
 
   concern :votable do
     member do
-      put 'upvote'
-      put 'downvote'
+      patch 'upvote'
+      patch 'downvote'
     end
   end
 
