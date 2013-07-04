@@ -51,7 +51,7 @@ class ProfilesControllerTest < ActionController::TestCase
   end
 
   test "should update profile" do
-    put :update, id: @user.username,  profile: {about_me: @profile.about_me,
+    patch :update, id: @user.username,  profile: {about_me: @profile.about_me,
                                                 github: @profile.github,
                                                 name: @profile.name },
                                       user: {username: @user.username}
@@ -59,7 +59,7 @@ class ProfilesControllerTest < ActionController::TestCase
   end
 
   test "should not update profile" do
-    put :update, id: @user.username, profile: { about_me: "x"*751,
+    patch :update, id: @user.username, profile: { about_me: "x"*751,
                                                 github: @profile.github,
                                                 name: @profile.name },
                                      user: {username: @user.username}

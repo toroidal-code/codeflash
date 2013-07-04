@@ -53,14 +53,14 @@ class AchievementsControllerTest < ActionController::TestCase
   end
 
   test "should update achievement" do
-    put :update, id: @achievement, achievement: { description: @achievement.description,
+    patch :update, id: @achievement, achievement: { description: @achievement.description,
                                                   name: @achievement.name,
                                                   points: @achievement.points }
     assert_redirected_to achievement_path(assigns(:achievement))
   end
 
   test "should not update achievement" do
-    put :update, id: @achievement, achievement: { description: @achievement.description,
+    patch :update, id: @achievement, achievement: { description: @achievement.description,
                                                   name: @achievement.name,
                                                   points: "string" }
     assert_template :edit

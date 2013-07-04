@@ -70,7 +70,7 @@ class SolutionsControllerTest < ActionController::TestCase
   end
 
   test "should update solution" do
-    put :update, problem_id: @problem, id: @solution, solution: { code: @solution.code,
+    patch :update, problem_id: @problem, id: @solution, solution: { code: @solution.code,
                                             down_votes: @solution.down_votes,
                                             up_votes: @solution.up_votes,
                                             problem_id: @problem }
@@ -78,7 +78,7 @@ class SolutionsControllerTest < ActionController::TestCase
   end
 
   test "should not update solution" do
-    put :update, problem_id: @problem, id: @solution, solution: { code: @solution.code,
+    patch :update, problem_id: @problem, id: @solution, solution: { code: @solution.code,
                                             down_votes: "string",
                                             up_votes: @solution.up_votes,
                                             problem_id: @problem }
@@ -95,11 +95,11 @@ class SolutionsControllerTest < ActionController::TestCase
 
   test "should upvote solution" do
     assert_difference('Solution.find(@solution).up_votes') do
-      put :upvote, problem_id: @problem, id: @solution
+      patch :upvote, problem_id: @problem, id: @solution
     end
     assert_redirected_to :back
     assert_no_difference('Solution.find(@solution).up_votes') do
-      put :upvote, problem_id: @problem, id: @solution
+      patch :upvote, problem_id: @problem, id: @solution
     end
     assert_equal 'You have already voted on this solution.', flash[:error]
     assert_redirected_to :back
@@ -107,14 +107,14 @@ class SolutionsControllerTest < ActionController::TestCase
 
   test "should downvote solution" do
     assert_difference('Solution.find(@solution).up_votes') do
-      put :upvote, problem_id: @problem, id: @solution
+      patch :upvote, problem_id: @problem, id: @solution
     end
     assert_difference('Solution.find(@solution).up_votes', -1) do
-      put :downvote, problem_id: @problem, id: @solution
+      patch :downvote, problem_id: @problem, id: @solution
     end
     assert_redirected_to :back
     assert_no_difference('Solution.find(@solution).up_votes') do
-      put :downvote, problem_id: @problem, id: @solution
+      patch :downvote, problem_id: @problem, id: @solution
     end
     assert_equal 'You have already voted on this solution.', flash[:error]
     assert_redirected_to :back
