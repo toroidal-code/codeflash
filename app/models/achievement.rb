@@ -9,6 +9,7 @@ class Achievement < ActiveRecord::Base
     numericality: { only_integer: true, greater_than: 0 }
 
   private
+
   def render_description
     redcarpet = RedcarpetHelper::redcarpet_helper
     self.rendered_description = redcarpet.render self.description

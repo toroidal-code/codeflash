@@ -37,6 +37,7 @@ class Profile < ActiveRecord::Base
   end
 
   private
+
   def render_about_me
     redcarpet = RedcarpetHelper::redcarpet_helper
     self.rendered_about_me = self.about_me.nil? ? self.about_me : redcarpet.render(self.about_me)

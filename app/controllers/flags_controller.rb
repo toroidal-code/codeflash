@@ -52,40 +52,41 @@ class FlagsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_flag
-      @flag = Flag.find(params[:id])
-    end
 
-    #Sets the path instance variable for a fath
-    def set_path
-      @comment = Comment.find(params[:comment_id]) if !params[:comment_id].nil?
-      @solution = Solution.find(params[:solution_id]) if !params[:solution_id].nil?
-      @problem = Problem.find_by_shortname(params[:problem_id])
-      if @solution.nil?
-        @path = problem_path(@problem)
-      else
-        @path = problem_solution_path(@problem, @solution)
-      end
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_flag
+    @flag = Flag.find(params[:id])
+  end
 
-    def should_new_flag flaggable
-      if Flag.where(profile: current_user.profile, flaggable: flaggable).count == 0
-        @flag = Flag.new
-        @should = true
-      end
+  #Sets the path instance variable for a fath
+  def set_path
+    @comment = Comment.find(params[:comment_id]) if !params[:comment_id].nil?
+    @solution = Solution.find(params[:solution_id]) if !params[:solution_id].nil?
+    @problem = Problem.find_by_shortname(params[:problem_id])
+    if @solution.nil?
+      @path = problem_path(@problem)
+    else
+      @path = problem_solution_path(@problem, @solution)
     end
+  end
 
-    def should_create_flag flaggable
-      if Flag.where(profile: current_user.profile, flaggable: flaggable).count == 0
-        @flag = flaggable.flags.create(flag_params)
-        @flag.profile = current_user.profile
-        @should = true
-      end
+  def should_new_flag flaggable
+    if Flag.where(profile: current_user.profile, flaggable: flaggable).count == 0
+      @flag = Flag.new
+      @should = true
     end
+  end
 
-    # Only allow a trusted parameter "white list" through.
-    def flag_params
-      params.require(:flag).permit(:profile_id, :reason, :explanation)
+  def should_create_flag flaggable
+    if Flag.where(profile: current_user.profile, flaggable: flaggable).count == 0
+      @flag = flaggable.flags.create(flag_params)
+      @flag.profile = current_user.profile
+      @should = true
     end
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def flag_params
+    params.require(:flag).permit(:profile_id, :reason, :explanation)
+  end
 end
