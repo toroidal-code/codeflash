@@ -1,6 +1,7 @@
 # Contains a user's progress on Codeflash, along with other information about
 # him/her that should appear on his/her profile page.
 class Profile < ActiveRecord::Base
+  before_save :render_about_me
   belongs_to :user
   belongs_to :language
   has_many :solutions
@@ -35,4 +36,9 @@ class Profile < ActiveRecord::Base
     solutions_voted.include? solution
   end
 
+  private
+  def render_about_me
+    redcarpet = RedcarpetHelper::redcarpet_helper
+    self.rendered_about_me = self.about_me.nil? ? self.about_me : redcarpet.render(self.about_me)
+  end
 end
