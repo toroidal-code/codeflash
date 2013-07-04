@@ -12,6 +12,7 @@ class Comment < ActiveRecord::Base
     presence: true
 
   private
+
   def render_body
     redcarpet = RedcarpetHelper::redcarpet_helper
     self.rendered_body = redcarpet.render self.body
