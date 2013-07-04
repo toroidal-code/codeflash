@@ -73,8 +73,8 @@ class AchievementsController < ApplicationController
 
   # Updates the values of an achievement.
   #
-  # PUT /achievements/1
-  # PUT /achievements/1.json
+  # PATCH/PUT /achievements/1
+  # PATCH/PUT /achievements/1.json
   #
   # @return [String] the HTML/JSON for the updated achievement resource
   def update

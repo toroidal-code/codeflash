@@ -63,8 +63,8 @@ class ProfilesController < ApplicationController
 
   # Updates the values of a profile.
   #
-  # PUT /profiles/1
-  # PUT /profiles/1.json
+  # PATCH/PUT /profiles/1
+  # PATCH/PUT /profiles/1.json
   #
   # @return [String] the HTML/JSON for the updated profile
   def update

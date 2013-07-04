@@ -91,8 +91,8 @@ class SolutionsController < ApplicationController
 
   # Updates the values of a solution.
   #
-  # PUT /solutions/1
-  # PUT /solutions/1.json
+  # PATCH/PUT /solutions/1
+  # PATCH/PUT /solutions/1.json
   #
   # @return [String] the HTML/JSON for the updated solution
   def update

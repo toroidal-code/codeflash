@@ -71,8 +71,8 @@ class LanguagesController < ApplicationController
 
   # Updates the values of a language.
   #
-  # PUT /languages/1
-  # PUT /languages/1.json
+  # PATCH/PUT /languages/1
+  # PATCH/PUT /languages/1.json
   #
   # @return [String] the HTML/JSON for the updated language
   def update

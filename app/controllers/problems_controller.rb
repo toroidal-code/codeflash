@@ -75,8 +75,8 @@ class ProblemsController < ApplicationController
 
   # Updates the values of a problem.
   #
-  # PUT /problems/1
-  # PUT /problems/1.json
+  # PATCH/PUT /problems/1
+  # PATCH/PUT /problems/1.json
   #
   # @return [String] the HTML/JSON for the updated language
   def update
