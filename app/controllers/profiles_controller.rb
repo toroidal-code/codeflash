@@ -4,7 +4,6 @@ class ProfilesController < ApplicationController
 
   before_action :find_profile, only: [:show, :edit, :update, :destroy]
 
-  respond_to :html, :json, :js
 
   # Shows the page for the profile.
   #
@@ -15,7 +14,6 @@ class ProfilesController < ApplicationController
   # @return [String] the HTML/JSON for the profile
   def show
     @solutions = @profile.solutions.paginate(page: params[:page], per_page: 10 ).order('created_at DESC')
-    respond_with @profile
   end
 
   # Renders a new language JSON.
@@ -27,8 +25,6 @@ class ProfilesController < ApplicationController
   def new
     @user = current_user
     @profile = Profile.new
-
-    respond_with @profile
   end
 
   # Edits the valuses of a profile.

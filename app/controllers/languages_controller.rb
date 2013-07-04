@@ -2,8 +2,6 @@
 class LanguagesController < ApplicationController
   authorize_resource
 
-  respond_to :html, :json
-
   # Lists all languages in the database.
   #
   # GET /languages
@@ -12,8 +10,6 @@ class LanguagesController < ApplicationController
   # @return [String] the HTML/JSON for the languages page
   def index
     @languages = Language.all
-
-    respond_with @languages
   end
 
   # Shows the page for the language.
@@ -24,8 +20,6 @@ class LanguagesController < ApplicationController
   # @return [String] the HTML/JSON for the language
   def show
     @language = Language.find(params[:id])
-
-    respond_with @language
   end
 
   # Renders a new language JSON.
@@ -36,8 +30,6 @@ class LanguagesController < ApplicationController
   # @return [String] the HTML/JSON for the new language
   def new
     @language = Language.new
-
-    respond_with @language
   end
 
   # Edits the values of a language.

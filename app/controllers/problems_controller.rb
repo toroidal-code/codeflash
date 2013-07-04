@@ -2,8 +2,6 @@
 class ProblemsController < ApplicationController
   authorize_resource
 
-  respond_to :html, :json, :js
-
   add_breadcrumb "Problems", :problems_path
 
   # Lists all the problems in the database.
@@ -14,8 +12,6 @@ class ProblemsController < ApplicationController
   # @return [String] the HTML/JSON for the problems page
   def index
     @problems = Problem.paginate(page: params[:page], per_page: 10 ).order('created_at DESC')
-
-    respond_with @problems
   end
 
   # Shows the page for the problem.
@@ -28,7 +24,6 @@ class ProblemsController < ApplicationController
     @problem = Problem.find_by_shortname(params[:id])
     @solutions = @problem.solutions.paginate(page: params[:page], per_page: 10 ).order('created_at DESC')
     add_breadcrumb @problem.name, problem_path(@problem)
-    respond_with @problem
   end
 
   # Renders a new problem JSON.
@@ -40,7 +35,6 @@ class ProblemsController < ApplicationController
   def new
     @problem = Problem.new
     add_breadcrumb "New Problem"
-    respond_with @problem
   end
 
   # Edits the values of a problem.

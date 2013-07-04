@@ -6,8 +6,6 @@ class SolutionsController < ApplicationController
 
   add_breadcrumb("Problems",:problems_path)
 
-  respond_to :html, :json
-
   # Lists all the solutions to a given to the solution's problem
   # in the database
   #
@@ -24,7 +22,6 @@ class SolutionsController < ApplicationController
       @solutions = Solution.paginate(page: params[:page], per_page: 10 ).order('created_at DESC')
     end
     add_breadcrumb "Solutions", problem_solutions_path(@problem)
-    respond_to :html, :json, :js
   end
 
   # Shows the page for the solution.
@@ -37,7 +34,6 @@ class SolutionsController < ApplicationController
     @problem = Problem.find_by_shortname(params[:problem_id])
     breadcrumbs
     add_breadcrumb @solution.profile.user.username, problem_solution_path(@problem, @solution)
-    respond_with @solution
   end
 
   # Renders a new solution JSON.
@@ -51,8 +47,6 @@ class SolutionsController < ApplicationController
     @problem = Problem.find_by_shortname(params[:problem_id])
     breadcrumbs
     add_breadcrumb "New Solution"
-    respond_with @solution
-
   end
 
   # Edits the values of a solution.
