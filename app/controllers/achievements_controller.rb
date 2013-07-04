@@ -110,6 +110,6 @@ class AchievementsController < ApplicationController
       @achievement = Achievement.find(params[:id])
     end
     def achievement_params
-      params[:achievement].permit(:description, :name, :points)
+      params[:achievement].permit(:description, :name, :points, :rendered_description)
     end
 end
