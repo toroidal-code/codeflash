@@ -1,4 +1,4 @@
-source 'http://rubygems.org'
+source 'https://rubygems.org'
 
 # Rails 4
 gem 'rails', '~> 4.0'
@@ -51,7 +51,7 @@ gem 'select2-rails'
 gem 'holder_rails'
 gem 'redcarpet'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-# gem 'therubyracer', :platforms => :ruby
+# gem 'therubyracer', platforms: :ruby
 
 group :development do
   gem 'binding_of_caller', '~> 0.6'
@@ -64,14 +64,22 @@ group :test do
   #gem 'simplecov', require: false
 end
 
+# Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
+gem 'turbolinks'
+
+# Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
+gem 'jbuilder', '~> 1.2'
+
+group :doc do
+  # bundle exec rake doc:rails generates the API under doc/api.
+  gem 'sdoc', require: false
+end
+
 # Coveralls for code coverage
 gem 'coveralls', require: false
 
-# To use ActiveModel has_secure_password
+# Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
-# To use Jbuilder templates for JSON
-# gem 'jbuilder'
-
-# To use debugger
+# Use debugger
 # gem 'debugger'
