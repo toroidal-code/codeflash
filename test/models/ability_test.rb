@@ -25,6 +25,10 @@ class ATest < ActiveSupport::TestCase
     assert @ability.can?(:create, Comment)
   end
 
+  test 'should be able to create flag' do
+    assert @ability.can?(:create, Flag)
+  end
+
   test 'should be able to create upvote/downvote Solution' do
     assert @ability.can?(:upvote, Solution)
     assert @ability.can?(:downvote, Solution)
@@ -56,10 +60,10 @@ class ATest < ActiveSupport::TestCase
     assert ability.can?(:read, Achievement)
   end
 
-  test 'should be able to read Category' do
+  test 'should be able to read Tag' do
     ability = Ability.new(nil)
-    assert @ability.can?(:read, Category)
-    assert ability.can?(:read, Category)
+    assert @ability.can?(:read, Tag)
+    assert ability.can?(:read, Tag)
   end
 
   test 'should be able to read Comment' do
@@ -104,10 +108,10 @@ class ATest < ActiveSupport::TestCase
     assert ability.can?(:manage, Achievement)
   end
 
-  test 'should be able to manage Category' do
+  test 'should be able to manage Tag' do
     @user.admin = true
     ability = Ability.new(@user)
-    assert ability.can?(:manage, Category)
+    assert ability.can?(:manage, Tag)
   end
 
   test 'should be able to manage Comment' do

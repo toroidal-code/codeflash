@@ -18,7 +18,7 @@ class SolutionsControllerTest < ActionController::TestCase
     @solution2 = solutions(:two)
     @solution2.problem = @problem
     @solution2.profile = @user.profile
-    @solution2.language = languages(:one)
+    @solution2.language = languages(:two)
     @solution2.save
 
   end

@@ -1,6 +1,6 @@
 Codeflash::Application.routes.draw do
 
-  resources :profiles
+  root 'high_voltage/pages#show', id: 'home'
 
   devise_for :users
 
@@ -12,23 +12,26 @@ Codeflash::Application.routes.draw do
   end
 
   concern :commentable do
-    resources :comments, concerns: :votable
+    resources :comments, concerns: :votable do
+      resources :flags, except: :index
+    end
   end
 
   resources :achievements
+  resources :flags, only: :index
   resources :languages
-  resources :language_families
-  resources :solutions, only: [:index]
+  resources :solutions, only: :index
   resources :problems, concerns: :commentable do
-    resources :solutions, concerns: [:votable, :commentable]
+    resources :solutions, concerns: [:votable, :commentable] do
+      resources :flags, except: :index
+    end
   end
+  resources :profiles
 
   devise_scope :user do
     get "login" , to: "devise/sessions#new"
     get "signup", to: "devise/registrations#new"
     delete "logout", to: "devise/sessions#destroy"
   end
-
-  root to: 'high_voltage/pages#show', id: 'home'
 
 end
