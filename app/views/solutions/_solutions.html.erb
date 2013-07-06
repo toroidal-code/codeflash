@@ -1,7 +1,5 @@
 <div class="accordion" id="accordion">
-  <% @solutions.each_with_index do |solution, index| %>
-    <%= render 'solutions/compact', solution: solution, index: index, collapsed: true%>
-  <% end %>
+<%= render partial: @solutions, locals: {collapsed: true}, cache: true %>
 </div>
 
 <div class="pagination-centered">

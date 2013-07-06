@@ -17,8 +17,15 @@ GIT
       actionpack (>= 4.0.0, < 4.1)
       activemodel (>= 4.0.0, < 4.1)
 
+GIT
+  remote: git://github.com/puma/puma.git
+  revision: 9d4811f940854050dc9b02f4e0cdd309ad3d4774
+  specs:
+    puma (2.3.0)
+      rack (>= 1.1, < 2.0)
+
 GEM
-  remote: http://rubygems.org/
+  remote: https://rubygems.org/
   specs:
     POpen4 (0.1.4)
       Platform (>= 0.4.0)
@@ -51,7 +58,7 @@ GEM
       tzinfo (~> 0.3.37)
     arel (4.0.0)
     atomic (1.1.10)
-    bcrypt-ruby (3.0.1)
+    bcrypt-ruby (3.1.0)
     better_errors (0.9.0)
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
@@ -63,7 +70,7 @@ GEM
       will_paginate
     builder (3.1.4)
     cancan (1.6.10)
-    capistrano (2.15.4)
+    capistrano (2.15.5)
       highline
       net-scp (>= 1.0.0)
       net-sftp (>= 2.0.0)
@@ -77,7 +84,7 @@ GEM
     coffee-script (2.2.0)
       coffee-script-source
       execjs
-    coffee-script-source (1.6.2)
+    coffee-script-source (1.6.3)
     colorize (0.5.8)
     coveralls (0.6.7)
       colorize
@@ -85,6 +92,7 @@ GEM
       rest-client
       simplecov (>= 0.7)
       thor
+    dalli (2.6.4)
     debug_inspector (0.0.2)
     dotenv (0.8.0)
     erubis (2.7.0)
@@ -107,31 +115,37 @@ GEM
     hike (1.2.3)
     historyjs-rails (1.0.1)
       railties (>= 3.0)
-    holder_rails (1.9.0)
+    holder_rails (2.0.0)
       railties (>= 3.1.0)
     httpauth (0.2.0)
     i18n (0.6.4)
+    jbuilder (1.4.2)
+      activesupport (>= 3.0.0)
+      multi_json (>= 1.2.0)
     journey (1.0.4)
-    jquery-rails (3.0.1)
+    jquery-rails (3.0.2)
       railties (>= 3.0, < 5.0)
       thor (>= 0.14, < 2.0)
     json (1.8.0)
     jwt (0.1.8)
       multi_json (>= 1.5)
+    kgio (2.8.0)
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.23)
     minitest (4.7.5)
+    multi_fetch_fragments (0.0.16)
     multi_json (1.7.7)
     multipart-post (1.2.0)
-    net-scp (1.1.1)
+    net-scp (1.1.2)
       net-ssh (>= 2.6.5)
     net-sftp (2.1.2)
       net-ssh (>= 2.6.5)
-    net-ssh (2.6.7)
+    net-ssh (2.6.8)
     net-ssh-gateway (1.2.0)
       net-ssh (>= 2.6.5)
+    newrelic_rpm (3.6.5.130)
     oauth2 (0.8.1)
       faraday (~> 0.8)
       httpauth (~> 0.1)
@@ -152,8 +166,6 @@ GEM
     pg (0.15.1)
     polyglot (0.3.3)
     posix-spawn (0.3.6)
-    puma (2.1.1)
-      rack (>= 1.1, < 2.0)
     pygments.rb (0.5.1)
       posix-spawn (~> 0.3.6)
       yajl-ruby (~> 1.1.0)
@@ -187,6 +199,9 @@ GEM
       railties (>= 4.0.0.beta, < 5.0)
       sass (>= 3.1.10)
       sprockets-rails (~> 2.0.0)
+    sdoc (0.2.19)
+      json (>= 1.1.3)
+      rdoc (>= 2.4.2)
     select2-rails (3.4.3)
       sass-rails
       thor (~> 0.14)
@@ -210,6 +225,8 @@ GEM
     treetop (1.4.14)
       polyglot
       polyglot (>= 0.3.1)
+    turbolinks (1.2.0)
+      coffee-rails
     twitter-bootstrap-rails (2.2.7)
       actionpack (>= 3.1)
       execjs
@@ -240,6 +257,7 @@ DEPENDENCIES
   closure-compiler
   coffee-rails
   coveralls
+  dalli
   devise!
   factory_girl_rails (~> 4.0)
   foreman
@@ -247,22 +265,28 @@ DEPENDENCIES
   high_voltage (~> 1.2)
   historyjs-rails
   holder_rails
+  jbuilder (~> 1.2)
   journey
   jquery-rails
+  kgio
+  multi_fetch_fragments
+  newrelic_rpm
   omniauth-github (~> 1.1.0)
   pg (~> 0.14)
-  puma
+  puma!
   pygments.rb
   rails (~> 4.0)
   rails-perftest
-  rdoc
+  rdoc (~> 4.0.1)
   redcarpet
   rvm-capistrano
   sass-rails
+  sdoc
   select2-rails
   simple_form!
+  turbolinks
   twitter-bootstrap-rails
   will_paginate
-  yard (~> 0.8.6.1)
+  yard (~> 0.8.6.2)
   yard-activerecord (~> 0.0.8)
   yui-compressor

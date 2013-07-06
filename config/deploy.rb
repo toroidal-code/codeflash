@@ -70,3 +70,11 @@ namespace :puma do
   end
   after "deploy:create_symlink", "puma:after_symlink"
 end
+
+namespace :newrelic do
+  desc "Copy newrelic.yml"
+    task :copy do 
+      run "cp /home/deploy/newrelic/config/newrelic.yml #{release_path}/config/newrelic.yml"
+  end
+  after "deploy:create_symlink", "newrelic:copy"
+end

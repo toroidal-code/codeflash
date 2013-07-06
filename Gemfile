@@ -1,16 +1,19 @@
-source 'http://rubygems.org'
+source 'https://rubygems.org'
 
 # Rails 4
 gem 'rails', '~> 4.0'
-#gem 'activerecord-deprecated_finders', github: 'rails/activerecord-deprecated_finders'
 gem 'journey'
 gem 'rails-perftest'
 
-# Server
-gem 'puma'
+# Server (using github until gem is fully functional again)
+gem 'puma', github: 'puma/puma'
 
 # Database
 gem 'pg', '~> 0.14'
+
+# Memcached
+gem 'dalli'
+gem 'kgio' # improves Dalli's performance
 
 # Controllers
 gem 'high_voltage', '~> 1.2'
@@ -28,12 +31,18 @@ gem 'rvm-capistrano'
 # Factories
 gem 'factory_girl_rails', '~> 4.0'
 
-# Required by rake for RAILS_ENV=production, thus outside :assets
-gem 'yard', '~> 0.8.6.1'
-gem 'simple_form', github: 'plataformatec/simple_form'
-gem 'rdoc'
+# Profiling (New Relic)
+gem 'newrelic_rpm'
 
-# Pygments, using DHowett's fork (updated to pygments 1.6) until tmm1 approves the pull request.
+# Rendering
+gem 'multi_fetch_fragments'
+
+# Required by rake for RAILS_ENV=production
+gem 'yard', '~> 0.8.6.2'
+gem 'simple_form', github: 'plataformatec/simple_form'
+gem 'rdoc', '~> 4.0.1'
+
+# Pygments
 gem 'pygments.rb'
 
 # Required by methods called inside RAILS_ENV=production
@@ -52,29 +61,37 @@ gem 'jquery-rails'
 gem 'ace-rails-ap'
 gem 'select2-rails'
 gem 'holder_rails'
+gem 'redcarpet'
 # See https://github.com/sstephenson/execjs#readme for more supported runtimes
-# gem 'therubyracer', :platforms => :ruby
+# gem 'therubyracer', platforms: :ruby
 
 group :development do
   gem 'binding_of_caller', '~> 0.6'
   gem 'better_errors', '~> 0.7'
   gem 'foreman'
   gem 'yard-activerecord', '~> 0.0.8'
-  gem 'redcarpet'
 end
 
 group :test do
   #gem 'simplecov', require: false
 end
 
+# Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
+gem 'turbolinks'
+
+# Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
+gem 'jbuilder', '~> 1.2'
+
+group :doc do
+  # bundle exec rake doc:rails generates the API under doc/api.
+  gem 'sdoc', require: false
+end
+
 # Coveralls for code coverage
 gem 'coveralls', require: false
 
-# To use ActiveModel has_secure_password
+# Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 
-# To use Jbuilder templates for JSON
-# gem 'jbuilder'
-
-# To use debugger
+# Use debugger
 # gem 'debugger'
