@@ -2,15 +2,18 @@ source 'https://rubygems.org'
 
 # Rails 4
 gem 'rails', '~> 4.0'
-#gem 'activerecord-deprecated_finders', github: 'rails/activerecord-deprecated_finders'
 gem 'journey'
 gem 'rails-perftest'
 
-# Server
-gem 'puma'
+# Server (using github until gem is fully functional again)
+gem 'puma', github: 'puma/puma'
 
 # Database
 gem 'pg', '~> 0.14'
+
+# Memcached
+gem 'dalli'
+gem 'kgio' # improves Dalli's performance
 
 # Controllers
 gem 'high_voltage', '~> 1.2'
@@ -25,12 +28,18 @@ gem 'cancan', '~> 1.6.9'
 gem 'capistrano'
 gem 'rvm-capistrano'
 
-# Required by rake for RAILS_ENV=production, thus outside :assets
-gem 'yard', '~> 0.8.6.1'
-gem 'simple_form', github: 'plataformatec/simple_form'
-gem 'rdoc'
+# Profiling (New Relic)
+gem 'newrelic_rpm'
 
-# Pygments, using DHowett's fork (updated to pygments 1.6) until tmm1 approves the pull request.
+# Rendering
+gem 'multi_fetch_fragments'
+
+# Required by rake for RAILS_ENV=production
+gem 'yard', '~> 0.8.6.2'
+gem 'simple_form', github: 'plataformatec/simple_form'
+gem 'rdoc', '~> 4.0.1'
+
+# Pygments
 gem 'pygments.rb'
 
 # Required by methods called inside RAILS_ENV=production

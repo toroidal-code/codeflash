@@ -13,9 +13,9 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
-//= require_tree .
 //= require vendor
 //= require select2
 //= require ace/ace
 //= require holder
 //= require history_jquery
+//= require_tree .
