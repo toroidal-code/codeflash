@@ -5,8 +5,8 @@ gem 'rails', '~> 4.0'
 gem 'journey'
 gem 'rails-perftest'
 
-# Server
-gem 'puma'
+# Server (using github until gem is fully functional again)
+gem 'puma', github: 'puma/puma'
 
 # Database
 gem 'pg', '~> 0.14'
