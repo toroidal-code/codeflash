@@ -51,8 +51,15 @@ Codeflash::Application.configure do
   # Use a different logger for distributed setups.
   # config.logger = ActiveSupport::TaggedLogging.new(SyslogLogger.new)
 
-  # Use a different cache store in production.
-  # config.cache_store = :mem_cache_store
+  # Use Dalli (memcached) cache store in production.
+  config.cache_store = :dalli_store, {namespace: codeflash, expires_in: 1.day, compress: true }
+
+  # TODO: Engine yard production memcache
+    # # parse the memcached.yml
+    # memcached_config = YAML.load_file(Rails.root.join('config/memcached.yml'))
+    # memcached_hosts = memcached_config['defaults']['servers']
+    # # pass the servers to dalli setup
+    # config.cache_store = :dalli_store, *memcached_hosts
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
   # config.action_controller.asset_host = "http://assets.example.com"

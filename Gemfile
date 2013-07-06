@@ -11,6 +11,10 @@ gem 'puma'
 # Database
 gem 'pg', '~> 0.14'
 
+# Memcached
+gem 'dalli'
+gem 'kgio' # improves Dalli's performance
+
 # Controllers
 gem 'high_voltage', '~> 1.2'
 gem 'gravatar-ultimate'
