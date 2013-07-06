@@ -13,6 +13,7 @@ class CommentsControllerTest < ActionController::TestCase
     @problem
     @solution = solutions(:one)
     @solution.problem = @problem
+    @solution.profile = user.profile
     @solution.save
     @profile = user.profile
     @comment = comments(:one)
@@ -40,6 +41,16 @@ class CommentsControllerTest < ActionController::TestCase
                     solution_id: @solution
     end
     assert_redirected_to problem_solution_path(@problem, @solution)
+  end
+
+  test 'should show problem comment' do
+    get :show, id: @comment, problem_id: @problem
+    assert_response :success
+  end
+
+  test 'should show solution comment' do
+    get :show, id: @comment2, problem_id: @problem, solution_id: @solution
+    assert_response :success
   end
 
   test "should upvote problem comment" do

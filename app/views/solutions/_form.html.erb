@@ -1,10 +1,22 @@
 <%= simple_form_for([problem, solution]) do |f| %>
-<%= f.input :languge_id do %>
-  <%= f.select :language_id, Language.all.map { |l| [l.name, l.id, { "data-syntax" => l.ace_syntax }] },{},
-     {"data-placeholder" => "Choose a Language...",
-      class: "input-xlarge", id: "solutionlang" } %>
+  <% if solution.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(solution.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+        <ul>
+        <% solution.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+  <%= f.association :language do %>
+    <%= f.select :language_id, Language.all.map { |l| [l.name, l.id, { "data-syntax" => l.ace_syntax }] },{},
+       {"data-placeholder" => "Choose a Language...",
+        class: "input-xlarge", id: "solutionlang" } %>
   <% end %>
   <%= f.input :code,
+    error: false,
     input_html: { class: 'input-block-level'} %>
   <div id='editor'></div>
   <%= f.button :submit, class: 'btn btn-primary' %>

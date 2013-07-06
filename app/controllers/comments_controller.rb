@@ -18,6 +18,12 @@ class CommentsController < ApplicationController
     redirect_to path
   end
 
+  # Shows an existing comment
+  def show
+    @comment = Comment.find(params[:id])
+    @solution = @comment.commentable_type == 'Solution'
+  end
+
   # Adds an upvote
   def upvote
     vote true
@@ -32,7 +38,7 @@ class CommentsController < ApplicationController
 
   # Strong parameters for comments
   def comment_params
-    params[:comment].permit(:body, :up_votes, :down_votes)
+    params[:comment].permit(:body, :up_votes, :down_votes, :rendered_body)
   end
 
   # Helper method for voting
