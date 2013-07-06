@@ -52,7 +52,7 @@ Codeflash::Application.configure do
   # config.logger = ActiveSupport::TaggedLogging.new(SyslogLogger.new)
 
   # Use Dalli (memcached) cache store in production.
-  config.cache_store = :dalli_store, {namespace: codeflash, expires_in: 1.day, compress: true }
+  config.cache_store = :dalli_store, {namespace: "codeflash", expires_in: 1.day, compress: true }
 
   # TODO: Engine yard production memcache
     # # parse the memcached.yml
