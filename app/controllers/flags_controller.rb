@@ -6,11 +6,13 @@ class FlagsController < ApplicationController
   before_action :set_path, except: :index
 
   # GET /flags
+  # GET /flags.json
   def index
     @flags = Flag.all
   end
 
   # GET /flags/1
+  # GET /flags/1.json
   def show
   end
 
@@ -29,6 +31,7 @@ class FlagsController < ApplicationController
   end
 
   # POST /flags
+  # POST /flags.json
   def create
     @should = false
     if @comment.nil?
@@ -47,6 +50,7 @@ class FlagsController < ApplicationController
   end
 
   # DELETE /flags/1
+  # DELETE /flags/1.json
   def destroy
     @flag.destroy
     redirect_to flags_path, notice: 'Flag was successfully destroyed.'
