@@ -34,7 +34,7 @@ gem 'multi_fetch_fragments'
 # Required by rake for RAILS_ENV=production
 gem 'yard', '~> 0.8.6.2'
 gem 'simple_form', github: 'plataformatec/simple_form'
-gem 'rdoc'
+gem 'rdoc', '~> 4.0.1'
 
 # Pygments
 gem 'pygments.rb'
