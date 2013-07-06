@@ -1,5 +1,6 @@
 Codeflash::Application.routes.draw do
-  
+
+  root 'high_voltage/pages#show', id: 'home'
 
   devise_for :users
 
@@ -32,7 +33,5 @@ Codeflash::Application.routes.draw do
     get "signup", to: "devise/registrations#new"
     delete "logout", to: "devise/sessions#destroy"
   end
-
-  root to: 'high_voltage/pages#show', id: 'home'
 
 end

@@ -38,7 +38,7 @@ class CommentsController < ApplicationController
 
   # Strong parameters for comments
   def comment_params
-    params[:comment].permit(:body, :up_votes, :down_votes)
+    params[:comment].permit(:body, :up_votes, :down_votes, :rendered_body)
   end
 
   # Helper method for voting
