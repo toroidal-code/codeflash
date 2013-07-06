@@ -28,6 +28,9 @@ gem 'cancan', '~> 1.6.9'
 gem 'capistrano'
 gem 'rvm-capistrano'
 
+# Profiling (New Relic)
+gem 'newrelic_rpm'
+
 # Rendering
 gem 'multi_fetch_fragments'
 
