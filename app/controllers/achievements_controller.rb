@@ -59,9 +59,9 @@ class AchievementsController < ApplicationController
     respond_to do |format|
       if @achievement.save
         format.html { redirect_to @achievement, notice: 'Achievement was successfully created.' }
-        format.json { render json: @achievement, status: :created, location: @achievement }
+        format.json { render action: 'show', status: :created, location: @achievement }
       else
-        format.html { render "new" }
+        format.html { render action: 'new' }
         format.json { render json: @achievement.errors, status: :unprocessable_entity }
       end
     end
@@ -75,11 +75,11 @@ class AchievementsController < ApplicationController
   # @return [String] the HTML/JSON for the updated achievement resource
   def update
     respond_to do |format|
-      if @achievement.update_attributes(achievement_params)
+      if @achievement.update(achievement_params)
         format.html { redirect_to @achievement, notice: 'Achievement was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html { render "edit" }
+        format.html { render action: 'edit' }
         format.json { render json: @achievement.errors, status: :unprocessable_entity }
       end
     end

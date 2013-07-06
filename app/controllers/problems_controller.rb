@@ -59,9 +59,9 @@ class ProblemsController < ApplicationController
     respond_to do |format|
       if @problem.save
         format.html { redirect_to @problem, notice: 'Problem was successfully created.' }
-        format.json { render json: @problem, status: :created, location: @problem }
+        format.json { render action: 'show', status: :created, location: @problem }
       else
-        format.html { render "new" }
+        format.html { render action: 'new' }
         format.json { render json: @problem.errors, status: :unprocessable_entity }
       end
     end
@@ -76,11 +76,11 @@ class ProblemsController < ApplicationController
   def update
     create_tags
     respond_to do |format|
-      if @problem.update_attributes(problem_params)
+      if @problem.update(problem_params)
         format.html { redirect_to @problem, notice: 'Problem was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html { render "edit" }
+        format.html { render action: 'edit' }
         format.json { render json: @problem.errors, status: :unprocessable_entity }
       end
     end

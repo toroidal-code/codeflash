@@ -50,9 +50,9 @@ class ProfilesController < ApplicationController
     respond_to do |format|
       if @profile.save
         format.html { redirect_to @profile, notice: 'Profile was successfully created.' }
-        format.json { render json: @profile, status: :created, location: @profile }
+        format.json { render action: 'show', status: :created, location: @profile }
       else
-        format.html { render "new" }
+        format.html { render action: 'new' }
         format.json { render json: @profile.errors, status: :unprocessable_entity }
       end
     end
@@ -67,11 +67,11 @@ class ProfilesController < ApplicationController
   def update
     authorize! :update, @profile
     respond_to do |format|
-      if @user.update_attributes(params[:user].permit(:username)) && @profile.update_attributes(profile_params)
+      if @user.update(params[:user].permit(:username)) && @profile.update(profile_params)
         format.html { redirect_to @profile, notice: 'Profile was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html { render "edit" }
+        format.html { render action: 'edit' }
         format.json { render json: @profile.errors, status: :unprocessable_entity }
       end
     end

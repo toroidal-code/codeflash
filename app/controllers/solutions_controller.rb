@@ -72,12 +72,13 @@ class SolutionsController < ApplicationController
     @solution = @problem.solutions.create(solution_params) do |solution|
       solution.profile = current_user.profile
     end
+
     respond_to do |format|
       if @solution.save
         format.html { redirect_to problem_solution_path(@problem, @solution), notice: 'Solution was successfully created.' }
-        format.json { render json: @problem, status: :created, location: @solution }
+        format.json { render action: 'show', status: :created, location: @solution }
       else
-        format.html { render "new" }
+        format.html { render action: 'new' }
         format.json { render json: @solution.errors, status: :unprocessable_entity }
       end
     end
@@ -92,11 +93,11 @@ class SolutionsController < ApplicationController
   def update
     @problem = @solution.problem
     respond_to do |format|
-      if @solution.update_attributes(solution_params)
-        format.html { redirect_to  problem_solution_path(@problem, @solution), notice: 'Solution was successfully updated.' }
+      if @solution.update(solution_params)
+        format.html { redirect_to problem_solution_path(@problem, @solution), notice: 'Solution was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html { render "edit" }
+        format.html { render action: 'edit' }
         format.json { render json: @solution.errors, status: :unprocessable_entity }
       end
     end
