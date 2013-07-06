@@ -2,7 +2,6 @@ source 'https://rubygems.org'
 
 # Rails 4
 gem 'rails', '~> 4.0'
-#gem 'activerecord-deprecated_finders', github: 'rails/activerecord-deprecated_finders'
 gem 'journey'
 gem 'rails-perftest'
 
@@ -25,7 +24,10 @@ gem 'cancan', '~> 1.6.9'
 gem 'capistrano'
 gem 'rvm-capistrano'
 
-# Required by rake for RAILS_ENV=production, thus outside :assets
+# Rendering
+gem 'multi_fetch_fragments'
+
+# Required by rake for RAILS_ENV=production
 gem 'yard', '~> 0.8.6.2'
 gem 'simple_form', github: 'plataformatec/simple_form'
 gem 'rdoc'

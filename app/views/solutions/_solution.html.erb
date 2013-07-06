@@ -25,7 +25,7 @@
 
       <div class="solution-heading well well-small">
         <span class="pull-right">submitted by: <%= link_to solution.profile.user.username, solution.profile, id: "user" %></span>
-        <div class="accordion-toggle" data-toggle="collapse" href="#collapse<%= index %>">
+        <div class="accordion-toggle" data-toggle="collapse" href="#collapse<%= solution_counter %>">
           <i class="icon-angle-<%= collapsed ? 'right' : 'down'%>"></i>
           <a>
             <%= solution.problem.name %>
@@ -35,7 +35,7 @@
           </a>
       </div>
     </div>
-      <div href="<%= problem_solution_path solution.problem, solution %>" id="collapse<%=index%>" data-toggle="tooltip" data-original-title="Click to view Solution" class=" solution accordion-body collapse <%= "in" if !collapsed %>" >
+      <div href="<%= problem_solution_path solution.problem, solution %>" id="collapse<%= solution_counter %>" data-toggle="tooltip" data-original-title="Click to view Solution" class=" solution accordion-body collapse <%= "in" if !collapsed %>" >
           <div class="accordion-inner nomargin nopadding">
               <%==
                    begin

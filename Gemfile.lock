@@ -121,6 +121,7 @@ GEM
       treetop (~> 1.4.8)
     mime-types (1.23)
     minitest (4.7.5)
+    multi_fetch_fragments (0.0.16)
     multi_json (1.7.7)
     multipart-post (1.2.0)
     net-scp (1.1.1)
@@ -252,6 +253,7 @@ DEPENDENCIES
   jbuilder (~> 1.2)
   journey
   jquery-rails
+  multi_fetch_fragments
   omniauth-github (~> 1.1.0)
   pg (~> 0.14)
   puma
