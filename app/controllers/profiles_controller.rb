@@ -2,7 +2,7 @@
 class ProfilesController < ApplicationController
   authorize_resource
 
-  before_action :find_profile, only: [:show, :edit, :update, :destroy]
+  before_action :set_profile, only: [:show, :edit, :update, :destroy]
 
 
   # Shows the page for the profile.
@@ -46,6 +46,7 @@ class ProfilesController < ApplicationController
   def create
     @profile = Profile.new(profile_params)
     @user = current_user
+
     respond_to do |format|
       if @profile.save
         format.html { redirect_to @profile, notice: 'Profile was successfully created.' }
@@ -92,16 +93,16 @@ class ProfilesController < ApplicationController
     end
   end
 
-  # Finds the profile for a given user
-  # The before_filter method for show edit update and destroy
-  def find_profile
+  private
+
+  # Use callbacks to share common setup or constraints between actions.
+  def set_profile
     @user = User.find_by_username(params[:id])
     @profile = @user.profile
   end
 
-  private
-
+  # Never trust parameters from the scary internet, only allow the white list through.
   def profile_params
-    params[:profile].permit(:about_me, :language_id, :github, :name, :user_id, :rendered_about_me)
+    params.require(:profile).permit(:about_me, :language_id, :github, :name, :user_id, :rendered_about_me)
   end
 end

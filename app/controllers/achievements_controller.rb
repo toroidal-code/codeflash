@@ -103,11 +103,13 @@ class AchievementsController < ApplicationController
 
   private
 
+  # Use callbacks to share common setup or constraints between actions.
   def set_achievement
     @achievement = Achievement.find(params[:id])
   end
 
+  # Never trust parameters from the scary internet, only allow the white list through.
   def achievement_params
-    params[:achievement].permit(:description, :name, :points, :rendered_description)
+    params.require(:achievement).permit(:description, :name, :points, :rendered_description)
   end
 end

@@ -2,6 +2,8 @@
 class ProblemsController < ApplicationController
   authorize_resource
 
+  before_action :set_problem, only: [:show, :edit, :update, :destroy]
+
   add_breadcrumb "Problems", :problems_path
 
   # Lists all the problems in the database.
@@ -21,7 +23,6 @@ class ProblemsController < ApplicationController
   #
   # @return [String] the HTML/JSON for the problem.
   def show
-    @problem = Problem.find_by_shortname(params[:id])
     @solutions = @problem.solutions.paginate(page: params[:page], per_page: 10 ).order('created_at DESC')
     add_breadcrumb @problem.name, problem_path(@problem)
   end
@@ -43,7 +44,6 @@ class ProblemsController < ApplicationController
   #
   # @return [String] the HTML/JSON for the problem edit page
   def edit
-    @problem = Problem.find_by_shortname(params[:id])
     add_breadcrumb "Edit #{@problem.name}"
   end
 
@@ -74,7 +74,6 @@ class ProblemsController < ApplicationController
   #
   # @return [String] the HTML/JSON for the updated language
   def update
-    @problem = Problem.find_by_shortname(params[:id])
     create_tags
     respond_to do |format|
       if @problem.update_attributes(problem_params)
@@ -95,7 +94,6 @@ class ProblemsController < ApplicationController
   # @return [String] the HTML/JSON notifying the user that the resource was
   # destroyed
   def destroy
-    @problem = Problem.find_by_shortname(params[:id])
     @problem.destroy
 
     respond_to do |format|
@@ -106,8 +104,14 @@ class ProblemsController < ApplicationController
 
   private
 
+  # Use callbacks to share common setup or constraints between actions.
+  def set_problem
+    @problem = Problem.find_by_shortname(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
   def problem_params
-    params[:problem].permit(:description, :points, :name, :shortname, :rendered_description)
+    params.require(:problem).permit(:description, :points, :name, :shortname, :rendered_description)
   end
 
   def create_tags

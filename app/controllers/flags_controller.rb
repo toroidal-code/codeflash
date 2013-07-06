@@ -1,6 +1,7 @@
 # The controller for the flags
 class FlagsController < ApplicationController
   authorize_resource
+
   before_action :set_flag, only: [:show, :destroy]
   before_action :set_path, except: :index
 
@@ -85,7 +86,14 @@ class FlagsController < ApplicationController
     end
   end
 
-  # Only allow a trusted parameter "white list" through.
+  private
+
+  # Use callbacks to share common setup or constraints between actions.
+  def set_flag
+    @flag = Flag.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
   def flag_params
     params.require(:flag).permit(:profile_id, :reason, :explanation)
   end

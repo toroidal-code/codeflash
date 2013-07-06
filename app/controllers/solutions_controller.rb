@@ -2,7 +2,7 @@
 class SolutionsController < ApplicationController
   authorize_resource
 
-  before_action :find_solution, only: [:show, :edit, :update, :destroy]
+  before_action :set_solution, only: [:show, :edit, :update, :destroy]
 
   add_breadcrumb("Problems",:problems_path)
 
@@ -147,12 +147,6 @@ class SolutionsController < ApplicationController
     redirect_to :back
   end
 
-  # finds the solution based on params[:id]
-  # before_filter method for show edit update and destroy
-  def find_solution
-    @solution = Solution.find(params[:id])
-  end
-
   # adds the problem name breadcrumb and the problem's solutions breadcrumb
   def breadcrumbs
     add_breadcrumb(@problem.name, problem_path(@problem))
@@ -161,11 +155,17 @@ class SolutionsController < ApplicationController
 
   private
 
-  # Helper method for voting
-  def vote up
+  # Use callbacks to share common setup or constraints between actions.
+  def set_solution
+    @solution = Solution.find(params[:id])
   end
 
+  # Never trust parameters from the scary internet, only allow the white list through.
   def solution_params
-    params[:solution].permit(:code, :language_id, :problem_id, :up_votes, :down_votes)
+    params.require(:solution).permit(:code, :language_id, :problem_id, :up_votes, :down_votes)
+  end
+
+  # Helper method for voting
+  def vote up
   end
 end

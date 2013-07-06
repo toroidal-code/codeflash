@@ -2,6 +2,8 @@
 class LanguagesController < ApplicationController
   authorize_resource
 
+  before_action :set_language, only: [:show, :edit, :update, :destroy]
+
   # Lists all languages in the database.
   #
   # GET /languages
@@ -19,7 +21,6 @@ class LanguagesController < ApplicationController
   #
   # @return [String] the HTML/JSON for the language
   def show
-    @language = Language.find(params[:id])
   end
 
   # Renders a new language JSON.
@@ -38,7 +39,6 @@ class LanguagesController < ApplicationController
   #
   # @return [String] the HTML/JSON for the language edit page
   def edit
-    @language = Language.find(params[:id])
   end
 
   # Creates and saves a new achievement.
@@ -68,8 +68,6 @@ class LanguagesController < ApplicationController
   #
   # @return [String] the HTML/JSON for the updated language
   def update
-    @language = Language.find(params[:id])
-
     respond_to do |format|
       if @language.update_attributes(language_params)
         format.html { redirect_to @language, notice: 'Language was successfully updated.' }
@@ -89,7 +87,6 @@ class LanguagesController < ApplicationController
   # @return [String] the HTML/JSON notifying the user that the resource
   # was destroyed
   def destroy
-    @language = Language.find(params[:id])
     @language.destroy
 
     respond_to do |format|
@@ -100,7 +97,13 @@ class LanguagesController < ApplicationController
 
   private
 
+  # Use callbacks to share common setup or constraints between actions.
+  def set_language
+    @language = Language.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
   def language_params
-    params[:language].permit(:name, :ace_syntax, :pygments_syntax)
+    params.require(:language).permit(:name, :created_at, :updated_at, :ace_syntax, :pygments_syntax)
   end
 end
