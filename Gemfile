@@ -28,6 +28,9 @@ gem 'cancan', '~> 1.6.9'
 gem 'capistrano'
 gem 'rvm-capistrano'
 
+# Factories
+gem 'factory_girl_rails', '~> 4.0'
+
 # Profiling (New Relic)
 gem 'newrelic_rpm'
 

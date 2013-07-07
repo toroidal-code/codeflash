@@ -20,8 +20,10 @@ class Solution < ActiveRecord::Base
   delegate :shortname, to: :problem, prefix: true
 
   def one_per_language
-    if profile.solutions.where(problem_id: problem, language_id: language).count == 1 and not profile.solutions.include?(self)
-     errors.add(:base, "Already created a solution for this problem in this language")
+    if not profile.nil?
+      if profile.solutions.where(problem_id: problem, language_id: language).count == 1 and not profile.solutions.include?(self)
+       errors.add(:base, "Already created a solution for this problem in this language")
+      end
     end
   end
 end
