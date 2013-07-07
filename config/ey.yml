@@ -1,4 +1,4 @@
 environments:
-  myapp_staging:
+  production:
     branch: dev
     precompile_assets: true  # precompile assets when asset changes detected
