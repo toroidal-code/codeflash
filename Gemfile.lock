@@ -17,13 +17,6 @@ GIT
       actionpack (>= 4.0.0, < 4.1)
       activemodel (>= 4.0.0, < 4.1)
 
-GIT
-  remote: git://github.com/puma/puma.git
-  revision: 9d4811f940854050dc9b02f4e0cdd309ad3d4774
-  specs:
-    puma (2.3.0)
-      rack (>= 1.1, < 2.0)
-
 GEM
   remote: https://rubygems.org/
   specs:
@@ -161,6 +154,8 @@ GEM
     pg (0.15.1)
     polyglot (0.3.3)
     posix-spawn (0.3.6)
+    puma (2.3.1)
+      rack (>= 1.1, < 2.0)
     pygments.rb (0.5.1)
       posix-spawn (~> 0.3.6)
       yajl-ruby (~> 1.1.0)
@@ -267,7 +262,7 @@ DEPENDENCIES
   newrelic_rpm
   omniauth-github (~> 1.1.0)
   pg (~> 0.14)
-  puma!
+  puma
   pygments.rb
   rails (~> 4.0)
   rails-perftest
