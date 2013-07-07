@@ -1,5 +1,10 @@
 -
-  email: 'code@flash.io'
+  email: 'admin@codeflash.io'
   username: 'codeflash'
   password: 'Something123'
   admin: true
+-
+  email: 'user@codeflash.io'
+  username: 'normal_user'
+  password: 'Something123'
+  admin: false
