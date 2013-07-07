@@ -18,7 +18,7 @@ class User < ActiveRecord::Base
     presence: true
   validates :username,
     format: { with: /\A[a-zA-Z][A-Za-z0-9]*\z/,
-      message: 'must start with a letter.' },
+      message: 'must start with a letter and contain only numbers and letters.' },
     length: { minimum: 4 }
   validates :username,
     uniqueness: true

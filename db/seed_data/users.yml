@@ -5,6 +5,6 @@
   admin: true
 -
   email: 'user@codeflash.io'
-  username: 'normal_user'
+  username: 'normaluser'
   password: 'Something123'
   admin: false
