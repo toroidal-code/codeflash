@@ -9,9 +9,9 @@
  * compiled file, but it's generally better to create a new file per style scope.
  *
  *= require_self
- *= require_tree .
  *= require select2
  *= require vendor
+ *= require_tree .
  */
 
 @import "bootstrap/variables"; // Modify this for custom colors, font-sizes, etc
