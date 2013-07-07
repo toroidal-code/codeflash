@@ -2,36 +2,42 @@ Codeflash::Application.routes.draw do
 
   root 'high_voltage/pages#show', id: 'home'
 
-  devise_for :users
+  # Restrict all our routes to HTML and JS temporarily so we don't have to worry
+  # about exposing our incomplete JSON API.
+  constraints format: [:html, :js] do
 
-  concern :votable do
-    member do
-      put 'upvote'
-      put 'downvote'
+    devise_for :users
+
+    concern :votable do
+      member do
+        put 'upvote'
+        put 'downvote'
+      end
     end
-  end
 
-  concern :commentable do
-    resources :comments, concerns: :votable do
-      resources :flags, except: :index
+    concern :commentable do
+      resources :comments, concerns: :votable do
+        resources :flags, except: :index
+      end
     end
-  end
 
-  resources :achievements
-  resources :flags, only: :index
-  resources :languages
-  resources :solutions, only: :index
-  resources :problems, concerns: :commentable do
-    resources :solutions, concerns: [:votable, :commentable] do
-      resources :flags, except: :index
+    resources :achievements
+    resources :flags, only: :index
+    resources :languages
+    resources :solutions, only: :index
+    resources :problems, concerns: :commentable do
+      resources :solutions, concerns: [:votable, :commentable] do
+        resources :flags, except: :index
+      end
     end
-  end
-  resources :profiles
+    resources :profiles
 
-  devise_scope :user do
-    get "login" , to: "devise/sessions#new"
-    get "signup", to: "devise/registrations#new"
-    delete "logout", to: "devise/sessions#destroy"
+    devise_scope :user do
+      get "login" , to: "devise/sessions#new"
+      get "signup", to: "devise/registrations#new"
+      delete "logout", to: "devise/sessions#destroy"
+    end
+
   end
 
 end
