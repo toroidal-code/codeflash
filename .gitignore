@@ -36,6 +36,3 @@ doc/
 
 # Ignore rvmrc's
 .rvmrc
-
-# Ignore newrelic.yml
-newrelic.yml
