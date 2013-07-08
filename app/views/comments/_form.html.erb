@@ -1,9 +1,0 @@
-<%= simple_form_for(form_array) do |f| %>
-  <div class = 'well well-small'>
-    <legend>Add Comment</legend>
-      <%= f.input :body,
-        label: 'Comment',
-        input_html: { class: 'input-xxlarge', rows: 5, maxlength: 500 } %>
-      <%= f.button :submit, 'Post Comment', class: 'btn btn-primary' %>
-  </div>
-<% end %>

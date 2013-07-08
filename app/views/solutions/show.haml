@@ -1,0 +1,37 @@
+%style{type: 'text/css'}
+  != Pygments.css('.highlight', {style: "default"})
+= render_breadcrumbs
+#accordion.accordion
+  = render partial: @solution, locals: {solution_counter: 0, collapsed: false}, cache: true
+.pull-right
+  .btn-group
+    - if can? :create, Flag
+      = link_to 'Solution', "#", class: "btn btn-primary"
+      %a.btn.btn-primary.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+        %span.caret
+      %ul.dropdown-menu
+        %li
+          %a{:href => new_problem_solution_flag_path(@problem, @solution)}
+            %i.icon-warning-sign
+            Report Solution
+        - if can? :edit, @solution
+          %li.divider
+          %li
+            %a{:href => edit_problem_solution_path(@problem, @solution)}
+              %i.icon-pencil
+              Edit Solution
+          %li
+            <a href="#{problem_solution_path(@Solution, @solution)}" data-method="delete" data-confirm="Are you sure?" %>
+            %i.icon-trash
+            Delete Solution
+%br/
+:css
+  .solution:hover{
+    cursor:default;
+    border: none;
+    box-shadow: none;
+  }
+= render 'comments/show', comments: @solution.comments, solution:true
+= render 'comments/form', form_array: [@problem, @solution, @solution.comments.build]
+:javascript
+  $('.hide').show()

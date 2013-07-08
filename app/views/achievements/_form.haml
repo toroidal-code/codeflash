@@ -1,0 +1,11 @@
+= simple_form_for(achievement) do |f|
+  = f.input :name,                        |
+    input_html: { class: 'input-xlarge' } |
+  -#
+  = f.input :description,                                |
+    input_html: { class: 'input-block-level', rows: 10 } |
+  -#
+  = f.input :points,                                |
+    input_html: { class: 'input-xlarge', min: '1' } |
+  = f.button :submit, class: 'btn btn-primary'
+  = link_to 'Back', back_path, :class => 'btn'

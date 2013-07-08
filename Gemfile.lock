@@ -97,6 +97,13 @@ GEM
       dotenv (>= 0.7)
       thor (>= 0.13.6)
     gravatar-ultimate (1.0.3)
+    haml (4.0.3)
+      tilt
+    haml-rails (0.4)
+      actionpack (>= 3.1, < 4.1)
+      activesupport (>= 3.1, < 4.1)
+      haml (>= 3.1, < 4.1)
+      railties (>= 3.1, < 4.1)
     hashie (2.0.5)
     high_voltage (1.2.3)
     highline (1.6.19)
@@ -251,6 +258,7 @@ DEPENDENCIES
   devise!
   foreman
   gravatar-ultimate
+  haml-rails
   high_voltage (~> 1.2)
   historyjs-rails
   holder_rails

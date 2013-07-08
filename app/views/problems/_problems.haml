@@ -1,0 +1,11 @@
+- @problems.each do |problem|
+  .row-fluid.well.well-small
+    .span3
+      = link_to problem.name, problem
+      %span.muted (#{problem.points} points)
+    .span9
+      != problem.rendered_description
+.pagination-centered
+  = paginate @problems
+- if can? :create, @problem
+  = link_to 'New Problem', new_problem_path, class: "btn btn-primary"

@@ -1,0 +1,47 @@
+!!!
+%html
+  %head
+    %title Codeflash
+    = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
+    = javascript_include_tag "application", "data-turbolinks-track" => true
+    = csrf_meta_tags
+    %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}/
+  %body
+    .navbar.navbar-fixed-top
+      .navbar-inner
+        #navbar-container.container
+          %a.brand{:href => "/"} Codeflash
+          %ul.nav
+            = navbar_link 'Problems', '/problems', 'question-sign'
+            = navbar_link 'Solutions', '/solutions', 'list'
+          %ul.nav.pull-right
+            - if user_signed_in?
+              = navbar_avatar current_user.username, current_user.email, "/profiles/#{current_user.username}"
+            = navbar_link 'Achievements', '/achievements', 'star'
+            - if user_signed_in?
+              = navbar_link "Log out", '/logout', 'chevron-right', 'delete'
+            - else
+              = navbar_link 'Log in', '/login', 'chevron-right'
+    #main.container
+      - flash.each do |name, msg|
+        - if msg.is_a?(String)
+          %div{:class => "alert alert-#{name == :notice ? "success" : "error"}"}
+            %a.close{"data-dismiss" => "alert"} ×
+            = content_tag :div, msg, :id => "flash_#{name}"
+      = yield
+      %hr/
+      %footer
+        %ul
+          %li
+            %a{:href => "/about"} About
+          %li
+            %a{:href => "https://github.com/codeflash/codeflash", :target => "_blank"} Source
+          %li
+            %a{:href => "https://github.com/codeflash/codeflash/issues", :target => "_blank"} Issues
+          %li
+            %a{:href => "/contact"} Contact
+          %li
+            %a{:href => "/rules"} Rules
+          %li
+            %a{:href => "/help"} Help
+        \&copy; 2013 Codeflash. All rights reserved.

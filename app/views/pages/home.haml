@@ -1,0 +1,17 @@
+.row-fluid
+  - if !user_signed_in?
+    != '<div class="span8">'
+  .hero-unit
+    %h1 Welcome to Codeflash
+    %p
+      Codeflash aims at being a community driven site for solving problems, both
+      simple and complex. Codeflash will allow the community to decide what is the
+      best solution to a problem in the hopes of supporting good programming
+      practices and a strong community.
+  - if !user_signed_in?
+    != '</div>'
+    .span4
+      .well.well-small.compact-form
+        = render 'users/sessions/compact', display_forgot: true
+      %div
+        = render 'users/registrations/compact'

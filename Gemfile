@@ -33,6 +33,7 @@ gem 'newrelic_rpm'
 
 # Rendering
 gem 'multi_fetch_fragments'
+gem 'haml-rails'
 
 # Required by rake for RAILS_ENV=production
 gem 'yard', '~> 0.8.6.2'

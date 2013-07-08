@@ -1,0 +1,5 @@
+= simple_form_for(language) do |f|
+  = f.input :name,                        |
+    input_html: { class: 'input-xlarge' } |
+  = f.button :submit, class: 'btn btn-primary'
+  = link_to 'Back', back_path, :class => 'btn'

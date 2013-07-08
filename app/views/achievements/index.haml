@@ -1,0 +1,8 @@
+= render_breadcrumbs
+- if can? :create, Achievement
+  .pull-right
+    = link_to 'New Achievement', new_achievement_path, class: "btn btn-primary"
+%h1 Achievements
+%hr/
+- @achievements.each do |achievement|
+  = render "compact", achievement:achievement, header:"h4", image_size:"96x96"
