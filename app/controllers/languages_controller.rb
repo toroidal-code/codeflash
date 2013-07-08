@@ -63,7 +63,7 @@ class LanguagesController < ApplicationController
         format.html { redirect_to @language, notice: 'Language was successfully created.' }
         format.json { render json: @language, status: :created, location: @language }
       else
-        format.html { render "new" }
+        format.html { render 'new' }
         format.json { render json: @language.errors, status: :unprocessable_entity }
       end
     end
@@ -83,7 +83,7 @@ class LanguagesController < ApplicationController
         format.html { redirect_to @language, notice: 'Language was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html { render "edit" }
+        format.html { render 'edit' }
         format.json { render json: @language.errors, status: :unprocessable_entity }
       end
     end

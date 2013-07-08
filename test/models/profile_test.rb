@@ -7,7 +7,7 @@ class ProfileTest < ActiveSupport::TestCase
 
   test 'should not be valid about_me too long' do
     profile = Profile.new(name: @profile.name,
-                          about_me:"x"*751,
+                          about_me:'x'*751,
                           github:@profile.github)
     assert !profile.valid?
   end

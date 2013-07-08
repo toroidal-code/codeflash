@@ -16,7 +16,7 @@ class TagTest < ActiveSupport::TestCase
   end
 
   test 'should be valid' do
-    tag = Tag.new(name: "Smile")
+    tag = Tag.new(name: 'Smile')
     assert tag.valid?
   end
 end

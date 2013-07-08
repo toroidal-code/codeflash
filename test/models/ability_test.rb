@@ -1,9 +1,9 @@
 require 'test_helper'
 class ATest < ActiveSupport::TestCase
   setup do
-    @user = User.create(email: "lol@lol.lol",
-                    username: "LOLOLOLOLOL",
-                    password: "LOLlol101")
+    @user = User.create(email: 'lol@lol.lol',
+                    username: 'LOLOLOLOLOL',
+                    password: 'LOLlol101')
     @user.profile.solutions << solutions(:one)
     @ability = Ability.new(@user)
   end

@@ -39,7 +39,7 @@ class ApplicationController < ActionController::Base
   #
   #@return nil
   rescue_from CanCan::AccessDenied do |exception|
-    flash[:error] = "Access denied!"
+    flash[:error] = 'Access denied!'
     redirect_to root_url
   end
 end

@@ -59,7 +59,7 @@ Codeflash::Application.configure do
   memcached_config = YAML.load_file(Rails.root.join('config/memcached.yml'))
   memcached_hosts = memcached_config['defaults']['servers']
   # pass the servers to dalli setup
-  config.cache_store = :dalli_store, *memcached_hosts, {namespace: "codeflash", expires_in: 1.day, compress: true }
+  config.cache_store = :dalli_store, *memcached_hosts, {namespace: 'codeflash', expires_in: 1.day, compress: true }
 
   # Enable serving of images, stylesheets, and JavaScripts from an asset server.
   # config.action_controller.asset_host = "http://assets.example.com"

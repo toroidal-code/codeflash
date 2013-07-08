@@ -3,7 +3,7 @@ class AchievementsController < ApplicationController
   authorize_resource
   before_action :set_achievement, only: [:show, :edit, :update, :destroy]
 
-  add_breadcrumb "Achievements", :achievements_path
+  add_breadcrumb 'Achievements', :achievements_path
 
   respond_to :html, :json, :js
 
@@ -38,7 +38,7 @@ class AchievementsController < ApplicationController
   # @return [String] the HTML/JSON for the new achievement
   def new
     @achievement = Achievement.new
-    add_breadcrumb "New Achievement"
+    add_breadcrumb 'New Achievement'
     respond_with @achievement
   end
 
@@ -65,7 +65,7 @@ class AchievementsController < ApplicationController
         format.html { redirect_to @achievement, notice: 'Achievement was successfully created.' }
         format.json { render json: @achievement, status: :created, location: @achievement }
       else
-        format.html { render "new" }
+        format.html { render 'new' }
         format.json { render json: @achievement.errors, status: :unprocessable_entity }
       end
     end
@@ -83,7 +83,7 @@ class AchievementsController < ApplicationController
         format.html { redirect_to @achievement, notice: 'Achievement was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html { render "edit" }
+        format.html { render 'edit' }
         format.json { render json: @achievement.errors, status: :unprocessable_entity }
       end
     end

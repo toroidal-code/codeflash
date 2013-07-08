@@ -12,13 +12,13 @@ class LanguageTest < ActiveSupport::TestCase
   end
 
   test 'should not be valid missing pygments_syntax' do
-    language = Language.new(name: "Python",
+    language = Language.new(name: 'Python',
                             ace_syntax:@language.ace_syntax)
     assert !language.valid?
   end
 
   test 'should not be valid missing ace_syntax' do
-    language = Language.new(name: "Python",
+    language = Language.new(name: 'Python',
                             pygments_syntax:@language.pygments_syntax)
     assert !language.valid?
   end
@@ -31,7 +31,7 @@ class LanguageTest < ActiveSupport::TestCase
   end
 
   test 'should be valid' do
-    language = Language.new(name: "Python",
+    language = Language.new(name: 'Python',
                             ace_syntax:@language.ace_syntax,
                             pygments_syntax:@language.pygments_syntax)
     assert language.valid?

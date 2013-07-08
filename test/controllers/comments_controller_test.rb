@@ -3,9 +3,9 @@ require 'test_helper'
 class CommentsControllerTest < ActionController::TestCase
   setup do
     @request.env['HTTP_REFERER'] = 'http://test.host/'
-    user = User.create(email: "lol@lol.lol",
-                    username: "LOLOLOLOLOL",
-                    password: "LOLlol101",
+    user = User.create(email: 'lol@lol.lol',
+                    username: 'LOLOLOLOLOL',
+                    password: 'LOLlol101',
                     admin: true)
     user.skip_confirmation!
     sign_in(user)
@@ -26,7 +26,7 @@ class CommentsControllerTest < ActionController::TestCase
     @comment2.save
   end
 
-  test "should create problem comment" do
+  test 'should create problem comment' do
     assert_difference('Comment.count') do
       post :create, comment: {body: @comment.body},
                     problem_id: @problem.shortname
@@ -34,7 +34,7 @@ class CommentsControllerTest < ActionController::TestCase
     assert_redirected_to problem_path(@problem)
   end
 
-  test "should create solution comment" do
+  test 'should create solution comment' do
     assert_difference('Comment.count') do
       post :create, comment: {body: @comment.body},
                     problem_id: @problem.shortname,
@@ -53,7 +53,7 @@ class CommentsControllerTest < ActionController::TestCase
     assert_response :success
   end
 
-  test "should upvote problem comment" do
+  test 'should upvote problem comment' do
     assert_difference('Comment.find(@comment).up_votes') do
       put :upvote, problem_id: @problem, id: @comment
     end
@@ -65,7 +65,7 @@ class CommentsControllerTest < ActionController::TestCase
     assert_redirected_to :back
   end
 
-  test "should downvote problem comment" do
+  test 'should downvote problem comment' do
     assert_difference('Comment.find(@comment).down_votes') do
       put :downvote, problem_id: @problem, id: @comment
     end
@@ -77,7 +77,7 @@ class CommentsControllerTest < ActionController::TestCase
     assert_redirected_to :back
   end
 
-  test "should upvote solution comment" do
+  test 'should upvote solution comment' do
     assert_difference('Comment.find(@comment2).up_votes') do
       put :upvote, problem_id: @problem, solution_id: @solution, id: @comment2
     end
@@ -89,7 +89,7 @@ class CommentsControllerTest < ActionController::TestCase
     assert_redirected_to :back
   end
 
-  test "should downvote solution comment" do
+  test 'should downvote solution comment' do
     assert_difference('Comment.find(@comment2).down_votes') do
       put :downvote, problem_id: @problem, solution_id: @solution, id: @comment2
     end

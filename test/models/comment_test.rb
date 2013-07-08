@@ -11,7 +11,7 @@ class CommentTest < ActiveSupport::TestCase
   end
 
   test 'should not be valid too long body' do
-    comment = Comment.new(body:"x"*501)
+    comment = Comment.new(body:'x'*501)
     assert !comment.valid?
   end
 

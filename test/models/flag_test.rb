@@ -16,12 +16,12 @@ class FlagTest < ActiveSupport::TestCase
   end
 
   test 'should not be valid explanation too long' do
-    flag = Flag.new(reason:@flag.reason, explanation:"f"*751)
+    flag = Flag.new(reason:@flag.reason, explanation:'f'*751)
     assert !flag.valid?
   end
 
   test 'should not be valid reason not in list' do
-    flag = Flag.new(reason:"Strinnnng", explanation:"f"*751)
+    flag = Flag.new(reason:'Strinnnng', explanation:'f'*751)
     assert !flag.valid?
   end
 

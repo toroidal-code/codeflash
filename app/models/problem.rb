@@ -23,7 +23,7 @@ class Problem < ActiveRecord::Base
   private
 
   def render_description
-    redcarpet = RedcarpetHelper::redcarpet_helper
+    redcarpet = RedcarpetHelper.redcarpet_helper
     self.rendered_description = redcarpet.render self.description
   end
 end

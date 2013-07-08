@@ -14,7 +14,7 @@ class Comment < ActiveRecord::Base
   private
 
   def render_body
-    redcarpet = RedcarpetHelper::redcarpet_helper
+    redcarpet = RedcarpetHelper.redcarpet_helper
     self.rendered_body = redcarpet.render self.body
   end
 end

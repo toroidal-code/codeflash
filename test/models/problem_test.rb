@@ -8,21 +8,21 @@ class ProblemTest < ActiveSupport::TestCase
   test 'should not be valid missing name' do
     problem = Problem.new(description: @problem.description,
                           points: @problem.points,
-                          shortname: "myshortname9")
+                          shortname: 'myshortname9')
     assert !problem.valid?
   end
 
   test 'should not be valid missing description' do
     problem = Problem.new(name: @problem.name,
                           points: @problem.points,
-                          shortname: "myshortname9")
+                          shortname: 'myshortname9')
     assert !problem.valid?
   end
 
   test 'should not be valid missing points' do
     problem = Problem.new(name: @problem.name,
                           description: @problem.description,
-                          shortname: "myshortname9")
+                          shortname: 'myshortname9')
     assert !problem.valid?
   end
 
@@ -37,7 +37,7 @@ class ProblemTest < ActiveSupport::TestCase
     problem = Problem.new(name: @problem.name,
                           description: @problem.description,
                           points: 1.5,
-                          shortname: "myshortname9")
+                          shortname: 'myshortname9')
     assert !problem.valid?
   end
 
@@ -61,7 +61,7 @@ class ProblemTest < ActiveSupport::TestCase
     problem = Problem.new(name: @problem.name,
                           description: @problem.description,
                           points: @problem.points,
-                          shortname: "300[[]d")
+                          shortname: '300[[]d')
     assert !problem.valid?
   end
 
@@ -69,7 +69,7 @@ class ProblemTest < ActiveSupport::TestCase
     problem = Problem.new(name: @problem.name,
                           description: @problem.description,
                           points: @problem.points,
-                          shortname: "myshortname9")
+                          shortname: 'myshortname9')
     assert problem.valid?
   end
 end

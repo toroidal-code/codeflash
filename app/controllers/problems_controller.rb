@@ -4,7 +4,7 @@ class ProblemsController < ApplicationController
 
   respond_to :html, :json, :js
 
-  add_breadcrumb "Problems", :problems_path
+  add_breadcrumb 'Problems', :problems_path
 
   # Lists all the problems in the database.
   #
@@ -39,7 +39,7 @@ class ProblemsController < ApplicationController
   # @return [String] the HTML/JSON for the new problem.
   def new
     @problem = Problem.new
-    add_breadcrumb "New Problem"
+    add_breadcrumb 'New Problem'
     respond_with @problem
   end
 
@@ -67,7 +67,7 @@ class ProblemsController < ApplicationController
         format.html { redirect_to @problem, notice: 'Problem was successfully created.' }
         format.json { render json: @problem, status: :created, location: @problem }
       else
-        format.html { render "new" }
+        format.html { render 'new' }
         format.json { render json: @problem.errors, status: :unprocessable_entity }
       end
     end
@@ -87,7 +87,7 @@ class ProblemsController < ApplicationController
         format.html { redirect_to @problem, notice: 'Problem was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html { render "edit" }
+        format.html { render 'edit' }
         format.json { render json: @problem.errors, status: :unprocessable_entity }
       end
     end
@@ -118,7 +118,7 @@ class ProblemsController < ApplicationController
 
   def create_tags
     @problem.tags = Array.new
-    tags = params[:tags].split(",")
+    tags = params[:tags].split(',')
     tags.each do |tag|
       if !Tag.exists?(name: tag)
         c = Tag.create(name: tag)

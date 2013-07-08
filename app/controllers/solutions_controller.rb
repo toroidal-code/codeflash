@@ -4,7 +4,7 @@ class SolutionsController < ApplicationController
 
   before_action :find_solution, only: [:show, :edit, :update, :destroy]
 
-  add_breadcrumb("Problems",:problems_path)
+  add_breadcrumb('Problems',:problems_path)
 
   respond_to :html, :json
 
@@ -23,7 +23,7 @@ class SolutionsController < ApplicationController
     else
       @solutions = Solution.paginate(page: params[:page], per_page: 10 ).order('created_at DESC')
     end
-    add_breadcrumb "Solutions", problem_solutions_path(@problem)
+    add_breadcrumb 'Solutions', problem_solutions_path(@problem)
     respond_to :html, :json, :js
   end
 
@@ -50,7 +50,7 @@ class SolutionsController < ApplicationController
     @solution = Solution.new
     @problem = Problem.find_by_shortname(params[:problem_id])
     breadcrumbs
-    add_breadcrumb "New Solution"
+    add_breadcrumb 'New Solution'
     respond_with @solution
 
   end
@@ -64,7 +64,7 @@ class SolutionsController < ApplicationController
     @problem = @solution.problem
     @languages = Language.all
     breadcrumbs
-    add_breadcrumb "Edit Solution"
+    add_breadcrumb 'Edit Solution'
   end
 
   # Creates and saves a new solution.
@@ -83,7 +83,7 @@ class SolutionsController < ApplicationController
         format.html { redirect_to problem_solution_path(@problem, @solution), notice: 'Solution was successfully created.' }
         format.json { render json: @problem, status: :created, location: @solution }
       else
-        format.html { render "new" }
+        format.html { render 'new' }
         format.json { render json: @solution.errors, status: :unprocessable_entity }
       end
     end
@@ -102,7 +102,7 @@ class SolutionsController < ApplicationController
         format.html { redirect_to  problem_solution_path(@problem, @solution), notice: 'Solution was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html { render "edit" }
+        format.html { render 'edit' }
         format.json { render json: @solution.errors, status: :unprocessable_entity }
       end
     end
@@ -134,7 +134,7 @@ class SolutionsController < ApplicationController
       @solution.up_votes += 1
       @solution.save
     rescue => e
-      flash[:error] = "You have already voted on this solution."
+      flash[:error] = 'You have already voted on this solution.'
     end
     redirect_to :back
   end
@@ -148,7 +148,7 @@ class SolutionsController < ApplicationController
       @solution.up_votes -= 1
       @solution.save
     else
-      flash[:error] = "You have already voted on this solution."
+      flash[:error] = 'You have already voted on this solution.'
     end
     redirect_to :back
   end
@@ -162,7 +162,7 @@ class SolutionsController < ApplicationController
   # adds the problem name breadcrumb and the problem's solutions breadcrumb
   def breadcrumbs
     add_breadcrumb(@problem.name, problem_path(@problem))
-    add_breadcrumb "Solutions", problem_solutions_path(@problem)
+    add_breadcrumb 'Solutions', problem_solutions_path(@problem)
   end
 
   private
