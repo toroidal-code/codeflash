@@ -25,6 +25,6 @@
       %div{class: "solution accordion-body collapse #{"in" if !collapsed}", "data-original-title" => "Click to view Solution", "data-toggle" => "tooltip", href: problem_solution_path(solution.problem, solution), id: "collapse#{solution_counter}"}
         .accordion-inner.nomargin.nopadding
           - begin
-            != Pygments.highlight(solution.code, lexer: solution.language.pygments_syntax, options: {linenos: 'inline'})
+            !~ Pygments.highlight(solution.code, lexer: solution.language.pygments_syntax, options: {linenos: 'inline'})
           - rescue
-            != Pygments.highlight(solution.code, options: {linenos: 'inline'})
+            !~ Pygments.highlight(solution.code, options: {linenos: 'inline'})
