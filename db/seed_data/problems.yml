@@ -1,0 +1,5 @@
+-
+  name: 'Swag'
+  shortname: 'swag'
+  points: 1
+  description: 'Wait 15s, print "Swag", repeat.'
