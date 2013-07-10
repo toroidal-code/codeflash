@@ -1,4 +1,4 @@
-%li.dropdown.if.profile_url{:class => "<haml:silent> path_is? </haml:silent><haml:block>active</haml:block>"}
+<li class="dropdown #{"active" if path_is? profile_url}">
   %a.avatar-link.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
     = image_tag Gravatar.new(email).image_url, size: '30x30', :class => "avatar"
     = username
