@@ -55,11 +55,11 @@ class CommentsControllerTest < ActionController::TestCase
 
   test "should upvote problem comment" do
     assert_difference('Comment.find(@comment).up_votes') do
-      put :upvote, problem_id: @problem, id: @comment
+      patch :upvote, problem_id: @problem, id: @comment
     end
     assert_redirected_to :back
     assert_no_difference('Comment.find(@comment).up_votes') do
-      put :upvote, problem_id: @problem, id: @comment
+      patch :upvote, problem_id: @problem, id: @comment
     end
     assert_equal 'You have already voted on this comment.', flash[:error]
     assert_redirected_to :back
@@ -67,11 +67,11 @@ class CommentsControllerTest < ActionController::TestCase
 
   test "should downvote problem comment" do
     assert_difference('Comment.find(@comment).down_votes') do
-      put :downvote, problem_id: @problem, id: @comment
+      patch :downvote, problem_id: @problem, id: @comment
     end
     assert_redirected_to :back
     assert_no_difference('Comment.find(@comment).down_votes') do
-      put :downvote, problem_id: @problem, id: @comment
+      patch :downvote, problem_id: @problem, id: @comment
     end
     assert_equal 'You have already voted on this comment.', flash[:error]
     assert_redirected_to :back
@@ -79,11 +79,11 @@ class CommentsControllerTest < ActionController::TestCase
 
   test "should upvote solution comment" do
     assert_difference('Comment.find(@comment2).up_votes') do
-      put :upvote, problem_id: @problem, solution_id: @solution, id: @comment2
+      patch :upvote, problem_id: @problem, solution_id: @solution, id: @comment2
     end
     assert_redirected_to :back
     assert_no_difference('Comment.find(@comment2).up_votes') do
-      put :upvote, problem_id: @problem, solution_id: @solution, id: @comment2
+      patch :upvote, problem_id: @problem, solution_id: @solution, id: @comment2
     end
     assert_equal 'You have already voted on this comment.', flash[:error]
     assert_redirected_to :back
@@ -91,11 +91,11 @@ class CommentsControllerTest < ActionController::TestCase
 
   test "should downvote solution comment" do
     assert_difference('Comment.find(@comment2).down_votes') do
-      put :downvote, problem_id: @problem, solution_id: @solution, id: @comment2
+      patch :downvote, problem_id: @problem, solution_id: @solution, id: @comment2
     end
     assert_redirected_to :back
     assert_no_difference('Comment.find(@comment2).down_votes') do
-      put :downvote, problem_id: @problem, solution_id: @solution, id: @comment2
+      patch :downvote, problem_id: @problem, solution_id: @solution, id: @comment2
     end
     assert_equal 'You have already voted on this comment.', flash[:error]
     assert_redirected_to :back
