@@ -1,0 +1,8 @@
+<li
+- if path_is? path
+  class="active"
+>
+%a{"data-method" => method, :href => path}
+  - unless icon.nil?
+    %i{:class => "icon-#{icon}"}
+  = name

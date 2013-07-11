@@ -16,8 +16,7 @@ module RedcarpetHelper
       :no_intra_emphasis,
       :tables,
       :autolink,
-      :strikethrough,
-      :space_after_headers
+      :strikethrough
     ]))
   end
 

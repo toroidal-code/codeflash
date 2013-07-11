@@ -1,0 +1,29 @@
+.row-fluid
+  .span1
+    .pull-right
+      .blockcenter
+        - if solution
+          - upvote_path = upvote_problem_solution_comment_path(@problem, @solution, comment)
+          - downvote_path = downvote_problem_solution_comment_path(@problem, @solution, comment)
+          - new_flag_path = new_problem_solution_comment_flag_path(@problem, @solution, comment)
+        -else
+          - upvote_path = upvote_problem_comment_path(@problem, comment)
+          - downvote_path = downvote_problem_comment_path(@problem, comment)
+          - new_flag_path = new_problem_comment_flag_path(@problem, comment)
+        %a.nodecoration{href: upvote_path, :'data-method'=>"put"}
+          %i.icon-angle-up.icon-large
+      .blockcenter
+        = comment.votes
+      .blockcenter
+        %a.nodecoration{href: downvote_path, :'data-method'=>"put"}
+          %i.icon-angle-down.icon-large
+  .span11{style: "padding-top: 10.5px;"}
+    .well.well-small
+      .pull-right
+        %i.icon-warning-sign
+          %a{href: new_flag_path} Report Comment
+      %h4
+        %a{href:profile_path(comment.profile)}
+          = comment.profile.user.username
+      %p
+        != comment.rendered_body

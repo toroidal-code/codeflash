@@ -1,0 +1,10 @@
+#accordion.accordion
+  = render partial: @solutions, locals: {collapsed: true}, cache: true
+.pagination-centered
+  = paginate @solutions
+:javascript
+  $(".solution").click(function(){
+       window.location=$(this).attr("href");
+       return false;
+  });
+  $(".solution").tooltip();

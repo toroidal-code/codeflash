@@ -1,0 +1,46 @@
+%style{type:'text/css'}
+  != Pygments.css('.highlight', {style: "default"})
+.row-fluid
+  .span3
+    %p= image_tag(Gravatar.new(@user.email).image_url + "?s=256", size: '210x210')
+    %p
+      %span.name= @profile.name
+    %p
+      %span.username= @user.username
+    %hr/
+    %p
+      - if !@user.last_sign_in_at.blank?
+        %b Last Logged In:
+        = @user.last_sign_in_at.to_date.to_formatted_s(:long)
+      %br/
+      %b Joined:
+      = @user.created_at.to_date.to_formatted_s(:long)
+      %br/
+      - if !@profile.github.blank?
+        %b Github Username:
+        %a{:href => "https://github.com/#{@profile.github}"}= @profile.github
+      %br/
+      - if !@profile.language.blank?
+        %b Favorite Language:
+        = @profile.language.name
+  .span9
+    .row-fluid
+      != @profile.rendered_about_me
+    %hr/
+    .row-fluid
+      - if @profile.achievements.empty?
+        %p
+          = @profile.user.username
+          hasn't won any achievements...
+      - @profile.achievements.each do |achievement|
+        = render 'achievements/small', achievement: achievement
+    %hr/
+    .row-fluid
+      - if @profile.solutions.empty?
+        %p
+          = @profile.user.username
+          hasn't submitted any solutions...
+      %ul#solutions
+        = render 'solutions/solutions'
+:javascript
+  $(".achievement").tooltip();

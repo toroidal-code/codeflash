@@ -1,0 +1,33 @@
+= render_breadcrumbs
+%div
+  / toolbar
+  %span.pull-right
+    %ul.nav.nav-pills
+      %li.active
+        %a{:href => "#"} Recent
+      %li
+        %a{:href => "#"} Popular
+      %li
+        %a{:href => "#"} Trending
+      %li
+        %input.input-medium.search-query.pull-right{:placeholder => "Search", :type => "text"}/
+  / header
+  %h1 Problems
+.row-fluid
+  / categories
+  .span3
+    %ul.nav.nav-list.well.well-small
+      %li.nav-header Tags
+      %li.active
+        %a{:href => "#"} All
+      %li
+        %a{:href => "#"} Math
+      %li
+        %a{:href => "#"} Science
+      %li
+        %a{:href => "#"} Data
+      %li
+        %a{:href => "#"} Storage
+  / problem list
+  #problems.span9
+    = render partial: 'problems'
