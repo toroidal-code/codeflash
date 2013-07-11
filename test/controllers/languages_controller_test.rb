@@ -53,12 +53,12 @@ class LanguagesControllerTest < ActionController::TestCase
   end
 
   test "should update language" do
-    put :update, id: @language, language: { name: @language.name }
+    patch :update, id: @language, language: { name: @language.name }
     assert_redirected_to language_path(assigns(:language))
   end
 
   test "should not update language" do
-    put :update, id: @language, language: { name: languages(:two).name }
+    patch :update, id: @language, language: { name: languages(:two).name }
     assert_template :edit
   end
 

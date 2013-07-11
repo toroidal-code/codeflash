@@ -1,4 +1,5 @@
 require 'test_helper'
+
 class ATest < ActiveSupport::TestCase
   setup do
     @user = User.create(email: "lol@lol.lol",

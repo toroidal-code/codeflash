@@ -5,12 +5,12 @@
         <% if current_user %>
             <% if current_user.profile.voted? solution %>
               <a href="<%= downvote_problem_solution_path(solution.problem, solution)%>"
-                data-method="put" class="nodecoration">
+                data-method="patch" class="nodecoration">
                 <i class="icon-heart"> </i>
               </a>
             <% else %>
               <a href="<%= upvote_problem_solution_path(solution.problem, solution)%>"
-               data-method="put" class="nodecoration">
+               data-method="patch" class="nodecoration">
                 <i class="icon-heart-empty" ></i>
               </a>
             <% end %>

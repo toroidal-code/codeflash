@@ -10,12 +10,17 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+//  Rails scripts
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//
+//  Third party scripts
 //= require vendor
 //= require select2
 //= require ace/ace
 //= require holder
 //= require history_jquery
+//
+//  First party scripts
 //= require_tree .

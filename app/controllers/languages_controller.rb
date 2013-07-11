@@ -2,7 +2,7 @@
 class LanguagesController < ApplicationController
   authorize_resource
 
-  respond_to :html, :json
+  before_action :set_language, only: [:show, :edit, :update, :destroy]
 
   # Lists all languages in the database.
   #
@@ -12,8 +12,6 @@ class LanguagesController < ApplicationController
   # @return [String] the HTML/JSON for the languages page
   def index
     @languages = Language.all
-
-    respond_with @languages
   end
 
   # Shows the page for the language.
@@ -23,9 +21,6 @@ class LanguagesController < ApplicationController
   #
   # @return [String] the HTML/JSON for the language
   def show
-    @language = Language.find(params[:id])
-
-    respond_with @language
   end
 
   # Renders a new language JSON.
@@ -36,8 +31,6 @@ class LanguagesController < ApplicationController
   # @return [String] the HTML/JSON for the new language
   def new
     @language = Language.new
-
-    respond_with @language
   end
 
   # Edits the values of a language.
@@ -46,7 +39,6 @@ class LanguagesController < ApplicationController
   #
   # @return [String] the HTML/JSON for the language edit page
   def edit
-    @language = Language.find(params[:id])
   end
 
   # Creates and saves a new achievement.
@@ -61,9 +53,9 @@ class LanguagesController < ApplicationController
     respond_to do |format|
       if @language.save
         format.html { redirect_to @language, notice: 'Language was successfully created.' }
-        format.json { render json: @language, status: :created, location: @language }
+        format.json { render action: 'show', status: :created, location: @language }
       else
-        format.html { render "new" }
+        format.html { render action: 'new' }
         format.json { render json: @language.errors, status: :unprocessable_entity }
       end
     end
@@ -71,19 +63,17 @@ class LanguagesController < ApplicationController
 
   # Updates the values of a language.
   #
-  # PUT /languages/1
-  # PUT /languages/1.json
+  # PATCH/PUT /languages/1
+  # PATCH/PUT /languages/1.json
   #
   # @return [String] the HTML/JSON for the updated language
   def update
-    @language = Language.find(params[:id])
-
     respond_to do |format|
-      if @language.update_attributes(language_params)
+      if @language.update(language_params)
         format.html { redirect_to @language, notice: 'Language was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html { render "edit" }
+        format.html { render action: 'edit' }
         format.json { render json: @language.errors, status: :unprocessable_entity }
       end
     end
@@ -97,7 +87,6 @@ class LanguagesController < ApplicationController
   # @return [String] the HTML/JSON notifying the user that the resource
   # was destroyed
   def destroy
-    @language = Language.find(params[:id])
     @language.destroy
 
     respond_to do |format|
@@ -108,7 +97,13 @@ class LanguagesController < ApplicationController
 
   private
 
+  # Use callbacks to share common setup or constraints between actions.
+  def set_language
+    @language = Language.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
   def language_params
-    params[:language].permit(:name, :ace_syntax, :pygments_syntax)
+    params.require(:language).permit(:name, :created_at, :updated_at, :ace_syntax, :pygments_syntax)
   end
 end

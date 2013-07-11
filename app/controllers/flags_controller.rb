@@ -1,15 +1,18 @@
 # The controller for the flags
 class FlagsController < ApplicationController
   authorize_resource
+
   before_action :set_flag, only: [:show, :destroy]
   before_action :set_path, except: :index
 
   # GET /flags
+  # GET /flags.json
   def index
     @flags = Flag.all
   end
 
   # GET /flags/1
+  # GET /flags/1.json
   def show
   end
 
@@ -28,6 +31,7 @@ class FlagsController < ApplicationController
   end
 
   # POST /flags
+  # POST /flags.json
   def create
     @should = false
     if @comment.nil?
@@ -46,6 +50,7 @@ class FlagsController < ApplicationController
   end
 
   # DELETE /flags/1
+  # DELETE /flags/1.json
   def destroy
     @flag.destroy
     redirect_to flags_path, notice: 'Flag was successfully destroyed.'
@@ -85,7 +90,14 @@ class FlagsController < ApplicationController
     end
   end
 
-  # Only allow a trusted parameter "white list" through.
+  private
+
+  # Use callbacks to share common setup or constraints between actions.
+  def set_flag
+    @flag = Flag.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
   def flag_params
     params.require(:flag).permit(:profile_id, :reason, :explanation)
   end

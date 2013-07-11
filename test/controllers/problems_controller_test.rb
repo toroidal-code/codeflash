@@ -57,7 +57,7 @@ class ProblemsControllerTest < ActionController::TestCase
   end
 
   test "should update problem" do
-    put :update, id: @problem, problem: { description: @problem.description,
+    patch :update, id: @problem, problem: { description: @problem.description,
                                           points: @problem.points,
                                           name: @problem.name,
                                           shortname: @problem.shortname },
@@ -66,7 +66,7 @@ class ProblemsControllerTest < ActionController::TestCase
   end
 
   test "should not update problem" do
-    put :update, id: @problem, problem: { description: @problem.description,
+    patch :update, id: @problem, problem: { description: @problem.description,
                                           points: "string",
                                           name: @problem.name,
                                           shortname: @problem.shortname },
