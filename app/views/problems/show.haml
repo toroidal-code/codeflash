@@ -1,0 +1,30 @@
+%style{type:'text/css'}
+  != Pygments.css('.highlight', {style: "default"})
+= render_breadcrumbs
+%h1
+  = @problem.name
+  %span.muted (#{@problem.points} points)
+.pull-right
+  .btn-group
+    = link_to 'New Solution', new_problem_solution_path(@problem), class: "btn btn-primary"
+    - if can? :edit, Problem
+      %a.btn.btn-primary.dropdown-toggle{:'data-toggle'=> "dropdown", href: "#"}
+        %span.caret
+      %ul.dropdown-menu
+        %li
+          %a{href:edit_problem_path(@problem)}
+            %i.icon-pencil
+              Edit Problem
+        %li
+          %a{href: @problem , :'data-method'=>"delete", :'data-confirm'=>"Are you sure?"}
+            %i.icon-trash
+            Delete Problem
+%p
+  != @problem.rendered_description
+%hr
+%ul#solutions
+  = render 'solutions/solutions'
+
+%h2 Comments
+= render 'comments/show', comments: @problem.comments, solution: false
+= render 'comments/form', form_array: [@problem, @problem.comments.build]

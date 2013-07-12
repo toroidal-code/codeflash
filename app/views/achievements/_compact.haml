@@ -1,0 +1,9 @@
+.media
+  %a.pull-left{href: achievement_path(achievement)}
+    %img.media-object{ :'data-src'=> "holder.js/#{image_size}"}
+  .media-body
+    <#{header} class="media-heading">
+    = achievement.name
+    %span.muted ( #{achievement.points} points)
+    </#{header}>
+    != achievement.rendered_description

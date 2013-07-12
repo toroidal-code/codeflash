@@ -1,0 +1,18 @@
+<li class="dropdown #{"active" if path_is? profile_url}">
+%a.avatar-link.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
+  = image_tag Gravatar.new(email).image_url, size: '30x30', :class => "avatar"
+  = username
+  %i.icon-caret-down
+%ul.dropdown-menu
+  %li
+    %a{:href => profile_path(current_user.username)}
+      %i.icon-user
+      View Profile
+  %li
+    %a{:href => edit_profile_path(current_user.username)}
+      %i.icon-pencil
+      Edit Profile
+  %li
+    %a{:href => edit_user_registration_path}
+      %i.icon-cog
+      Account Settings

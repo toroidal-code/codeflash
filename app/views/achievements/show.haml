@@ -1,0 +1,20 @@
+%style{type: "text/css"}
+  != Pygments.css('.highlight', {style: "default"})
+= render_breadcrumbs
+= render 'compact', achievement:@achievement, header:'h2', image_size: '128x128'
+- if can? :update, Achievement
+  .btn-group
+    %a.btn.btn-primary{href:'#'} Achievement
+    %a.btn.btn-primary.dropdown-toggle{:'data-toggle'=> 'dropdown', href:'#'}
+      %span.caret
+    %ul.dropdown-menu
+      %li
+        %a{href:edit_achievement_path(@achievement)}
+          %i.icon-pencil
+          Edit
+      %li
+        %a{href: @achievement, :'data-method' => 'delete', :'data-confirm' => 'Are you sure?'}
+          %i.icon-trash
+          Delete
+%hr
+= render 'solutions/solutions'
