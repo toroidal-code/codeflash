@@ -2,6 +2,8 @@
 class CommentsController < ApplicationController
   authorize_resource
 
+  before_action :set_comment, only: :show
+
   # Creates a new comment
   def create
     @problem = Problem.find_by_shortname(params[:problem_id])
@@ -20,7 +22,6 @@ class CommentsController < ApplicationController
 
   # Shows an existing comment
   def show
-    @comment = Comment.find(params[:id])
     @solution = @comment.commentable_type == 'Solution'
   end
 
@@ -36,9 +37,14 @@ class CommentsController < ApplicationController
 
   private
 
-  # Strong parameters for comments
+  # Use callbacks to share common setup or constraints between actions.
+  def set_comment
+    @comment = Comment.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
   def comment_params
-    params[:comment].permit(:body, :up_votes, :down_votes)
+    params.require(:comment).permit(:body, :up_votes, :down_votes, :rendered_body)
   end
 
   # Helper method for voting

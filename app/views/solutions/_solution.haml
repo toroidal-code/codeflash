@@ -1,0 +1,30 @@
+.row-fluid
+  .span1
+    .pull-right
+      .blockcenter
+        - if current_user
+          - if current_user.profile.voted? solution
+            %a.nodecoration{"data-method" => "patch", href: downvote_problem_solution_path(solution.problem, solution)}
+              %i.icon-heart
+          - else
+            %a.nodecoration{"data-method" => "patch", href: upvote_problem_solution_path(solution.problem, solution)}
+              %i.icon-heart-empty
+        = solution.votes
+      .blockcenter
+  .span11
+    .accordion-group
+      .solution-heading.well.well-small
+        %span.pull-right
+          submitted by: #{link_to solution.profile.user.username, solution.profile, id: "user"}
+        .accordion-toggle{"data-toggle" => "collapse", href: "#collapse#{solution_counter}"}
+          %i{class: "icon-angle-#{collapsed ? 'right' : 'down'}"}
+          %a
+            = solution.problem.name
+            - if !params[:problem_id]
+              \- #{solution.language.name}
+      %div{class: "solution accordion-body collapse #{"in" if !collapsed}", "data-original-title" => "Click to view Solution", "data-toggle" => "tooltip", href: problem_solution_path(solution.problem, solution), id: "collapse#{solution_counter}"}
+        .accordion-inner.nomargin.nopadding
+          - begin
+            !~ Pygments.highlight(solution.code, lexer: solution.language.pygments_syntax, options: {linenos: 'inline'})
+          - rescue
+            !~ Pygments.highlight(solution.code, options: {linenos: 'inline'})

@@ -2,7 +2,7 @@
 class ProblemsController < ApplicationController
   authorize_resource
 
-  respond_to :html, :json, :js
+  before_action :set_problem, only: [:show, :edit, :update, :destroy]
 
   add_breadcrumb "Problems", :problems_path
 
@@ -23,7 +23,6 @@ class ProblemsController < ApplicationController
     end
     @problems = problems.paginate(page: params[:page], per_page: 10 ).order('created_at DESC')
     @tags = Tag.all
-    respond_with @problems
   end
 
   # Shows the page for the problem.
@@ -33,10 +32,8 @@ class ProblemsController < ApplicationController
   #
   # @return [String] the HTML/JSON for the problem.
   def show
-    @problem = Problem.find_by_shortname(params[:id])
     @solutions = @problem.solutions.paginate(page: params[:page], per_page: 10 ).order('created_at DESC')
     add_breadcrumb @problem.name, problem_path(@problem)
-    respond_with @problem
   end
 
   # Renders a new problem JSON.
@@ -48,7 +45,6 @@ class ProblemsController < ApplicationController
   def new
     @problem = Problem.new
     add_breadcrumb "New Problem"
-    respond_with @problem
   end
 
   # Edits the values of a problem.
@@ -57,7 +53,6 @@ class ProblemsController < ApplicationController
   #
   # @return [String] the HTML/JSON for the problem edit page
   def edit
-    @problem = Problem.find_by_shortname(params[:id])
     add_breadcrumb "Edit #{@problem.name}"
   end
 
@@ -73,9 +68,9 @@ class ProblemsController < ApplicationController
     respond_to do |format|
       if @problem.save
         format.html { redirect_to @problem, notice: 'Problem was successfully created.' }
-        format.json { render json: @problem, status: :created, location: @problem }
+        format.json { render action: 'show', status: :created, location: @problem }
       else
-        format.html { render "new" }
+        format.html { render action: 'new' }
         format.json { render json: @problem.errors, status: :unprocessable_entity }
       end
     end
@@ -83,19 +78,18 @@ class ProblemsController < ApplicationController
 
   # Updates the values of a problem.
   #
-  # PUT /problems/1
-  # PUT /problems/1.json
+  # PATCH/PUT /problems/1
+  # PATCH/PUT /problems/1.json
   #
   # @return [String] the HTML/JSON for the updated language
   def update
-    @problem = Problem.find_by_shortname(params[:id])
     create_tags
     respond_to do |format|
-      if @problem.update_attributes(problem_params)
+      if @problem.update(problem_params)
         format.html { redirect_to @problem, notice: 'Problem was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html { render "edit" }
+        format.html { render action: 'edit' }
         format.json { render json: @problem.errors, status: :unprocessable_entity }
       end
     end
@@ -109,7 +103,6 @@ class ProblemsController < ApplicationController
   # @return [String] the HTML/JSON notifying the user that the resource was
   # destroyed
   def destroy
-    @problem = Problem.find_by_shortname(params[:id])
     @problem.destroy
 
     respond_to do |format|
@@ -120,8 +113,14 @@ class ProblemsController < ApplicationController
 
   private
 
+  # Use callbacks to share common setup or constraints between actions.
+  def set_problem
+    @problem = Problem.find_by_shortname(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
   def problem_params
-    params[:problem].permit(:description, :points, :name, :shortname)
+    params.require(:problem).permit(:description, :points, :name, :shortname, :rendered_description)
   end
 
   def create_tags

@@ -1,4 +1,5 @@
 require 'test_helper'
+
 class AchievementTest < ActiveSupport::TestCase
   setup do
     @achievement = achievements(:one)

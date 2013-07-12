@@ -1,0 +1,36 @@
+= render_breadcrumbs
+%div
+  / toolbar
+  %span.pull-right
+    %ul.nav.nav-pills
+      %li.active
+        %a{:href => "#"} Recent
+      %li
+        %a{:href => "#"} Popular
+      %li
+        %a{:href => "#"} Trending
+      %li
+        %input.input-medium.search-query.pull-right{:placeholder => "Search", :type => "text"}/
+  / header
+  %h1 Problems
+.row-fluid
+  / categories
+  .span3
+    %ul.nav.nav-list.well.well-small
+      %li.nav-header Tags
+      <li
+      - if @tag_id == 0
+        class="active"
+      >
+      %a{"data-remote" => "true", :href => "/problems"} All
+      - @tags.each do |tag|
+        - count = tag.problems.count
+        - next if count == 0
+        <li
+        - if @tag_id == tag.id
+          class="active"
+        >
+        %a{"data-remote" => "true", :href => "/problems?tag=#{tag.id}"}= "#{tag.name} (#{count})"
+  / problem list
+  #problems.span9
+    = render partial: 'problems'

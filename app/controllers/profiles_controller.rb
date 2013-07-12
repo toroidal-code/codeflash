@@ -2,9 +2,8 @@
 class ProfilesController < ApplicationController
   authorize_resource
 
-  before_action :find_profile, only: [:show, :edit, :update, :destroy]
+  before_action :set_profile, only: [:show, :edit, :update, :destroy]
 
-  respond_to :html, :json, :js
 
   # Shows the page for the profile.
   #
@@ -15,7 +14,6 @@ class ProfilesController < ApplicationController
   # @return [String] the HTML/JSON for the profile
   def show
     @solutions = @profile.solutions.paginate(page: params[:page], per_page: 10 ).order('created_at DESC')
-    respond_with @profile
   end
 
   # Renders a new language JSON.
@@ -27,8 +25,6 @@ class ProfilesController < ApplicationController
   def new
     @user = current_user
     @profile = Profile.new
-
-    respond_with @profile
   end
 
   # Edits the valuses of a profile.
@@ -50,12 +46,13 @@ class ProfilesController < ApplicationController
   def create
     @profile = Profile.new(profile_params)
     @user = current_user
+
     respond_to do |format|
       if @profile.save
         format.html { redirect_to @profile, notice: 'Profile was successfully created.' }
-        format.json { render json: @profile, status: :created, location: @profile }
+        format.json { render action: 'show', status: :created, location: @profile }
       else
-        format.html { render "new" }
+        format.html { render action: 'new' }
         format.json { render json: @profile.errors, status: :unprocessable_entity }
       end
     end
@@ -63,18 +60,18 @@ class ProfilesController < ApplicationController
 
   # Updates the values of a profile.
   #
-  # PUT /profiles/1
-  # PUT /profiles/1.json
+  # PATCH/PUT /profiles/1
+  # PATCH/PUT /profiles/1.json
   #
   # @return [String] the HTML/JSON for the updated profile
   def update
     authorize! :update, @profile
     respond_to do |format|
-      if @user.update_attributes(params[:user].permit(:username)) && @profile.update_attributes(profile_params)
+      if @user.update(params[:user].permit(:username)) && @profile.update(profile_params)
         format.html { redirect_to @profile, notice: 'Profile was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html { render "edit" }
+        format.html { render action: 'edit' }
         format.json { render json: @profile.errors, status: :unprocessable_entity }
       end
     end
@@ -96,15 +93,16 @@ class ProfilesController < ApplicationController
     end
   end
 
-  # Finds the profile for a given user
-  # The before_filter method for show edit update and destroy
-  def find_profile
+  private
+
+  # Use callbacks to share common setup or constraints between actions.
+  def set_profile
     @user = User.find_by_username(params[:id])
     @profile = @user.profile
   end
 
-  private
+  # Never trust parameters from the scary internet, only allow the white list through.
   def profile_params
-    params[:profile].permit(:about_me, :language_id, :github, :name, :user_id)
+    params.require(:profile).permit(:about_me, :language_id, :github, :name, :user_id, :rendered_about_me)
   end
 end

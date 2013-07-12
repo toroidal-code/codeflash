@@ -1,0 +1,44 @@
+%style{type:'text/css'}
+  != Pygments.css('.highlight', {style: "default"})
+= render_breadcrumbs
+%div
+  / toolbar
+  %span.pull-right
+    %ul.nav.nav-pills
+      %li.active
+        %a{:href => "#"} Recent
+      %li
+        %a{:href => "#"} Popular
+      %li
+        %a{:href => "#"} Trending
+      %li
+        %input.input-medium.search-query.pull-right{:placeholder => "Search", :type => "text"}/
+  / header
+  %h1
+    Solutions#{" for #{@problem.name}" if !@problem.nil?}
+.row-fluid
+  / languages
+  .span3
+    %ul.nav.nav-list.well.well-small
+      %li.nav-header Languages
+      - if @problem.nil?
+        - solutions = Solution.all
+      - else
+        - solutions = @problem.solutions
+      <li
+      - if @language_id == 0
+        class="active"
+      >
+      %a{"data-remote" => "true", :href => @path} All
+      - hash = Hash.new(0)
+      - solutions.each do |x|
+        - hash[x.language] += 1
+      - Hash[hash.sort_by{|language, count| language.name}].each do |language, count|
+        <li
+        - if @language_id == language.id
+          class="active"
+        >
+        %a{"data-remote" => "true", :href => "?language=#{language.id}"}= "#{language.name} (#{count})"
+  / problem list
+  #solutions.span9
+    = render partial: 'solutions'

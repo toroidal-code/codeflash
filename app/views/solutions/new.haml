@@ -1,0 +1,8 @@
+= render_breadcrumbs
+.well.well-small
+  %h1
+    New solution for #{@problem.name}
+  = render 'form',                              |
+    problem: @problem,                          |
+    solution: @solution,                        |
+    back_path: problem_solutions_path(@problem) |

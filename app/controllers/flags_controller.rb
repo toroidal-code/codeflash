@@ -1,15 +1,18 @@
 # The controller for the flags
 class FlagsController < ApplicationController
   authorize_resource
+
   before_action :set_flag, only: [:show, :destroy]
   before_action :set_path, except: :index
 
   # GET /flags
+  # GET /flags.json
   def index
     @flags = Flag.all
   end
 
   # GET /flags/1
+  # GET /flags/1.json
   def show
   end
 
@@ -28,6 +31,7 @@ class FlagsController < ApplicationController
   end
 
   # POST /flags
+  # POST /flags.json
   def create
     @should = false
     if @comment.nil?
@@ -46,46 +50,55 @@ class FlagsController < ApplicationController
   end
 
   # DELETE /flags/1
+  # DELETE /flags/1.json
   def destroy
     @flag.destroy
     redirect_to flags_path, notice: 'Flag was successfully destroyed.'
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_flag
-      @flag = Flag.find(params[:id])
-    end
 
-    #Sets the path instance variable for a fath
-    def set_path
-      @comment = Comment.find(params[:comment_id]) if !params[:comment_id].nil?
-      @solution = Solution.find(params[:solution_id]) if !params[:solution_id].nil?
-      @problem = Problem.find_by_shortname(params[:problem_id])
-      if @solution.nil?
-        @path = problem_path(@problem)
-      else
-        @path = problem_solution_path(@problem, @solution)
-      end
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_flag
+    @flag = Flag.find(params[:id])
+  end
 
-    def should_new_flag flaggable
-      if Flag.where(profile: current_user.profile, flaggable: flaggable).count == 0
-        @flag = Flag.new
-        @should = true
-      end
+  #Sets the path instance variable for a fath
+  def set_path
+    @comment = Comment.find(params[:comment_id]) if !params[:comment_id].nil?
+    @solution = Solution.find(params[:solution_id]) if !params[:solution_id].nil?
+    @problem = Problem.find_by_shortname(params[:problem_id])
+    if @solution.nil?
+      @path = problem_path(@problem)
+    else
+      @path = problem_solution_path(@problem, @solution)
     end
+  end
 
-    def should_create_flag flaggable
-      if Flag.where(profile: current_user.profile, flaggable: flaggable).count == 0
-        @flag = flaggable.flags.create(flag_params)
-        @flag.profile = current_user.profile
-        @should = true
-      end
+  def should_new_flag flaggable
+    if Flag.where(profile: current_user.profile, flaggable: flaggable).count == 0
+      @flag = Flag.new
+      @should = true
     end
+  end
 
-    # Only allow a trusted parameter "white list" through.
-    def flag_params
-      params.require(:flag).permit(:profile_id, :reason, :explanation)
+  def should_create_flag flaggable
+    if Flag.where(profile: current_user.profile, flaggable: flaggable).count == 0
+      @flag = flaggable.flags.create(flag_params)
+      @flag.profile = current_user.profile
+      @should = true
     end
+  end
+
+  private
+
+  # Use callbacks to share common setup or constraints between actions.
+  def set_flag
+    @flag = Flag.find(params[:id])
+  end
+
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def flag_params
+    params.require(:flag).permit(:profile_id, :reason, :explanation)
+  end
 end
