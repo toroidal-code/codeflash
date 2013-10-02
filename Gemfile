@@ -21,7 +21,7 @@ gem 'gravatar-ultimate'
 
 # Auth
 gem 'omniauth-github', '~> 1.1.0'
-gem 'devise', github: 'idl3/devise', branch: 'rails4'
+gem 'devise', '~> 3.1.1'
 gem 'cancan', '~> 1.6.9'
 
 # Deploying
@@ -40,7 +40,7 @@ gem 'haml-rails'
 
 # Required by rake for RAILS_ENV=production
 gem 'yard', '~> 0.8.6.2'
-gem 'simple_form', github: 'plataformatec/simple_form'
+gem 'simple_form', '~> 3.0.0'
 gem 'rdoc', '~> 4.0.1'
 
 # Pygments
