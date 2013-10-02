@@ -241,10 +241,13 @@ Devise.setup do |config|
   #config/initializers/devise.rb
 
   # If you wish to add an extra permitted parameter you can add it to the array as follows
-  config.params_whitelist += [:username, :login, :admin]
+  #config.params_whitelist += [:username, :login, :admin]
 
   # If you wish further customize and redefine your permitted parameters you can do so via an assignment
   # e.g. adding username to the list but removing email
   #config.params_whitelist = [:username, :password, :password_confirmation, :current_password]
   #note that current_password will need to be permitted for updating of resource
+
+  config.secret_key = '21aa970fbb3f2c29f7660a45a005d39fdf895b2d6d9ea3d8f8f124d816b2c2f6d30d96c386ac555b6ddea771e564c948f88613633aee36f627cc1e2303d8996d'
+
 end
