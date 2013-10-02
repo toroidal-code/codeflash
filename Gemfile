@@ -39,7 +39,7 @@ gem 'multi_fetch_fragments'
 gem 'haml-rails'
 
 # Required by rake for RAILS_ENV=production
-gem 'yard', '~> 0.8.6.2'
+gem 'yard', '~> 0.8.7.2'
 gem 'simple_form', '~> 3.0.0'
 gem 'rdoc', '~> 4.0.1'
 
@@ -68,7 +68,7 @@ gem 'redcarpet'
 
 group :development do
   gem 'binding_of_caller', '~> 0.6'
-  gem 'better_errors', '~> 0.7'
+  gem 'better_errors', '~> 1.0'
   gem 'foreman'
   gem 'yard-activerecord', '~> 0.0.8'
 end

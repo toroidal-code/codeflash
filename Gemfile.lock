@@ -29,7 +29,7 @@ GEM
     arel (4.0.0)
     atomic (1.1.14)
     bcrypt-ruby (3.1.2)
-    better_errors (0.9.0)
+    better_errors (1.0.1)
       coderay (>= 1.0.0)
       erubis (>= 2.6.6)
     binding_of_caller (0.7.2)
@@ -224,7 +224,7 @@ GEM
       rack (>= 1.0)
     will_paginate (3.0.5)
     yajl-ruby (1.1.0)
-    yard (0.8.6.2)
+    yard (0.8.7.2)
     yard-activerecord (0.0.11)
       yard (>= 0.8.3)
     yui-compressor (0.12.0)
@@ -234,7 +234,7 @@ PLATFORMS
 
 DEPENDENCIES
   ace-rails-ap
-  better_errors (~> 0.7)
+  better_errors (~> 1.0)
   binding_of_caller (~> 0.6)
   bootstrap-sass
   bootstrap-will_paginate
@@ -274,6 +274,6 @@ DEPENDENCIES
   turbolinks
   twitter-bootstrap-rails
   will_paginate
-  yard (~> 0.8.6.2)
+  yard (~> 0.8.7.2)
   yard-activerecord (~> 0.0.8)
   yui-compressor
